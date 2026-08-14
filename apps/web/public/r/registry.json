@@ -1,0 +1,3802 @@
+{
+  "$schema": "https://shadcn-vue.com/schema/registry.json",
+  "name": "hugeicons-animated-vue",
+  "homepage": "https://hugeicons-animated-vue.dev",
+  "items": [
+    {
+      "name": "add-circle",
+      "type": "registry:ui",
+      "title": "add-circle",
+      "description": "Animated add circle icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/add-circle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "airplane-take-off-01",
+      "type": "registry:ui",
+      "title": "airplane-take-off-01",
+      "description": "Animated airplane take off icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/airplane-take-off-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "alarm-clock",
+      "type": "registry:ui",
+      "title": "alarm-clock",
+      "description": "Animated alarm clock icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/alarm-clock.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "alert-circle",
+      "type": "registry:ui",
+      "title": "alert-circle",
+      "description": "Animated alert circle icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/alert-circle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "archive-02",
+      "type": "registry:ui",
+      "title": "archive-02",
+      "description": "Animated archive icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/archive-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-down-02",
+      "type": "registry:ui",
+      "title": "arrow-down-02",
+      "description": "Animated arrow down icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-down-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-down-left-01",
+      "type": "registry:ui",
+      "title": "arrow-down-left-01",
+      "description": "Animated arrow down left icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-down-left-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-down-right-01",
+      "type": "registry:ui",
+      "title": "arrow-down-right-01",
+      "description": "Animated arrow down right icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-down-right-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-left-02",
+      "type": "registry:ui",
+      "title": "arrow-left-02",
+      "description": "Animated arrow left icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-left-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-right-02",
+      "type": "registry:ui",
+      "title": "arrow-right-02",
+      "description": "Animated arrow right icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-right-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-up-02",
+      "type": "registry:ui",
+      "title": "arrow-up-02",
+      "description": "Animated arrow up icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-up-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-up-left-01",
+      "type": "registry:ui",
+      "title": "arrow-up-left-01",
+      "description": "Animated arrow up left icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-up-left-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "arrow-up-right-01",
+      "type": "registry:ui",
+      "title": "arrow-up-right-01",
+      "description": "Animated arrow up right icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/arrow-up-right-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "attachment",
+      "description": "Animated attachment icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/attachment.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "battery-charging-01",
+      "type": "registry:ui",
+      "title": "battery-charging-01",
+      "description": "Animated battery charging icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/battery-charging-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "bluetooth",
+      "type": "registry:ui",
+      "title": "bluetooth",
+      "description": "Animated bluetooth icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/bluetooth.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "bookmark-01",
+      "type": "registry:ui",
+      "title": "bookmark-01",
+      "description": "Animated bookmark icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/bookmark-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "bug-01",
+      "type": "registry:ui",
+      "title": "bug-01",
+      "description": "Animated bug icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/bug-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "bulb",
+      "type": "registry:ui",
+      "title": "bulb",
+      "description": "Animated bulb icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/bulb.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "calendar-03",
+      "type": "registry:ui",
+      "title": "calendar-03",
+      "description": "Animated calendar icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/calendar-03.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "calendar-add-01",
+      "type": "registry:ui",
+      "title": "calendar-add-01",
+      "description": "Animated calendar add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/calendar-add-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "call-02",
+      "type": "registry:ui",
+      "title": "call-02",
+      "description": "Animated call icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/call-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "call-incoming-01",
+      "type": "registry:ui",
+      "title": "call-incoming-01",
+      "description": "Animated call incoming icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/call-incoming-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "call-outgoing-01",
+      "type": "registry:ui",
+      "title": "call-outgoing-01",
+      "description": "Animated call outgoing icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/call-outgoing-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "camera-01",
+      "type": "registry:ui",
+      "title": "camera-01",
+      "description": "Animated camera icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/camera-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cancel-01",
+      "type": "registry:ui",
+      "title": "cancel-01",
+      "description": "Animated cancel icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cancel-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "chevron-down",
+      "type": "registry:ui",
+      "title": "chevron-down",
+      "description": "Animated chevron down icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/chevron-down.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "chevron-left",
+      "type": "registry:ui",
+      "title": "chevron-left",
+      "description": "Animated chevron left icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/chevron-left.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "chevron-right",
+      "type": "registry:ui",
+      "title": "chevron-right",
+      "description": "Animated chevron right icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/chevron-right.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "chevron-up",
+      "type": "registry:ui",
+      "title": "chevron-up",
+      "description": "Animated chevron up icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/chevron-up.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "circle-check",
+      "type": "registry:ui",
+      "title": "circle-check",
+      "description": "Animated circle check icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/circle-check.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "circle-x",
+      "type": "registry:ui",
+      "title": "circle-x",
+      "description": "Animated circle x icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/circle-x.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "clipboard-paste",
+      "type": "registry:ui",
+      "title": "clipboard-paste",
+      "description": "Animated clipboard paste icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/clipboard-paste.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "clipboard",
+      "type": "registry:ui",
+      "title": "clipboard",
+      "description": "Animated clipboard icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/clipboard.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "clock-01",
+      "type": "registry:ui",
+      "title": "clock-01",
+      "description": "Animated clock icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/clock-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cloud-download",
+      "type": "registry:ui",
+      "title": "cloud-download",
+      "description": "Animated cloud download icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cloud-download.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cloud-lightning",
+      "type": "registry:ui",
+      "title": "cloud-lightning",
+      "description": "Animated cloud lightning icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cloud-lightning.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cloud-rain",
+      "type": "registry:ui",
+      "title": "cloud-rain",
+      "description": "Animated cloud rain icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cloud-rain.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cloud-upload",
+      "type": "registry:ui",
+      "title": "cloud-upload",
+      "description": "Animated cloud upload icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cloud-upload.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cloud",
+      "type": "registry:ui",
+      "title": "cloud",
+      "description": "Animated cloud icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cloud.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "code-xml",
+      "type": "registry:ui",
+      "title": "code-xml",
+      "description": "Animated code xml icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/code-xml.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "coffee-02",
+      "type": "registry:ui",
+      "title": "coffee-02",
+      "description": "Animated coffee icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/coffee-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "command",
+      "description": "Animated command icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/command.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "compass",
+      "type": "registry:ui",
+      "title": "compass",
+      "description": "Animated compass icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/compass.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "copy-01",
+      "type": "registry:ui",
+      "title": "copy-01",
+      "description": "Animated copy icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/copy-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "credit-card",
+      "type": "registry:ui",
+      "title": "credit-card",
+      "description": "Animated credit card icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/credit-card.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "crown",
+      "type": "registry:ui",
+      "title": "crown",
+      "description": "Animated crown icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/crown.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "cursor-pointer-01",
+      "type": "registry:ui",
+      "title": "cursor-pointer-01",
+      "description": "Animated cursor pointer icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/cursor-pointer-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-square-01",
+      "type": "registry:ui",
+      "title": "dashboard-square-01",
+      "description": "Animated dashboard square icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/dashboard-square-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "database",
+      "type": "registry:ui",
+      "title": "database",
+      "description": "Animated database icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/database.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "delete-02",
+      "type": "registry:ui",
+      "title": "delete-02",
+      "description": "Animated delete icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/delete-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "diamond-02",
+      "type": "registry:ui",
+      "title": "diamond-02",
+      "description": "Animated diamond icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/diamond-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "document-attachment",
+      "type": "registry:ui",
+      "title": "document-attachment",
+      "description": "Animated document attachment icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/document-attachment.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "download-01",
+      "type": "registry:ui",
+      "title": "download-01",
+      "description": "Animated download icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/download-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "earth",
+      "type": "registry:ui",
+      "title": "earth",
+      "description": "Animated earth icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/earth.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "edit-02",
+      "type": "registry:ui",
+      "title": "edit-02",
+      "description": "Animated edit icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/edit-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "external-link",
+      "type": "registry:ui",
+      "title": "external-link",
+      "description": "Animated external link icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/external-link.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "eye-off",
+      "type": "registry:ui",
+      "title": "eye-off",
+      "description": "Animated eye off icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/eye-off.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "eye",
+      "type": "registry:ui",
+      "title": "eye",
+      "description": "Animated eye icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/eye.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "favourite",
+      "type": "registry:ui",
+      "title": "favourite",
+      "description": "Animated favourite icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/favourite.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "file-01",
+      "type": "registry:ui",
+      "title": "file-01",
+      "description": "Animated file icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/file-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "file-add",
+      "type": "registry:ui",
+      "title": "file-add",
+      "description": "Animated file add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/file-add.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "file-download",
+      "type": "registry:ui",
+      "title": "file-download",
+      "description": "Animated file download icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/file-download.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "file-upload",
+      "description": "Animated file upload icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/file-upload.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "filter",
+      "type": "registry:ui",
+      "title": "filter",
+      "description": "Animated filter icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/filter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "fire",
+      "type": "registry:ui",
+      "title": "fire",
+      "description": "Animated fire icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/fire.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "flash",
+      "type": "registry:ui",
+      "title": "flash",
+      "description": "Animated flash icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/flash.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "flower",
+      "type": "registry:ui",
+      "title": "flower",
+      "description": "Animated flower icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/flower.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "folder-01",
+      "type": "registry:ui",
+      "title": "folder-01",
+      "description": "Animated folder icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/folder-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "folder-add",
+      "type": "registry:ui",
+      "title": "folder-add",
+      "description": "Animated folder add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/folder-add.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "folder-open",
+      "type": "registry:ui",
+      "title": "folder-open",
+      "description": "Animated folder open icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/folder-open.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "full-screen",
+      "type": "registry:ui",
+      "title": "full-screen",
+      "description": "Animated full screen icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/full-screen.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "ghost",
+      "type": "registry:ui",
+      "title": "ghost",
+      "description": "Animated ghost icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/ghost.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "gift",
+      "type": "registry:ui",
+      "title": "gift",
+      "description": "Animated gift icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/gift.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "github",
+      "type": "registry:ui",
+      "title": "github",
+      "description": "Animated github icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/github.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "grid-view",
+      "type": "registry:ui",
+      "title": "grid-view",
+      "description": "Animated grid view icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/grid-view.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "headphone-off",
+      "type": "registry:ui",
+      "title": "headphone-off",
+      "description": "Animated headphone off icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/headphone-off.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "headphones",
+      "type": "registry:ui",
+      "title": "headphones",
+      "description": "Animated headphones icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/headphones.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "help-circle",
+      "type": "registry:ui",
+      "title": "help-circle",
+      "description": "Animated help circle icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/help-circle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "history",
+      "type": "registry:ui",
+      "title": "history",
+      "description": "Animated history icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/history.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "home-01",
+      "type": "registry:ui",
+      "title": "home-01",
+      "description": "Animated home icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/home-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "image-01",
+      "type": "registry:ui",
+      "title": "image-01",
+      "description": "Animated image icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/image-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "inbox",
+      "type": "registry:ui",
+      "title": "inbox",
+      "description": "Animated inbox icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/inbox.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "information-circle",
+      "type": "registry:ui",
+      "title": "information-circle",
+      "description": "Animated information circle icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/information-circle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "key-01",
+      "type": "registry:ui",
+      "title": "key-01",
+      "description": "Animated key icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/key-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "leaf-01",
+      "type": "registry:ui",
+      "title": "leaf-01",
+      "description": "Animated leaf icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/leaf-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "link-01",
+      "type": "registry:ui",
+      "title": "link-01",
+      "description": "Animated link icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/link-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "link-square-02",
+      "type": "registry:ui",
+      "title": "link-square-02",
+      "description": "Animated link square icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/link-square-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "list-view",
+      "type": "registry:ui",
+      "title": "list-view",
+      "description": "Animated list view icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/list-view.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "loading-03",
+      "type": "registry:ui",
+      "title": "loading-03",
+      "description": "Animated loading icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/loading-03.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "location-01",
+      "type": "registry:ui",
+      "title": "location-01",
+      "description": "Animated location icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/location-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "location-add-01",
+      "type": "registry:ui",
+      "title": "location-add-01",
+      "description": "Animated location add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/location-add-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "lock",
+      "type": "registry:ui",
+      "title": "lock",
+      "description": "Animated lock icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/lock.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "login-01",
+      "type": "registry:ui",
+      "title": "login-01",
+      "description": "Animated login icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/login-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "logout-01",
+      "type": "registry:ui",
+      "title": "logout-01",
+      "description": "Animated logout icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/logout-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "magic-wand-01",
+      "type": "registry:ui",
+      "title": "magic-wand-01",
+      "description": "Animated magic wand icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/magic-wand-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "mail-01",
+      "type": "registry:ui",
+      "title": "mail-01",
+      "description": "Animated mail icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mail-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "mail-open",
+      "type": "registry:ui",
+      "title": "mail-open",
+      "description": "Animated mail open icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mail-open.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "maximize-screen",
+      "type": "registry:ui",
+      "title": "maximize-screen",
+      "description": "Animated maximize screen icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/maximize-screen.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "menu-01",
+      "type": "registry:ui",
+      "title": "menu-01",
+      "description": "Animated menu icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/menu-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "message-01",
+      "type": "registry:ui",
+      "title": "message-01",
+      "description": "Animated message icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/message-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "message-add-01",
+      "type": "registry:ui",
+      "title": "message-add-01",
+      "description": "Animated message add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/message-add-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "mic-01",
+      "type": "registry:ui",
+      "title": "mic-01",
+      "description": "Animated mic icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mic-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "minimize-screen",
+      "type": "registry:ui",
+      "title": "minimize-screen",
+      "description": "Animated minimize screen icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/minimize-screen.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "minus-sign-circle",
+      "type": "registry:ui",
+      "title": "minus-sign-circle",
+      "description": "Animated minus sign circle icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/minus-sign-circle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "minus-sign",
+      "type": "registry:ui",
+      "title": "minus-sign",
+      "description": "Animated minus sign icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/minus-sign.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "moon-02",
+      "type": "registry:ui",
+      "title": "moon-02",
+      "description": "Animated moon icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/moon-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "more-horizontal",
+      "type": "registry:ui",
+      "title": "more-horizontal",
+      "description": "Animated more horizontal icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/more-horizontal.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "more-vertical",
+      "type": "registry:ui",
+      "title": "more-vertical",
+      "description": "Animated more vertical icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/more-vertical.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "mouse-left-click-01",
+      "type": "registry:ui",
+      "title": "mouse-left-click-01",
+      "description": "Animated mouse left click icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mouse-left-click-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "music-note-01",
+      "type": "registry:ui",
+      "title": "music-note-01",
+      "description": "Animated music note icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/music-note-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "notification-03",
+      "type": "registry:ui",
+      "title": "notification-03",
+      "description": "Animated notification icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/notification-03.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "notification-off-01",
+      "type": "registry:ui",
+      "title": "notification-off-01",
+      "description": "Animated notification off icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/notification-off-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "paint-brush-02",
+      "type": "registry:ui",
+      "title": "paint-brush-02",
+      "description": "Animated paint brush icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/paint-brush-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "panel-left",
+      "type": "registry:ui",
+      "title": "panel-left",
+      "description": "Animated panel left icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/panel-left.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "party",
+      "type": "registry:ui",
+      "title": "party",
+      "description": "Animated party icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/party.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "pause",
+      "type": "registry:ui",
+      "title": "pause",
+      "description": "Animated pause icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/pause.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "pin",
+      "type": "registry:ui",
+      "title": "pin",
+      "description": "Animated pin icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/pin.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "play",
+      "type": "registry:ui",
+      "title": "play",
+      "description": "Animated play icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/play.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "plus-sign",
+      "type": "registry:ui",
+      "title": "plus-sign",
+      "description": "Animated plus sign icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/plus-sign.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "printer",
+      "type": "registry:ui",
+      "title": "printer",
+      "description": "Animated printer icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/printer.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "puzzle",
+      "type": "registry:ui",
+      "title": "puzzle",
+      "description": "Animated puzzle icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/puzzle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "qr-code-01",
+      "type": "registry:ui",
+      "title": "qr-code-01",
+      "description": "Animated qr code icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/qr-code-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "redo",
+      "type": "registry:ui",
+      "title": "redo",
+      "description": "Animated redo icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/redo.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "refresh",
+      "type": "registry:ui",
+      "title": "refresh",
+      "description": "Animated refresh icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/refresh.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "robot-01",
+      "type": "registry:ui",
+      "title": "robot-01",
+      "description": "Animated robot icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/robot-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "rocket-01",
+      "type": "registry:ui",
+      "title": "rocket-01",
+      "description": "Animated rocket icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/rocket-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "save",
+      "type": "registry:ui",
+      "title": "save",
+      "description": "Animated save icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/save.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "scissor-01",
+      "type": "registry:ui",
+      "title": "scissor-01",
+      "description": "Animated scissor icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/scissor-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "search-01",
+      "type": "registry:ui",
+      "title": "search-01",
+      "description": "Animated search icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/search-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sent",
+      "type": "registry:ui",
+      "title": "sent",
+      "description": "Animated sent icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "settings-01",
+      "type": "registry:ui",
+      "title": "settings-01",
+      "description": "Animated settings icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/settings-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "share-08",
+      "type": "registry:ui",
+      "title": "share-08",
+      "description": "Animated share icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/share-08.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shield-02",
+      "type": "registry:ui",
+      "title": "shield-02",
+      "description": "Animated shield icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/shield-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shopping-cart-01",
+      "type": "registry:ui",
+      "title": "shopping-cart-01",
+      "description": "Animated shopping cart icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/shopping-cart-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shopping-cart-add-01",
+      "type": "registry:ui",
+      "title": "shopping-cart-add-01",
+      "description": "Animated shopping cart add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/shopping-cart-add-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sleeping",
+      "type": "registry:ui",
+      "title": "sleeping",
+      "description": "Animated sleeping icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sleeping.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sliders-horizontal",
+      "type": "registry:ui",
+      "title": "sliders-horizontal",
+      "description": "Animated sliders horizontal icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sliders-horizontal.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "smile",
+      "type": "registry:ui",
+      "title": "smile",
+      "description": "Animated smile icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/smile.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "snow",
+      "type": "registry:ui",
+      "title": "snow",
+      "description": "Animated snow icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/snow.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sort-by-down-01",
+      "type": "registry:ui",
+      "title": "sort-by-down-01",
+      "description": "Animated sort by down icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sort-by-down-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sort-by-up-01",
+      "type": "registry:ui",
+      "title": "sort-by-up-01",
+      "description": "Animated sort by up icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sort-by-up-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sparkles",
+      "type": "registry:ui",
+      "title": "sparkles",
+      "description": "Animated sparkles icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sparkles.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "square-lock-01",
+      "type": "registry:ui",
+      "title": "square-lock-01",
+      "description": "Animated square lock icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/square-lock-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "star",
+      "type": "registry:ui",
+      "title": "star",
+      "description": "Animated star icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/star.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sun-03",
+      "type": "registry:ui",
+      "title": "sun-03",
+      "description": "Animated sun icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/sun-03.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "target-01",
+      "type": "registry:ui",
+      "title": "target-01",
+      "description": "Animated target icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/target-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "thumbs-up",
+      "type": "registry:ui",
+      "title": "thumbs-up",
+      "description": "Animated thumbs up icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/thumbs-up.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "tick-02",
+      "type": "registry:ui",
+      "title": "tick-02",
+      "description": "Animated tick icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/tick-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "umbrella",
+      "type": "registry:ui",
+      "title": "umbrella",
+      "description": "Animated umbrella icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/umbrella.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "undo",
+      "type": "registry:ui",
+      "title": "undo",
+      "description": "Animated undo icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/undo.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "upload-01",
+      "type": "registry:ui",
+      "title": "upload-01",
+      "description": "Animated upload icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/upload-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "user-add-01",
+      "type": "registry:ui",
+      "title": "user-add-01",
+      "description": "Animated user add icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/user-add-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "user-check-01",
+      "type": "registry:ui",
+      "title": "user-check-01",
+      "description": "Animated user check icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/user-check-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "user-group",
+      "type": "registry:ui",
+      "title": "user-group",
+      "description": "Animated user group icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/user-group.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "user-multiple-02",
+      "type": "registry:ui",
+      "title": "user-multiple-02",
+      "description": "Animated user multiple icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/user-multiple-02.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "user-remove-01",
+      "type": "registry:ui",
+      "title": "user-remove-01",
+      "description": "Animated user remove icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/user-remove-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "type": "registry:ui",
+      "title": "user",
+      "description": "Animated user icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/user.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "video-01",
+      "type": "registry:ui",
+      "title": "video-01",
+      "description": "Animated video icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/video-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "volume-high",
+      "type": "registry:ui",
+      "title": "volume-high",
+      "description": "Animated volume high icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/volume-high.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "volume-mute-01",
+      "type": "registry:ui",
+      "title": "volume-mute-01",
+      "description": "Animated volume mute icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/volume-mute-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "wallet-01",
+      "type": "registry:ui",
+      "title": "wallet-01",
+      "description": "Animated wallet icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/wallet-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "wifi-01",
+      "type": "registry:ui",
+      "title": "wifi-01",
+      "description": "Animated wifi icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/wifi-01.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "zoom-in-area",
+      "type": "registry:ui",
+      "title": "zoom-in-area",
+      "description": "Animated zoom in area icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/zoom-in-area.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "zoom-out-area",
+      "type": "registry:ui",
+      "title": "zoom-out-area",
+      "description": "Animated zoom out area icon for Vue",
+      "dependencies": [
+        "motion-v"
+      ],
+      "files": [
+        {
+          "path": "components/ui/zoom-out-area.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "composables/useIconAnimation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "types/animated-icon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

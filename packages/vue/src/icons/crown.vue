@@ -1,0 +1,91 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'CrownIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// The crown gives one restrained lift around its fixed center jewel.
+const crownBodyVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) scale(1)',
+    transition: { duration: 0.18, ease: [0.23, 1, 0.32, 1] },
+  },
+  animate: {
+    transform: [
+      'translateY(0px) scale(1)',
+      'translateY(0.35px) scale(0.992)',
+      'translateY(-0.45px) scale(1.018)',
+      'translateY(-0.1px) scale(1.006)',
+      'translateY(0px) scale(1)',
+    ],
+    transition: {
+      duration: 0.78,
+      ease: [0.77, 0, 0.175, 1],
+      times: [0, 0.2, 0.52, 0.78, 1],
+    },
+  },
+};
+
+const glintVariants: Variants = {
+  normal: {
+    opacity: 0,
+    visibility: 'hidden',
+    transform: 'scale(0.75)',
+    transition: { duration: 0.12, ease: [0.23, 1, 0.32, 1] },
+  },
+  animate: (i: number) => ({
+    opacity: [0, 0, 1, 0.7, 0],
+    visibility: ['hidden', 'hidden', 'visible', 'visible', 'hidden'],
+    transform: [
+      'scale(0.75)',
+      'scale(0.75)',
+      'scale(1)',
+      'scale(0.94)',
+      'scale(0.8)',
+    ],
+    transition: {
+      duration: 0.82,
+      ease: [0.23, 1, 0.32, 1],
+      repeat: Infinity,
+      repeatDelay: 0.28,
+      delay: 0.16 + i * 0.34,
+      times: [0, 0.2, 0.42, 0.7, 1],
+    },
+  }),
+};
+const generatedGeometryVariants: Variants = {
+  normal: { visibility: 'hidden', transition: { duration: 0.08 } },
+  animate: { visibility: 'visible', transition: { duration: 0.08 } },
+};
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: true,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <path d="M5 21H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M12.125 12.75H12M12.25 12.75C12.25 12.8881 12.1381 13 12 13C11.8619 13 11.75 12.8881 11.75 12.75C11.75 12.6119 11.8619 12.5 12 12.5C12.1381 12.5 12.25 12.6119 12.25 12.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M14.9152 7.61089L13.8078 5.38179C13.019 3.79393 12.6246 3 12 3C11.3754 3 10.981 3.79393 10.1922 5.38179L9.08483 7.61089C8.58107 8.62494 8.32919 9.13197 7.87976 9.24608C7.8485 9.25401 7.81689 9.26043 7.78503 9.26533C7.32682 9.3357 6.89919 8.96678 6.04393 8.22895C4.0124 6.47635 2.99663 5.60004 2.38034 5.94899C2.34045 5.97157 2.30213 5.99686 2.26565 6.02467C1.70197 6.45439 2.09541 7.74136 2.88229 10.3153L4.04783 14.1279C4.47098 15.5121 4.68255 16.2042 5.21787 16.6021C5.75318 17 6.47261 17 7.91147 17L16.0886 16.9999C17.5274 16.9999 18.2468 16.9999 18.7821 16.602C19.3175 16.2041 19.529 15.512 19.9522 14.1279L21.1177 10.3153C21.9046 7.74137 22.298 6.4544 21.7344 6.02468C21.6979 5.99687 21.6595 5.97158 21.6197 5.94899C21.0034 5.60006 19.9876 6.47636 17.9561 8.22896C17.1008 8.96679 16.6732 9.3357 16.215 9.26533C16.1831 9.26043 16.1515 9.25401 16.1202 9.24607C15.6708 9.13197 15.4189 8.62494 14.9152 7.61089Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="crownBodyVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.75px' }" />
+            <motion.g :variants="generatedGeometryVariants" :animate="controls" initial="normal">
+              <motion.path d="M7.3 11.6V12.8M6.7 12.2H7.9" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="glintVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '7.3px 12.2px' }" />
+              <motion.path d="M16.7 11.2V12.4M16.1 11.8H17.3" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="glintVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '16.7px 11.8px' }" />
+            </motion.g>
+          </svg>
+        </div>
+</template>

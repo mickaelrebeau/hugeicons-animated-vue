@@ -1,0 +1,26 @@
+{
+  "name": "play",
+  "type": "registry:ui",
+  "title": "play",
+  "description": "Animated play icon for Vue",
+  "dependencies": [
+    "motion-v"
+  ],
+  "files": [
+    {
+      "path": "components/ui/play.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { motion, useAnimationControls } from 'motion-v'\nimport type { Variants } from 'motion-v'\nimport { useIconAnimation } from '../composables/useIconAnimation'\nimport type { AnimatedIconHandle } from '../types'\n\ndefineOptions({ inheritAttrs: false, name: 'PlayIcon' })\n\nwithDefaults(\n  defineProps<{\n    size?: number\n  }>(),\n  { size: 28 },\n)\n\n// the play shape compresses, releases forward, and settles without decoration\nconst playVariants: Variants = {\n  normal: { transform: 'translateX(0px) scaleX(1) scaleY(1)' },\n  animate: {\n    transform: [\n      'translateX(0px) scaleX(1) scaleY(1)',\n      'translateX(-0.8px) scaleX(0.9) scaleY(1.04)',\n      'translateX(2px) scaleX(1.1) scaleY(0.97)',\n      'translateX(-0.2px) scaleX(0.99) scaleY(1.005)',\n      'translateX(0px) scaleX(1) scaleY(1)',\n    ],\n    transition: { duration: 0.52, times: [0, 0.2, 0.52, 0.78, 1], ease: [0.23, 1, 0.32, 1] },\n  },\n};\n\nconst controls = useAnimationControls()\nconst { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({\n  controls,\n  loops: false,\n})\n\ndefineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })\n</script>\n\n<template>\n  <div class=\"hia-icon\" @mouseenter=\"onMouseEnter\" @mouseleave=\"onMouseLeave\" v-bind=\"$attrs\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" :width=\"size\" :height=\"size\" viewBox=\"0 0 24 24\" fill=\"none\" overflow=\"visible\">\n            <motion.path d=\"M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z\" stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"1.5\" :variants=\"playVariants\" :animate=\"controls\" initial=\"normal\" :style=\"{ transformOrigin: '10px 12px' }\" />\n          </svg>\n        </div>\n</template>\n"
+    },
+    {
+      "path": "composables/useIconAnimation.ts",
+      "type": "registry:lib",
+      "content": "import { ref, toValue, type MaybeRefOrGetter } from 'vue'\nimport type { AnimatedIconHandle } from '../types'\n\nexport type IconPose = 'normal' | 'animate'\n\ntype AnimationControls = {\n  set: (variant: IconPose | Record<string, unknown>) => void\n  start: (variant: IconPose | Record<string, unknown>) => Promise<unknown>\n}\n\nexport function useReducedMotionFlag(\n  reduced?: MaybeRefOrGetter<boolean | undefined>,\n) {\n  if (typeof window === 'undefined') return () => false\n  return () => {\n    const override = reduced === undefined ? undefined : toValue(reduced)\n    if (override !== undefined) return override\n    return window.matchMedia('(prefers-reduced-motion: reduce)').matches\n  }\n}\n\nexport function useIconAnimation(options: {\n  controls: AnimationControls\n  loops?: boolean\n}): AnimatedIconHandle & {\n  onMouseEnter: () => void\n  onMouseLeave: () => void\n} {\n  const { controls, loops = false } = options\n  const isPlaying = ref(false)\n  let run = 0\n\n  const prefersReduced = () =>\n    typeof window !== 'undefined' &&\n    window.matchMedia('(prefers-reduced-motion: reduce)').matches\n\n  async function startAnimation() {\n    if (prefersReduced() || isPlaying.value) return\n\n    isPlaying.value = true\n    const current = ++run\n    controls.set('normal')\n    await controls.start('animate')\n    if (run === current) isPlaying.value = false\n  }\n\n  function stopAnimation() {\n    if (!loops) return\n    run += 1\n    isPlaying.value = false\n    void controls.start('normal')\n  }\n\n  return {\n    startAnimation,\n    stopAnimation,\n    onMouseEnter: () => {\n      void startAnimation()\n    },\n    onMouseLeave: () => {\n      stopAnimation()\n    },\n  }\n}\n"
+    },
+    {
+      "path": "types/animated-icon.ts",
+      "type": "registry:lib",
+      "content": "export interface AnimatedIconHandle {\n  startAnimation: () => void\n  stopAnimation: () => void\n}\n\nexport interface AnimatedIconProps {\n  size?: number\n}\n"
+    }
+  ]
+}

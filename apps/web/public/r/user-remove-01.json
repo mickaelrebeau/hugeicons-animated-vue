@@ -1,0 +1,26 @@
+{
+  "name": "user-remove-01",
+  "type": "registry:ui",
+  "title": "user-remove-01",
+  "description": "Animated user remove icon for Vue",
+  "dependencies": [
+    "motion-v"
+  ],
+  "files": [
+    {
+      "path": "components/ui/user-remove-01.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { motion, useAnimationControls } from 'motion-v'\nimport type { Variants } from 'motion-v'\nimport { useIconAnimation } from '../composables/useIconAnimation'\nimport type { AnimatedIconHandle } from '../types'\n\ndefineOptions({ inheritAttrs: false, name: 'UserRemove01Icon' })\n\nwithDefaults(\n  defineProps<{\n    size?: number\n  }>(),\n  { size: 28 },\n)\n\n// the profile recoils from a decisive remove mark, then both settle cleanly\nconst personVariants: Variants = {\n  normal: { transform: 'translateX(0px)' },\n  animate: {\n    transform: ['translateX(0px) scale(1)', 'translateX(-1.5px) scale(0.97)', 'translateX(0.35px) scale(1.01)', 'translateX(0px) scale(1)'],\n    transition: { duration: 0.54, ease: [0.23, 1, 0.32, 1] },\n  },\n};\n\nconst removeVariants: Variants = {\n  normal: { transform: 'rotate(0deg) scale(1)' },\n  animate: {\n    transform: ['rotate(-10deg) scale(0.58)', 'rotate(12deg) scale(1.2)', 'rotate(-3deg) scale(0.98)', 'rotate(0deg) scale(1)'],\n    transition: { duration: 0.5, delay: 0.06, ease: [0.23, 1, 0.32, 1] },\n  },\n};\n\nconst controls = useAnimationControls()\nconst { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({\n  controls,\n  loops: false,\n})\n\ndefineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })\n</script>\n\n<template>\n  <div class=\"hia-icon\" @mouseenter=\"onMouseEnter\" @mouseleave=\"onMouseLeave\" v-bind=\"$attrs\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" :width=\"size\" :height=\"size\" viewBox=\"0 0 24 24\" fill=\"none\" overflow=\"visible\">\n            <motion.path d=\"M14.5 8C14.5 5.23858 12.2614 3 9.5 3C6.73858 3 4.5 5.23858 4.5 8C4.5 10.7614 6.73858 13 9.5 13C12.2614 13 14.5 10.7614 14.5 8Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" :variants=\"personVariants\" :animate=\"controls\" initial=\"normal\" :style=\"{ transformOrigin: '9.5px 8px' }\" />\n            <motion.path d=\"M15.5 21L18.5 18M18.5 18L21.5 15M18.5 18L15.5 15M18.5 18L21.5 21\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" :variants=\"removeVariants\" :animate=\"controls\" initial=\"normal\" :style=\"{ transformOrigin: '18.5px 18px' }\" />\n            <motion.path d=\"M2.5 20C2.5 16.134 5.63401 13 9.5 13C10.775 13 11.9704 13.3409 13 13.9365\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" :variants=\"personVariants\" :animate=\"controls\" initial=\"normal\" :style=\"{ transformOrigin: '9.5px 18px' }\" />\n          </svg>\n        </div>\n</template>\n"
+    },
+    {
+      "path": "composables/useIconAnimation.ts",
+      "type": "registry:lib",
+      "content": "import { ref, toValue, type MaybeRefOrGetter } from 'vue'\nimport type { AnimatedIconHandle } from '../types'\n\nexport type IconPose = 'normal' | 'animate'\n\ntype AnimationControls = {\n  set: (variant: IconPose | Record<string, unknown>) => void\n  start: (variant: IconPose | Record<string, unknown>) => Promise<unknown>\n}\n\nexport function useReducedMotionFlag(\n  reduced?: MaybeRefOrGetter<boolean | undefined>,\n) {\n  if (typeof window === 'undefined') return () => false\n  return () => {\n    const override = reduced === undefined ? undefined : toValue(reduced)\n    if (override !== undefined) return override\n    return window.matchMedia('(prefers-reduced-motion: reduce)').matches\n  }\n}\n\nexport function useIconAnimation(options: {\n  controls: AnimationControls\n  loops?: boolean\n}): AnimatedIconHandle & {\n  onMouseEnter: () => void\n  onMouseLeave: () => void\n} {\n  const { controls, loops = false } = options\n  const isPlaying = ref(false)\n  let run = 0\n\n  const prefersReduced = () =>\n    typeof window !== 'undefined' &&\n    window.matchMedia('(prefers-reduced-motion: reduce)').matches\n\n  async function startAnimation() {\n    if (prefersReduced() || isPlaying.value) return\n\n    isPlaying.value = true\n    const current = ++run\n    controls.set('normal')\n    await controls.start('animate')\n    if (run === current) isPlaying.value = false\n  }\n\n  function stopAnimation() {\n    if (!loops) return\n    run += 1\n    isPlaying.value = false\n    void controls.start('normal')\n  }\n\n  return {\n    startAnimation,\n    stopAnimation,\n    onMouseEnter: () => {\n      void startAnimation()\n    },\n    onMouseLeave: () => {\n      stopAnimation()\n    },\n  }\n}\n"
+    },
+    {
+      "path": "types/animated-icon.ts",
+      "type": "registry:lib",
+      "content": "export interface AnimatedIconHandle {\n  startAnimation: () => void\n  stopAnimation: () => void\n}\n\nexport interface AnimatedIconProps {\n  size?: number\n}\n"
+    }
+  ]
+}

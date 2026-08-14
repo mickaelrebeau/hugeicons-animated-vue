@@ -1,0 +1,53 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'LinkSquare02Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+const pathVariants: Variants = {
+  normal: { pathLength: 1, visibility: 'visible', transform: 'translate(0, 0)' },
+  animate: (i: number) =>
+    i === 0
+      ? {
+          transform: ['scale(1)', 'scale(0.95)', 'scale(1.025)', 'scale(1)'],
+          pathLength: [1, 0.72, 1, 1],
+          transition: { duration: 0.58, ease: [0.23, 1, 0.32, 1] },
+        }
+      : {
+          transform: [
+            'translate(0, 0)',
+            'translate(-0.7px, 0.7px)',
+            'translate(2.8px, -2.8px)',
+            'translate(-0.35px, 0.35px)',
+            'translate(0, 0)',
+          ],
+          transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
+        },
+};
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+          <motion.path d="M11.0991 3.00012C7.45013 3.00669 5.53932 3.09629 4.31817 4.31764C3.00034 5.63568 3.00034 7.75704 3.00034 11.9997C3.00034 16.2424 3.00034 18.3638 4.31817 19.6818C5.63599 20.9999 7.75701 20.9999 11.9991 20.9999C16.241 20.9999 18.3621 20.9999 19.6799 19.6818C20.901 18.4605 20.9906 16.5493 20.9972 12.8998" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pathVariants" :custom="0" :animate="controls" initial="normal" />
+          <motion.path d="M20.556 3.49612L11.0487 13.0586M20.556 3.49612C20.062 3.00151 16.7343 3.04761 16.0308 3.05762M20.556 3.49612C21.05 3.99074 21.0039 7.32273 20.9939 8.02714" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pathVariants" :custom="1" :animate="controls" initial="normal" />
+          </svg>
+        </div>
+</template>

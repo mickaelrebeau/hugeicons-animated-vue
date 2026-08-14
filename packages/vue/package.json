@@ -1,0 +1,35 @@
+{
+  "name": "hugeicons-animated-vue",
+  "version": "0.1.0",
+  "description": "Hand-animated Hugeicons for Vue 3. Copy-paste source, or import the components.",
+  "license": "MIT",
+  "type": "module",
+  "author": "Mickael Rébeau",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rebeaumickael/hugeicons-animated-vue"
+  },
+  "homepage": "https://hugeicons-animated-vue.vercel.app",
+  "keywords": [
+    "vue",
+    "icons",
+    "hugeicons",
+    "animated",
+    "motion",
+    "svg"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./icons/*": "./src/icons/*",
+    "./composables/*": "./src/composables/*"
+  },
+  "peerDependencies": {
+    "motion-v": "^1.7.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "motion-v": "^1.7.4",
+    "vue": "^3.5.18"
+  }
+}

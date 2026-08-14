@@ -1,0 +1,26 @@
+{
+  "name": "panel-left",
+  "type": "registry:ui",
+  "title": "panel-left",
+  "description": "Animated panel left icon for Vue",
+  "dependencies": [
+    "motion-v"
+  ],
+  "files": [
+    {
+      "path": "components/ui/panel-left.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { motion, useAnimationControls } from 'motion-v'\nimport type { Variants } from 'motion-v'\nimport { useIconAnimation } from '../composables/useIconAnimation'\nimport type { AnimatedIconHandle } from '../types'\n\ndefineOptions({ inheritAttrs: false, name: 'PanelLeftIcon' })\n\nwithDefaults(\n  defineProps<{\n    size?: number\n  }>(),\n  { size: 28 },\n)\n\nconst panelVariants: Variants = {\n  normal: { transform: 'scaleX(1) scaleY(1)' },\n  animate: {\n    transform: [\n      'scaleX(1) scaleY(1)',\n      'scaleX(0.998) scaleY(1)',\n      'scaleX(0.992) scaleY(0.997)',\n      'scaleX(0.985) scaleY(0.99)',\n      'scaleX(0.985) scaleY(0.99)',\n      'scaleX(0.994) scaleY(0.996)',\n      'scaleX(1) scaleY(0.995)',\n      'scaleX(0.998) scaleY(0.999)',\n      'scaleX(1) scaleY(1)',\n    ],\n    transition: {\n      duration: 0.72,\n      ease: 'linear',\n      times: [0, 0.1, 0.22, 0.32, 0.5, 0.66, 0.82, 0.92, 1],\n    },\n  },\n};\n\n// The divider follows the frame's rounded edge as the sidebar closes and reopens.\nconst dividerVariants: Variants = {\n  normal: { d: 'M9 3V21' },\n  animate: {\n    d: [\n      'M9 3V21',\n      'M6.8 3.123V20.877',\n      'M4.3 4.051V19.949',\n      'M3.4 5.456V18.544',\n      'M3.4 5.456V18.544',\n      'M5.4 3.419V20.581',\n      'M8.3 3.02V20.98',\n      'M9.25 3V21',\n      'M9 3V21',\n    ],\n    transition: {\n      duration: 0.72,\n      ease: 'linear',\n      times: [0, 0.1, 0.22, 0.32, 0.5, 0.66, 0.82, 0.92, 1],\n    },\n  },\n};\n\nconst controls = useAnimationControls()\nconst { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({\n  controls,\n  loops: false,\n})\n\ndefineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })\n</script>\n\n<template>\n  <div class=\"hia-icon\" @mouseenter=\"onMouseEnter\" @mouseleave=\"onMouseLeave\" v-bind=\"$attrs\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" :width=\"size\" :height=\"size\" viewBox=\"0 0 24 24\" fill=\"none\" overflow=\"visible\">\n            <motion.g :variants=\"panelVariants\" :animate=\"controls\" initial=\"normal\" :style=\"{ transformOrigin: '12px 12px' }\">\n              <path d=\"M13 3H11C7.22876 3 5.34315 3 4.17157 4.17157C3 5.34315 3 7.22876 3 11V13C3 16.7712 3 18.6569 4.17157 19.8284C5.34315 21 7.22876 21 11 21H13C16.7712 21 18.6569 21 19.8284 19.8284C21 18.6569 21 16.7712 21 13V11C21 7.22876 21 5.34315 19.8284 4.17157C18.6569 3 16.7712 3 13 3Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" />\n              <motion.path d=\"M9 3V21\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" :variants=\"dividerVariants\" :animate=\"controls\" initial=\"normal\" />\n            </motion.g>\n          </svg>\n        </div>\n</template>\n"
+    },
+    {
+      "path": "composables/useIconAnimation.ts",
+      "type": "registry:lib",
+      "content": "import { ref, toValue, type MaybeRefOrGetter } from 'vue'\nimport type { AnimatedIconHandle } from '../types'\n\nexport type IconPose = 'normal' | 'animate'\n\ntype AnimationControls = {\n  set: (variant: IconPose | Record<string, unknown>) => void\n  start: (variant: IconPose | Record<string, unknown>) => Promise<unknown>\n}\n\nexport function useReducedMotionFlag(\n  reduced?: MaybeRefOrGetter<boolean | undefined>,\n) {\n  if (typeof window === 'undefined') return () => false\n  return () => {\n    const override = reduced === undefined ? undefined : toValue(reduced)\n    if (override !== undefined) return override\n    return window.matchMedia('(prefers-reduced-motion: reduce)').matches\n  }\n}\n\nexport function useIconAnimation(options: {\n  controls: AnimationControls\n  loops?: boolean\n}): AnimatedIconHandle & {\n  onMouseEnter: () => void\n  onMouseLeave: () => void\n} {\n  const { controls, loops = false } = options\n  const isPlaying = ref(false)\n  let run = 0\n\n  const prefersReduced = () =>\n    typeof window !== 'undefined' &&\n    window.matchMedia('(prefers-reduced-motion: reduce)').matches\n\n  async function startAnimation() {\n    if (prefersReduced() || isPlaying.value) return\n\n    isPlaying.value = true\n    const current = ++run\n    controls.set('normal')\n    await controls.start('animate')\n    if (run === current) isPlaying.value = false\n  }\n\n  function stopAnimation() {\n    if (!loops) return\n    run += 1\n    isPlaying.value = false\n    void controls.start('normal')\n  }\n\n  return {\n    startAnimation,\n    stopAnimation,\n    onMouseEnter: () => {\n      void startAnimation()\n    },\n    onMouseLeave: () => {\n      stopAnimation()\n    },\n  }\n}\n"
+    },
+    {
+      "path": "types/animated-icon.ts",
+      "type": "registry:lib",
+      "content": "export interface AnimatedIconHandle {\n  startAnimation: () => void\n  stopAnimation: () => void\n}\n\nexport interface AnimatedIconProps {\n  size?: number\n}\n"
+    }
+  ]
+}

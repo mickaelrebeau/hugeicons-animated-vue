@@ -1,0 +1,26 @@
+{
+  "name": "search-01",
+  "type": "registry:ui",
+  "title": "search-01",
+  "description": "Animated search icon for Vue",
+  "dependencies": [
+    "motion-v"
+  ],
+  "files": [
+    {
+      "path": "components/ui/search-01.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { useAnimate, useReducedMotion } from 'motion-v'\nimport { useTemplateRef } from 'vue'\nimport type { AnimatedIconHandle } from '../types'\n\ndefineOptions({ inheritAttrs: false, name: 'Search01Icon' })\n\nwithDefaults(\n  defineProps<{\n    size?: number\n  }>(),\n  { size: 28 },\n)\n\nconst scope = useTemplateRef<HTMLElement>('scope')\nconst [, animate] = useAnimate()\nconst shouldReduceMotion = useReducedMotion()\nlet isPlaying = false\n\nasync function startAnimation() {\n  if (shouldReduceMotion.value || isPlaying) return\n  const target = scope.value?.querySelector<HTMLElement>('[data-search-icon]')\n  if (!target) return\n  isPlaying = true\n  await animate(\n    target,\n    {\n      transform: [\n        'translate(0px, 0px) rotate(0deg) scale(1)',\n        'translate(1.25px, -0.55px) rotate(14deg) scale(0.78)',\n        'translate(0.4px, -0.8px) rotate(6deg) scale(0.76)',\n        'translate(-0.65px, 0.25px) rotate(-8deg) scale(0.8)',\n        'translate(-0.15px, 0.1px) rotate(-2.5deg) scale(1.08)',\n        'translate(0px, 0px) rotate(0deg) scale(1)',\n      ],\n    },\n    {\n      duration: 1.24,\n      times: [0, 0.32, 0.48, 0.64, 0.84, 1],\n      ease: [\n        [0.77, 0, 0.175, 1],\n        'linear',\n        'linear',\n        [0.77, 0, 0.175, 1],\n        [0.23, 1, 0.32, 1],\n      ],\n    },\n  )\n  isPlaying = false\n}\n\nfunction stopAnimation() {}\n\ndefineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })\n</script>\n\n<template>\n  <div\n    ref=\"scope\"\n    class=\"hia-icon\"\n    v-bind=\"$attrs\"\n    @mouseenter=\"startAnimation\"\n  >\n    <span data-search-icon style=\"display: inline-flex; transform-origin: 11px 11px\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        :width=\"size\"\n        :height=\"size\"\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        overflow=\"visible\"\n      >\n        <path\n          d=\"M17 17L21 21\"\n          stroke=\"currentColor\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          stroke-width=\"1.5\"\n        />\n        <path\n          d=\"M19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C15.4183 19 19 15.4183 19 11Z\"\n          stroke=\"currentColor\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n          stroke-width=\"1.5\"\n        />\n      </svg>\n    </span>\n  </div>\n</template>\n"
+    },
+    {
+      "path": "composables/useIconAnimation.ts",
+      "type": "registry:lib",
+      "content": "import { ref, toValue, type MaybeRefOrGetter } from 'vue'\nimport type { AnimatedIconHandle } from '../types'\n\nexport type IconPose = 'normal' | 'animate'\n\ntype AnimationControls = {\n  set: (variant: IconPose | Record<string, unknown>) => void\n  start: (variant: IconPose | Record<string, unknown>) => Promise<unknown>\n}\n\nexport function useReducedMotionFlag(\n  reduced?: MaybeRefOrGetter<boolean | undefined>,\n) {\n  if (typeof window === 'undefined') return () => false\n  return () => {\n    const override = reduced === undefined ? undefined : toValue(reduced)\n    if (override !== undefined) return override\n    return window.matchMedia('(prefers-reduced-motion: reduce)').matches\n  }\n}\n\nexport function useIconAnimation(options: {\n  controls: AnimationControls\n  loops?: boolean\n}): AnimatedIconHandle & {\n  onMouseEnter: () => void\n  onMouseLeave: () => void\n} {\n  const { controls, loops = false } = options\n  const isPlaying = ref(false)\n  let run = 0\n\n  const prefersReduced = () =>\n    typeof window !== 'undefined' &&\n    window.matchMedia('(prefers-reduced-motion: reduce)').matches\n\n  async function startAnimation() {\n    if (prefersReduced() || isPlaying.value) return\n\n    isPlaying.value = true\n    const current = ++run\n    controls.set('normal')\n    await controls.start('animate')\n    if (run === current) isPlaying.value = false\n  }\n\n  function stopAnimation() {\n    if (!loops) return\n    run += 1\n    isPlaying.value = false\n    void controls.start('normal')\n  }\n\n  return {\n    startAnimation,\n    stopAnimation,\n    onMouseEnter: () => {\n      void startAnimation()\n    },\n    onMouseLeave: () => {\n      stopAnimation()\n    },\n  }\n}\n"
+    },
+    {
+      "path": "types/animated-icon.ts",
+      "type": "registry:lib",
+      "content": "export interface AnimatedIconHandle {\n  startAnimation: () => void\n  stopAnimation: () => void\n}\n\nexport interface AnimatedIconProps {\n  size?: number\n}\n"
+    }
+  ]
+}

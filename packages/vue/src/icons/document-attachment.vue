@@ -1,0 +1,59 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'DocumentAttachmentIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// the paperclip swings hard into the page and its text lines answer the impact
+const documentVariants: Variants = {
+  normal: { transform: 'translateY(0px)' },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.8px) rotate(-1deg)', 'translateY(0.45px) rotate(0.5deg)', 'translateY(0px) rotate(0deg)'],
+    transition: { duration: 0.58, ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const lineVariants: Variants = {
+  normal: { transform: 'scaleX(1)' },
+  animate: {
+    transform: ['scaleX(1)', 'scaleX(0.5)', 'scaleX(1.1)', 'scaleX(1)'],
+    transition: { duration: 0.48, delay: 0.12, ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const clipVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
+  animate: {
+    transform: ['rotate(0deg) translateY(0px)', 'rotate(-22deg) translateY(-1px)', 'rotate(7deg) translateY(0.35px)', 'rotate(-2deg) translateY(0px)', 'rotate(0deg) translateY(0px)'],
+    transition: { duration: 0.62, ease: [0.77, 0, 0.175, 1] },
+  },
+};
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M20.4999 10.5V10C20.4999 6.22876 20.4999 4.34315 19.3284 3.17157C18.1568 2 16.2712 2 12.4999 2H11.5C7.72883 2 5.84323 2 4.67166 3.17156C3.50009 4.34312 3.50007 6.22872 3.50004 9.99993L3.5 14.5C3.49997 17.7874 3.49996 19.4312 4.40788 20.5375C4.57412 20.7401 4.75986 20.9258 4.96242 21.0921C6.06877 22 7.71249 22 10.9999 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="documentVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M7.5 7H16.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="lineVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.5px 7px' }" />
+            <motion.path d="M7.5 12H13.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="lineVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.5px 12px' }" />
+            <motion.path d="M20.5 20L20.5 17C20.5 15.5706 19.1569 14 17.5 14C15.8431 14 14.5 15.5706 14.5 17L14.5 20.5C14.5 21.3284 15.1716 22 16 22C16.8284 22 17.5 21.3284 17.5 20.5V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="clipVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 18px' }" />
+          </svg>
+        </div>
+</template>

@@ -1,0 +1,143 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'BatteryCharging01Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// five cells build to a shared full-charge surge, then hand the energy back to the bolt
+type ChargeCell = { start: number; done: number };
+
+const chargeCellVariants: Variants = {
+  normal: { visibility: 'hidden', transform: 'scaleY(0.08)' },
+  animate: ({ start, done }: ChargeCell) => ({
+    visibility: ['hidden', 'hidden', 'visible', 'visible', 'visible', 'visible', 'hidden', 'hidden'],
+    transform: [
+      'scaleY(0.08)',
+      'scaleY(0.08)',
+      'scaleY(1)',
+      'scaleY(1)',
+      'scaleY(1.18)',
+      'scaleY(0.94)',
+      'scaleY(0.12)',
+      'scaleY(0.12)',
+    ],
+    transition: {
+      duration: 1.18,
+      ease: [0.23, 1, 0.32, 1],
+      times: [0, start, done, 0.64, 0.7, 0.76, 0.86, 1],
+    },
+  }),
+};
+
+const chargedBatteryVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: [
+      'scale(1)',
+      'scale(1)',
+      'scale(1.055)',
+      'scale(0.985)',
+      'scale(1)',
+      'scale(1)',
+    ],
+    transition: {
+      duration: 1.18,
+      ease: [0.23, 1, 0.32, 1],
+      times: [0, 0.64, 0.7, 0.77, 0.86, 1],
+    },
+  },
+};
+
+const chargeBoltVariants: Variants = {
+  normal: { visibility: 'visible', transform: 'scale(1)' },
+  animate: {
+    visibility: [
+      'visible',
+      'visible',
+      'visible',
+      'visible',
+      'hidden',
+      'hidden',
+      'hidden',
+      'visible',
+      'visible',
+      'visible',
+    ],
+    transform: [
+      'scale(1)',
+      'scale(1)',
+      'scale(0.72)',
+      'scale(0)',
+      'scale(0)',
+      'scale(0)',
+      'scale(0)',
+      'scale(0)',
+      'scale(1.14)',
+      'scale(1)',
+    ],
+    transition: {
+      duration: 1.18,
+      ease: [0.23, 1, 0.32, 1],
+      times: [0, 0.03, 0.08, 0.14, 0.141, 0.76, 0.819, 0.82, 0.92, 1],
+    },
+  },
+};
+const generatedGeometryVariants: Variants = {
+  normal: {
+    visibility: 'hidden',
+    transform: 'scaleX(1)',
+    transition: { duration: 0.08 },
+  },
+  animate: {
+    visibility: 'visible',
+    transform: [
+      'scaleX(1)',
+      'scaleX(1)',
+      'scaleX(1)',
+      'scaleX(0.58)',
+      'scaleX(0.08)',
+      'scaleX(0.08)',
+      'scaleX(1)',
+    ],
+    transition: {
+      duration: 1.18,
+      ease: [0.23, 1, 0.32, 1],
+      times: [0, 0.64, 0.76, 0.82, 0.87, 0.92, 1],
+    },
+  },
+};
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <motion.svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible" :variants="chargedBatteryVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 12px' }">
+            <motion.g :variants="generatedGeometryVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10.4px 12px' }">
+            <motion.path d="M4.4 15V9" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" :variants="chargeCellVariants" :custom="{ start: 0.05, done: 0.28 }" :animate="controls" initial="normal" :style="{ transformOrigin: '4.4px 15px' }" />
+            <motion.path d="M7.4 15V9" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" :variants="chargeCellVariants" :custom="{ start: 0.14, done: 0.37 }" :animate="controls" initial="normal" :style="{ transformOrigin: '7.4px 15px' }" />
+            <motion.path d="M10.4 15V9" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" :variants="chargeCellVariants" :custom="{ start: 0.23, done: 0.46 }" :animate="controls" initial="normal" :style="{ transformOrigin: '10.4px 15px' }" />
+            <motion.path d="M13.4 15V9" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" :variants="chargeCellVariants" :custom="{ start: 0.32, done: 0.55 }" :animate="controls" initial="normal" :style="{ transformOrigin: '13.4px 15px' }" />
+            <motion.path d="M16.4 15V9" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" :variants="chargeCellVariants" :custom="{ start: 0.41, done: 0.64 }" :animate="controls" initial="normal" :style="{ transformOrigin: '16.4px 15px' }" />
+            </motion.g>
+            <path d="M2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H13C15.8284 6 17.2426 6 18.1213 6.87868C19 7.75736 19 9.17157 19 12C19 14.8284 19 16.2426 18.1213 17.1213C17.2426 18 15.8284 18 13 18H8C5.17157 18 3.75736 18 2.87868 17.1213C2 16.2426 2 14.8284 2 12Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.path d="M10.8282 9L9.08572 11.1749C8.89899 11.4079 9.03283 11.7433 9.33733 11.8053L11.1627 12.1773C11.4873 12.2434 11.6111 12.6147 11.3842 12.8413L9.22216 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="chargeBoltVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10.2px 12px' }" />
+            <path d="M19 9.5L20.0272 9.6712C20.7085 9.78475 21.0491 9.84152 21.3076 10.0067C21.5618 10.1691 21.7612 10.4044 21.8796 10.6819C22 10.964 22 11.3093 22 12C22 12.6907 22 13.036 21.8796 13.3181C21.7612 13.5956 21.5618 13.8309 21.3076 13.9933C21.0491 14.1585 20.7085 14.2153 20.0272 14.3288L19 14.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+          </motion.svg>
+        </div>
+</template>

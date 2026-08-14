@@ -1,0 +1,84 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'Mic01Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// while you hover, it's live — the grille bars pulse like an input meter
+// and drawn sound arcs broadcast off both sides. The built-in grille (one
+// path, two lockstep bars) hides during hover and hands off to two
+// independently clocked bars, so the meter doesn't blink as one flat unit.
+const grilleBaseVariants: Variants = {
+  normal: { visibility: 'visible', transition: { duration: 0.3, delay: 0.1 } },
+  animate: { visibility: 'hidden', transition: { duration: 0.15 } },
+};
+
+// pathLength retract from the mic-body edge, like a VU bar
+const grilleBarVariants: Variants = {
+  normal: { pathLength: 1, visibility: 'hidden', transition: { duration: 0.15 } },
+  animate: (i: number) => ({
+    visibility: 'visible',
+    pathLength: [1, 0.3, 1],
+    transition: {
+      duration: 1 + i * 0.2,
+      ease: 'easeInOut',
+      repeat: Infinity,
+      delay: i * 0.25,
+    },
+  }),
+};
+
+// custom: [direction, delay] — arcs drift outward as they fade
+const waveVariants: Variants = {
+  normal: { visibility: 'hidden', transition: { duration: 0.15 } },
+  animate: (c: [number, number]) => ({
+    visibility: ['hidden', 'visible', 'hidden'],
+    translateX: [0, c[0] * 1.6],
+    transition: {
+      duration: 1.2,
+      ease: 'easeOut',
+      repeat: Infinity,
+      delay: c[1],
+    },
+  }),
+};
+const generatedGeometryVariants: Variants = {
+  normal: { visibility: 'hidden', transition: { duration: 0.08 } },
+  animate: { visibility: 'visible', transition: { duration: 0.08 } },
+};
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: true,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <path d="M17 7V11C17 13.7614 14.7614 16 12 16C9.23858 16 7 13.7614 7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7Z" stroke="currentColor" stroke-width="1.5" />
+            <motion.path d="M17 7H14M17 11H14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="grilleBaseVariants" :animate="controls" initial="normal" />
+            <path d="M20 11C20 15.4183 16.4183 19 12 19M12 19C7.58172 19 4 15.4183 4 11M12 19V22M12 22H15M12 22H9" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.g :variants="generatedGeometryVariants" :animate="controls" initial="normal">
+            <motion.path d="M17 7H14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="grilleBarVariants" :custom="0" :animate="controls" initial="normal" />
+            <motion.path d="M17 11H14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="grilleBarVariants" :custom="1" :animate="controls" initial="normal" />
+            <motion.path d="M4.8 3.2C3.9 4.4 3.4 5.9 3.4 7.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="waveVariants" :custom="[-1, 0]" :animate="controls" initial="normal" />
+            <motion.path d="M19.2 3.2C20.1 4.4 20.6 5.9 20.6 7.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="waveVariants" :custom="[1, 0]" :animate="controls" initial="normal" />
+            <motion.path d="M2.6 1.4C1.5 2.9 0.9 4.9 0.9 7" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="waveVariants" :custom="[-1, 0.35]" :animate="controls" initial="normal" />
+            <motion.path d="M21.4 1.4C22.5 2.9 23.1 4.9 23.1 7" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="waveVariants" :custom="[1, 0.35]" :animate="controls" initial="normal" />
+            </motion.g>
+          </svg>
+        </div>
+</template>

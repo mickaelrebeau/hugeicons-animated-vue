@@ -1,0 +1,47 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'Loading03Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// a loading glyph is a wheel, so keep every spoke visible and rotate the set
+const loaderVariants: Variants = {
+  normal: { transform: 'rotate(0deg)', transition: { duration: 0.18 } },
+  animate: {
+    transform: 'rotate(360deg)',
+    transition: { duration: 0.82, ease: 'linear', repeat: Infinity },
+  },
+};
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: true,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <motion.svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible" :variants="loaderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }">
+            <path d="M12 3V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M12 18V21" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M21 12L18 12" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M6 12L3 12" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M18.3635 5.63672L16.2422 7.75804" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M7.75804 16.2422L5.63672 18.3635" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M18.3635 18.3635L16.2422 16.2422" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M7.75804 7.75804L5.63672 5.63672" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+          </motion.svg>
+        </div>
+</template>
