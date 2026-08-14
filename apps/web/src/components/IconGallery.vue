@@ -1,13 +1,23 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, type ComponentPublicInstance } from 'vue'
 import { ICON_LIST } from '../lib/icons-manifest'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
+import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
 import Search01Icon from 'hugeicons-animated-vue/icons/search-01.vue'
 import { installCommand } from '../lib/site'
 import posthog from 'posthog-js'
 
 const query = ref('')
 const copied = ref<string | null>(null)
+const handles = new Map<string, AnimatedIconHandle>()
+
+function bindHandle(name: string, el: Element | ComponentPublicInstance | null) {
+  if (el && typeof (el as AnimatedIconHandle).startAnimation === 'function') {
+    handles.set(name, el as AnimatedIconHandle)
+  } else {
+    handles.delete(name)
+  }
+}
 
 const icons = computed(() => {
   const q = query.value.trim().toLowerCase()
@@ -51,8 +61,14 @@ async function copy(name: string) {
         type="button"
         :aria-label="`Copy ${icon.name}`"
         @click="copy(icon.name)"
+        @pointerenter="handles.get(icon.name)?.startAnimation()"
+        @pointerleave="handles.get(icon.name)?.stopAnimation()"
       >
-        <component :is="icon.component" :size="32" />
+        <component
+          :is="icon.component"
+          :ref="(el) => bindHandle(icon.name, el)"
+          :size="32"
+        />
         <small>{{ copied === icon.name ? 'copied' : icon.name }}</small>
       </button>
     </div>
@@ -66,5 +82,9 @@ async function copy(name: string) {
   height: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
+}
+
+.cell :deep(.hia-icon) {
+  pointer-events: none;
 }
 </style>

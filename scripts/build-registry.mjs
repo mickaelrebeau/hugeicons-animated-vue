@@ -50,7 +50,7 @@ for (const f of files) {
 const registry = {
   $schema: 'https://ui.shadcn.com/schema/registry.json',
   name: 'hugeicons-animated-vue',
-  homepage: 'https://github.com/mickaelrebeau/hugeicons-animated-vue',
+  homepage: 'https://hugeicons-animated-vue.rebeaumickael.fr',
   items: items.map(({ files, ...rest }) => ({
     ...rest,
     files: files.map((file) => ({ path: file.path, type: file.type })),

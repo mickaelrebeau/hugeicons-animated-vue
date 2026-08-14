@@ -48,7 +48,7 @@ npx shadcn add @hugeicons-animated-vue/notification-03
 Until `@hugeicons-animated-vue` is in the [shadcn registry index](https://ui.shadcn.com/r/registries.json), register it once in your project:
 
 ```bash
-npx shadcn@latest registry add @hugeicons-animated-vue=https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/{name}.json
+npx shadcn@latest registry add @hugeicons-animated-vue=https://hugeicons-animated-vue.rebeaumickael.fr/r/{name}.json
 ```
 
 Or add this to `components.json`:
@@ -56,7 +56,7 @@ Or add this to `components.json`:
 ```json
 {
   "registries": {
-    "@hugeicons-animated-vue": "https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/{name}.json"
+    "@hugeicons-animated-vue": "https://hugeicons-animated-vue.rebeaumickael.fr/r/{name}.json"
   }
 }
 ```
