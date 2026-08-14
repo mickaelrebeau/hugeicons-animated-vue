@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "declaration": true,
+    "declarationMap": false,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "lib": ["ES2022", "DOM"],
+    "outDir": "dist",
+    "rootDir": "src",
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.vue"]
+}

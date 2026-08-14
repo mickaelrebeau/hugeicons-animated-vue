@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discussions
+    url: https://github.com/mickaelrebeau/hugeicons-animated-vue/discussions
+    about: Questions, ideas, and show-and-tell
+  - name: Animation guidelines
+    url: https://github.com/mickaelrebeau/hugeicons-animated-vue/blob/main/docs/animation-guidelines.md
+    about: Motion rules before proposing a new or revised icon

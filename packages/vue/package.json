@@ -7,29 +7,66 @@
   "author": "Mickael Rébeau",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rebeaumickael/hugeicons-animated-vue"
+    "url": "git+https://github.com/mickaelrebeau/hugeicons-animated-vue.git",
+    "directory": "packages/vue"
   },
-  "homepage": "https://hugeicons-animated-vue.vercel.app",
+  "bugs": {
+    "url": "https://github.com/mickaelrebeau/hugeicons-animated-vue/issues"
+  },
+  "homepage": "https://github.com/mickaelrebeau/hugeicons-animated-vue#readme",
   "keywords": [
     "vue",
+    "vue3",
     "icons",
     "hugeicons",
     "animated",
+    "animation",
     "motion",
-    "svg"
+    "motion-v",
+    "svg",
+    "components"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "style.css",
+    "LICENSE",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./icons/*": "./src/icons/*",
-    "./composables/*": "./src/composables/*"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./style.css"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "motion-v": "^1.7.0",
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@types/node": "^24.2.0",
+    "@vitejs/plugin-vue": "^6.0.1",
     "motion-v": "^1.7.4",
-    "vue": "^3.5.18"
+    "typescript": "^5.9.2",
+    "vite": "^7.1.2",
+    "vite-plugin-dts": "^4.5.4",
+    "vue": "^3.5.18",
+    "vue-tsc": "^3.0.5"
   }
 }

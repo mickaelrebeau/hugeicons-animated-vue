@@ -1,0 +1,32 @@
+name: Icon request
+description: Propose a new animated icon or a motion revision
+labels: [icon]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Icon name
+      description: Hugeicons slug, e.g. `notification-03`.
+      placeholder: notification-03
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Request type
+      options:
+        - New icon (not in the set yet)
+        - Motion revision (icon already exists)
+        - Approve a currently hidden icon
+    validations:
+      required: true
+  - type: textarea
+    id: motion
+    attributes:
+      label: Intended motion
+      description: Name the action. Which primitives move, and why?
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: Please read [docs/animation-guidelines.md](https://github.com/mickaelrebeau/hugeicons-animated-vue/blob/main/docs/animation-guidelines.md) before submitting.
