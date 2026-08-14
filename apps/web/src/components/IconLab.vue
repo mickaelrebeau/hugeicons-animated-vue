@@ -9,12 +9,12 @@ import posthog from 'posthog-js'
 const icons = ICON_LIST.filter((i) => !DISAPPROVED_ICON_NAMES.has(i.name))
 const selected = ref(icons.find((i) => i.name === 'notification-03')?.name ?? icons[0].name)
 const size = ref(72)
-const color = ref('#f3ede4')
+const color = ref('#141812')
 const trigger = ref<'hover' | 'click' | 'loop'>('hover')
 const copied = ref<'cmd' | 'code' | null>(null)
 const preview = useTemplateRef<AnimatedIconHandle>('preview')
 
-const swatches = ['#f3ede4', '#ff9a3c', '#6b86ff', '#8fd19e', '#ff6b6b']
+const swatches = ['#141812', '#afe67f', '#6aa131', '#5e6658', '#ffffff']
 
 const current = computed(() => icons.find((i) => i.name === selected.value) ?? icons[0])
 const pascal = computed(() =>
@@ -80,8 +80,7 @@ function onPreviewClick() {
 <template>
   <section id="lab" class="section">
     <div class="section-head">
-      <p class="kicker">The bench</p>
-      <h2>Tune it in the lab.</h2>
+      <h2>Tune it live.</h2>
       <p>Size, color, trigger. The icon stays source — you take the settings home as Vue.</p>
     </div>
     <div class="lab">

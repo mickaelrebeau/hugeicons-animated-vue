@@ -8,19 +8,6 @@ import IconGallery from './components/IconGallery.vue'
 import IconLab from './components/IconLab.vue'
 import { GITHUB_URL, REACT_URL } from './lib/site'
 
-const names = [
-  'notification-03',
-  'search-01',
-  'refresh',
-  'play',
-  'mail-01',
-  'settings-01',
-  'cloud-upload',
-  'favourite',
-  'github',
-  'arrow-right-02',
-]
-
 const root = useTemplateRef<HTMLElement>('root')
 let ctx: gsap.Context | undefined
 let scroll: ReturnType<typeof createSmoothScroll> | undefined
@@ -74,27 +61,24 @@ onUnmounted(() => {
 
 <template>
   <div ref="root" class="site">
-    <div class="grain" aria-hidden="true" />
     <header class="nav">
-      <a class="wordmark" href="#top">Hugeicons Animated Vue</a>
+      <a class="wordmark" href="#top">
+        <span class="wordmark-mark" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <circle cx="6" cy="6" r="4.25" stroke="currentColor" stroke-width="1.4" />
+            <circle cx="6" cy="6" r="1.4" fill="currentColor" />
+          </svg>
+        </span>
+        hugeicons animated vue
+      </a>
       <nav class="nav-links">
         <a href="#icons">Icons</a>
-        <a href="#lab">Lab</a>
-        <a :href="GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="#lab">Playground</a>
+        <a class="nav-cta" :href="GITHUB_URL" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
     </header>
     <main id="top">
       <HeroSection />
-      <div class="marquee-wrap" aria-hidden="true">
-        <div class="marquee">
-          <span v-for="n in 2" :key="n">
-            <template v-for="name in names" :key="`${n}-${name}`">
-              {{ name }}
-              <em style="color: var(--tungsten); font-style: normal"> ✴ </em>
-            </template>
-          </span>
-        </div>
-      </div>
       <AnatomySection />
       <IconGallery />
       <IconLab />

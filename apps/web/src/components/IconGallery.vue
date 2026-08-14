@@ -31,8 +31,7 @@ async function copy(name: string) {
   <section id="icons" class="section">
     <div class="gallery-tools">
       <div class="section-head">
-        <p class="kicker">The case</p>
-        <h2>Pick an icon.</h2>
+        <h2>Browse icons.</h2>
         <p>
           Hover to preview. Click to copy the install command.
           <span>{{ icons.length }} of {{ ICON_LIST.filter((i) => !DISAPPROVED_ICON_NAMES.has(i.name)).length }}</span>

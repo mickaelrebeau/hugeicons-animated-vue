@@ -88,18 +88,21 @@ const blades = Array.from({ length: 12 }, (_, i) => i * 30)
     </div>
 
     <div class="hero-copy">
-      <p class="kicker">Vue 3 · Motion · source you own</p>
+      <p class="kicker">Free · Vue 3 · MIT</p>
       <h1>
-        Icons,<br />
-        now they<br />
-        <em>gesture</em>.
+        Free animated icons<br />
+        for modern <em>Vue</em> UIs.
       </h1>
       <p class="lede">
         Hand-animated
         <a href="https://hugeicons.com" target="_blank" rel="noreferrer">Hugeicons</a>
-        for Vue. Each icon is a component you copy into your app — the same
-        geometry, a verb attached.
+        for Vue. Hover to play, copy the source, keep the geometry — the same
+        library, a gesture attached.
       </p>
+      <div class="hero-actions">
+        <a class="btn btn-lime" href="#icons">Browse icons</a>
+        <a class="btn btn-ghost" href="#lab">Open playground</a>
+      </div>
       <div class="install-row">
         <code>
           $ npx shadcn add @hugeicons-animated-vue/<strong>{{ selectedIcon.name }}</strong>
