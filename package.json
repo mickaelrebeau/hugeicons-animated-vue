@@ -10,5 +10,8 @@
     "icons:convert": "node scripts/convert-icons.mjs",
     "registry:build": "node scripts/build-registry.mjs && node scripts/gen-manifest.mjs",
     "icons:check-rest": "node scripts/check-rest-parity.mjs"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "core-js"]
   }
 }
