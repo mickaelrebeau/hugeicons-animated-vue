@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sliders-horizontal",
   "type": "registry:ui",
   "title": "sliders-horizontal",

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "share-08",
   "type": "registry:ui",
   "title": "share-08",

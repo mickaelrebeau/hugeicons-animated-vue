@@ -102,7 +102,7 @@ const blades = Array.from({ length: 12 }, (_, i) => i * 30)
       </p>
       <div class="install-row">
         <code>
-          $ npx shadcn-vue@latest add /r/<strong>{{ selectedIcon.name }}</strong>.json
+          $ npx shadcn add @hugeicons-animated-vue/<strong>{{ selectedIcon.name }}</strong>
         </code>
         <button
           class="icon-btn"

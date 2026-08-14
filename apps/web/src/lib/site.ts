@@ -6,5 +6,9 @@ export const GITHUB_URL = 'https://github.com/mickaelrebeau/hugeicons-animated-v
 export const REACT_URL = 'https://hugeicons-animated.com'
 export const HUGEICONS_URL = 'https://hugeicons.com'
 
+export const REGISTRY_NAMESPACE = '@hugeicons-animated-vue'
+export const REGISTRY_URL =
+  'https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/{name}.json'
+
 export const installCommand = (name: string) =>
-  `npx shadcn-vue@latest add /r/${name}.json`
+  `npx shadcn add ${REGISTRY_NAMESPACE}/${name}`

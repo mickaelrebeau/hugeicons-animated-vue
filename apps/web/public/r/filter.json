@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "filter",
   "type": "registry:ui",
   "title": "filter",

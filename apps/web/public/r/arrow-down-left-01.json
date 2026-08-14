@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "arrow-down-left-01",
   "type": "registry:ui",
   "title": "arrow-down-left-01",

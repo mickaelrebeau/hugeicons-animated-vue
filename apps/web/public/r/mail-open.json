@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mail-open",
   "type": "registry:ui",
   "title": "mail-open",

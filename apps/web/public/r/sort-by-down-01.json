@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sort-by-down-01",
   "type": "registry:ui",
   "title": "sort-by-down-01",

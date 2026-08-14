@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "folder-open",
   "type": "registry:ui",
   "title": "folder-open",

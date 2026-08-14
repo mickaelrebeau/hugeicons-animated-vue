@@ -19,6 +19,7 @@ for (const f of files) {
   const name = f.replace('.vue', '')
   const content = await readFile(path.join(ICONS, f), 'utf8')
   const item = {
+    $schema: 'https://ui.shadcn.com/schema/registry-item.json',
     name,
     type: 'registry:ui',
     title: name,
@@ -47,9 +48,9 @@ for (const f of files) {
 }
 
 const registry = {
-  $schema: 'https://shadcn-vue.com/schema/registry.json',
+  $schema: 'https://ui.shadcn.com/schema/registry.json',
   name: 'hugeicons-animated-vue',
-  homepage: 'https://hugeicons-animated-vue.dev',
+  homepage: 'https://github.com/mickaelrebeau/hugeicons-animated-vue',
   items: items.map(({ files, ...rest }) => ({
     ...rest,
     files: files.map((file) => ({ path: file.path, type: file.type })),

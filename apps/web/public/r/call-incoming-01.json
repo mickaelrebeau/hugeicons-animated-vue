@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "call-incoming-01",
   "type": "registry:ui",
   "title": "call-incoming-01",

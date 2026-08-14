@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "battery-charging-01",
   "type": "registry:ui",
   "title": "battery-charging-01",

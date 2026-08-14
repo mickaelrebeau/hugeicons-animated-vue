@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "zoom-in-area",
   "type": "registry:ui",
   "title": "zoom-in-area",

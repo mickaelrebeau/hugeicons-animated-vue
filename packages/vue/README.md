@@ -37,10 +37,14 @@ const icon = useTemplateRef<AnimatedIconHandle>('bell')
 
 ## Copy-paste
 
-Each icon is also available as source via the shadcn-vue registry in this repo:
+```bash
+npx shadcn add @hugeicons-animated-vue/notification-03
+```
+
+Until the namespace is in the [shadcn registry index](https://ui.shadcn.com/r/registries.json), register it once:
 
 ```bash
-npx shadcn-vue@latest add https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/notification-03.json
+npx shadcn@latest registry add @hugeicons-animated-vue=https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/{name}.json
 ```
 
 ## License

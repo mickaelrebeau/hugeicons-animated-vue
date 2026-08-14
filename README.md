@@ -42,7 +42,23 @@ Peer dependencies: `vue` ^3.5 and [`motion-v`](https://motion.dev/docs/vue) ^1.7
 ## Copy-paste
 
 ```bash
-npx shadcn-vue@latest add https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/notification-03.json
+npx shadcn add @hugeicons-animated-vue/notification-03
+```
+
+Until `@hugeicons-animated-vue` is in the [shadcn registry index](https://ui.shadcn.com/r/registries.json), register it once in your project:
+
+```bash
+npx shadcn@latest registry add @hugeicons-animated-vue=https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/{name}.json
+```
+
+Or add this to `components.json`:
+
+```json
+{
+  "registries": {
+    "@hugeicons-animated-vue": "https://raw.githubusercontent.com/mickaelrebeau/hugeicons-animated-vue/main/apps/web/public/r/{name}.json"
+  }
+}
 ```
 
 ## Animation rules
@@ -67,7 +83,7 @@ Landing: Vite + Vue 3, Lenis, GSAP ScrollTrigger. Icons live in `packages/vue`.
 ```bash
 pnpm --filter hugeicons-animated-vue build
 pnpm icons:convert    # re-port from a local React clone
-pnpm registry:build   # manifest + shadcn-vue registry
+pnpm registry:build   # manifest + shadcn registry
 ```
 
 ## Contributing

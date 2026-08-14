@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "circle-x",
   "type": "registry:ui",
   "title": "circle-x",

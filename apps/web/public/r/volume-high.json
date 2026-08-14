@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "volume-high",
   "type": "registry:ui",
   "title": "volume-high",

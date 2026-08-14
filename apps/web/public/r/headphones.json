@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "headphones",
   "type": "registry:ui",
   "title": "headphones",

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "archive-02",
   "type": "registry:ui",
   "title": "archive-02",
