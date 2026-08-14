@@ -4,6 +4,7 @@ import { ICON_LIST } from '../lib/icons-manifest'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
 import { installCommand } from '../lib/site'
+import posthog from 'posthog-js'
 
 const icons = ICON_LIST.filter((i) => !DISAPPROVED_ICON_NAMES.has(i.name))
 const selected = ref(icons.find((i) => i.name === 'notification-03')?.name ?? icons[0].name)
@@ -52,6 +53,13 @@ async function copy(kind: 'cmd' | 'code') {
   await navigator.clipboard.writeText(
     kind === 'cmd' ? installCommand(selected.value) : snippet.value,
   )
+  if (import.meta.env.VITE_POSTHOG_PROJECT_TOKEN && import.meta.env.VITE_POSTHOG_HOST) {
+    posthog.capture(kind === 'cmd' ? 'lab_install_command_copied' : 'lab_component_code_copied', {
+      icon_name: selected.value,
+      icon_size: size.value,
+      animation_trigger: trigger.value,
+    })
+  }
   copied.value = kind
   window.setTimeout(() => {
     if (copied.value === kind) copied.value = null

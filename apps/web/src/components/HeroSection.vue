@@ -4,6 +4,7 @@ import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
 import { ICON_LIST } from '../lib/icons-manifest'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import { installCommand } from '../lib/site'
+import posthog from 'posthog-js'
 import Copy01Icon from 'hugeicons-animated-vue/icons/copy-01.vue'
 import Tick02Icon from 'hugeicons-animated-vue/icons/tick-02.vue'
 
@@ -38,6 +39,9 @@ const command = computed(() => installCommand(selected.value))
 
 async function copyCommand() {
   await navigator.clipboard.writeText(command.value)
+  if (import.meta.env.VITE_POSTHOG_PROJECT_TOKEN && import.meta.env.VITE_POSTHOG_HOST) {
+    posthog.capture('install_command_copied', { icon_name: selected.value })
+  }
   copied.value = true
   tickRef.value?.startAnimation()
   window.setTimeout(() => {

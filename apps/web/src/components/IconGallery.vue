@@ -4,6 +4,7 @@ import { ICON_LIST } from '../lib/icons-manifest'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import Search01Icon from 'hugeicons-animated-vue/icons/search-01.vue'
 import { installCommand } from '../lib/site'
+import posthog from 'posthog-js'
 
 const query = ref('')
 const copied = ref<string | null>(null)
@@ -16,6 +17,9 @@ const icons = computed(() => {
 
 async function copy(name: string) {
   await navigator.clipboard.writeText(installCommand(name))
+  if (import.meta.env.VITE_POSTHOG_PROJECT_TOKEN && import.meta.env.VITE_POSTHOG_HOST) {
+    posthog.capture('icon_install_command_copied', { icon_name: name })
+  }
   copied.value = name
   window.setTimeout(() => {
     if (copied.value === name) copied.value = null
