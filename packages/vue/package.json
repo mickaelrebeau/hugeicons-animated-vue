@@ -7,7 +7,7 @@
   "author": "Mickael Rébeau",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mickaelrebeau/hugeicons-animated-vue.git",
+    "url": "https://github.com/mickaelrebeau/hugeicons-animated-vue.git",
     "directory": "packages/vue"
   },
   "bugs": {
