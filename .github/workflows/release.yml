@@ -27,6 +27,17 @@ jobs:
       - run: pnpm --filter hugeicons-animated-vue build
       - name: Publish
         working-directory: packages/vue
-        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "NPM_TOKEN is not set; skipping npm publish."
+            echo "Add a granular npm token as the NPM_TOKEN repository secret, or publish locally with npm login."
+            exit 0
+          fi
+          CURRENT="$(node -p "require('./package.json').version")"
+          if npm view "hugeicons-animated-vue@${CURRENT}" version >/dev/null 2>&1; then
+            echo "hugeicons-animated-vue@${CURRENT} is already on npm."
+            exit 0
+          fi
+          pnpm publish --access public --no-git-checks
