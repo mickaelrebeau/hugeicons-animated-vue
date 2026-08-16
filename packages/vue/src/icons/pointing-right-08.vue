@@ -1,0 +1,47 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'PointingRight08Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after cursor-pointer-01: the fingertip commits toward the direction it already points
+// generated from @hugeicons/core-free-icons
+const iconVariants: Variants = {
+  normal: {
+    transform: 'translateX(0px) scaleX(1) scaleY(1)',
+  },
+  animate: {
+    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.77px) scaleX(0.9) scaleY(1.04)', 'translateX(1.92px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transition: {
+      duration: 0.5,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M22 4.50009H16M22 4.50009C22 3.79986 20.0057 2.49162 19.5 2.00009M22 4.50009C22 5.20032 20.0057 6.50856 19.5 7.00009" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 13.92px' }" />
+            <motion.path d="M12.985 13.0052L15.9892 13.0052M15.9892 13.0052H19.4954C20.3264 13.0052 21 12.3329 21 11.5035C21 10.6741 20.3264 10.0017 19.4954 10.0017L14.031 10.0017M15.9892 13.0052L15.9624 14.0596C15.9443 14.7706 15.556 15.3872 14.9844 15.7275M14.031 10.0017L9.46807 10.0017M14.031 10.0017L11.2712 7.40825C9.40362 5.83579 8.04219 6.66211 7.28577 7.24236L4.84841 8.85723C2.78085 10.082 2 11.4994 2 12.6917V17.5724C2 19.8385 4.38227 21.9515 6.56579 21.9515L11.7657 21.9996C12.7759 22.0089 13.635 21.2662 13.77 20.2669L13.9593 18.7265M12.9552 16.0088H13.9593C14.3335 16.0088 14.6842 15.9062 14.9844 15.7275M14.9844 15.7275L14.9297 17.0632C14.9021 18.1476 14.0134 19.0123 12.9266 19.0123H11.9226" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 13.92px' }" />
+          </svg>
+        </div>
+</template>

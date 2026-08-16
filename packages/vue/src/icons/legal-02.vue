@@ -1,0 +1,48 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'Legal02Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after file-01: the legal sheet lands and its ruling line resolves
+// generated from @hugeicons/core-free-icons
+const fileVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.82px) rotate(-1.03deg)', 'translateY(0.46px) rotate(0.52deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.58,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M14.0011 9.79802L4.39343 10.4919C3.10421 10.585 2.00109 9.66574 2.0011 8.49837C2.00111 7.331 3.10426 6.41176 4.39348 6.50485L14.0011 7.19851" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 8.5px' }" />
+            <motion.path d="M21.001 13.9983L13.0011 13.9984M21.0011 2.99835L13.0012 2.99842M20.0012 2.99836L14.0013 2.99841C14.0013 2.99841 13.5012 5.95993 13.5012 8.49838C13.5012 11.0369 14.0011 13.9984 14.0011 13.9984L20.001 13.9983C20.001 13.9983 20.5011 11.0368 20.5011 8.49832C20.5011 5.95988 20.0012 2.99836 20.0012 2.99836Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 8.5px' }" />
+            <motion.path d="M12.0011 21.0016H21.9989M13.2258 21.0016C13.7773 20.0142 14.1892 18.1245 16.1412 18.0186C16.7209 17.9872 17.3108 17.9872 17.8906 18.0186C19.8426 18.1245 20.2564 20.0142 20.8079 21.0016" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 19.49px' }" />
+          </svg>
+        </div>
+</template>

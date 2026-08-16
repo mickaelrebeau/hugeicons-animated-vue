@@ -1,0 +1,48 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'GoldSellIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after folder-01: the parts of the gold sell move from their own mass and settle together
+// generated from @hugeicons/core-free-icons
+const folderVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.73px) rotate(-2.03deg)', 'translateY(0.41px) rotate(0.71deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.56,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M19 2.5V7M21 4L20.5617 3.4231C19.841 2.47437 19.4806 2 19 2C18.5194 2 18.159 2.47437 17.4383 3.4231L17 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+            <motion.circle cx="12" cy="12" r="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+            <motion.path d="M20 9.87791C20.6667 10.6661 21 11.2926 21 12C21 13.2081 20.0278 14.1803 18.0834 16.1247L16.1247 18.0834C14.1803 20.0278 13.2081 21 12 21C10.7919 21 9.81971 20.0278 7.87531 18.0834L5.9166 16.1247C3.9722 14.1803 3 13.2081 3 12C3 10.7919 3.9722 9.81971 5.9166 7.87531L7.87531 5.9166C9.81971 3.9722 10.7919 3 12 3C12.7074 3 13.3339 3.33333 14.1221 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+          </svg>
+        </div>
+</template>

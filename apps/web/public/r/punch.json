@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "punch",
+  "type": "registry:ui",
+  "title": "punch",
+  "description": "Animated punch icon for Vue",
+  "dependencies": [
+    "motion-v"
+  ],
+  "files": [
+    {
+      "path": "components/ui/punch.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { motion, useAnimationControls } from 'motion-v'\nimport type { Variants } from 'motion-v'\nimport { useIconAnimation } from '../composables/useIconAnimation'\nimport type { AnimatedIconHandle } from '../types'\n\ndefineOptions({ inheritAttrs: false, name: 'PunchIcon' })\n\nwithDefaults(\n  defineProps<{\n    size?: number\n  }>(),\n  { size: 28 },\n)\n\n// after scissor-01: it winds up and lands the blow, then recovers guard\n// generated from @hugeicons/core-free-icons\nconst iconVariants: Variants = {\n  normal: {\n    transform: 'rotate(0deg)',\n  },\n  animate: {\n    transform: ['rotate(0deg)', 'rotate(-22.57deg)', 'rotate(8.21deg)', 'rotate(-2.05deg)', 'rotate(0deg)'],\n    transition: {\n      duration: 0.52,\n      times: [0, 0.32, 0.55, 0.8, 1],\n      ease: [0.23, 1, 0.32, 1],\n    },\n  },\n}\n\nconst controls = useAnimationControls()\nconst { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({\n  controls,\n  loops: false,\n})\n\ndefineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })\n</script>\n\n<template>\n  <div class=\"hia-icon\" @mouseenter=\"onMouseEnter\" @mouseleave=\"onMouseLeave\" v-bind=\"$attrs\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" :width=\"size\" :height=\"size\" viewBox=\"0 0 24 24\" fill=\"none\" overflow=\"visible\">\n            <motion.path d=\"M6.6 13.7821V11.5M6.6 13.7821C6.6 14.7644 5.79411 15.5607 4.8 15.5607C3.80589 15.5607 3 14.7644 3 13.7821V13C3 9.25027 3 7.3754 3.95491 6.06107C4.26331 5.6366 4.6366 5.26331 5.06107 4.95491C6.3754 4 8.25027 4 12 4C15.7497 4 17.6246 4 18.9389 4.95491C19.3634 5.26331 19.7367 5.6366 20.0451 6.06107C21 7.3754 21 9.26015 21 13.0296C21 14.5561 21 15.3193 20.8431 15.9483C20.3627 17.8739 18.8411 19.3774 16.8923 19.8521C16.4854 19.9512 15.7827 19.9869 14.9252 19.9998C14.0788 19.9998 13.35 20.0759 13.35 18.9998C13.35 17.9839 13.6769 16.8946 14.925 16.8946H15.6M6.6 13.7821V15.116C6.6 16.0983 7.40589 16.8946 8.4 16.8946C9.39411 16.8946 10.2 16.0983 10.2 15.116M10.2 15.116V11.1143M10.2 15.116V15.9123C10.2 16.8946 11.0059 17.6909 12 17.6909C12.9941 17.6909 13.8 16.8946 13.8 15.9123V15.116M17.4 11.5V15.116C17.4 16.0983 16.5941 16.8946 15.6 16.8946M13.8 15.116V11.1143M13.8 15.116C13.8 16.0983 14.6059 16.8946 15.6 16.8946\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" :variants=\"iconVariants\" :animate=\"controls\" initial=\"normal\" :style=\"{ transformOrigin: '12px 20.08px' }\" />\n          </svg>\n        </div>\n</template>\n"
+    },
+    {
+      "path": "composables/useIconAnimation.ts",
+      "type": "registry:lib",
+      "content": "import { ref, toValue, type MaybeRefOrGetter } from 'vue'\nimport type { AnimatedIconHandle } from '../types'\n\nexport type IconPose = 'normal' | 'animate'\n\ntype AnimationControls = {\n  set: (variant: IconPose | Record<string, unknown>) => void\n  start: (variant: IconPose | Record<string, unknown>) => Promise<unknown>\n}\n\nexport function useReducedMotionFlag(\n  reduced?: MaybeRefOrGetter<boolean | undefined>,\n) {\n  if (typeof window === 'undefined') return () => false\n  return () => {\n    const override = reduced === undefined ? undefined : toValue(reduced)\n    if (override !== undefined) return override\n    return window.matchMedia('(prefers-reduced-motion: reduce)').matches\n  }\n}\n\nexport function useIconAnimation(options: {\n  controls: AnimationControls\n  loops?: boolean\n}): AnimatedIconHandle & {\n  onMouseEnter: () => void\n  onMouseLeave: () => void\n} {\n  const { controls, loops = false } = options\n  const isPlaying = ref(false)\n  let run = 0\n\n  const prefersReduced = () =>\n    typeof window !== 'undefined' &&\n    window.matchMedia('(prefers-reduced-motion: reduce)').matches\n\n  async function startAnimation() {\n    if (prefersReduced() || isPlaying.value) return\n\n    isPlaying.value = true\n    const current = ++run\n    controls.set('normal')\n    await controls.start('animate')\n    if (run === current) isPlaying.value = false\n  }\n\n  function stopAnimation() {\n    if (!loops) return\n    run += 1\n    isPlaying.value = false\n    void controls.start('normal')\n  }\n\n  return {\n    startAnimation,\n    stopAnimation,\n    onMouseEnter: () => {\n      void startAnimation()\n    },\n    onMouseLeave: () => {\n      stopAnimation()\n    },\n  }\n}\n"
+    },
+    {
+      "path": "types/animated-icon.ts",
+      "type": "registry:lib",
+      "content": "export interface AnimatedIconHandle {\n  startAnimation: () => void\n  stopAnimation: () => void\n}\n\nexport interface AnimatedIconProps {\n  size?: number\n}\n"
+    }
+  ]
+}

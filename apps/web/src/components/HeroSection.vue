@@ -1,39 +1,34 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef } from 'vue'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
-import { ICON_LIST } from '../lib/icons-manifest'
-import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import { installCommand } from '../lib/site'
 import posthog from 'posthog-js'
+import AlertCircleIcon from 'hugeicons-animated-vue/icons/alert-circle.vue'
+import Bookmark01Icon from 'hugeicons-animated-vue/icons/bookmark-01.vue'
+import CloudRainIcon from 'hugeicons-animated-vue/icons/cloud-rain.vue'
+import Coffee02Icon from 'hugeicons-animated-vue/icons/coffee-02.vue'
 import Copy01Icon from 'hugeicons-animated-vue/icons/copy-01.vue'
+import CursorPointer01Icon from 'hugeicons-animated-vue/icons/cursor-pointer-01.vue'
+import MailOpenIcon from 'hugeicons-animated-vue/icons/mail-open.vue'
+import PlayIcon from 'hugeicons-animated-vue/icons/play.vue'
+import Settings01Icon from 'hugeicons-animated-vue/icons/settings-01.vue'
 import Tick02Icon from 'hugeicons-animated-vue/icons/tick-02.vue'
 
-const PUBLIC_ICONS = ICON_LIST.filter((i) => !DISAPPROVED_ICON_NAMES.has(i.name))
-
-const HERO_SPECIMENS = [
-  { name: 'alert-circle', top: '18%', left: '58%', size: 22 },
-  { name: 'bookmark-01', top: '14%', left: '78%', size: 24 },
-  { name: 'cloud-rain', top: '32%', left: '88%', size: 26 },
-  { name: 'cursor-pointer-01', top: '46%', left: '70%', size: 22 },
-  { name: 'mail-open', top: '58%', left: '90%', size: 24 },
-  { name: 'settings-01', top: '72%', left: '76%', size: 22 },
-  { name: 'coffee-02', top: '78%', left: '54%', size: 24 },
-  { name: 'play', top: '28%', left: '48%', size: 20 },
+const specimens = [
+  { name: 'alert-circle', top: '18%', left: '58%', size: 22, component: AlertCircleIcon },
+  { name: 'bookmark-01', top: '14%', left: '78%', size: 24, component: Bookmark01Icon },
+  { name: 'cloud-rain', top: '32%', left: '88%', size: 26, component: CloudRainIcon },
+  { name: 'cursor-pointer-01', top: '46%', left: '70%', size: 22, component: CursorPointer01Icon },
+  { name: 'mail-open', top: '58%', left: '90%', size: 24, component: MailOpenIcon },
+  { name: 'settings-01', top: '72%', left: '76%', size: 22, component: Settings01Icon },
+  { name: 'coffee-02', top: '78%', left: '54%', size: 24, component: Coffee02Icon },
+  { name: 'play', top: '28%', left: '48%', size: 20, component: PlayIcon },
 ]
-
-const specimens = HERO_SPECIMENS.flatMap((s) => {
-  const icon = PUBLIC_ICONS.find((i) => i.name === s.name)
-  return icon ? [{ ...s, icon }] : []
-})
 
 const selected = ref('notification-03')
 const copied = ref(false)
 const copyRef = useTemplateRef<AnimatedIconHandle>('copyIcon')
 const tickRef = useTemplateRef<AnimatedIconHandle>('tickIcon')
-
-const selectedIcon = computed(
-  () => PUBLIC_ICONS.find((i) => i.name === selected.value) ?? PUBLIC_ICONS[0],
-)
 
 const command = computed(() => installCommand(selected.value))
 
@@ -49,9 +44,8 @@ async function copyCommand() {
   }, 1600)
 }
 
-function pick(name: string, handle?: AnimatedIconHandle | null) {
+function pick(name: string) {
   selected.value = name
-  handle?.startAnimation()
 }
 
 const blades = Array.from({ length: 12 }, (_, i) => i * 30)
@@ -83,7 +77,7 @@ const blades = Array.from({ length: 12 }, (_, i) => i * 30)
         @pointerenter="pick(specimen.name)"
         @click="pick(specimen.name)"
       >
-        <component :is="specimen.icon.component" :size="specimen.size" />
+        <component :is="specimen.component" :size="specimen.size" />
       </button>
     </div>
 
@@ -94,7 +88,7 @@ const blades = Array.from({ length: 12 }, (_, i) => i * 30)
         for modern <em>Vue</em> UIs.
       </h1>
       <p class="lede">
-        Hand-animated
+        Animated
         <a href="https://hugeicons.com" target="_blank" rel="noreferrer">Hugeicons</a>
         for Vue. Hover to play, copy the source, keep the geometry — the same
         library, a gesture attached.
@@ -105,12 +99,12 @@ const blades = Array.from({ length: 12 }, (_, i) => i * 30)
       </div>
       <div class="install-row">
         <code>
-          $ npx shadcn add @hugeicons-animated-vue/<strong>{{ selectedIcon.name }}</strong>
+          $ npx shadcn add @hugeicons-animated-vue/<strong>{{ selected }}</strong>
         </code>
         <button
           class="icon-btn"
           type="button"
-          :aria-label="`Copy install command for ${selectedIcon.name}`"
+          :aria-label="`Copy install command for ${selected}`"
           @click="copyCommand"
           @pointerenter="copyRef?.startAnimation()"
         >

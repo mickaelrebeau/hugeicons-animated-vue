@@ -1,0 +1,49 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'StoreManagement01Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after home-01: the storefront opens from its awning and settles on its foundation
+// generated from @hugeicons/core-free-icons
+const iconVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px)',
+  },
+  animate: {
+    transform: ['translateY(0px)', 'translateY(-2.03px)', 'translateY(0px)'],
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
+      times: [0, 0.35, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M3.5 9.99988V14.9999C3.5 17.8283 3.5 19.2425 4.37868 20.1212C5.25736 20.9999 6.67157 20.9999 9.5 20.9999H13.5M20.5 11.9999V9.99988" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+            <motion.path d="M17 7.50171C17 8.88243 15.8807 9.99985 14.5 9.99985C13.1193 9.99985 12 8.88056 12 7.49985C12 8.88056 10.8807 9.99985 9.5 9.99985C8.11929 9.99985 7 8.88056 7 7.49985C7 8.88056 5.82654 9.99985 4.379 9.99985C3.59983 9.99985 2.90007 9.67555 2.41999 9.16075C1.59461 8.27567 2.12559 6.97391 2.81446 5.9883L3.202 5.45839C4.08384 4.25258 4.52476 3.64968 5.16491 3.32482C5.80507 2.99996 6.552 3.00005 8.04586 3.00025L15.9551 3.00131C17.4485 3.00151 18.1952 3.00161 18.8351 3.32646C19.475 3.65131 19.9158 4.25402 20.7974 5.45945L21.1855 5.99017C21.8744 6.97577 22.4054 8.27754 21.58 9.16261C21.0999 9.67742 20.4001 10.0017 19.621 10.0017C18.1734 10.0017 17 8.88243 17 7.50171Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+            <motion.path d="M18.501 15.4999V13.9999M18.501 19.4999V20.9999M21.5 15.7479L20.2325 16.4882M15.5069 19.2479L16.7778 18.5057M21.5069 19.2421L20.2385 18.5013M15.5138 15.7421L16.7838 16.4838M20.2325 16.4882C19.885 15.8968 19.2423 15.4999 18.5069 15.4999C17.7733 15.4999 17.1319 15.8949 16.7838 16.4838M20.2325 16.4882C20.4069 16.785 20.5069 17.1307 20.5069 17.4999C20.5069 17.8648 20.4092 18.2068 20.2385 18.5013M16.7838 16.4838C16.6079 16.7816 16.5069 17.1289 16.5069 17.4999C16.5069 17.8666 16.6056 18.2102 16.7778 18.5057M16.7778 18.5057C17.1244 19.1003 17.769 19.4999 18.5069 19.4999C19.2466 19.4999 19.8925 19.0983 20.2385 18.5013" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+          </svg>
+        </div>
+</template>

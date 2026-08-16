@@ -1,0 +1,48 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'Underpants01Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after folder-01: the parts of the underpants move from their own mass and settle together
+// generated from @hugeicons/core-free-icons
+const folderVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.83px) rotate(-2.15deg)', 'translateY(0.43px) rotate(0.75deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.58,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M14 17L14.3464 17.9952C14.6631 18.9394 14.8215 19.4116 15.1899 19.6916C15.2125 19.7087 15.2357 19.7253 15.2592 19.7412C15.643 20 16.1438 20 17.1454 20C19.4325 20 20.576 20 21.3113 19.2763C21.3537 19.2345 21.3996 19.1859 21.4388 19.1412C22.1182 18.3653 22.0478 17.2818 21.907 15.1147C21.6762 11.5611 21.2235 8.70531 20.786 6.70039C20.5221 5.49096 20.3901 4.88625 19.8372 4.44313C19.2842 4 18.5998 4 17.231 4H6.76902C5.40022 4 4.71582 4 4.16285 4.44313C3.60987 4.88625 3.47791 5.49096 3.21399 6.70039C2.77648 8.70531 2.32378 11.5611 2.09297 15.1147C1.95221 17.2818 1.88183 18.3653 2.56123 19.1412C2.60042 19.1859 2.64629 19.2345 2.6887 19.2763C3.42404 20 4.56755 20 6.85456 20C7.85618 20 8.357 20 8.74078 19.7412C8.76434 19.7253 8.78745 19.7087 8.81007 19.6916C9.1785 19.4116 9.33687 18.9394 9.65362 17.9952L9.98742 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 20px' }" />
+            <motion.path d="M8.5 15C9.09883 16.1956 10.7181 17.5 12 17.5C13.2819 17.5 14.9012 16.1956 15.5 15" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 20px' }" />
+            <motion.path d="M3 8H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 20px' }" />
+          </svg>
+        </div>
+</template>

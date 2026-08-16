@@ -1,0 +1,62 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'CursorDisabledIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after notification-off-01: the slash cuts through and the rest of the glyph recoils
+// generated from @hugeicons/core-free-icons
+const iconVariants: Variants = {
+  normal: {
+    transform: 'rotate(0deg) translateY(0px)',
+    opacity: 1,
+  },
+  animate: {
+    transform: ['rotate(0deg) translateY(0px)', 'rotate(-8.09deg) translateY(0.4px)', 'rotate(0deg) translateY(1.21px)', 'rotate(0deg) translateY(0px)'],
+    opacity: [1, 1, 0.55, 1],
+    transition: {
+      duration: 0.69,
+      ease: [0.77, 0, 0.175, 1],
+    },
+  },
+}
+
+const markVariants: Variants = {
+  normal: {
+    transform: 'scale(1) rotate(0deg)',
+  },
+  animate: {
+    transform: ['scale(1) rotate(0deg)', 'scale(0.86) rotate(-2.2deg)', 'scale(1.08) rotate(0.88deg)', 'scale(1) rotate(0deg)'],
+    transition: {
+      duration: 0.55,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M12.1716 8.82843C13.7337 10.3905 16.2663 10.3905 17.8284 8.82843C19.3905 7.26633 19.3905 4.73367 17.8284 3.17157M12.1716 8.82843C10.6095 7.26633 10.6095 4.73367 12.1716 3.17157C13.7337 1.60948 16.2663 1.60948 17.8284 3.17157M12.1716 8.82843L17.8284 3.17157" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '15px 6px' }" />
+            <motion.path d="M9.53243 2.96877C8.52397 2.15003 7.79812 1.80456 7.04807 2.10979C5.94481 2.55876 5.85017 3.98379 5.67232 6.66186L5.10772 14.3857C4.9732 16.2065 4.90595 17.1169 5.26831 17.574C5.51701 17.8877 5.88085 18.0871 6.27745 18.1269C6.85532 18.1851 7.57763 17.6337 9.02224 16.5308C9.63074 16.0663 9.93499 15.834 10.239 15.8187C10.4503 15.8081 10.6595 15.8662 10.8355 15.9844C11.0887 16.1545 11.2317 16.5111 11.5177 17.2241L13.0004 20.9204C13.1717 21.3475 13.2574 21.561 13.3939 21.7015C13.5778 21.8907 13.8292 21.9982 14.0921 22C14.2873 22.0013 14.4993 21.915 14.9232 21.7425C15.3471 21.57 15.5591 21.4837 15.6986 21.3462C15.8865 21.161 15.9932 20.9078 15.995 20.6429C15.9963 20.4464 15.9107 20.2328 15.7394 19.8058L14.2567 16.1095C13.9707 15.3964 13.8277 15.0399 13.8925 14.7404C13.9376 14.5321 14.0479 14.344 14.2073 14.2038C14.4365 14.0021 14.8156 13.9563 15.5737 13.8647C17.3734 13.6473 18.2733 13.5385 18.6489 13.0924C18.9067 12.7862 19.0309 12.3882 18.9934 11.9885C18.9692 11.7299 18.8224 11.4662 18.5481 11.1466" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.97px 11.9px' }" />
+          </svg>
+        </div>
+</template>

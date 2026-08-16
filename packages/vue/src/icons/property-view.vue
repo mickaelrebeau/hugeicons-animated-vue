@@ -1,0 +1,64 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'PropertyViewIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after copy-01: the nested parts of the property view separate in depth and stack again
+// generated from @hugeicons/core-free-icons
+const fileVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.86px) rotate(-1.07deg)', 'translateY(0.48px) rotate(0.54deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.6,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const frontVariants: Variants = {
+  normal: {
+    transform: 'translate(0px, 0px)',
+  },
+  animate: {
+    transform: ['translate(0px, 0px)', 'translate(1.5px, -1.28px)', 'translate(0.21px, -0.21px)', 'translate(0px, 0px)'],
+    transition: {
+      duration: 0.54,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M20.4997 12.5044C20.5004 12.1847 20.5004 11.8515 20.5004 11.5041C20.5004 7.25987 20.5004 5.13777 19.1824 3.81927C17.8643 2.50076 15.743 2.50076 11.5004 2.50076C7.25774 2.50076 5.13642 2.50076 3.8184 3.81927C2.50038 5.13777 2.50038 7.25987 2.50038 11.5041C2.50038 15.7483 2.50038 17.8704 3.8184 19.1889C4.91067 20.2815 6.55461 20.4687 9.50038 20.5008" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 11.5px' }" />
+            <motion.path d="M3.00038 7.50076H20.0004" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 7.5px' }" />
+            <motion.path d="M6.50038 16.0008H7.50038" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 16px' }" />
+            <motion.path d="M11.5004 12.0008H16.5004M6.50038 12.0008H7.50038" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 12px' }" />
+            <motion.path d="M17.0004 15.5008C19.3998 15.5008 20.9994 17.5023 21.4996 18.5023C20.9985 19.5028 19.3978 21.4992 16.9996 21.4992C14.6014 21.4992 13.0015 19.5013 12.5004 18.5008C13.0006 17.5008 14.601 15.5008 17.0004 15.5008Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 18.5px' }" />
+            <motion.path d="M17.1254 18.5008H17.0004M17.2504 18.5008C17.2504 18.6388 17.1385 18.7508 17.0004 18.7508C16.8623 18.7508 16.7504 18.6388 16.7504 18.5008C16.7504 18.3627 16.8623 18.2508 17.0004 18.2508C17.1385 18.2508 17.2504 18.3627 17.2504 18.5008Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 18.5px' }" />
+          </svg>
+        </div>
+</template>

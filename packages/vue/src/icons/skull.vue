@@ -1,0 +1,61 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'SkullIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after more-horizontal: the repeated points of the skull answer in spatial order
+// generated from @hugeicons/core-free-icons
+const folderVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.83px) rotate(-2.15deg)', 'translateY(0.43px) rotate(0.75deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.58,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const dotVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) scale(1)',
+  },
+  animate: (i: number) => ({
+    transform: ['translateY(0px) scale(1)', 'translateY(-1.48px) scale(1.2)', 'translateY(0.34px) scale(0.95)', 'translateY(0px) scale(1)'],
+    transition: { duration: 0.41, ease: 'easeOut', delay: i * 0.08 },
+  }),
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M12 3C7.02944 3 3 6.58172 3 11C3 13.3701 4.15952 15.4995 6.00182 16.9644C6.17947 17.1057 6.26829 17.1763 6.29126 17.1957C6.79223 17.6193 6.97937 18.0071 6.9991 18.6629C7 18.6929 7 18.7507 7 18.8662C7 18.9904 7 19.0526 7.00276 19.105C7.05651 20.127 7.87301 20.9435 8.89495 20.9972C8.94744 21 9.00956 21 9.13381 21H14.8662C14.9904 21 15.0526 21 15.105 20.9972C16.127 20.9435 16.9435 20.127 16.9972 19.105C17 19.0526 17 18.9904 17 18.8662C17 18.7507 17 18.6929 17.0009 18.6629C17.0206 18.0071 17.2078 17.6193 17.7087 17.1957C17.7317 17.1763 17.8205 17.1057 17.9982 16.9644C19.8405 15.4995 21 13.3701 21 11C21 6.58172 16.9706 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M10 21V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M14 21V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M8 11V10.5M9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 11px' }" />
+            <motion.path d="M16 11V10.5M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '16px 11px' }" />
+            <motion.path d="M12.5 15L12 14L11.5 15H12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 14.5px' }" />
+          </svg>
+        </div>
+</template>

@@ -544,15 +544,8 @@ async function main() {
     }
   }
 
-  const index = `export type { AnimatedIconHandle, AnimatedIconProps } from './types'
-export { useIconAnimation } from './composables/useIconAnimation'
-export { DISAPPROVED_ICON_NAMES } from './icon-approval'
-
-${exports.map((e) => `export { default as ${e.name} } from './icons/${e.file}.vue'`).join('\n')}
-`
-
-  await writeFile(path.join(ROOT, 'packages/vue/src/index.ts'), index)
   console.log(`converted ${exports.length} icons, ${failures.length} failures`)
+  await import('./gen-index.mjs')
   if (failures.length) {
     for (const f of failures) console.error('  ', f)
     process.exitCode = 1

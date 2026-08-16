@@ -8,10 +8,18 @@
     "build": "pnpm --filter hugeicons-animated-vue build && pnpm --filter web build",
     "preview": "pnpm --filter web preview",
     "icons:convert": "node scripts/convert-icons.mjs",
+    "icons:generate-missing": "node scripts/generate-missing-icons.mjs && node scripts/gen-index.mjs && node scripts/gen-manifest.mjs",
+    "icons:index": "node scripts/gen-index.mjs",
     "registry:build": "node scripts/build-registry.mjs && node scripts/gen-manifest.mjs",
     "icons:check-rest": "node scripts/check-rest-parity.mjs"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "core-js"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "core-js"
+    ]
+  },
+  "devDependencies": {
+    "@hugeicons/core-free-icons": "^4.2.3"
   }
 }

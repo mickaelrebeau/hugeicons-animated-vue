@@ -43,6 +43,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./icons/*": "./dist/icons/*",
     "./style.css": "./style.css"
   },
   "publishConfig": {
@@ -52,7 +53,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "node scripts/build.mjs",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
@@ -62,6 +63,7 @@
   "devDependencies": {
     "@types/node": "^26.2.0",
     "@vitejs/plugin-vue": "^6.0.1",
+    "esbuild": "^0.28.2",
     "motion-v": "^2.3.0",
     "typescript": "~5.9.2",
     "vite": "^8.2.1",

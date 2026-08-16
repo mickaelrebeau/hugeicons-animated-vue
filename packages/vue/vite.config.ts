@@ -8,10 +8,20 @@ export default defineConfig({
     vue(),
     dts({
       tsconfigPath: './tsconfig.json',
-      insertTypesEntry: true,
-      include: ['src/**/*.ts', 'src/**/*.vue'],
-      exclude: ['src/env.d.ts'],
+      insertTypesEntry: false,
+      include: ['src/types.ts', 'src/composables/useIconAnimation.ts', 'src/icon-approval.ts'],
+      exclude: ['src/env.d.ts', 'src/generated-index.d.ts'],
     }),
+    {
+      name: 'write-index-dts',
+      async closeBundle() {
+        const { copyFile } = await import('node:fs/promises')
+        await copyFile(
+          path.resolve(__dirname, 'src/generated-index.d.ts'),
+          path.resolve(__dirname, 'dist/index.d.ts'),
+        )
+      },
+    },
     {
       name: 'drop-vue-wrapper-chunks',
       generateBundle(_opts, bundle) {

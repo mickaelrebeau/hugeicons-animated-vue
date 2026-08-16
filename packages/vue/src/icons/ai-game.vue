@@ -1,0 +1,59 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'AiGameIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after sparkles: the intelligence points answer one another instead of pulsing as a single badge
+// generated from @hugeicons/core-free-icons
+const folderVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.75px) rotate(-2.05deg)', 'translateY(0.41px) rotate(0.72deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.56,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const dotVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) scale(1)',
+  },
+  animate: (i: number) => ({
+    transform: ['translateY(0px) scale(1)', 'translateY(-1.4px) scale(1.2)', 'translateY(0.33px) scale(0.95)', 'translateY(0px) scale(1)'],
+    transition: { duration: 0.45, ease: 'easeOut', delay: i * 0.08 },
+  }),
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M6.00195 7C5.12645 7.14253 4.48184 7.40465 3.95937 7.8867C2.81421 8.94326 2.65433 10.6887 2.33456 14.1797L2.00778 17.7473C1.88378 19.5049 3.25864 21 4.99899 21H5.74567C6.97191 21 8.0746 20.2441 8.53002 19.0913L9.27241 17.2121C9.51592 16.5956 9.63768 16.2874 9.89165 16.1134C10.1456 15.9393 10.4736 15.9393 11.1295 15.9393H12.8705C13.5264 15.9393 13.8544 15.9393 14.1084 16.1134C14.3623 16.2874 14.4841 16.5956 14.7276 17.2121L15.47 19.0913C15.9254 20.2441 17.0281 21 18.2543 21H19.001C20.7414 21 22.1162 19.5049 21.9922 17.7473L21.6685 14.1855C21.351 10.692 21.1922 8.94521 20.0468 7.88767C19.5241 7.405 18.8789 7.14263 18.0024 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M7.375 11.75H7.25M7.5 11.75C7.5 11.8881 7.38807 12 7.25 12C7.11193 12 7 11.8881 7 11.75C7 11.6119 7.11193 11.5 7.25 11.5C7.38807 11.5 7.5 11.6119 7.5 11.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '7.25px 11.75px' }" />
+            <motion.path d="M16.875 11.75H16.75M17 11.75C17 11.8881 16.8881 12 16.75 12C16.6119 12 16.5 11.8881 16.5 11.75C16.5 11.6119 16.6119 11.5 16.75 11.5C16.8881 11.5 17 11.6119 17 11.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '16.75px 11.75px' }" />
+            <motion.path d="M11.9737 3.02148C11.9795 2.99284 12.0205 2.99284 12.0263 3.02148C12.3302 4.50808 13.4919 5.66984 14.9785 5.97368C15.0072 5.97954 15.0072 6.02046 14.9785 6.02632C13.4919 6.33016 12.3302 7.49192 12.0263 8.97852C12.0205 9.00716 11.9795 9.00716 11.9737 8.97852C11.6698 7.49192 10.5081 6.33016 9.02148 6.02632C8.99284 6.02046 8.99284 5.97954 9.02148 5.97368C10.5081 5.66984 11.6698 4.50808 11.9737 3.02148Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+          </svg>
+        </div>
+</template>

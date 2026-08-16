@@ -1,0 +1,48 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'YogaMatIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after home-01: the posture settles into a slow held breath
+// generated from @hugeicons/core-free-icons
+const seatVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) scaleY(1)',
+  },
+  animate: {
+    transform: ['translateY(0px) scaleY(1)', 'translateY(-0.55px) scaleY(1.04)', 'translateY(1.29px) scaleY(0.86)', 'translateY(-0.14px) scaleY(1.02)', 'translateY(0px) scaleY(1)'],
+    transition: {
+      duration: 0.66,
+      times: [0, 0.18, 0.48, 0.78, 1],
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M10.5054 15.0102L17.14 10.4989C17.3273 10.3598 17.4944 10.1955 17.6363 10.0112C18.1217 9.38041 18.1121 8.50551 17.8044 7.77366C17.1198 6.14514 15.4952 5 13.6 5C12.6644 5 11.7948 5.27908 11.0717 5.75762L3.99219 10.7567" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="seatVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.93px 19px' }" />
+            <motion.path d="M5.99514 13.5066C5.99514 14.2026 6.36367 15.5859 8.0358 15.9655C9.04177 16.1939 11.9726 15.2305 10.5386 12.4385C9.10468 9.64659 5.6515 9.63202 4.24682 10.5675C3.3884 11.0889 1.72132 12.7163 2.03737 14.8796C2.14955 16.1903 3.1816 18.8496 6.41238 19.0017H16.3037C17.2255 18.9286 17.416 18.7949 18.1181 18.2562C19.0626 17.408 20.6401 15.8485 21.5565 14.8218C21.7545 14.6 21.9682 14.3717 21.9956 14.0757V14.0757C22.1413 12.499 19.7488 13.1819 18.0157 12.994" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="seatVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.93px 19px' }" />
+          </svg>
+        </div>
+</template>

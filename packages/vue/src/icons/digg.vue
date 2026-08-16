@@ -1,0 +1,62 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'DiggIcon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after copy-01: the nested parts of the digg separate in depth and stack again
+// generated from @hugeicons/core-free-icons
+const frontVariants: Variants = {
+  normal: {
+    transform: 'translate(0px, 0px)',
+  },
+  animate: {
+    transform: ['translate(0px, 0px)', 'translate(1.4px, -1.2px)', 'translate(0.2px, -0.2px)', 'translate(0px, 0px)'],
+    transition: {
+      duration: 0.51,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const fileVariants: Variants = {
+  normal: {
+    transform: 'translateY(0px) rotate(0deg)',
+  },
+  animate: {
+    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.8px) rotate(-1deg)', 'translateY(0.45px) rotate(0.5deg)', 'translateY(0px) rotate(0deg)'],
+    transition: {
+      duration: 0.57,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M18 19H20C20.9428 19 21.4142 19 21.7071 18.7071C22 18.4142 22 17.9428 22 17V16M22 16V11C22 10.0572 22 9.58579 21.7071 9.29289C21.4142 9 20.9428 9 20 9C19.0572 9 18.5858 9 18.2929 9.29289C18 9.58579 18 10.0572 18 11V14C18 14.9428 18 15.4142 18.2929 15.7071C18.5858 16 19.0572 16 20 16H22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '20px 14px' }" />
+            <motion.path d="M11.5 19H13.5C14.4428 19 14.9142 19 15.2071 18.7071C15.5 18.4142 15.5 17.9428 15.5 17V16M15.5 16V11C15.5 10.0572 15.5 9.58579 15.2071 9.29289C14.9142 9 14.4428 9 13.5 9C12.5572 9 12.0858 9 11.7929 9.29289C11.5 9.58579 11.5 10.0572 11.5 11V14C11.5 14.9428 11.5 15.4142 11.7929 15.7071C12.0858 16 12.5572 16 13.5 16H15.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.5px 14px' }" />
+            <motion.path d="M6 9V14C6 14.9428 6 15.4142 5.70711 15.7071C5.41421 16 4.94281 16 4 16C3.05719 16 2.58579 16 2.29289 15.7071C2 15.4142 2 14.9428 2 14V11C2 10.0572 2 9.58579 2.29289 9.29289C2.58579 9 3.05719 9 4 9H6ZM6 9V5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 10.5px' }" />
+            <motion.path d="M9 5V6M9 9V16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '9px 10.5px' }" />
+          </svg>
+        </div>
+</template>

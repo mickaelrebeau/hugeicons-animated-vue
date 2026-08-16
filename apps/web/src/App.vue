@@ -7,12 +7,14 @@ import AnatomySection from './components/AnatomySection.vue'
 import IconGallery from './components/IconGallery.vue'
 import IconLab from './components/IconLab.vue'
 import { GITHUB_URL, REACT_URL } from './lib/site'
+import { loadIconCatalog } from './lib/icons-manifest'
 
 const root = useTemplateRef<HTMLElement>('root')
 let ctx: gsap.Context | undefined
 let scroll: ReturnType<typeof createSmoothScroll> | undefined
 
 onMounted(() => {
+  void loadIconCatalog()
   scroll = createSmoothScroll()
   ctx = gsap.context(() => {
     gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {

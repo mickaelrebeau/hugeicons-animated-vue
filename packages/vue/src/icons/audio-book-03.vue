@@ -1,0 +1,58 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'AudioBook03Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after volume-high: sound pressure travels away from its source in ordered waves
+// generated from @hugeicons/core-free-icons
+const iconVariants: Variants = {
+  normal: {
+    transform: 'scale(1)',
+  },
+  animate: {
+    transform: ['scale(1)', 'scale(0.86)', 'scale(1.04)', 'scale(1)'],
+    transition: {
+      duration: 0.35,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const waveVariants: Variants = {
+  normal: {
+    transform: 'scale(1)',
+  },
+  animate: (i: number) => ({
+    transform: ['scale(0.82)', 'scale(1.08)', 'scale(1)'],
+    transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1], delay: i * 0.1 },
+  }),
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M20 22H6C4.89543 22 4 21.1046 4 20M4 20C4 18.8954 4.89543 18 6 18H20V6C20 4.11438 20 3.17157 19.4142 2.58579C18.8284 2 17.8856 2 16 2H10C7.17157 2 5.75736 2 4.87868 2.87868C4 3.75736 4 5.17157 4 8V20Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M19.5 18C19.5 18 18.5 18.7628 18.5 20C18.5 21.2372 19.5 22 19.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="waveVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M11.5 8.55078H10.5C10.0341 8.55078 9.80109 8.55078 9.61732 8.6269C9.37229 8.7284 9.17761 8.92307 9.07612 9.1681C9 9.35187 9 9.58484 9 10.0508C9 10.5167 9 10.7497 9.07612 10.9335C9.17761 11.1785 9.37229 11.3732 9.61732 11.4747C9.80109 11.5508 10.0341 11.5508 10.5 11.5508H11.5L15 14V6L11.5 8.55078Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="waveVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+          </svg>
+        </div>
+</template>

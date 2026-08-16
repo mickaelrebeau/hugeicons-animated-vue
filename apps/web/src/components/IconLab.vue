@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import { computed, onUnmounted, ref, useTemplateRef, watch } from 'vue'
-import { ICON_LIST } from '../lib/icons-manifest'
+import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
+import { ICON_NAMES, HANDCRAFTED_ICONS, catalogReady, generatedIcon, loadIconCatalog } from '../lib/icons-manifest'
+import GeneratedIconPreview from './GeneratedIconPreview.vue'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
 import { installCommand } from '../lib/site'
 import posthog from 'posthog-js'
 
-const icons = ICON_LIST.filter((i) => !DISAPPROVED_ICON_NAMES.has(i.name))
-const selected = ref(icons.find((i) => i.name === 'notification-03')?.name ?? icons[0].name)
+onMounted(() => {
+  void loadIconCatalog()
+})
+
+const names = ICON_NAMES.filter((name) => !DISAPPROVED_ICON_NAMES.has(name))
+const selected = ref(names.includes('notification-03') ? 'notification-03' : names[0])
+const filter = ref('')
 const size = ref(72)
 const color = ref('#141812')
 const trigger = ref<'hover' | 'click' | 'loop'>('hover')
@@ -16,7 +22,13 @@ const preview = useTemplateRef<AnimatedIconHandle>('preview')
 
 const swatches = ['#141812', '#afe67f', '#6aa131', '#5e6658', '#ffffff']
 
-const current = computed(() => icons.find((i) => i.name === selected.value) ?? icons[0])
+const filteredNames = computed(() => {
+  const q = filter.value.trim().toLowerCase()
+  const list = q ? names.filter((name) => name.includes(q)) : names
+  if (selected.value && !list.includes(selected.value)) return [selected.value, ...list]
+  return list
+})
+
 const pascal = computed(() =>
   selected.value
     .split('-')
@@ -90,14 +102,30 @@ function onPreviewClick() {
         @pointerenter="onPreviewEnter"
         @click="onPreviewClick"
       >
-        <component :is="current.component" ref="preview" :size="size" />
+        <component
+          v-if="HANDCRAFTED_ICONS[selected]"
+          :is="HANDCRAFTED_ICONS[selected]"
+          ref="preview"
+          :size="size"
+        />
+        <GeneratedIconPreview
+          v-else-if="catalogReady && generatedIcon(selected)"
+          ref="preview"
+          :name="selected"
+          :elements="generatedIcon(selected)!.elements"
+          :size="size"
+        />
       </div>
       <div class="lab-controls">
         <div class="control">
+          <label for="lab-filter">Find icon</label>
+          <input id="lab-filter" v-model="filter" type="search" class="picker" placeholder="Search icons" />
+        </div>
+        <div class="control">
           <label for="lab-icon">Icon</label>
           <select id="lab-icon" v-model="selected" class="picker">
-            <option v-for="icon in icons" :key="icon.name" :value="icon.name">
-              {{ icon.name }}
+            <option v-for="name in filteredNames" :key="name" :value="name">
+              {{ name }}
             </option>
           </select>
         </div>

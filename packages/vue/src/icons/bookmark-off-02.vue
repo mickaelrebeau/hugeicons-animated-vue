@@ -1,0 +1,63 @@
+<script setup lang="ts">
+import { motion, useAnimationControls } from 'motion-v'
+import type { Variants } from 'motion-v'
+import { useIconAnimation } from '../composables/useIconAnimation'
+import type { AnimatedIconHandle } from '../types'
+
+defineOptions({ inheritAttrs: false, name: 'BookmarkOff02Icon' })
+
+withDefaults(
+  defineProps<{
+    size?: number
+  }>(),
+  { size: 28 },
+)
+
+// after notification-off-01: the slash cuts through and the rest of the glyph recoils
+// generated from @hugeicons/core-free-icons
+const markVariants: Variants = {
+  normal: {
+    transform: 'scale(1) rotate(0deg)',
+  },
+  animate: {
+    transform: ['scale(1) rotate(0deg)', 'scale(0.86) rotate(-1.98deg)', 'scale(1.08) rotate(0.79deg)', 'scale(1) rotate(0deg)'],
+    transition: {
+      duration: 0.51,
+      ease: [0.23, 1, 0.32, 1],
+    },
+  },
+}
+
+const iconVariants: Variants = {
+  normal: {
+    transform: 'rotate(0deg) translateY(0px)',
+    opacity: 1,
+  },
+  animate: {
+    transform: ['rotate(0deg) translateY(0px)', 'rotate(-8.67deg) translateY(0.43px)', 'rotate(0deg) translateY(1.3px)', 'rotate(0deg) translateY(0px)'],
+    opacity: [1, 1, 0.55, 1],
+    transition: {
+      duration: 0.73,
+      ease: [0.77, 0, 0.175, 1],
+    },
+  },
+}
+
+const controls = useAnimationControls()
+const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
+  controls,
+  loops: false,
+})
+
+defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
+</script>
+
+<template>
+  <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
+          <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
+            <motion.path d="M20 19.9429C19.9381 20.9761 19.7617 21.5725 19.259 21.8481C17.7592 22.6701 14.946 19.9276 13.61 19.1019C12.8352 18.623 12.4478 18.3836 12.0167 18.3836C11.5856 18.3836 11.1982 18.623 10.4234 19.1019C9.08741 19.9276 6.27421 22.6701 4.77446 21.8481C4 21.4236 4 20.2377 4 17.866V9.35632C4 7.18055 4 5.63815 4.23168 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 13.59px' }" />
+            <motion.path d="M20 16V9.70753C20 6.07416 20 4.25748 18.8284 3.12874C17.6569 2 15.7712 2 12 2C9.39647 2 7.69163 2 6.5 2.37139" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.25px 9px' }" />
+            <motion.path d="M2 2L22 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+          </svg>
+        </div>
+</template>
