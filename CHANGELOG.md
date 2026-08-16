@@ -5,6 +5,19 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] — 2026-08-16
+
+### Added
+
+- 5,957 generated animated icons from `@hugeicons/core-free-icons`, bringing the set to 6,122.
+- Name-first animation stories so each icon moves from its meaning, shape, and direction.
+- Handcrafted-donor choreography: generated icons inherit gestures from the 165 hand-animated siblings.
+- Per-icon export `hugeicons-animated-vue/icons/*` and a lazy gallery catalog.
+
+### Changed
+
+- Package build compiles the full set with esbuild so the library can ship all 6,122 components.
+
 ## [0.1.1] — 2026-08-14
 
 ### Added
@@ -35,5 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Copy-paste shadcn-vue registry under `apps/web/public/r`.
 - Landing with gallery and Lab (Lenis + GSAP).
 
+[0.2.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.2.0
 [0.1.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.1.1
 [0.1.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.1.0

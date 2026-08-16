@@ -1,8 +1,9 @@
 # hugeicons-animated-vue
 
-Hand-animated [Hugeicons](https://hugeicons.com) for **Vue 3**. Hover plays the
-gesture; you can also drive playback yourself. Finite motions finish their beat.
-Looping motions return to rest. `prefers-reduced-motion` is respected.
+Animated [Hugeicons](https://hugeicons.com) for **Vue 3** — 6,122 icons, including
+165 hand-crafted gestures. Hover plays the motion; you can also drive playback
+yourself. Finite motions finish their beat. Looping motions return to rest.
+`prefers-reduced-motion` is respected.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
 

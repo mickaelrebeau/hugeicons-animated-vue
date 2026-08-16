@@ -4,7 +4,8 @@
 [![license](https://img.shields.io/github/license/mickaelrebeau/hugeicons-animated-vue.svg)](LICENSE)
 [![CI](https://github.com/mickaelrebeau/hugeicons-animated-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/mickaelrebeau/hugeicons-animated-vue/actions/workflows/ci.yml)
 
-A curated collection of hand-animated [Hugeicons](https://hugeicons.com) for **Vue 3**.
+A collection of 6,122 animated [Hugeicons](https://hugeicons.com) for **Vue 3**
+(165 hand-crafted, the rest generated from each icon's name and shape).
 Install from npm, or copy-paste each icon as source you own.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
