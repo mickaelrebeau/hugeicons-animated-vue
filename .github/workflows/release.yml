@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
@@ -32,3 +32,13 @@ jobs:
             exit 0
           fi
           npm publish --access public --provenance
+      - name: Attach package tarball
+        working-directory: packages/vue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          CURRENT="$(node -p "require('./package.json').version")"
+          TARBALL="$(npm pack | tail -n1)"
+          TAG="${{ github.event.release.tag_name }}"
+          TAG="${TAG:-v$CURRENT}"
+          gh release upload "$TAG" "$TARBALL" --clobber
