@@ -43,7 +43,7 @@ const icon = useTemplateRef<AnimatedIconHandle>('bell')
 </template>
 ```
 
-Peer dependencies: `vue` ^3.5 and [`motion-v`](https://motion.dev/docs/vue) ^1.7.
+Peer dependencies: `vue` ^3.5 and [`motion-v`](https://motion.dev/docs/vue) ^1.7 or ^2.
 
 ## Copy-paste
 

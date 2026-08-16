@@ -17,7 +17,7 @@ Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicon
 pnpm add hugeicons-animated-vue motion-v
 ```
 
-Peer dependencies: `vue` ^3.5 and `motion-v` ^1.7.
+Peer dependencies: `vue` ^3.5 and `motion-v` ^1.7 or ^2.
 
 ```ts
 import { Notification03Icon } from 'hugeicons-animated-vue'
