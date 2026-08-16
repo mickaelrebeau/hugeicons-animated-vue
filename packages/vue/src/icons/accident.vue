@@ -13,8 +13,7 @@ withDefaults(
   { size: 28 },
 )
 
-// after alert-circle: two vehicles drive into the same point, recoil from the impact, and leave the crash burst hanging between them
-// generated from @hugeicons/core-free-icons
+// two vehicles drive into the same point, recoil from the impact, and leave the crash burst hanging between them
 const impactVariants: Variants = {
   normal: {
     transform: 'scale(1) rotate(0deg)',

@@ -13,20 +13,28 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-left-02: the mark commits left along its own axis
-// generated from @hugeicons/core-free-icons
+// the chevron slides left and squashes — same mark as arrow-left-01
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleY(1)',
-  },
+  normal: { transform: 'translate(0px, 0px) scaleY(1)' },
   animate: {
-    transform: ['translateX(0px) scaleY(1)', 'translateX(-2.45px) scaleY(0.94)', 'translateX(0.28px) scaleY(1.02)', 'translateX(-0.42px) scaleY(0.99)', 'translateX(0px) scaleY(1)'],
+    transform: [
+      'translate(0px, 0px) scaleY(1)',
+      'translate(-2.6px, 0px) scaleY(0.94)',
+      'translate(0.312px, 0px) scaleY(1.02)',
+      'translate(0px, 0px) scaleY(1)',
+    ],
     transition: {
-      duration: 0.47,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.54,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

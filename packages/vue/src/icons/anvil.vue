@@ -13,20 +13,31 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the anvil move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the horn and face take a blow, then the body settles back onto the foot
+// authored from scripts/authored
+const faceVariants: Variants = {
+  normal: { transform: 'translateY(0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.59px) rotate(-1.87deg)', 'translateY(0.37px) rotate(0.65deg)', 'translateY(0px) rotate(0deg)'],
-    transition: {
-      duration: 0.6,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['translateY(0px)', 'translateY(1.1px)', 'translateY(-0.25px)', 'translateY(0px)'],
+    transition: { duration: 0.52, times: [0, 0.28, 0.62, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
+
+const hornVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
+  animate: {
+    transform: ['rotate(0deg)', 'rotate(-4deg)', 'rotate(1.2deg)', 'rotate(0deg)'],
+    transition: { duration: 0.52, delay: 0.04, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const footVariants: Variants = {
+  normal: { transform: 'scaleY(1)' },
+  animate: {
+    transform: ['scaleY(1)', 'scaleY(0.9)', 'scaleY(1.04)', 'scaleY(1)'],
+    transition: { duration: 0.54, delay: 0.1, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +51,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M7 7.5V5.5C7 4.55719 7 4.08579 7.29289 3.79289C7.58579 3.5 8.05719 3.5 9 3.5H21C21.5523 3.5 22 3.94772 22 4.5C22 8.36599 18.866 11.5 15 11.5H11C9.11438 11.5 8.17157 11.5 7.58579 10.9142C7 10.3284 7 9.38562 7 7.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 20.5px' }" />
-            <motion.path d="M7 4.5H3C2.44772 4.5 2 4.94772 2 5.5C2 7.70914 3.79086 9.5 6 9.5H7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 20.5px' }" />
-            <motion.path d="M16 11.5V13.5C16 15.1569 17.3431 16.5 19 16.5C19.465 16.5 19.6975 16.5 19.8882 16.5511C20.4059 16.6898 20.8102 17.0941 20.9489 17.6118C21 17.8025 21 18.035 21 18.5C21 18.965 21 19.1975 20.9489 19.3882C20.8102 19.9059 20.4059 20.3102 19.8882 20.4489C19.6975 20.5 19.465 20.5 19 20.5H16C15.6265 20.5 15.4398 20.5 15.3219 20.4301C15.204 20.3603 15.0545 20.0872 14.7555 19.541C14.4159 18.9207 13.7571 18.5 13 18.5C12.2429 18.5 11.5841 18.9207 11.2445 19.541C10.9455 20.0872 10.796 20.3603 10.6781 20.4301C10.5602 20.5 10.3735 20.5 10 20.5H7C6.53501 20.5 6.30252 20.5 6.11177 20.4489C5.59413 20.3102 5.18981 19.9059 5.05111 19.3882C5 19.1975 5 18.965 5 18.5C5 18.035 5 17.8025 5.05111 17.6118C5.18981 17.0941 5.59413 16.6898 6.11177 16.5511C6.30252 16.5 6.53501 16.5 7 16.5C8.65685 16.5 10 15.1569 10 13.5V11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 20.5px' }" />
+            <motion.path d="M7 7.5V5.5C7 4.55719 7 4.08579 7.29289 3.79289C7.58579 3.5 8.05719 3.5 9 3.5H21C21.5523 3.5 22 3.94772 22 4.5C22 8.36599 18.866 11.5 15 11.5H11C9.11438 11.5 8.17157 11.5 7.58579 10.9142C7 10.3284 7 9.38562 7 7.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="faceVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 7.5px' }" />
+            <motion.path d="M7 4.5H3C2.44772 4.5 2 4.94772 2 5.5C2 7.70914 3.79086 9.5 6 9.5H7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="hornVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '4.5px 7px' }" />
+            <motion.path d="M16 11.5V13.5C16 15.1569 17.3431 16.5 19 16.5C19.465 16.5 19.6975 16.5 19.8882 16.5511C20.4059 16.6898 20.8102 17.0941 20.9489 17.6118C21 17.8025 21 18.035 21 18.5C21 18.965 21 19.1975 20.9489 19.3882C20.8102 19.9059 20.4059 20.3102 19.8882 20.4489C19.6975 20.5 19.465 20.5 19 20.5H16C15.6265 20.5 15.4398 20.5 15.3219 20.4301C15.204 20.3603 15.0545 20.0872 14.7555 19.541C14.4159 18.9207 13.7571 18.5 13 18.5C12.2429 18.5 11.5841 18.9207 11.2445 19.541C10.9455 20.0872 10.796 20.3603 10.6781 20.4301C10.5602 20.5 10.3735 20.5 10 20.5H7C6.53501 20.5 6.30252 20.5 6.11177 20.4489C5.59413 20.3102 5.18981 19.9059 5.05111 19.3882C5 19.1975 5 18.965 5 18.5C5 18.035 5 17.8025 5.05111 17.6118C5.18981 17.0941 5.59413 16.6898 6.11177 16.5511C6.30252 16.5 6.53501 16.5 7 16.5C8.65685 16.5 10 15.1569 10 13.5V11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="footVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 20px' }" />
           </svg>
         </div>
 </template>

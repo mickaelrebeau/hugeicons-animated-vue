@@ -27,7 +27,9 @@ Requires Node 20+ and [pnpm](https://pnpm.io) 10.
 | `packages/vue` | Vue 3 + `motion-v` icon library published to npm |
 | `apps/web` | Landing, gallery, and Lab |
 | `scripts/` | Icon convert, registry, and manifest tooling |
+| `scripts/authored/` | Per-page authored gestures (gallery pages 1–5 so far) |
 | `docs/animation-guidelines.md` | Motion rules for new or revised icons |
+| `AGENTS.md` | How to author the next gallery page without overwriting originals |
 
 ## Icons
 

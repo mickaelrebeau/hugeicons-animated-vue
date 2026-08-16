@@ -13,21 +13,41 @@ withDefaults(
   { size: 28 },
 )
 
-// after home-01: a small craft banks past the tower, then the building settles
-// generated from @hugeicons/core-free-icons
-const planeVariants: Variants = {
-  normal: {
-    transform: 'translate(0px, 0px) rotate(0deg)',
-  },
+// the mast pulses, the canopy lifts and the jetway marks flick on down the pier
+// authored from scripts/authored
+const jetwayVariants: Variants = {
+  normal: { transform: 'scale(1)', opacity: 1 },
   animate: {
-    transform: ['translate(0px, 0px) rotate(0deg)', 'translate(1.69px, -1.48px) rotate(-7.41deg)', 'translate(3.39px, -0.53px) rotate(-2.12deg)', 'translate(0.42px, 0.37px) rotate(1.27deg)', 'translate(0px, 0px) rotate(0deg)'],
-    transition: {
-      duration: 0.94,
-      times: [0, 0.28, 0.55, 0.8, 1],
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: ['scale(1)', 'scale(0.88)', 'scale(1.05)', 'scale(1)'],
+    opacity: [1, 0.35, 1, 1],
+    transition: { duration: 0.54, delay: 0.16, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
+
+const canopyVariants: Variants = {
+  normal: { transform: 'translateY(0px) scaleY(1)' },
+  animate: {
+    transform: ['translateY(0px) scaleY(1)', 'translateY(-0.6px) scaleY(1.05)', 'translateY(0px) scaleY(1)'],
+    transition: { duration: 0.58, delay: 0.06, times: [0, 0.4, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const roofVariants: Variants = {
+  normal: { transform: 'translateY(0px)' },
+  animate: {
+    transform: ['translateY(0px)', 'translateY(-0.8px)', 'translateY(0px)'],
+    transition: { duration: 0.58, delay: 0.03, times: [0, 0.4, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const mastVariants: Variants = {
+  normal: { transform: 'scaleY(1)', opacity: 1 },
+  animate: {
+    transform: ['scaleY(1)', 'scaleY(0.5)', 'scaleY(1.12)', 'scaleY(1)'],
+    opacity: [1, 0.4, 1, 1],
+    transition: { duration: 0.54, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,12 +61,12 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M10.0002 12H6.00024V19C6.00024 20.4142 6.00024 21.1213 6.43958 21.5607C6.87892 22 7.58603 22 9.00024 22H10.0002V12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="planeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 17px' }" />
-            <motion.path d="M18.0002 15H10.0002V22H18.0002C19.4145 22 20.1216 22 20.5609 21.5607C21.0002 21.1213 21.0002 20.4142 21.0002 19V18C21.0002 16.5858 21.0002 15.8787 20.5609 15.4393C20.1216 15 19.4145 15 18.0002 15Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="planeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.5px 18.5px' }" />
-            <motion.path d="M21 6L20 7M16.5 7H20M20 7L17 10H16M20 7V10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="planeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '18.5px 8.25px' }" />
-            <motion.path d="M12.2686 10.1181C11.9025 11.0296 11.7195 11.4854 11.3388 11.7427C10.9582 12 10.4671 12 9.4848 12H6.51178C5.5295 12 5.03836 12 4.65773 11.7427C4.27711 11.4854 4.09405 11.0296 3.72794 10.1181L3.57717 9.74278C3.07804 8.50009 2.82847 7.87874 3.12717 7.43937C3.42587 7 4.09785 7 5.44182 7H10.5548C11.8987 7 12.5707 7 12.8694 7.43937C13.1681 7.87874 12.9185 8.50009 12.4194 9.74278L12.2686 10.1181Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="planeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 9.5px' }" />
-            <motion.path d="M9.99616 7H6.00407C5.18904 5.73219 4.8491 5.09829 5.06258 4.59641C5.34685 4.13381 6.15056 4 7.61989 4H8.38063C9.84995 4 10.6537 4.13381 10.9379 4.59641C11.1514 5.09829 10.8112 5.73219 9.99616 7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="planeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 5.5px' }" />
-            <motion.path d="M8 4V2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="planeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 3px' }" />
+            <path d="M10.0002 12H6.00024V19C6.00024 20.4142 6.00024 21.1213 6.43958 21.5607C6.87892 22 7.58603 22 9.00024 22H10.0002V12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M18.0002 15H10.0002V22H18.0002C19.4145 22 20.1216 22 20.5609 21.5607C21.0002 21.1213 21.0002 20.4142 21.0002 19V18C21.0002 16.5858 21.0002 15.8787 20.5609 15.4393C20.1216 15 19.4145 15 18.0002 15Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M21 6L20 7M16.5 7H20M20 7L17 10H16M20 7V10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="jetwayVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '18.5px 8.3px' }" />
+            <motion.path d="M12.2686 10.1181C11.9025 11.0296 11.7195 11.4854 11.3388 11.7427C10.9582 12 10.4671 12 9.4848 12H6.51178C5.5295 12 5.03836 12 4.65773 11.7427C4.27711 11.4854 4.09405 11.0296 3.72794 10.1181L3.57717 9.74278C3.07804 8.50009 2.82847 7.87874 3.12717 7.43937C3.42587 7 4.09785 7 5.44182 7H10.5548C11.8987 7 12.5707 7 12.8694 7.43937C13.1681 7.87874 12.9185 8.50009 12.4194 9.74278L12.2686 10.1181Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="canopyVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 12px' }" />
+            <motion.path d="M9.99616 7H6.00407C5.18904 5.73219 4.8491 5.09829 5.06258 4.59641C5.34685 4.13381 6.15056 4 7.61989 4H8.38063C9.84995 4 10.6537 4.13381 10.9379 4.59641C11.1514 5.09829 10.8112 5.73219 9.99616 7Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="roofVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 7px' }" />
+            <motion.path d="M8 4V2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="mastVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 4px' }" />
           </svg>
         </div>
 </template>

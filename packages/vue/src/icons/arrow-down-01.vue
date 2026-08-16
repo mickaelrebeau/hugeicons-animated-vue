@@ -13,20 +13,28 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-down-02: the mark commits downward along its own axis
-// generated from @hugeicons/core-free-icons
+// the chevron drops, squashes a little, and settles — head-only cousin of arrow-down-02
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleX(1)',
-  },
+  normal: { transform: 'translate(0px, 0px) scaleX(1)' },
   animate: {
-    transform: ['translateY(0px) scaleX(1)', 'translateY(2.59px) scaleX(0.94)', 'translateY(-0.3px) scaleX(1.02)', 'translateY(0.45px) scaleX(0.99)', 'translateY(0px) scaleX(1)'],
+    transform: [
+      'translate(0px, 0px) scaleX(1)',
+      'translate(0px, 2.6px) scaleX(0.94)',
+      'translate(0px, -0.3px) scaleX(1.02)',
+      'translate(0px, 0px) scaleX(1)',
+    ],
     transition: {
-      duration: 0.49,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

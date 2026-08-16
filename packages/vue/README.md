@@ -1,9 +1,13 @@
 # hugeicons-animated-vue
 
-Animated [Hugeicons](https://hugeicons.com) for **Vue 3** — 6,122 icons, including
-165 hand-crafted gestures. Hover plays the motion; you can also drive playback
-yourself. Finite motions finish their beat. Looping motions return to rest.
-`prefers-reduced-motion` is respected.
+Animated [Hugeicons](https://hugeicons.com) for **Vue 3** — 6,122 icons.
+
+Unique, per-icon choreography is authored for **gallery pages 1–5 only**
+(`a-arrow-down` through `arrow-vertical`), plus the original 165 hand-crafted
+gestures. Icons after that page still use a generated name-and-shape recipe.
+Hover plays the motion; you can also drive playback yourself. Finite motions
+finish their beat. Looping motions return to rest. `prefers-reduced-motion`
+is respected.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
 

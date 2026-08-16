@@ -4,9 +4,14 @@
 [![license](https://img.shields.io/github/license/mickaelrebeau/hugeicons-animated-vue.svg)](LICENSE)
 [![CI](https://github.com/mickaelrebeau/hugeicons-animated-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/mickaelrebeau/hugeicons-animated-vue/actions/workflows/ci.yml)
 
-A collection of 6,122 animated [Hugeicons](https://hugeicons.com) for **Vue 3**
-(165 hand-crafted, the rest generated from each icon's name and shape).
+A collection of 6,122 animated [Hugeicons](https://hugeicons.com) for **Vue 3**.
 Install from npm, or copy-paste each icon as source you own.
+
+**Authored motion covers gallery pages 1–5 only** (the first 400 icons in
+alphabetical order, `a-arrow-down` through `arrow-vertical`). Those icons
+have a unique hover gesture written from the pictogram's name, geometry, and
+direction. The 165 original hand-crafted icons are unchanged. Every icon
+after page 5 still uses a generated recipe from its name and shape.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
 
@@ -62,6 +67,25 @@ Or add this to `components.json`:
 }
 ```
 
+## Animation coverage
+
+The site gallery shows 80 icons per page. Unique, per-icon choreography has
+been authored for **pages 1–5** only:
+
+| Page | Icons | Authored file |
+| --- | --- | --- |
+| 1 | `a-arrow-down` → `ai-eraser` | `scripts/authored/page-01.mjs` |
+| 2 | `ai-file` → `album-not-found-01` | `scripts/authored/page-02.mjs` |
+| 3 | `album-not-found-02` → `analytics-up` | `scripts/authored/page-03.mjs` |
+| 4 | `analytics` → `arrow-down-narrow-wide` | `scripts/authored/page-04.mjs` |
+| 5 | `arrow-down-one-zero` → `arrow-vertical` | `scripts/authored/page-05.mjs` |
+
+Hand-crafted originals that fall in that range were left untouched (for
+example `add-circle`, `alert-circle`, `arrow-down-02`).
+Page 6 onward (`arrows-up-from-line` and after) is still generated.
+
+To continue the walk, see [AGENTS.md](AGENTS.md).
+
 ## Animation rules
 
 - Name the action and animate only the geometry that communicates it.
@@ -83,6 +107,7 @@ Landing: Vite + Vue 3, Lenis, GSAP ScrollTrigger. Icons live in `packages/vue`.
 
 ```bash
 pnpm --filter hugeicons-animated-vue build
+pnpm icons:author     # emit pages in scripts/authored/ (pages 1–5 so far)
 pnpm icons:convert    # re-port from a local React clone
 pnpm registry:build   # manifest + shadcn registry
 ```

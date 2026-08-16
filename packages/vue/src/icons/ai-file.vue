@@ -13,17 +13,29 @@ withDefaults(
   { size: 28 },
 )
 
-// after sparkles: the intelligence points answer one another instead of pulsing as a single badge
-// generated from @hugeicons/core-free-icons
-const dotVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scale(1)',
+// the page lifts off the stack as the spark signs it
+// authored from scripts/authored
+const pageVariants: Variants = {
+  normal: { transform: 'translateY(0px) scale(1)' },
+  animate: {
+    transform: ['translateY(0px) scale(1)', 'translateY(-1.5px) scale(1.012)', 'translateY(0px) scale(1)'],
+    transition: { duration: 0.58, times: [0, 0.42, 1], ease: [0.23, 1, 0.32, 1] },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(0px) scale(1)', 'translateY(-1.62px) scale(1.2)', 'translateY(0.38px) scale(0.95)', 'translateY(0px) scale(1)'],
-    transition: { duration: 0.44, ease: 'easeOut', delay: i * 0.08 },
-  }),
-}
+};
+
+const sparkVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)', opacity: 1 },
+  animate: {
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-26deg) scale(0.5)',
+      'rotate(9deg) scale(1.2)',
+      'rotate(0deg) scale(1)',
+    ],
+    opacity: [1, 0.5, 1, 1],
+    transition: { duration: 0.62, delay: 0.12, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -37,8 +49,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M19 12.001V10.6578C19 9.84033 19 9.43158 18.8478 9.06404C18.6955 8.69649 18.4065 8.40746 17.8284 7.8294L13.0919 3.09286C12.593 2.59397 12.3436 2.34453 12.0345 2.19672C11.9702 2.16598 11.9044 2.1387 11.8372 2.11499C11.5141 2.00098 11.1614 2.00098 10.4558 2.00098C7.21082 2.00098 5.58831 2.00098 4.48933 2.88705C4.26731 3.06606 4.06508 3.26829 3.88607 3.49031C3 4.58928 3 6.2118 3 9.45682V14.001C3 17.7722 3 19.6578 4.17157 20.8294C5.34315 22.001 7.22876 22.001 11 22.001H13.0345M12 2.50098V3.00098C12 5.8294 12 7.24362 12.8787 8.1223C13.7574 9.00098 15.1716 9.00098 18 9.00098H18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 12px' }" />
-            <motion.path d="M17.5 15.001L17.7579 15.698C18.0961 16.612 18.2652 17.069 18.5986 17.4024C18.932 17.7357 19.389 17.9048 20.303 18.2431L21 18.501L20.303 18.7589C19.389 19.0971 18.932 19.2662 18.5986 19.5996C18.2652 19.933 18.0961 20.39 17.7579 21.3039L17.5 22.001L17.2421 21.3039C16.9039 20.39 16.7348 19.933 16.4014 19.5996C16.068 19.2662 15.611 19.0971 14.697 18.7589L14 18.501L14.697 18.2431C15.611 17.9048 16.068 17.7357 16.4014 17.4024C16.7348 17.069 16.9039 16.612 17.2421 15.698L17.5 15.001Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 18.5px' }" />
+            <motion.path d="M19 12.001V10.6578C19 9.84033 19 9.43158 18.8478 9.06404C18.6955 8.69649 18.4065 8.40746 17.8284 7.8294L13.0919 3.09286C12.593 2.59397 12.3436 2.34453 12.0345 2.19672C11.9702 2.16598 11.9044 2.1387 11.8372 2.11499C11.5141 2.00098 11.1614 2.00098 10.4558 2.00098C7.21082 2.00098 5.58831 2.00098 4.48933 2.88705C4.26731 3.06606 4.06508 3.26829 3.88607 3.49031C3 4.58928 3 6.2118 3 9.45682V14.001C3 17.7722 3 19.6578 4.17157 20.8294C5.34315 22.001 7.22876 22.001 11 22.001H13.0345M12 2.50098V3.00098C12 5.8294 12 7.24362 12.8787 8.1223C13.7574 9.00098 15.1716 9.00098 18 9.00098H18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pageVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 22px' }" />
+            <motion.path d="M17.5 15.001L17.7579 15.698C18.0961 16.612 18.2652 17.069 18.5986 17.4024C18.932 17.7357 19.389 17.9048 20.303 18.2431L21 18.501L20.303 18.7589C19.389 19.0971 18.932 19.2662 18.5986 19.5996C18.2652 19.933 18.0961 20.39 17.7579 21.3039L17.5 22.001L17.2421 21.3039C16.9039 20.39 16.7348 19.933 16.4014 19.5996C16.068 19.2662 15.611 19.0971 14.697 18.7589L14 18.501L14.697 18.2431C15.611 17.9048 16.068 17.7357 16.4014 17.4024C16.7348 17.069 16.9039 16.612 17.2421 15.698L17.5 15.001Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="sparkVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 18.5px' }" />
           </svg>
         </div>
 </template>

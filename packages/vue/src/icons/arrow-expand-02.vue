@@ -13,20 +13,23 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-right-02: the mark commits right along its own axis
-// generated from @hugeicons/core-free-icons
+// both opposite corners fly out at once — the fused expand
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleY(1)',
-  },
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translateX(0px) scaleY(1)', 'translateX(2.69px) scaleY(0.94)', 'translateX(-0.31px) scaleY(1.02)', 'translateX(0.47px) scaleY(0.99)', 'translateX(0px) scaleY(1)'],
+    transform: ['scale(1)', 'scale(1.16)', 'scale(0.98)', 'scale(1)'],
     transition: {
       duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
+      times: [0, 0.42, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
