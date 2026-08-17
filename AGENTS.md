@@ -14,14 +14,15 @@ handcrafted originals. Do not invent a shared pulse or spin recipe.
 When the task is authoring, converting, or reviewing icon motion, follow this
 file end to end and load the project skill `.cursor/skills/author-icon-motion`.
 
-## Current coverage — stopped after gallery page 5
+## Current coverage — stopped after gallery page 10
 
 The gallery paginates **80 icons** (`apps/web/src/components/IconGallery.vue`).
 `scripts/dump-geometry.mjs` uses the same alphabetical order as the icon files
 (`a.vue` vs `b.vue` string sort), so index `80` here is gallery page 2.
 
-**Authored (unique choreography) exists only for gallery pages 1–5.**
-Icons from page 6 onward still carry the generated marker and a name/shape recipe
+**Authored (unique choreography) exists only for gallery pages 1–10**, plus
+`border-right-01` and `border-right-02` (start of page 11, authored with page 10).
+Icons from page 11 onward still carry the generated marker and a name/shape recipe
 from `scripts/icon-motion.mjs`. Do not claim the whole library is hand-authored.
 
 | Gallery page | Indices | Range | Specs | File |
@@ -31,14 +32,19 @@ from `scripts/icon-motion.mjs`. Do not claim the whole library is hand-authored.
 | 3 | 160–239 | `album-not-found-02` → `analytics-up` | 79 | `scripts/authored/page-03.mjs` |
 | 4 | 240–319 | `analytics` → `arrow-down-narrow-wide` | 77 | `scripts/authored/page-04.mjs` |
 | 5 | 320–399 | `arrow-down-one-zero` → `arrow-vertical` | 74 | `scripts/authored/page-05.mjs` |
-| **6 (next)** | **400–479** | **`arrows-up-from-line` → `backpack-02`** | **79 to write** | **`scripts/authored/page-06.mjs`** |
+| 6 | 400–479 | `arrows-up-from-line` → `backpack-02` | 79 | `scripts/authored/page-06.mjs` |
+| 7 | 480–559 | `backpack-03` → `bean` | 79 | `scripts/authored/page-07.mjs` |
+| 8 | 560–639 | `beater` → `bitcoin-money-02` | 80 | `scripts/authored/page-08.mjs` |
+| 9 | 640–719 | `bitcoin-money` → `book-04` | 79 | `scripts/authored/page-09.mjs` |
+| 10 | 720–801 | `book-a` → `border-right-02` | 81 | `scripts/authored/page-10.mjs` |
+| **11 (next)** | **802–879** | **`border-right` → `bubble-chat-preview`** | | **`scripts/authored/page-11.mjs`** |
 
-Totals after page 5: **386 authored specs**, **6,122 icons**, **552** files
-without the generated marker (165 originals + `accident` + 386 authored).
+Totals after page 10: **784 authored specs**, **6,122 icons**, **950** files
+without the generated marker (165 originals + `accident` + 784 authored).
 
-Resume at page 6. Skip `attachment` (handcrafted). After each page, stop and
-ask whether to continue or let the user hover-review — do not silently walk
-the rest of the library.
+Resume at page 11 (`border-right`). Skip `bookmark-01` already done (handcrafted,
+left out of page 10). After each page, stop and ask whether to continue or let
+the user hover-review — do not silently walk the rest of the library.
 
 ## Three tiers of icon motion
 
@@ -57,7 +63,7 @@ The authoring emitter overwrites **generated or authored** files. It refuses a
 handcrafted file unless the spec sets `rework: true`. Never set `rework` unless
 the user explicitly asks to replace that original.
 
-### Protected originals in pages 1–6 (do not touch)
+### Protected originals in pages 1–10 (do not touch)
 
 Page 1: `add-circle`, `accident` (collision verb only; no authored/generated marker).
 Page 2: `airplane-take-off-01`, `alarm-clock`.
@@ -67,6 +73,10 @@ Page 5: `arrow-down-right-01`, `arrow-left-02` (translateX −2.6, scaleY 0.94),
 `arrow-right-02`, `arrow-up-02` (translateY −2.6, scaleX 0.94),
 `arrow-up-left-01`, `arrow-up-right-01` (translate 2.1, −2.1).
 Page 6: `attachment`.
+Page 7: `battery-charging-01`.
+Page 8: none.
+Page 9: `bluetooth`.
+Page 10: `bookmark-01`.
 
 Handcrafted arrows often animate a wrapping `<g>`. Sampling only `<path>` in
 DevTools can show `moved: 0` even when the gesture plays.
@@ -76,7 +86,7 @@ DevTools can show `moved: 0` even when the gesture plays.
 1. Dump geometry — author against those numbers, not guesses:
 
    ```bash
-   node scripts/dump-geometry.mjs 400 80
+   node scripts/dump-geometry.mjs 802 80
    node scripts/dump-geometry.mjs airplane-mode-off
    ```
 
@@ -100,8 +110,8 @@ DevTools can show `moved: 0` even when the gesture plays.
    ```
 
    Expect `✓ authored N/N` with N = all specs across every page file. After
-   page 6 that should be **465/465** and **631** handcrafted in the manifest
-   (552 + 79), unless a skip list changed.
+   page 11, add the new specs to the current **784/784** and **950**
+   handcrafted, unless a skip list changed.
 
 6. Spot-check in the gallery (`pnpm dev`, usually `http://localhost:5173`).
    Hover uses `.hia-icon` + `mouseenter`. The gallery cell also fires

@@ -13,20 +13,53 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the blush brush move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the wand strokes from the handle, the sparkle riding the bristles
+// authored from scripts/authored
+const wandVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.76px) rotate(-2.08deg)', 'translateY(0.42px) rotate(0.73deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(2.39px, 0.76px) rotate(14deg)',
+      'translate(-1.42px, -0.17px) rotate(-8deg)',
+      'translate(0.53px, 0.11px) rotate(3deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.57,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.74,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const sparkVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(3.75px, -0.57px) rotate(14deg)',
+      'translate(-2.05px, 0.73px) rotate(-8deg)',
+      'translate(0.79px, -0.20px) rotate(3deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.74,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +73,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 13L15 15M12 13C7.52052 15.7458 4.88172 14.7808 3 13.8508C3 15.9297 3.68122 17.6692 4.69609 19M15 15L17.5978 10L20.876 3.69028C21.1655 3.1134 20.9308 2.41193 20.3519 2.12349C19.7937 1.84536 19.1147 2.05196 18.8076 2.59338L15 8.41396L12 13M15 15C14.781 17.0373 13.4267 21.1851 10.1556 22C8.34064 22 6.16762 20.9296 4.69609 19M17.5978 10L15 8.41396M4.69609 19C5.73446 19.1667 8.28008 19.2 10.1556 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.08px 22px' }" />
-            <motion.path d="M6 4L6.22108 4.59745C6.51097 5.38087 6.65592 5.77259 6.94167 6.05834C7.22741 6.34408 7.61913 6.48903 8.40255 6.77892L9 7L8.40255 7.22108C7.61913 7.51097 7.22741 7.65592 6.94167 7.94167C6.65592 8.22741 6.51097 8.61913 6.22108 9.40255L6 10L5.77892 9.40255C5.48903 8.61913 5.34408 8.22741 5.05833 7.94167C4.77259 7.65592 4.38087 7.51097 3.59745 7.22108L3 7L3.59745 6.77892C4.38087 6.48903 4.77259 6.34408 5.05833 6.05833C5.34408 5.77259 5.48903 5.38087 5.77892 4.59745L6 4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.08px 22px' }" />
+            <motion.path d="M12 13L15 15M12 13C7.52052 15.7458 4.88172 14.7808 3 13.8508C3 15.9297 3.68122 17.6692 4.69609 19M15 15L17.5978 10L20.876 3.69028C21.1655 3.1134 20.9308 2.41193 20.3519 2.12349C19.7937 1.84536 19.1147 2.05196 18.8076 2.59338L15 8.41396L12 13M15 15C14.781 17.0373 13.4267 21.1851 10.1556 22C8.34064 22 6.16762 20.9296 4.69609 19M17.5978 10L15 8.41396M4.69609 19C5.73446 19.1667 8.28008 19.2 10.1556 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="wandVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.1px 11.9px' }" />
+            <motion.path d="M6 4L6.22108 4.59745C6.51097 5.38087 6.65592 5.77259 6.94167 6.05834C7.22741 6.34408 7.61913 6.48903 8.40255 6.77892L9 7L8.40255 7.22108C7.61913 7.51097 7.22741 7.65592 6.94167 7.94167C6.65592 8.22741 6.51097 8.61913 6.22108 9.40255L6 10L5.77892 9.40255C5.48903 8.61913 5.34408 8.22741 5.05833 7.94167C4.77259 7.65592 4.38087 7.51097 3.59745 7.22108L3 7L3.59745 6.77892C4.38087 6.48903 4.77259 6.34408 5.05833 6.05833C5.34408 5.77259 5.48903 5.38087 5.77892 4.59745L6 4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="sparkVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 7px' }" />
           </svg>
         </div>
 </template>

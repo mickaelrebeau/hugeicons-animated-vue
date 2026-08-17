@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch, type ComponentPublicInstance } from 'vue'
-import { ICON_NAMES, HANDCRAFTED_ICONS, catalogReady, generatedIcon, loadIconCatalog } from '../lib/icons-manifest'
+import { ICON_NAMES, catalogReady, generatedIcon, handcraftedIcon, isHandcraftedIcon, loadIconCatalog } from '../lib/icons-manifest'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
 import Search01Icon from 'hugeicons-animated-vue/icons/search-01.vue'
@@ -88,8 +88,8 @@ async function copy(name: string) {
         @pointerleave="handles.get(name)?.stopAnimation()"
       >
         <component
-          v-if="HANDCRAFTED_ICONS[name]"
-          :is="HANDCRAFTED_ICONS[name]"
+          v-if="isHandcraftedIcon(name)"
+          :is="handcraftedIcon(name)"
           :ref="(el) => bindHandle(name, el)"
           :size="32"
         />

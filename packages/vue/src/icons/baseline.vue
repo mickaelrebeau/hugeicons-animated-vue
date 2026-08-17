@@ -13,34 +13,28 @@ withDefaults(
   { size: 28 },
 )
 
-// after file-01: the body of the baseline lifts while its detail lines follow
-// generated from @hugeicons/core-free-icons
-const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the A drops onto the still baseline and seats
+// authored from scripts/authored
+const letterVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.78px) rotate(-0.98deg)', 'translateY(0.44px) rotate(0.49deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -2.2px)',
+      'translate(0px, 0.30800000000000005px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
       duration: 0.56,
-      ease: [0.23, 1, 0.32, 1],
+      times: [0, 0.12, 0.62, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
-
-const lineVariants: Variants = {
-  normal: {
-    transform: 'scaleX(1)',
-  },
-  animate: {
-    transform: ['scaleX(1)', 'scaleX(0.5)', 'scaleX(1.1)', 'scaleX(1)'],
-    transition: {
-      duration: 0.46,
-      delay: 0.12,
-      ease: [0.23, 1, 0.32, 1],
-    },
-  },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -54,8 +48,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M5.315 15.6946C5.14633 16.0729 5.31628 16.5163 5.6946 16.685C6.07291 16.8537 6.51633 16.6837 6.685 16.3054L6 16L5.315 15.6946ZM10.1724 6.64162L9.48737 6.33622V6.33622L10.1724 6.64162ZM13.8276 6.64162L13.1426 6.94702V6.94702L13.8276 6.64162ZM17.315 16.3054C17.4837 16.6837 17.9271 16.8537 18.3054 16.685C18.6837 16.5163 18.8537 16.0729 18.685 15.6946L18 16L17.315 16.3054ZM8 11.25C7.58579 11.25 7.25 11.5858 7.25 12C7.25 12.4142 7.58579 12.75 8 12.75V12V11.25ZM16 12.75C16.4142 12.75 16.75 12.4142 16.75 12C16.75 11.5858 16.4142 11.25 16 11.25V12V12.75ZM6 16L6.685 16.3054L10.8574 6.94702L10.1724 6.64162L9.48737 6.33622L5.315 15.6946L6 16ZM13.8276 6.64162L13.1426 6.94702L17.315 16.3054L18 16L18.685 15.6946L14.5126 6.33622L13.8276 6.64162ZM10.1724 6.64162L10.8574 6.94702C11.2603 6.04328 11.5297 5.44382 11.7714 5.06034C12.0231 4.66106 12.0885 4.75 12 4.75V4V3.25C11.2616 3.25 10.8058 3.77921 10.5025 4.26047C10.1891 4.75753 9.86961 5.47888 9.48737 6.33622L10.1724 6.64162ZM13.8276 6.64162L14.5126 6.33622C14.1304 5.47888 13.8109 4.75753 13.4975 4.26047C13.1942 3.77921 12.7384 3.25 12 3.25V4V4.75C11.9115 4.75 11.9769 4.66106 12.2286 5.06034C12.4703 5.44382 12.7397 6.04328 13.1426 6.94702L13.8276 6.64162ZM8 12V12.75H16V12V11.25H8V12Z" fill="currentColor" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10.05px' }" />
-            <motion.path d="M4 20H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="lineVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 20px' }" />
+            <motion.path d="M5.315 15.6946C5.14633 16.0729 5.31628 16.5163 5.6946 16.685C6.07291 16.8537 6.51633 16.6837 6.685 16.3054L6 16L5.315 15.6946ZM10.1724 6.64162L9.48737 6.33622V6.33622L10.1724 6.64162ZM13.8276 6.64162L13.1426 6.94702V6.94702L13.8276 6.64162ZM17.315 16.3054C17.4837 16.6837 17.9271 16.8537 18.3054 16.685C18.6837 16.5163 18.8537 16.0729 18.685 15.6946L18 16L17.315 16.3054ZM8 11.25C7.58579 11.25 7.25 11.5858 7.25 12C7.25 12.4142 7.58579 12.75 8 12.75V12V11.25ZM16 12.75C16.4142 12.75 16.75 12.4142 16.75 12C16.75 11.5858 16.4142 11.25 16 11.25V12V12.75ZM6 16L6.685 16.3054L10.8574 6.94702L10.1724 6.64162L9.48737 6.33622L5.315 15.6946L6 16ZM13.8276 6.64162L13.1426 6.94702L17.315 16.3054L18 16L18.685 15.6946L14.5126 6.33622L13.8276 6.64162ZM10.1724 6.64162L10.8574 6.94702C11.2603 6.04328 11.5297 5.44382 11.7714 5.06034C12.0231 4.66106 12.0885 4.75 12 4.75V4V3.25C11.2616 3.25 10.8058 3.77921 10.5025 4.26047C10.1891 4.75753 9.86961 5.47888 9.48737 6.33622L10.1724 6.64162ZM13.8276 6.64162L14.5126 6.33622C14.1304 5.47888 13.8109 4.75753 13.4975 4.26047C13.1942 3.77921 12.7384 3.25 12 3.25V4V4.75C11.9115 4.75 11.9769 4.66106 12.2286 5.06034C12.4703 5.44382 12.7397 6.04328 13.1426 6.94702L13.8276 6.64162ZM8 12V12.75H16V12V11.25H8V12Z" fill="currentColor" :variants="letterVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10.1px' }" />
+            <path d="M4 20H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,99 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the coin turns over on its own axis and lands flat
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateY(0deg)',
-  },
+// the whole B glyph nods from the stem foot, bowls and serifs locked
+// authored from scripts/authored
+const bowlsVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['rotateY(0deg)', 'rotateY(90deg)', 'rotateY(180deg)', 'rotateY(270deg)', 'rotateY(360deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.85px, 0.47px) rotate(5deg)',
+      'translate(-0.71px, -0.32px) rotate(-4deg)',
+      'translate(0.26px, 0.13px) rotate(1.5deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.71,
-      ease: [0.77, 0, 0.175, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const stemVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.87px, 0.04px) rotate(5deg)',
+      'translate(-0.70px, 0.02px) rotate(-4deg)',
+      'translate(0.26px, 0.00px) rotate(1.5deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const serifTVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(1.64px, 0.46px) rotate(5deg)',
+      'translate(-1.34px, -0.27px) rotate(-4deg)',
+      'translate(0.50px, 0.12px) rotate(1.5deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const serifBVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.07px, 0.40px) rotate(5deg)',
+      'translate(-0.08px, -0.31px) rotate(-4deg)',
+      'translate(0.02px, 0.12px) rotate(1.5deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +119,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M6 4H14.4C16.3882 4 18 5.79086 18 8C18 10.2091 16.3882 12 14.4 12M14.4 12C16.3882 12 18 13.7909 18 16C18 18.2091 16.3882 20 14.4 20H6M14.4 12H7.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M7 4V20" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M9 2L9 4M14 2V4" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M9 20L9 22M14 20V22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M6 4H14.4C16.3882 4 18 5.79086 18 8C18 10.2091 16.3882 12 14.4 12M14.4 12C16.3882 12 18 13.7909 18 16C18 18.2091 16.3882 20 14.4 20H6M14.4 12H7.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="bowlsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M7 4V20" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="stemVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 12px' }" />
+            <motion.path d="M9 2L9 4M14 2V4" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="serifTVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 3px' }" />
+            <motion.path d="M9 20L9 22M14 20V22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="serifBVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 21px' }" />
           </svg>
         </div>
 </template>

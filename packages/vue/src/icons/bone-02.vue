@@ -13,32 +13,53 @@ withDefaults(
   { size: 28 },
 )
 
-// after grid-view: the pieces of the bone take turns from their own geometric centers
-// generated from @hugeicons/core-free-icons
-const cellVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
-  },
-  animate: (i: number) => ({
-    transform: ['scale(0.72) rotate(-4.89deg)', 'scale(1.1) rotate(1.96deg)', 'scale(1) rotate(0deg)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1], delay: i * 0.055 },
-  }),
-}
-
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the two halves rattle opposite around the joint, ticks holding
+// authored from scripts/authored
+const knobBLVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.71px) rotate(-2.02deg)', 'translateY(0.4px) rotate(0.71deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.57px, -0.66px) rotate(8deg)',
+      'translate(0.40px, 0.37px) rotate(-5deg)',
+      'translate(-0.15px, -0.16px) rotate(2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.55,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const knobTRVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.66px, -0.57px) rotate(-8deg)',
+      'translate(0.37px, 0.40px) rotate(5deg)',
+      'translate(-0.16px, -0.15px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.66,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -52,10 +73,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8.85977 14.4543C9.24591 14.0681 9.72987 13.8394 10.2319 13.7681M10.2319 13.7681C10.9612 13.6646 11.7287 13.8933 12.2896 14.4543C13.2368 15.4014 13.2368 16.937 12.2896 17.8841C11.537 18.6368 10.4127 18.7913 9.50745 18.3478C9.11069 18.1534 8.6065 18.1374 8.29408 18.4498L4.74391 22M10.2319 13.7681C10.2319 13.768 10.2319 13.7682 10.2319 13.7681ZM10.2319 13.7681C10.3354 13.0388 10.1067 12.2713 9.54574 11.7104C8.59861 10.7632 7.06299 10.7632 6.11586 11.7104C5.3632 12.463 5.20866 13.5873 5.65222 14.4925C5.84662 14.8893 5.86259 15.3935 5.55017 15.7059L2 19.2561" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '7.62px 16.38px' }" />
-            <motion.path d="M15.1402 9.54574C14.7541 9.93189 14.2701 10.1606 13.7681 10.2319M13.7681 10.2319C13.0388 10.3354 12.2713 10.1067 11.7104 9.54574C10.7632 8.59861 10.7632 7.063 11.7104 6.11586C12.463 5.3632 13.5873 5.20866 14.4925 5.65222C14.8893 5.84662 15.3935 5.86259 15.7059 5.55017L19.2561 2M13.7681 10.2319C13.6646 10.9612 13.8933 11.7287 14.4543 12.2896C15.4014 13.2368 16.937 13.2368 17.8841 12.2896C18.6368 11.537 18.7913 10.4127 18.3478 9.50745C18.1534 9.11069 18.1374 8.6065 18.4498 8.29408L22 4.74391" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '16.38px 7.62px' }" />
-            <motion.path d="M16 18V20M18 16H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M8 6V4M6 8H4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M8.85977 14.4543C9.24591 14.0681 9.72987 13.8394 10.2319 13.7681M10.2319 13.7681C10.9612 13.6646 11.7287 13.8933 12.2896 14.4543C13.2368 15.4014 13.2368 16.937 12.2896 17.8841C11.537 18.6368 10.4127 18.7913 9.50745 18.3478C9.11069 18.1534 8.6065 18.1374 8.29408 18.4498L4.74391 22M10.2319 13.7681C10.2319 13.768 10.2319 13.7682 10.2319 13.7681ZM10.2319 13.7681C10.3354 13.0388 10.1067 12.2713 9.54574 11.7104C8.59861 10.7632 7.06299 10.7632 6.11586 11.7104C5.3632 12.463 5.20866 13.5873 5.65222 14.4925C5.84662 14.8893 5.86259 15.3935 5.55017 15.7059L2 19.2561" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="knobBLVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.6px 16.4px' }" />
+            <motion.path d="M15.1402 9.54574C14.7541 9.93189 14.2701 10.1606 13.7681 10.2319M13.7681 10.2319C13.0388 10.3354 12.2713 10.1067 11.7104 9.54574C10.7632 8.59861 10.7632 7.063 11.7104 6.11586C12.463 5.3632 13.5873 5.20866 14.4925 5.65222C14.8893 5.84662 15.3935 5.86259 15.7059 5.55017L19.2561 2M13.7681 10.2319C13.6646 10.9612 13.8933 11.7287 14.4543 12.2896C15.4014 13.2368 16.937 13.2368 17.8841 12.2896C18.6368 11.537 18.7913 10.4127 18.3478 9.50745C18.1534 9.11069 18.1374 8.6065 18.4498 8.29408L22 4.74391" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="knobTRVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.4px 7.6px' }" />
+            <path d="M16 18V20M18 16H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M8 6V4M6 8H4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

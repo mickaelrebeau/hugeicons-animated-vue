@@ -13,35 +13,45 @@ withDefaults(
   { size: 28 },
 )
 
-// after notification-off-01: the slash cuts through and the rest of the glyph recoils
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) translateY(0px)',
-    opacity: 1,
-  },
+// the slash draws through the pint, mug foam handle and stem recoiling together
+// authored from scripts/authored
+const handleVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['rotate(0deg) translateY(0px)', 'rotate(-7.7deg) translateY(0.39px)', 'rotate(0deg) translateY(1.16px)', 'rotate(0deg) translateY(0px)'],
-    opacity: [1, 1, 0.55, 1],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1.6px, -1.2px)',
+      'translate(0.19px, 0.14px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.67,
-      ease: [0.77, 0, 0.175, 1],
+      duration: 0.62,
+      times: [0, 0.28, 0.68, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const markVariants: Variants = {
-  normal: {
-    transform: 'scale(1) rotate(0deg)',
-  },
+const slashVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scale(1) rotate(0deg)', 'scale(0.86) rotate(-2.1deg)', 'scale(1.08) rotate(0.84deg)', 'scale(1) rotate(0deg)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.53,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -55,11 +65,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M14 7H14.8309C15.9219 7 16.4673 7 16.8863 7.20709C17.2798 7.40162 17.5984 7.72021 17.7929 8.11373C18 8.53267 18 9.07814 18 10.1691C18 10.842 18 11.1785 17.9629 11.5104C17.9278 11.8248 17.8679 12.1359 17.7838 12.4408C17.7361 12.6134 17.6781 12.7833 17.596 13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16px 10px' }" />
-            <motion.path d="M7.11373 7.20703C6.72021 7.40156 6.40162 7.72015 6.20709 8.11367C6 8.53261 6 9.07808 6 10.169C6 10.842 6 11.1784 6.03706 11.5103C6.07217 11.8247 6.13209 12.1358 6.21625 12.4408C6.3051 12.7627 6.43007 13.0751 6.67999 13.6999L7.08907 14.7226C7.28399 15.2099 7.38146 15.4536 7.46544 15.7C7.7631 16.5735 7.93844 17.4839 7.98645 18.4054C8 18.6654 8 18.9278 8 19.4527C8 19.9613 8 20.2157 8.046 20.4264C8.21276 21.1904 8.8095 21.7872 9.5735 21.9539C9.78427 21.9999 10.0386 21.9999 10.5472 21.9999H13.4528C13.9614 21.9999 14.2157 21.9999 14.4265 21.9539C15.1905 21.7872 15.7872 21.1904 15.954 20.4264C16 20.2157 16 19.9613 16 19.4527C16 18.9278 16 18.6654 16.0135 18.4054C16.0382 17.9329 16.0963 17.4632 16.1872 16.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.09px 14.6px' }" />
-            <motion.path d="M14.0136 7H17.5138C17.8277 6.58217 18.0136 6.0628 18.0136 5.5C18.0136 4.11929 16.8944 3 15.5136 3C15.1307 3 14.7678 3.08611 14.4434 3.24002C13.8982 2.48863 13.013 2 12.0136 2C11.0143 2 10.1291 2.48863 9.58388 3.24002C9.25945 3.08611 8.8966 3 8.51364 3C8.33757 3 8.16576 3.0182 7.99997 3.05282" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.01px 4.5px' }" />
-            <motion.path d="M14.0136 7L14.0136 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.01px 8px' }" />
-            <motion.path d="M2 2L22 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M14 7H14.8309C15.9219 7 16.4673 7 16.8863 7.20709C17.2798 7.40162 17.5984 7.72021 17.7929 8.11373C18 8.53267 18 9.07814 18 10.1691C18 10.842 18 11.1785 17.9629 11.5104C17.9278 11.8248 17.8679 12.1359 17.7838 12.4408C17.7361 12.6134 17.6781 12.7833 17.596 13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16px 10px' }" />
+            <motion.path d="M7.11373 7.20703C6.72021 7.40156 6.40162 7.72015 6.20709 8.11367C6 8.53261 6 9.07808 6 10.169C6 10.842 6 11.1784 6.03706 11.5103C6.07217 11.8247 6.13209 12.1358 6.21625 12.4408C6.3051 12.7627 6.43007 13.0751 6.67999 13.6999L7.08907 14.7226C7.28399 15.2099 7.38146 15.4536 7.46544 15.7C7.7631 16.5735 7.93844 17.4839 7.98645 18.4054C8 18.6654 8 18.9278 8 19.4527C8 19.9613 8 20.2157 8.046 20.4264C8.21276 21.1904 8.8095 21.7872 9.5735 21.9539C9.78427 21.9999 10.0386 21.9999 10.5472 21.9999H13.4528C13.9614 21.9999 14.2157 21.9999 14.4265 21.9539C15.1905 21.7872 15.7872 21.1904 15.954 20.4264C16 20.2157 16 19.9613 16 19.4527C16 18.9278 16 18.6654 16.0135 18.4054C16.0382 17.9329 16.0963 17.4632 16.1872 16.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.1px 14.6px' }" />
+            <motion.path d="M14.0136 7H17.5138C17.8277 6.58217 18.0136 6.0628 18.0136 5.5C18.0136 4.11929 16.8944 3 15.5136 3C15.1307 3 14.7678 3.08611 14.4434 3.24002C13.8982 2.48863 13.013 2 12.0136 2C11.0143 2 10.1291 2.48863 9.58388 3.24002C9.25945 3.08611 8.8966 3 8.51364 3C8.33757 3 8.16576 3.0182 7.99997 3.05282" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 4.5px' }" />
+            <motion.path d="M14.0136 7L14.0136 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 8px' }" />
+            <motion.path d="M2 2L22 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="slashVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

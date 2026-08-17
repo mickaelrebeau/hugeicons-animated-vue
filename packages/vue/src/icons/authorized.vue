@@ -13,33 +13,61 @@ withDefaults(
   { size: 28 },
 )
 
-// after copy-01: the nested parts of the authorized separate in depth and stack again
-// generated from @hugeicons/core-free-icons
-const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the key slides into the lock, the barrel turns, then the pin pops
+// authored from scripts/authored
+const lockVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.8px) rotate(-1deg)', 'translateY(0.45px) rotate(0.5deg)', 'translateY(0px) rotate(0deg)'],
+    transform: ['rotate(0deg)', 'rotate(-4deg)', 'rotate(8deg)', 'rotate(-2deg)', 'rotate(0deg)'],
     transition: {
-      duration: 0.57,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.6,
+      delay: 0.12,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const frontVariants: Variants = {
-  normal: {
-    transform: 'translate(0px, 0px)',
-  },
+const keyVariants: Variants = {
+  normal: { transform: 'translateY(0px) rotate(0deg)' },
   animate: {
-    transform: ['translate(0px, 0px)', 'translate(1.4px, -1.2px)', 'translate(0.2px, -0.2px)', 'translate(0px, 0px)'],
+    transform: [
+      'translateY(0px) rotate(0deg)',
+      'translateY(-0.6px) rotate(-5deg)',
+      'translateY(2.8px) rotate(3deg)',
+      'translateY(-0.3px) rotate(-1deg)',
+      'translateY(0px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const pinVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
+  animate: {
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-12deg) scale(0.56)',
+      'rotate(4deg) scale(1.14)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.42, delay: 0.2, times: [0, 0.32, 0.68, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -53,9 +81,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 17C2 19.2091 3.79086 21 6 21C7.48057 21 8.77325 20.1956 9.46487 19H13.3739C13.6095 19 13.7273 19 13.84 19.0265C13.8812 19.0361 13.9217 19.0484 13.9613 19.0632C14.0698 19.1037 14.1678 19.169 14.3638 19.2997L14.4045 19.3268C14.8093 19.5967 15.0118 19.7317 15.2332 19.7646C15.3491 19.7819 15.4671 19.7786 15.5819 19.7549C15.8012 19.7098 15.9958 19.5638 16.3851 19.2719L16.4867 19.1956C16.7997 18.9609 16.9562 18.8435 17.1261 18.7924C17.314 18.7359 17.5144 18.7359 17.7024 18.7924C17.8723 18.8435 18.0287 18.9609 18.3417 19.1956C18.6995 19.4639 18.8784 19.5981 19.0695 19.6476C19.2808 19.7024 19.5042 19.6865 19.7056 19.6024C19.8878 19.5264 20.046 19.3682 20.3622 19.052L21 18.4142C21.6667 17.7475 22 17.4142 22 17C22 16.5858 21.6667 16.2525 21 15.5858C20.711 15.2968 20.5665 15.1522 20.3827 15.0761C20.1989 15 19.9945 15 19.5858 15H9.46487C8.77325 13.8044 7.48057 13 6 13C3.79086 13 2 14.7909 2 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17px' }" />
-            <motion.path d="M20 11V9C20 6.17157 20 4.75736 19.1213 3.87868C18.2426 3 16.8284 3 14 3H8C5.17157 3 3.75736 3 2.87868 3.87868C2 4.75736 2 6.17157 2 9V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 7px' }" />
-            <motion.path d="M6.125 17H6M6.25 17C6.25 17.1381 6.13807 17.25 6 17.25C5.86193 17.25 5.75 17.1381 5.75 17C5.75 16.8619 5.86193 16.75 6 16.75C6.13807 16.75 6.25 16.8619 6.25 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 17px' }" />
+            <motion.path d="M2 17C2 19.2091 3.79086 21 6 21C7.48057 21 8.77325 20.1956 9.46487 19H13.3739C13.6095 19 13.7273 19 13.84 19.0265C13.8812 19.0361 13.9217 19.0484 13.9613 19.0632C14.0698 19.1037 14.1678 19.169 14.3638 19.2997L14.4045 19.3268C14.8093 19.5967 15.0118 19.7317 15.2332 19.7646C15.3491 19.7819 15.4671 19.7786 15.5819 19.7549C15.8012 19.7098 15.9958 19.5638 16.3851 19.2719L16.4867 19.1956C16.7997 18.9609 16.9562 18.8435 17.1261 18.7924C17.314 18.7359 17.5144 18.7359 17.7024 18.7924C17.8723 18.8435 18.0287 18.9609 18.3417 19.1956C18.6995 19.4639 18.8784 19.5981 19.0695 19.6476C19.2808 19.7024 19.5042 19.6865 19.7056 19.6024C19.8878 19.5264 20.046 19.3682 20.3622 19.052L21 18.4142C21.6667 17.7475 22 17.4142 22 17C22 16.5858 21.6667 16.2525 21 15.5858C20.711 15.2968 20.5665 15.1522 20.3827 15.0761C20.1989 15 19.9945 15 19.5858 15H9.46487C8.77325 13.8044 7.48057 13 6 13C3.79086 13 2 14.7909 2 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="lockVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17px' }" />
+            <motion.path d="M20 11V9C20 6.17157 20 4.75736 19.1213 3.87868C18.2426 3 16.8284 3 14 3H8C5.17157 3 3.75736 3 2.87868 3.87868C2 4.75736 2 6.17157 2 9V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="keyVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 7px' }" />
+            <motion.path d="M6.125 17H6M6.25 17C6.25 17.1381 6.13807 17.25 6 17.25C5.86193 17.25 5.75 17.1381 5.75 17C5.75 16.8619 5.86193 16.75 6 16.75C6.13807 16.75 6.25 16.8619 6.25 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 17px' }" />
           </svg>
         </div>
 </template>

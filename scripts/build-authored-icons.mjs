@@ -87,6 +87,10 @@ function compilePart(part) {
     if (normal.opacity === undefined) normal.opacity = part.opacity[0]
     animate.opacity = part.opacity
   }
+  if (part.d) {
+    if (normal.d === undefined) normal.d = part.d[0]
+    animate.d = part.d
+  }
   if (part.pathLength) {
     if (normal.pathLength === undefined) normal.pathLength = 1
     if (normal.pathOffset === undefined) normal.pathOffset = 0
@@ -94,6 +98,14 @@ function compilePart(part) {
     animate.pathLength = part.pathLength
     if (part.pathOffset) animate.pathOffset = part.pathOffset
     if (part.visibility) animate.visibility = part.visibility
+  }
+  if (part.strokeWidth) {
+    if (normal.strokeWidth === undefined) normal.strokeWidth = part.strokeWidth[0]
+    animate.strokeWidth = part.strokeWidth
+  }
+  if (part.fillOpacity) {
+    if (normal.fillOpacity === undefined) normal.fillOpacity = part.fillOpacity[0]
+    animate.fillOpacity = part.fillOpacity
   }
   if (!Object.keys(animate).length) {
     throw new Error(`part "${part.as}" has no animated track`)
@@ -106,6 +118,7 @@ function compilePart(part) {
     ease: part.ease,
     repeat: part.repeat,
     repeatDelay: part.repeatDelay,
+    repeatType: part.repeatType,
   }
   for (const k of Object.keys(transition)) if (transition[k] === undefined) delete transition[k]
   return { normal, animate: { ...animate, transition } }
@@ -148,6 +161,31 @@ function geometry() {
   return unique
 }
 
+function isAnimatedPart(part) {
+  if (!part) return false
+  return Boolean(
+    part.transform ||
+      part.opacity ||
+      part.d ||
+      part.pathLength ||
+      part.strokeWidth ||
+      part.fillOpacity,
+  )
+}
+
+function paintOrder(kebab, spec, count) {
+  const order = spec.paintOrder
+  if (!order) return [...Array(count).keys()]
+  if (order.length !== count) {
+    throw new Error(`${kebab}: paintOrder must list every primitive once`)
+  }
+  const seen = new Set(order)
+  if (seen.size !== count || [...seen].some((i) => i < 0 || i >= count)) {
+    throw new Error(`${kebab}: paintOrder is not a permutation of 0..${count - 1}`)
+  }
+  return order
+}
+
 function buildSfc(kebab, spec, elements) {
   if (spec.parts.length !== elements.length) {
     throw new Error(
@@ -158,8 +196,17 @@ function buildSfc(kebab, spec, elements) {
   const used = new Set()
   const blocks = []
   const byKey = new Map()
+
+  let wrapName = null
+  if (spec.wrap) {
+    const compiled = compilePart(spec.wrap)
+    wrapName = variantName(spec.wrap.as || 'group', used)
+    used.add(wrapName)
+    blocks.push(emitVariants(wrapName, compiled))
+  }
+
   const names = spec.parts.map((part) => {
-    if (!part) return null
+    if (!isAnimatedPart(part)) return null
     const compiled = compilePart(part)
     const key = JSON.stringify(compiled)
     if (byKey.has(key)) return byKey.get(key)
@@ -173,10 +220,21 @@ function buildSfc(kebab, spec, elements) {
   const nodes = elements.map((el, i) => {
     const [tag, raw] = el
     const part = spec.parts[i]
-    if (!part) return `<${tag} ${formatAttrs(raw)} />`
+    const merged = { ...raw, ...(part?.attrs || {}) }
+    const attrs = formatAttrs(merged)
+    if (!isAnimatedPart(part)) return `<${tag} ${attrs} />`
     const [x, y] = part.origin || [12, 12]
-    return `<motion.${tag} ${formatAttrs(raw)} :variants="${names[i]}" :animate="controls" initial="normal" :style="{ transformOrigin: '${x}px ${y}px' }" />`
+    return `<motion.${tag} ${attrs} :variants="${names[i]}" :animate="controls" initial="normal" :style="{ transformOrigin: '${x}px ${y}px' }" />`
   })
+
+  const ordered = paintOrder(kebab, spec, nodes.length).map((i) => nodes[i])
+  let inner = ordered.join('\n            ')
+  if (wrapName) {
+    const [x, y] = spec.wrap.origin || [12, 12]
+    inner = `<motion.g :variants="${wrapName}" :animate="controls" initial="normal" :style="{ transformOrigin: '${x}px ${y}px', transformBox: 'view-box' }">
+              ${ordered.join('\n              ')}
+            </motion.g>`
+  }
 
   return `<script setup lang="ts">
 import { motion, useAnimationControls } from 'motion-v'
@@ -209,7 +267,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="${spec.clip ? 'hidden' : 'visible'}">
-            ${nodes.join('\n            ')}
+            ${inner}
           </svg>
         </div>
 </template>

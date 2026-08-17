@@ -7,11 +7,11 @@
 A collection of 6,122 animated [Hugeicons](https://hugeicons.com) for **Vue 3**.
 Install from npm, or copy-paste each icon as source you own.
 
-**Authored motion covers gallery pages 1–5 only** (the first 400 icons in
-alphabetical order, `a-arrow-down` through `arrow-vertical`). Those icons
-have a unique hover gesture written from the pictogram's name, geometry, and
-direction. The 165 original hand-crafted icons are unchanged. Every icon
-after page 5 still uses a generated recipe from its name and shape.
+**Authored motion covers gallery pages 1–10** (`a-arrow-down` through
+`border-right-02`). Those icons have a unique hover gesture written from the
+pictogram's name, geometry, and direction. The 165 original hand-crafted icons
+are unchanged. Every icon after page 10 still uses a generated recipe from
+its name and shape.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
 
@@ -28,7 +28,7 @@ pnpm add hugeicons-animated-vue motion-v
 
 ```vue
 <script setup lang="ts">
-import { Notification03Icon } from 'hugeicons-animated-vue'
+import Notification03Icon from 'hugeicons-animated-vue/icons/notification-03'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue'
 import { useTemplateRef } from 'vue'
 import 'hugeicons-animated-vue/style.css'
@@ -44,6 +44,8 @@ const icon = useTemplateRef<AnimatedIconHandle>('bell')
 ```
 
 Peer dependencies: `vue` ^3.5 and [`motion-v`](https://motion.dev/docs/vue) ^1.7 or ^2.
+
+Named imports from the package root still work (`import { Notification03Icon } from 'hugeicons-animated-vue'`). Prefer the deep path above so bundlers only pull the icons you use.
 
 ## Copy-paste
 
@@ -70,7 +72,7 @@ Or add this to `components.json`:
 ## Animation coverage
 
 The site gallery shows 80 icons per page. Unique, per-icon choreography has
-been authored for **pages 1–5** only:
+been authored for **pages 1–10**:
 
 | Page | Icons | Authored file |
 | --- | --- | --- |
@@ -79,10 +81,15 @@ been authored for **pages 1–5** only:
 | 3 | `album-not-found-02` → `analytics-up` | `scripts/authored/page-03.mjs` |
 | 4 | `analytics` → `arrow-down-narrow-wide` | `scripts/authored/page-04.mjs` |
 | 5 | `arrow-down-one-zero` → `arrow-vertical` | `scripts/authored/page-05.mjs` |
+| 6 | `arrows-up-from-line` → `backpack-02` | `scripts/authored/page-06.mjs` |
+| 7 | `backpack-03` → `bean` | `scripts/authored/page-07.mjs` |
+| 8 | `beater` → `bitcoin-money-02` | `scripts/authored/page-08.mjs` |
+| 9 | `bitcoin-money` → `book-04` | `scripts/authored/page-09.mjs` |
+| 10 | `book-a` → `border-right-02` | `scripts/authored/page-10.mjs` |
 
 Hand-crafted originals that fall in that range were left untouched (for
-example `add-circle`, `alert-circle`, `arrow-down-02`).
-Page 6 onward (`arrows-up-from-line` and after) is still generated.
+example `add-circle`, `alert-circle`, `arrow-down-02`, `bookmark-01`).
+Page 11 onward (`border-right` and after) is still generated.
 
 To continue the walk, see [AGENTS.md](AGENTS.md).
 
@@ -107,7 +114,7 @@ Landing: Vite + Vue 3, Lenis, GSAP ScrollTrigger. Icons live in `packages/vue`.
 
 ```bash
 pnpm --filter hugeicons-animated-vue build
-pnpm icons:author     # emit pages in scripts/authored/ (pages 1–5 so far)
+pnpm icons:author     # emit pages in scripts/authored/ (pages 1–10 so far)
 pnpm icons:convert    # re-port from a local React clone
 pnpm registry:build   # manifest + shadcn registry
 ```

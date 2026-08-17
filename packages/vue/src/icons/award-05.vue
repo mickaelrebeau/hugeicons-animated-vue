@@ -13,21 +13,57 @@ withDefaults(
   { size: 28 },
 )
 
-// after star: the award rises proudly and catches the light
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the check draws on the round badge, then the ribbon hangs — circle cousin of 04
+// authored from scripts/authored
+const frameVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.96)', 'scale(1.16)', 'scale(0.98)', 'scale(1.09)', 'scale(1)'],
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.5, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const tickVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.73,
-      ease: [0.22, 1, 0.36, 1],
-      times: [0, 0.12, 0.32, 0.48, 0.68, 1],
+      duration: 0.56,
+      delay: 0.08,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const ribbonVariants: Variants = {
+  normal: { transform: 'translateY(0px) scaleY(1)' },
+  animate: {
+    transform: [
+      'translateY(0px) scaleY(1)',
+      'translateY(-0.4px) scaleY(1.06)',
+      'translateY(1.8px) scaleY(0.88)',
+      'translateY(-0.2px) scaleY(1.04)',
+      'translateY(0px) scaleY(1)',
+    ],
+    transition: {
+      duration: 0.6,
+      delay: 0.18,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,9 +77,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M4.5 9.5C4.5 13.6421 7.85786 17 12 17C16.1421 17 19.5 13.6421 19.5 9.5C19.5 5.35786 16.1421 2 12 2C7.85786 2 4.5 5.35786 4.5 9.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 9.5px' }" />
-            <motion.path d="M9 10.1667C9 10.1667 9.75 10.1667 10.5 11.5C10.5 11.5 12.8824 8.16667 15 7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 9.5px' }" />
-            <motion.path d="M16.8825 15L17.5527 18.2099C17.9833 20.2723 18.1986 21.3035 17.7563 21.7923C17.3141 22.281 16.546 21.8606 15.0099 21.0198L12.7364 19.7753C12.3734 19.5766 12.1919 19.4773 12 19.4773C11.8081 19.4773 11.6266 19.5766 11.2636 19.7753L8.99008 21.0198C7.45397 21.8606 6.68592 22.281 6.24365 21.7923C5.80139 21.3035 6.01669 20.2723 6.44731 18.2099L7.11752 15" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 9.5px' }" />
+            <motion.path d="M4.5 9.5C4.5 13.6421 7.85786 17 12 17C16.1421 17 19.5 13.6421 19.5 9.5C19.5 5.35786 16.1421 2 12 2C7.85786 2 4.5 5.35786 4.5 9.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 9.5px' }" />
+            <motion.path d="M9 10.1667C9 10.1667 9.75 10.1667 10.5 11.5C10.5 11.5 12.8824 8.16667 15 7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tickVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M16.8825 15L17.5527 18.2099C17.9833 20.2723 18.1986 21.3035 17.7563 21.7923C17.3141 22.281 16.546 21.8606 15.0099 21.0198L12.7364 19.7753C12.3734 19.5766 12.1919 19.4773 12 19.4773C11.8081 19.4773 11.6266 19.5766 11.2636 19.7753L8.99008 21.0198C7.45397 21.8606 6.68592 22.281 6.24365 21.7923C5.80139 21.3035 6.01669 20.2723 6.44731 18.2099L7.11752 15" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="ribbonVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.6px' }" />
           </svg>
         </div>
 </template>

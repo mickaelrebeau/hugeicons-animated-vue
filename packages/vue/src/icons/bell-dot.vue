@@ -13,21 +13,20 @@ withDefaults(
   { size: 28 },
 )
 
-// after notification-03: the bell rings from its hanging point and decays naturally
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg)',
-  },
+// the notification dot stamps on the still bell
+// authored from scripts/authored
+const dotVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
   animate: {
-    transform: ['rotate(0deg)', 'rotate(-14.36deg)', 'rotate(11.28deg)', 'rotate(-8.21deg)', 'rotate(5.13deg)', 'rotate(-2.05deg)', 'rotate(0deg)'],
-    transition: {
-      duration: 0.9,
-      ease: 'easeInOut',
-      times: [0, 0.18, 0.38, 0.56, 0.72, 0.87, 1],
-    },
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-12deg) scale(0.56)',
+      'rotate(4deg) scale(1.14)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.46, times: [0, 0.32, 0.68, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,9 +40,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M19 11V12.7558C19 13.5514 19.3161 14.3145 19.8787 14.8771L20.4819 15.4803C20.8136 15.8121 21 16.262 21 16.7311C21 17.708 20.208 18.5 19.2311 18.5H4.76887C3.79195 18.5 3 17.708 3 16.7311C3 16.262 3.18636 15.8121 3.51809 15.4803L4.12132 14.8771C4.68393 14.3145 5 13.5514 5 12.7558V10C5 6.13401 8.13401 3 12 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 3px' }" />
-            <motion.path d="M15.5 18.5C15.5 20.433 13.933 22 12 22C10.067 22 8.5 20.433 8.5 18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 3px' }" />
-            <motion.path d="M21 5C21 3.34315 19.6568 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65684 16.3431 8 18 8C19.6568 8 21 6.65684 21 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 3px' }" />
+            <path d="M19 11V12.7558C19 13.5514 19.3161 14.3145 19.8787 14.8771L20.4819 15.4803C20.8136 15.8121 21 16.262 21 16.7311C21 17.708 20.208 18.5 19.2311 18.5H4.76887C3.79195 18.5 3 17.708 3 16.7311C3 16.262 3.18636 15.8121 3.51809 15.4803L4.12132 14.8771C4.68393 14.3145 5 13.5514 5 12.7558V10C5 6.13401 8.13401 3 12 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M15.5 18.5C15.5 20.433 13.933 22 12 22C10.067 22 8.5 20.433 8.5 18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M21 5C21 3.34315 19.6568 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65684 16.3431 8 18 8C19.6568 8 21 6.65684 21 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '18px 5px' }" />
           </svg>
         </div>
 </template>

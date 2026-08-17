@@ -13,33 +13,41 @@ withDefaults(
   { size: 28 },
 )
 
-// after circle-x: the barns strikes its two crossing strokes and recoils
-// generated from @hugeicons/core-free-icons
-const frameVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the barn doors cross shut, then the loft window bar seats
+// authored from scripts/authored
+const doorsVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scale(1)', 'scale(0.96)', 'scale(1.025)', 'scale(1)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.48,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const markVariants: Variants = {
-  normal: {
-    transform: 'scale(1) rotate(0deg)',
-  },
+const loftVariants: Variants = {
+  normal: { transform: 'scaleX(1)' },
   animate: {
-    transform: ['scale(1) rotate(0deg)', 'scale(0.86) rotate(-1.91deg)', 'scale(1.08) rotate(0.76deg)', 'scale(1) rotate(0deg)'],
+    transform: ['scaleX(1)', 'scaleX(0.22)', 'scaleX(1.08)', 'scaleX(1)'],
     transition: {
-      duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.42,
+      delay: 0.16,
+      times: [0, 0.14, 0.62, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -53,10 +61,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8 21.5002V15.5002C8 14.5574 8 14.086 8.29289 13.7931C8.58579 13.5002 9.05719 13.5002 10 13.5002H14C14.9428 13.5002 15.4142 13.5002 15.7071 13.7931C16 14.086 16 14.5574 16 15.5002V21.5002" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
-            <motion.path d="M8.5 14.0001L16 21.5001M15.5 14.0001L8 21.5001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.75px' }" />
-            <motion.path d="M10.5 8.50012H13.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8.5px' }" />
-            <motion.path d="M4.38836 6.87631L3.34475 9.22443C3.17301 9.61085 3.08714 9.80406 3.04357 10.0094C3 10.2147 3 10.4261 3 10.849V17.5001C3 19.3857 3 20.3285 3.58579 20.9143C4.17157 21.5001 5.11438 21.5001 7 21.5001H17C18.8856 21.5001 19.8284 21.5001 20.4142 20.9143C21 20.3285 21 19.3857 21 17.5001V10.4444C21 9.97439 21 9.73939 20.9465 9.51275C20.893 9.28611 20.7879 9.07592 20.5777 8.65554L19.6275 6.75511C19.3168 6.13368 19.1614 5.82297 18.9168 5.58592C18.6723 5.34886 18.3569 5.20328 17.726 4.91213L12.954 2.70965C12.6549 2.57161 12.3294 2.50012 12 2.50012C11.6706 2.50012 11.3451 2.57161 11.046 2.70965L6.36737 4.86903C5.69124 5.18109 5.35317 5.33712 5.0976 5.59634C4.84202 5.85557 4.6908 6.19581 4.38836 6.87631Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M8 21.5002V15.5002C8 14.5574 8 14.086 8.29289 13.7931C8.58579 13.5002 9.05719 13.5002 10 13.5002H14C14.9428 13.5002 15.4142 13.5002 15.7071 13.7931C16 14.086 16 14.5574 16 15.5002V21.5002" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M8.5 14.0001L16 21.5001M15.5 14.0001L8 21.5001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="doorsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.8px' }" />
+            <motion.path d="M10.5 8.50012H13.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="loftVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8.5px' }" />
+            <path d="M4.38836 6.87631L3.34475 9.22443C3.17301 9.61085 3.08714 9.80406 3.04357 10.0094C3 10.2147 3 10.4261 3 10.849V17.5001C3 19.3857 3 20.3285 3.58579 20.9143C4.17157 21.5001 5.11438 21.5001 7 21.5001H17C18.8856 21.5001 19.8284 21.5001 20.4142 20.9143C21 20.3285 21 19.3857 21 17.5001V10.4444C21 9.97439 21 9.73939 20.9465 9.51275C20.893 9.28611 20.7879 9.07592 20.5777 8.65554L19.6275 6.75511C19.3168 6.13368 19.1614 5.82297 18.9168 5.58592C18.6723 5.34886 18.3569 5.20328 17.726 4.91213L12.954 2.70965C12.6549 2.57161 12.3294 2.50012 12 2.50012C11.6706 2.50012 11.3451 2.57161 11.046 2.70965L6.36737 4.86903C5.69124 5.18109 5.35317 5.33712 5.0976 5.59634C4.84202 5.85557 4.6908 6.19581 4.38836 6.87631Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

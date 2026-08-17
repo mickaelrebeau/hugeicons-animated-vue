@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
-import { ICON_NAMES, HANDCRAFTED_ICONS, catalogReady, generatedIcon, loadIconCatalog } from '../lib/icons-manifest'
+import { ICON_NAMES, catalogReady, generatedIcon, handcraftedIcon, isHandcraftedIcon, loadIconCatalog } from '../lib/icons-manifest'
 import GeneratedIconPreview from './GeneratedIconPreview.vue'
 import { DISAPPROVED_ICON_NAMES } from 'hugeicons-animated-vue/icon-approval'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue/types'
@@ -103,8 +103,8 @@ function onPreviewClick() {
         @click="onPreviewClick"
       >
         <component
-          v-if="HANDCRAFTED_ICONS[selected]"
-          :is="HANDCRAFTED_ICONS[selected]"
+          v-if="isHandcraftedIcon(selected)"
+          :is="handcraftedIcon(selected)"
           ref="preview"
           :size="size"
         />

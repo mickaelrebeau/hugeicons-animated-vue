@@ -13,20 +13,16 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the coin turns over on its own axis and lands flat
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateY(0deg)',
-  },
+// the B computes inside the still closed phone, home-dot holding
+// authored from scripts/authored
+const btcVariants: Variants = {
+  normal: { transform: 'scale(1)', opacity: 1 },
   animate: {
-    transform: ['rotateY(0deg)', 'rotateY(90deg)', 'rotateY(180deg)', 'rotateY(270deg)', 'rotateY(360deg)'],
-    transition: {
-      duration: 0.69,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: ['scale(1)', 'scale(0.88)', 'scale(1.07)', 'scale(1)'],
+    opacity: [1, 0.62, 1, 1],
+    transition: { duration: 0.56, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +36,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M5 9C5 5.70017 5 4.05025 6.02513 3.02513C7.05025 2 8.70017 2 12 2C15.2998 2 16.9497 2 17.9749 3.02513C19 4.05025 19 5.70017 19 9V15C19 18.2998 19 19.9497 17.9749 20.9749C16.9497 22 15.2998 22 12 22C8.70017 22 7.05025 22 6.02513 20.9749C5 19.9497 5 18.2998 5 15V9Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M10 6.5H13C13.8284 6.5 14.5 7.17157 14.5 8V8.5C14.5 9.32843 13.8284 10 13 10H10M10 6.5V10M10 6.5H9M10 10H13.5C14.3284 10 15 10.6716 15 11.5V12C15 12.8284 14.3284 13.5 13.5 13.5H10M10 10V13.5M12 6.5V5M12 13.5V15M10 13.5H9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12.125 19H12M12.25 19C12.25 19.1381 12.1381 19.25 12 19.25C11.8619 19.25 11.75 19.1381 11.75 19C11.75 18.8619 11.8619 18.75 12 18.75C12.1381 18.75 12.25 18.8619 12.25 19Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M5 9C5 5.70017 5 4.05025 6.02513 3.02513C7.05025 2 8.70017 2 12 2C15.2998 2 16.9497 2 17.9749 3.02513C19 4.05025 19 5.70017 19 9V15C19 18.2998 19 19.9497 17.9749 20.9749C16.9497 22 15.2998 22 12 22C8.70017 22 7.05025 22 6.02513 20.9749C5 19.9497 5 18.2998 5 15V9Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.path d="M10 6.5H13C13.8284 6.5 14.5 7.17157 14.5 8V8.5C14.5 9.32843 13.8284 10 13 10H10M10 6.5V10M10 6.5H9M10 10H13.5C14.3284 10 15 10.6716 15 11.5V12C15 12.8284 14.3284 13.5 13.5 13.5H10M10 10V13.5M12 6.5V5M12 13.5V15M10 13.5H9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="btcVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <path d="M12.125 19H12M12.25 19C12.25 19.1381 12.1381 19.25 12 19.25C11.8619 19.25 11.75 19.1381 11.75 19C11.75 18.8619 11.8619 18.75 12 18.75C12.1381 18.75 12.25 18.8619 12.25 19Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

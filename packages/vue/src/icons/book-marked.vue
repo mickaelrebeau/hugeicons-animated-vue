@@ -13,20 +13,28 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-open: the cover opens from its spine and the pages settle
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateX(0deg) scaleY(1)',
-  },
+// the dog-ear folds down on the still cover, curl holding
+// authored from scripts/authored
+const earVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['rotateX(0deg) scaleY(1)', 'rotateX(-55deg) scaleY(0.72)', 'rotateX(7.37deg) scaleY(1.04)', 'rotateX(0deg) scaleY(1)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-1.25px, 0.67px) rotate(16deg)',
+      'translate(-1.25px, 0.67px) rotate(16deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.68,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.26, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +48,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M20 14V18H6C4.89543 18 4 18.8954 4 20M10 2C7.17157 2 5.75736 2 4.87868 2.87868C4 3.75736 4 5.17157 4 8V20M4 20C4 21.1046 4.89543 22 6 22H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 2px' }" />
-            <motion.path d="M14 8.45369V4.98797C14 3.57943 14 2.87515 14.4393 2.43758C14.8787 2 15.5858 2 17 2C18.4142 2 19.1213 2 19.5607 2.43758C20 2.87515 20 3.57942 20 4.98797V8.45369C20 9.37363 20 9.83359 19.7121 9.96791C19.4242 10.1022 19.0694 9.80776 18.3598 9.21883L17.6402 8.62154C17.3341 8.36748 17.181 8.24045 17 8.24045C16.819 8.24045 16.6659 8.36748 16.3598 8.62154L15.6402 9.21883C14.9306 9.80776 14.5758 10.1022 14.2879 9.96791C14 9.83359 14 9.37363 14 8.45369Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 2px' }" />
-            <motion.path d="M19.5 18C19.5 18 18.5 18.7628 18.5 20C18.5 21.2372 19.5 22 19.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 2px' }" />
+            <path d="M20 14V18H6C4.89543 18 4 18.8954 4 20M10 2C7.17157 2 5.75736 2 4.87868 2.87868C4 3.75736 4 5.17157 4 8V20M4 20C4 21.1046 4.89543 22 6 22H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M14 8.45369V4.98797C14 3.57943 14 2.87515 14.4393 2.43758C14.8787 2 15.5858 2 17 2C18.4142 2 19.1213 2 19.5607 2.43758C20 2.87515 20 3.57942 20 4.98797V8.45369C20 9.37363 20 9.83359 19.7121 9.96791C19.4242 10.1022 19.0694 9.80776 18.3598 9.21883L17.6402 8.62154C17.3341 8.36748 17.181 8.24045 17 8.24045C16.819 8.24045 16.6659 8.36748 16.3598 8.62154L15.6402 9.21883C14.9306 9.80776 14.5758 10.1022 14.2879 9.96791C14 9.83359 14 9.37363 14 8.45369Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="earVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 6.1px' }" />
+            <path d="M19.5 18C19.5 18 18.5 18.7628 18.5 20C18.5 21.2372 19.5 22 19.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

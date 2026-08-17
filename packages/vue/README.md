@@ -2,8 +2,8 @@
 
 Animated [Hugeicons](https://hugeicons.com) for **Vue 3** — 6,122 icons.
 
-Unique, per-icon choreography is authored for **gallery pages 1–5 only**
-(`a-arrow-down` through `arrow-vertical`), plus the original 165 hand-crafted
+Unique, per-icon choreography is authored for **gallery pages 1–10**
+(`a-arrow-down` through `border-right-02`), plus the original 165 hand-crafted
 gestures. Icons after that page still use a generated name-and-shape recipe.
 Hover plays the motion; you can also drive playback yourself. Finite motions
 finish their beat. Looping motions return to rest. `prefers-reduced-motion`
@@ -19,14 +19,16 @@ pnpm add hugeicons-animated-vue motion-v
 
 Peer dependencies: `vue` ^3.5 and `motion-v` ^1.7 or ^2.
 
+Named imports from the package root still work. Prefer the deep path so bundlers only include the icons you use.
+
 ```ts
-import { Notification03Icon } from 'hugeicons-animated-vue'
+import Notification03Icon from 'hugeicons-animated-vue/icons/notification-03'
 import 'hugeicons-animated-vue/style.css'
 ```
 
 ```vue
 <script setup lang="ts">
-import { Notification03Icon } from 'hugeicons-animated-vue'
+import Notification03Icon from 'hugeicons-animated-vue/icons/notification-03'
 import type { AnimatedIconHandle } from 'hugeicons-animated-vue'
 import { useTemplateRef } from 'vue'
 

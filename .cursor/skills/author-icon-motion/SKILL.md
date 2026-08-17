@@ -16,13 +16,14 @@ source of truth for coverage, protected originals, spec shape, and the kit.
 
 ## Resume point
 
-Stopped after **gallery page 5**. Next is **page 6**: indices **400–479**,
-`arrows-up-from-line` → `backpack-02`. Skip **`attachment`**. Spec file:
-`scripts/authored/page-06.mjs`.
+Stopped after **gallery page 10**. Next is **page 11**: indices **802–879**,
+`border-right` → `bubble-chat-preview`. `border-right-01` and `border-right-02`
+were authored with page 10 — do not duplicate them. Spec file:
+`scripts/authored/page-11.mjs`.
 
-Authored choreography exists **only** for pages 1–5. Later icons are still
-generated recipes. Never overwrite a file that has neither the authored nor
-the generated marker.
+Authored choreography exists **only** for pages 1–10 (plus those two
+`border-right-*` extras). Later icons are still generated recipes. Never
+overwrite a file that has neither the authored nor the generated marker.
 
 ## One-page loop
 

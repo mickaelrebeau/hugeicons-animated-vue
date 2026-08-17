@@ -13,20 +13,120 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-up-02: the arrows up from line follows the up direction already encoded by its geometry
-// generated from @hugeicons/core-free-icons
-const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleX(1)',
-  },
+// both shafts crouch into the baseline, the heads leap off it left then right, and the line springs back
+// authored from scripts/authored
+const shaftLeftVariants: Variants = {
+  normal: { transform: 'translateY(0px) scaleY(1)' },
   animate: {
-    transform: ['translateY(0px) scaleX(1)', 'translateY(-2.82px) scaleX(0.94)', 'translateY(0.33px) scaleX(1.02)', 'translateY(-0.49px) scaleX(0.99)', 'translateY(0px) scaleX(1)'],
+    transform: [
+      'translateY(0px) scaleY(1)',
+      'translateY(0.6px) scaleY(0.82)',
+      'translateY(-2.6px) scaleY(1.12)',
+      'translateY(0.3px) scaleY(0.96)',
+      'translateY(0px) scaleY(1)',
+    ],
     transition: {
-      duration: 0.52,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const headLeftVariants: Variants = {
+  normal: { transform: 'translateY(0px)' },
+  animate: {
+    transform: [
+      'translateY(0px)',
+      'translateY(0.4px)',
+      'translateY(-2.8px)',
+      'translateY(0.35px)',
+      'translateY(0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.04,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const headRightVariants: Variants = {
+  normal: { transform: 'translateY(0px)' },
+  animate: {
+    transform: [
+      'translateY(0px)',
+      'translateY(0.4px)',
+      'translateY(-2.8px)',
+      'translateY(0.35px)',
+      'translateY(0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.16,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const shaftRightVariants: Variants = {
+  normal: { transform: 'translateY(0px) scaleY(1)' },
+  animate: {
+    transform: [
+      'translateY(0px) scaleY(1)',
+      'translateY(0.6px) scaleY(0.82)',
+      'translateY(-2.6px) scaleY(1.12)',
+      'translateY(0.3px) scaleY(0.96)',
+      'translateY(0px) scaleY(1)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.12,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const lineVariants: Variants = {
+  normal: { transform: 'scaleX(1)' },
+  animate: {
+    transform: ['scaleX(1)', 'scaleX(1.06)', 'scaleX(0.62)', 'scaleX(1.06)', 'scaleX(1)'],
+    transition: {
+      duration: 0.56,
+      delay: 0.18,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,11 +140,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M7 4V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M4 5.99998C4 5.99998 6.20947 3.00001 7.00002 3C7.79058 2.99999 10 6 10 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M14 5.99998C14 5.99998 16.2095 3.00001 17 3C17.7906 2.99999 20 6 20 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M17 4V10.5V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M4 21H20" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M7 4V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="shaftLeftVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 17px' }" />
+            <motion.path d="M4 5.99998C4 5.99998 6.20947 3.00001 7.00002 3C7.79058 2.99999 10 6 10 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="headLeftVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 4.5px' }" />
+            <motion.path d="M14 5.99998C14 5.99998 16.2095 3.00001 17 3C17.7906 2.99999 20 6 20 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="headRightVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 4.5px' }" />
+            <motion.path d="M17 4V10.5V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="shaftRightVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 17px' }" />
+            <motion.path d="M4 21H20" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="lineVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
           </svg>
         </div>
 </template>

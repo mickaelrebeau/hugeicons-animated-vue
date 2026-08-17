@@ -542,6 +542,7 @@ svg {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
+  --hia-icon-surface: var(--paper);
   cursor: pointer;
   transition: background-color 160ms ease, transform 160ms var(--ease-out), box-shadow 160ms ease;
 }
@@ -555,6 +556,7 @@ svg {
 @media (hover: hover) and (pointer: fine) {
   .cell:hover {
     background: var(--lime);
+    --hia-icon-surface: var(--lime);
     box-shadow: var(--shadow);
     transform: translateY(-2px);
   }

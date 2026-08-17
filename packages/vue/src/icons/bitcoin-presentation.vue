@@ -13,20 +13,99 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the coin turns over on its own axis and lands flat
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateY(0deg)',
-  },
+// the board tips toward the room from the stand, B and rules riding the screen
+// authored from scripts/authored
+const bezelVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['rotateY(0deg)', 'rotateY(90deg)', 'rotateY(180deg)', 'rotateY(270deg)', 'rotateY(360deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-2.16px, 0.15px) rotate(-8deg)',
+      'translate(1.62px, 0.08px) rotate(6deg)',
+      'translate(-0.54px, 0.01px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.71,
-      ease: [0.77, 0, 0.175, 1],
+      duration: 0.74,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const screenVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.97px, 0.07px) rotate(-8deg)',
+      'translate(0.73px, 0.04px) rotate(6deg)',
+      'translate(-0.24px, 0.00px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.74,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const rulesVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-1.01px, -0.49px) rotate(-8deg)',
+      'translate(0.71px, 0.46px) rotate(6deg)',
+      'translate(-0.25px, -0.14px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.74,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const btcVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.94px, 0.56px) rotate(-8deg)',
+      'translate(0.75px, -0.33px) rotate(6deg)',
+      'translate(-0.24px, 0.13px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.74,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,11 +119,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 19L12 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M21 2H3C2.5286 2 2.29289 2 2.14645 2.14645C2 2.29289 2 2.5286 2 3V4C2 4.4714 2 4.70711 2.14645 4.85355C2.29289 5 2.5286 5 3 5H21C21.4714 5 21.7071 5 21.8536 4.85355C22 4.70711 22 4.4714 22 4V3C22 2.5286 22 2.29289 21.8536 2.14645C21.7071 2 21.4714 2 21 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M3 5V13C3 15.8284 3 17.2426 3.87868 18.1213C4.75736 19 6.17157 19 9 19H15C17.8284 19 19.2426 19 20.1213 18.1213C21 17.2426 21 15.8284 21 13V5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M14 10H16M14 14L18 14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M6.9375 14.6667L6.9375 9.33333M8.5 9.33333V8M8.5 16V14.6667M6.9375 12H10.0625M10.0625 12C10.5803 12 11 12.4477 11 13V13.6667C11 14.219 10.5803 14.6667 10.0625 14.6667H6M10.0625 12C10.5803 12 11 11.5523 11 11V10.3333C11 9.78105 10.5803 9.33333 10.0625 9.33333H6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M12 19L12 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M21 2H3C2.5286 2 2.29289 2 2.14645 2.14645C2 2.29289 2 2.5286 2 3V4C2 4.4714 2 4.70711 2.14645 4.85355C2.29289 5 2.5286 5 3 5H21C21.4714 5 21.7071 5 21.8536 4.85355C22 4.70711 22 4.4714 22 4V3C22 2.5286 22 2.29289 21.8536 2.14645C21.7071 2 21.4714 2 21 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bezelVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 3.5px' }" />
+            <motion.path d="M3 5V13C3 15.8284 3 17.2426 3.87868 18.1213C4.75736 19 6.17157 19 9 19H15C17.8284 19 19.2426 19 20.1213 18.1213C21 17.2426 21 15.8284 21 13V5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="screenVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M14 10H16M14 14L18 14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="rulesVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16px 12px' }" />
+            <motion.path d="M6.9375 14.6667L6.9375 9.33333M8.5 9.33333V8M8.5 16V14.6667M6.9375 12H10.0625M10.0625 12C10.5803 12 11 12.4477 11 13V13.6667C11 14.219 10.5803 14.6667 10.0625 14.6667H6M10.0625 12C10.5803 12 11 11.5523 11 11V10.3333C11 9.78105 10.5803 9.33333 10.0625 9.33333H6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="btcVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8.5px 12px' }" />
           </svg>
         </div>
 </template>

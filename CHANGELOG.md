@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] — 2026-08-17
+
+### Added
+
+- Unique hover choreography for gallery pages 6–10 (`arrows-up-from-line`
+  through `border-right-02`): 398 authored gestures, 784 authored specs in
+  total across pages 1–10.
+
+### Changed
+
+- Published icon JS is minified. Deep imports
+  (`hugeicons-animated-vue/icons/<name>`) stay the cheap path for app bundles.
+- The landing gallery lazy-loads authored icons one page at a time instead of
+  shipping all 950 handcrafted SFCs in the main chunk.
+
 ## [0.3.1] — 2026-08-16
 
 ### Changed
@@ -70,6 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Copy-paste shadcn-vue registry under `apps/web/public/r`.
 - Landing with gallery and Lab (Lenis + GSAP).
 
+[0.4.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.4.0
 [0.3.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.3.1
 [0.3.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.3.0
 [0.2.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.2.0

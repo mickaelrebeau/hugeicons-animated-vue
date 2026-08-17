@@ -1,6 +1,6 @@
 {
   "name": "hugeicons-animated-vue",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Animated Hugeicons for Vue 3. Copy-paste source, or import the components.",
   "license": "MIT",
   "type": "module",
@@ -27,7 +27,7 @@
     "components"
   ],
   "sideEffects": [
-    "*.css"
+    "./style.css"
   ],
   "files": [
     "dist",
@@ -44,6 +44,17 @@
       "import": "./dist/index.js"
     },
     "./icons/*": "./dist/icons/*",
+    "./composables/useIconAnimation": {
+      "types": "./dist/composables/useIconAnimation.d.ts",
+      "import": "./dist/composables/useIconAnimation.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts"
+    },
+    "./icon-approval": {
+      "types": "./dist/icon-approval.d.ts",
+      "import": "./dist/icon-approval.js"
+    },
     "./style.css": "./style.css"
   },
   "publishConfig": {

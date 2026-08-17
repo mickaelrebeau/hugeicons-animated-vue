@@ -19,6 +19,8 @@ async function compileTs(source, sourcefile) {
     format: 'esm',
     target: 'es2022',
     sourcefile,
+    minify: true,
+    legalComments: 'none',
   })
   return result.code
 }
@@ -113,7 +115,7 @@ export { DISAPPROVED_ICON_NAMES } from './icon-approval.js'
 
 ${exports.map((e) => `export { default as ${e.name} } from './icons/${e.file}.js'`).join('\n')}
 `
-  await writeFile(path.join(DIST, 'index.js'), index)
+  await writeFile(path.join(DIST, 'index.js'), await compileTs(index, 'index.ts'))
   await writeFile(
     path.join(DIST, 'index.d.ts'),
     await readFile(path.join(SRC, 'generated-index.d.ts'), 'utf8'),
