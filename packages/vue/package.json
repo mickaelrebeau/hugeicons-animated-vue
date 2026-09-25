@@ -1,6 +1,6 @@
 {
   "name": "hugeicons-animated-vue",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Animated Hugeicons for Vue 3. Copy-paste source, or import the components.",
   "license": "MIT",
   "type": "module",
