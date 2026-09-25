@@ -5,6 +5,13 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1] — 2026-09-25
+
+### Fixed
+
+- Republish of 0.6.0. npm accepted the publish and then left `0.6.0` staged,
+  so the version never became installable.
+
 ## [0.6.0] — 2026-09-25
 
 ### Added
@@ -122,6 +129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Copy-paste shadcn-vue registry under `apps/web/public/r`.
 - Landing with gallery and Lab (Lenis + GSAP).
 
+[0.6.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.6.1
 [0.6.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.6.0
 [0.5.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.5.1
 [0.5.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.5.0
