@@ -29,9 +29,28 @@ jobs:
           CURRENT="$(node -p "require('./package.json').version")"
           if npm view "hugeicons-animated-vue@${CURRENT}" version >/dev/null 2>&1; then
             echo "hugeicons-animated-vue@${CURRENT} is already on npm."
-            exit 0
+          else
+            npm publish --access public --provenance \
+              || echo "publish failed; the version may still be staged"
           fi
-          npm publish --access public --provenance
+      - name: Point latest at this version
+        working-directory: packages/vue
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          CURRENT="$(node -p "require('./package.json').version")"
+          npm config set //registry.npmjs.org/:_authToken "$NODE_AUTH_TOKEN"
+          for _ in $(seq 1 16); do
+            if npm view "hugeicons-animated-vue@${CURRENT}" version >/dev/null 2>&1; then
+              npm dist-tag add "hugeicons-animated-vue@${CURRENT}" latest
+              npm view hugeicons-animated-vue dist-tags --json
+              exit 0
+            fi
+            echo "waiting for ${CURRENT} to become installable"
+            sleep 30
+          done
+          echo "${CURRENT} never became installable"
+          exit 1
       - name: Attach package tarball
         working-directory: packages/vue
         env:
