@@ -14,14 +14,14 @@ handcrafted originals. Do not invent a shared pulse or spin recipe.
 When the task is authoring, converting, or reviewing icon motion, follow this
 file end to end and load the project skill `.cursor/skills/author-icon-motion`.
 
-## Current coverage — stopped after gallery page 11
+## Current coverage — stopped after gallery page 13
 
 The gallery paginates **80 icons** (`apps/web/src/components/IconGallery.vue`).
 `scripts/dump-geometry.mjs` uses the same alphabetical order as the icon files
 (`a.vue` vs `b.vue` string sort), so index `80` here is gallery page 2.
 
-**Authored (unique choreography) exists only for gallery pages 1–11.**
-Icons from page 12 onward still carry the generated marker and a name/shape recipe
+**Authored (unique choreography) exists only for gallery pages 1–13.**
+Icons from page 14 onward still carry the generated marker and a name/shape recipe
 from `scripts/icon-motion.mjs`. Do not claim the whole library is hand-authored.
 
 | Gallery page | Indices | Range | Specs | File |
@@ -37,15 +37,17 @@ from `scripts/icon-motion.mjs`. Do not claim the whole library is hand-authored.
 | 9 | 640–719 | `bitcoin-money` → `book-04` | 79 | `scripts/authored/page-09.mjs` |
 | 10 | 720–801 | `book-a` → `border-right-02` | 81 | `scripts/authored/page-10.mjs` |
 | 11 | 802–881 | `border-right` → `bubble-chat-search` | 80 | `scripts/authored/page-11.mjs` |
-| **12 (next)** | **882–** | **`bubble-chat-secure` → …** | | **`scripts/authored/page-12.mjs`** |
+| 12 | 882–963 | `bubble-chat-secure` → `calendar-favorite` | 78 | `scripts/authored/page-12.mjs` |
+| 13 | 964–1045 | `calendar-fold` → `calling` | 79 | `scripts/authored/page-13.mjs` |
+| **14 (next)** | **1046–** | **`camel` → …** | | **`scripts/authored/page-14.mjs`** |
 
 The gallery hides a few names, so dump indices drift from gallery slots. Confirm
 the last icon of the next page in the gallery pager before writing its specs.
 
-Totals after page 11: **864 authored specs**, **6,122 icons**, **1030** files
-without the generated marker (165 originals + `accident` + 864 authored).
+Totals after page 13: **1021 authored specs**, **6,122 icons**, **1187** files
+without the generated marker (165 originals + `accident` + 1021 authored).
 
-Resume at page 12 (`bubble-chat-secure`). After each page, stop and ask whether to continue or let
+Resume at page 14 (`camel`). After each page, stop and ask whether to continue or let
 the user hover-review — do not silently walk the rest of the library.
 
 ## Three tiers of icon motion
@@ -65,7 +67,7 @@ The authoring emitter overwrites **generated or authored** files. It refuses a
 handcrafted file unless the spec sets `rework: true`. Never set `rework` unless
 the user explicitly asks to replace that original.
 
-### Protected originals in pages 1–11 (do not touch)
+### Protected originals in pages 1–13 (do not touch)
 
 Page 1: `add-circle`, `accident` (collision verb only; no authored/generated marker).
 Page 2: `airplane-take-off-01`, `alarm-clock`.
@@ -80,6 +82,8 @@ Page 8: none.
 Page 9: `bluetooth`.
 Page 10: `bookmark-01`.
 Page 11: none.
+Page 12: `bug-01`, `calendar-add-01`. Hidden handcrafted in the same span: `bulb`, `calendar-03`.
+Page 13: `call-02` (loops: the handset rattles, rests, rattles).
 
 Handcrafted arrows often animate a wrapping `<g>`. Sampling only `<path>` in
 DevTools can show `moved: 0` even when the gesture plays.
@@ -113,7 +117,7 @@ DevTools can show `moved: 0` even when the gesture plays.
    ```
 
    Expect `✓ authored N/N` with N = all specs across every page file. After
-   page 12, add the new specs to the current **864/864** and **1030**
+   page 14, add the new specs to the current **1021/1021** and **1187**
    handcrafted, unless a skip list changed.
 
 6. Spot-check in the gallery (`pnpm dev`, usually `http://localhost:5173`).

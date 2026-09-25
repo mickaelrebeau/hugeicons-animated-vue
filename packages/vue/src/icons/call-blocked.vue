@@ -13,20 +13,34 @@ withDefaults(
   { size: 28 },
 )
 
-// after alert-circle: it refuses the input with a short head-shake
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg)',
-  },
+// the handset jerks away as the ban shakes
+// authored from scripts/authored
+const handsetVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['rotate(0deg)', 'rotate(-8.78deg)', 'rotate(7.68deg)', 'rotate(-4.39deg)', 'rotate(2.2deg)', 'rotate(0deg)'],
-    transition: {
-      duration: 0.55,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: [
+      'translate(0px, 0px)',
+      'translate(2.2px, 1.4px)',
+      'translate(-0.4px, -0.2px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 0.56, times: [0, 0.3, 0.62, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
+
+const badgeVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
+  animate: {
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-4deg) scale(0.97)',
+      'rotate(3.2deg) scale(1.03)',
+      'rotate(-1.2deg) scale(0.995)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.48, delay: 0.06, times: [0, 0.2, 0.46, 0.72, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +54,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M4.91186 10.5413L7.55229 7.90088C8.09091 7.36227 8.27728 6.56642 8.05944 5.83652C7.8891 5.26577 7.69718 4.57964 7.56961 3.99292C7.45162 3.45027 6.97545 3 6.42012 3H4.91186C3.8012 3 2.88911 3.90384 3.01094 5.0078C3.93709 13.3996 10.6004 20.0629 18.9922 20.9891C20.0962 21.1109 21 20.1988 21 19.0881V17.5799C21 17.0246 20.5479 16.569 20.0015 16.4696C19.3988 16.36 18.7611 16.1804 18.2276 16.0103C17.4611 15.7659 16.6091 15.9377 16.0403 16.5065L13.4587 19.0881" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.94px 12.06px' }" />
-            <motion.path d="M14.0251 9.97486C14.6585 10.6082 15.5335 11 16.5 11C18.433 11 20 9.43293 20 7.5C20 6.5335 19.6083 5.6585 18.9749 5.02512M14.0251 9.97486C13.3918 9.34148 13 8.46647 13 7.5C13 5.567 14.567 4 16.5 4C17.4665 4 18.3415 4.39175 18.9749 5.02512M14.0251 9.97486L18.9749 5.02512" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.94px 12.06px' }" />
+            <motion.path d="M4.91186 10.5413L7.55229 7.90088C8.09091 7.36227 8.27728 6.56642 8.05944 5.83652C7.8891 5.26577 7.69718 4.57964 7.56961 3.99292C7.45162 3.45027 6.97545 3 6.42012 3H4.91186C3.8012 3 2.88911 3.90384 3.01094 5.0078C3.93709 13.3996 10.6004 20.0629 18.9922 20.9891C20.0962 21.1109 21 20.1988 21 19.0881V17.5799C21 17.0246 20.5479 16.569 20.0015 16.4696C19.3988 16.36 18.7611 16.1804 18.2276 16.0103C17.4611 15.7659 16.6091 15.9377 16.0403 16.5065L13.4587 19.0881" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handsetVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.9px 12.1px' }" />
+            <motion.path d="M14.0251 9.97486C14.6585 10.6082 15.5335 11 16.5 11C18.433 11 20 9.43293 20 7.5C20 6.5335 19.6083 5.6585 18.9749 5.02512M14.0251 9.97486C13.3918 9.34148 13 8.46647 13 7.5C13 5.567 14.567 4 16.5 4C17.4665 4 18.3415 4.39175 18.9749 5.02512M14.0251 9.97486L18.9749 5.02512" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="badgeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.5px 7.5px' }" />
           </svg>
         </div>
 </template>

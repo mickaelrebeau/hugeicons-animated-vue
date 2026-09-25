@@ -2,8 +2,8 @@
 
 Animated [Hugeicons](https://hugeicons.com) for **Vue 3** — 6,122 icons.
 
-Unique, per-icon choreography is authored for **gallery pages 1–11**
-(`a-arrow-down` through `bubble-chat-search`), plus the original 165 hand-crafted
+Unique, per-icon choreography is authored for **gallery pages 1–13**
+(`a-arrow-down` through `calling`), plus the original 165 hand-crafted
 gestures. Icons after that page still use a generated name-and-shape recipe.
 Hover plays the motion; you can also drive playback yourself. Finite motions
 finish their beat. Looping motions return to rest. `prefers-reduced-motion`

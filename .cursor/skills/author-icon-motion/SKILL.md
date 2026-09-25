@@ -16,12 +16,12 @@ source of truth for coverage, protected originals, spec shape, and the kit.
 
 ## Resume point
 
-Stopped after **gallery page 11** (`border-right` → `bubble-chat-search`,
-indices 802–881). Next is **page 12**, starting at index **882**
-(`bubble-chat-secure`). Confirm its last icon in the gallery pager. Spec file:
-`scripts/authored/page-12.mjs`.
+Stopped after **gallery page 13** (`calendar-fold` → `calling`,
+file indices 964–1045, 79 specs). Next is **page 14**, starting at `camel`
+(file index 1046). Confirm its last icon in the gallery pager. Spec file:
+`scripts/authored/page-14.mjs`.
 
-Authored choreography exists **only** for pages 1–11. Later icons are still generated recipes. Never
+Authored choreography exists **only** for pages 1–13. Later icons are still generated recipes. Never
 overwrite a file that has neither the authored nor the generated marker.
 
 ## One-page loop

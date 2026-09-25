@@ -7,10 +7,10 @@
 A collection of 6,122 animated [Hugeicons](https://hugeicons.com) for **Vue 3**.
 Install from npm, or copy-paste each icon as source you own.
 
-**Authored motion covers gallery pages 1–11** (`a-arrow-down` through
-`bubble-chat-search`). Those icons have a unique hover gesture written from the
+**Authored motion covers gallery pages 1–13** (`a-arrow-down` through
+`calling`). Those icons have a unique hover gesture written from the
 pictogram's name, geometry, and direction. The 165 original hand-crafted icons
-are unchanged. Every icon after page 11 still uses a generated recipe from
+are unchanged. Every icon after page 13 still uses a generated recipe from
 its name and shape.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
@@ -72,7 +72,7 @@ Or add this to `components.json`:
 ## Animation coverage
 
 The site gallery shows 80 icons per page. Unique, per-icon choreography has
-been authored for **pages 1–11**:
+been authored for **pages 1–13**:
 
 | Page | Icons | Authored file |
 | --- | --- | --- |
@@ -87,10 +87,13 @@ been authored for **pages 1–11**:
 | 9 | `bitcoin-money` → `book-04` | `scripts/authored/page-09.mjs` |
 | 10 | `book-a` → `border-right-02` | `scripts/authored/page-10.mjs` |
 | 11 | `border-right` → `bubble-chat-search` | `scripts/authored/page-11.mjs` |
+| 12 | `bubble-chat-secure` → `calendar-favorite` | `scripts/authored/page-12.mjs` |
+| 13 | `calendar-fold` → `calling` | `scripts/authored/page-13.mjs` |
 
 Hand-crafted originals that fall in that range were left untouched (for
-example `add-circle`, `alert-circle`, `arrow-down-02`, `bookmark-01`).
-Page 12 onward (`bubble-chat-secure` and after) is still generated.
+example `add-circle`, `alert-circle`, `arrow-down-02`, `bookmark-01`,
+`bug-01`, `calendar-add-01`, `call-02`).
+Page 14 onward (`camel` and after) is still generated.
 
 To continue the walk, see [AGENTS.md](AGENTS.md).
 
