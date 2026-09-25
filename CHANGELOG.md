@@ -5,6 +5,24 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] — 2026-09-25
+
+### Added
+
+- Unique hover choreography for gallery page 11 (`border-right` through
+  `bubble-chat-search`): 80 authored gestures, 864 authored specs in total
+  across pages 1–11.
+
+### Changed
+
+- `around`, `retrace`, `scaleFrom`, `hold`, and `scaleHold` moved from page 10
+  into the shared authoring kit.
+
+### Fixed
+
+- `packages/vue/package.json` had a trailing comma from a dependency merge,
+  which broke every `pnpm --filter` command.
+
 ## [0.4.0] — 2026-08-17
 
 ### Added
@@ -85,6 +103,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Copy-paste shadcn-vue registry under `apps/web/public/r`.
 - Landing with gallery and Lab (Lenis + GSAP).
 
+[0.5.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.5.0
 [0.4.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.4.0
 [0.3.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.3.1
 [0.3.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.3.0

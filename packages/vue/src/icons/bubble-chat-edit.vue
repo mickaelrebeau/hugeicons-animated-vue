@@ -13,20 +13,30 @@ withDefaults(
   { size: 28 },
 )
 
-// after message-01: the bubble unfurls from its tail and settles
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the pencil scribbles along its nib inside the still bubble
+// authored from scripts/authored
+const pencilVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px) rotate(0deg)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.92)', 'scale(1.08)', 'scale(1)'],
+    transform: [
+      'translate(0px, 0px) rotate(0deg)',
+      'translate(-0.8px, 0.6px) rotate(-6deg)',
+      'translate(0.6px, -0.4px) rotate(4deg)',
+      'translate(-0.3px, 0.2px) rotate(-2deg)',
+      'translate(0px, 0px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.53,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.77, 0, 0.175, 1],
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +50,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C10.3719 21.5 8.8394 21.0904 7.5 20.3687C5.63177 19.362 4.37462 20.2979 3.26592 20.4658C3.09774 20.4913 2.93024 20.4302 2.80997 20.31C2.62741 20.1274 2.59266 19.8451 2.6935 19.6074C3.12865 18.5818 3.5282 16.6382 2.98341 15C2.6698 14.057 2.5 13.0483 2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M10.2367 15.1527L8.5 15.5L8.84733 13.7633C8.91788 13.4106 9.09126 13.0866 9.34563 12.8323L13.4111 8.76684C13.7668 8.41105 14.3437 8.41105 14.6995 8.76684L15.2332 9.30052C15.5889 9.65631 15.5889 10.2332 15.2332 10.5889L11.1677 14.6544C10.9134 14.9087 10.5894 15.0821 10.2367 15.1527Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C10.3719 21.5 8.8394 21.0904 7.5 20.3687C5.63177 19.362 4.37462 20.2979 3.26592 20.4658C3.09774 20.4913 2.93024 20.4302 2.80997 20.31C2.62741 20.1274 2.59266 19.8451 2.6935 19.6074C3.12865 18.5818 3.5282 16.6382 2.98341 15C2.6698 14.057 2.5 13.0483 2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M10.2367 15.1527L8.5 15.5L8.84733 13.7633C8.91788 13.4106 9.09126 13.0866 9.34563 12.8323L13.4111 8.76684C13.7668 8.41105 14.3437 8.41105 14.6995 8.76684L15.2332 9.30052C15.5889 9.65631 15.5889 10.2332 15.2332 10.5889L11.1677 14.6544C10.9134 14.9087 10.5894 15.0821 10.2367 15.1527Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pencilVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

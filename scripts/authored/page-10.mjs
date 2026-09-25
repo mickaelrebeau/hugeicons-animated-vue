@@ -12,17 +12,19 @@
 import {
   OUT,
   INOUT,
+  HOLD_E,
+  HOLD_T,
+  around,
   beat,
   draw,
   grow,
+  hold,
+  retrace,
+  scaleFrom,
+  scaleHold,
   stamp,
   twinkle,
 } from './_kit.mjs'
-
-const T5 = [0, 0.18, 0.46, 0.74, 1]
-const E5 = [INOUT, OUT, OUT, OUT]
-const HOLD_T = [0, 0.26, 0.72, 1]
-const HOLD_E = [INOUT, OUT, OUT]
 
 /** Bang mark: stem stretches, the dot answers a beat later. */
 const bang = (stemOrigin, dotOrigin, o = {}) => [
@@ -56,89 +58,6 @@ const bang = (stemOrigin, dotOrigin, o = {}) => [
     ...o,
   },
 ]
-
-/**
- * Rigid rotation around `pivot`. motion-v overwrites transform-origin to the
- * part's own fill-box, so each keyframe also translates the part's center.
- */
-const around = (pivot, center, degrees, o = {}) => {
-  const [px, py] = pivot
-  const [x, y] = center
-  const dx = x - px
-  const dy = y - py
-  return {
-    origin: center,
-    transform: degrees.map((deg) => {
-      const θ = (deg * Math.PI) / 180
-      const c = Math.cos(θ)
-      const s = Math.sin(θ)
-      const tx = dx * (c - 1) - dy * s
-      const ty = dx * s + dy * (c - 1)
-      return `translate(${tx.toFixed(2)}px, ${ty.toFixed(2)}px) rotate(${deg}deg)`
-    }),
-    times: T5,
-    ease: E5,
-    dur: 0.7,
-    ...o,
-  }
-}
-
-/** Retract a stroke toward its end, then rewrite it — no visibility pop. */
-const retrace = (o = {}) => ({
-  pathLength: [1, 0.14, 1],
-  pathOffset: [0, 0.5, 0],
-  times: [0, 0.34, 1],
-  ease: [INOUT, OUT],
-  dur: 0.68,
-  ...o,
-})
-
-/**
- * Scale along `axis` while keeping `pivot` planted. Same fill-box compensation
- * as `around`.
- */
-const scaleFrom = (axis, pivot, center, scales, o = {}) => {
-  const i = axis === 'X' ? 0 : 1
-  const d = pivot[i] - center[i]
-  return {
-    origin: center,
-    transform: scales.map((s) => {
-      const t = d * (1 - s)
-      const trans =
-        axis === 'X' ? `translate(${t.toFixed(2)}px, 0px)` : `translate(0px, ${t.toFixed(2)}px)`
-      return `${trans} scale${axis}(${s})`
-    }),
-    times: HOLD_T,
-    ease: HOLD_E,
-    dur: 0.66,
-    ...o,
-  }
-}
-
-/** Travel, hold, return — no overshoot. */
-const hold = (origin, dx, dy, o = {}) => ({
-  origin,
-  transform: [
-    'translate(0px, 0px)',
-    `translate(${dx}px, ${dy}px)`,
-    `translate(${dx}px, ${dy}px)`,
-    'translate(0px, 0px)',
-  ],
-  times: HOLD_T,
-  ease: HOLD_E,
-  dur: 0.7,
-  ...o,
-})
-
-/** Uniform scale from the part center, hold, restore. */
-const scaleHold = (origin, s, o = {}) => ({
-  origin,
-  transform: ['scale(1)', `scale(${s})`, `scale(${s})`, 'scale(1)'],
-  times: HOLD_T,
-  ease: HOLD_E,
-  dur: 0.66,
-  ...o,
-})
 
 const FLIP_T = [0, 0.22, 0.4, 0.7, 1]
 const FLIP_E = [INOUT, OUT, OUT, OUT]

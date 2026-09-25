@@ -13,37 +13,24 @@ withDefaults(
   { size: 28 },
 )
 
-// after download-01: the arrow falls through; the tray takes the weight
-// generated from @hugeicons/core-free-icons
-const trayVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
-  animate: {
-    transform: ['translateY(0px)', 'translateY(1.24px)', 'translateY(0px)'],
-    transition: {
-      duration: 0.3,
-      ease: 'easeOut',
-      delay: 0.32,
-    },
-  },
-}
-
+// the arrow falls out the bottom and drops back in from the top
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-    visibility: 'visible',
-  },
+  normal: { transform: 'translateY(0px)', opacity: 1 },
   animate: {
-    transform: ['translateY(0px)', 'translateY(5.33px)', 'translateY(-5.33px)', 'translateY(0px)'],
-    visibility: ['visible', 'hidden', 'hidden', 'visible'],
+    transform: ['translateY(0px)', 'translateY(3px)', 'translateY(-3px)', 'translateY(0px)'],
+    opacity: [1, 0, 0, 1],
     transition: {
-      duration: 0.72,
-      times: [0, 0.42, 0.5, 1],
-      ease: ['easeIn', 'linear', 'easeOut'],
+      duration: 0.7,
+      times: [0, 0.4, 0.42, 1],
+      ease: [
+        'easeIn',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -57,7 +44,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C10.3719 21.5 8.8394 21.0904 7.5 20.3687C5.63177 19.362 4.37462 20.2979 3.26592 20.4658C3.09774 20.4913 2.93024 20.4302 2.80997 20.31C2.62741 20.1274 2.59266 19.8451 2.6935 19.6074C3.12865 18.5818 3.5282 16.6382 2.98341 15C2.6698 14.057 2.5 13.0483 2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="trayVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21.5px' }" />
+            <path d="M21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C10.3719 21.5 8.8394 21.0904 7.5 20.3687C5.63177 19.362 4.37462 20.2979 3.26592 20.4658C3.09774 20.4913 2.93024 20.4302 2.80997 20.31C2.62741 20.1274 2.59266 19.8451 2.6935 19.6074C3.12865 18.5818 3.5282 16.6382 2.98341 15C2.6698 14.057 2.5 13.0483 2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
             <motion.path d="M15 12.5C15 12.5 12.7905 15.5 12 15.5C11.2094 15.5 9 12.5 9 12.5M12 15V8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>

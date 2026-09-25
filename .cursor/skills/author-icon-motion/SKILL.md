@@ -16,13 +16,12 @@ source of truth for coverage, protected originals, spec shape, and the kit.
 
 ## Resume point
 
-Stopped after **gallery page 10**. Next is **page 11**: indices **802–879**,
-`border-right` → `bubble-chat-preview`. `border-right-01` and `border-right-02`
-were authored with page 10 — do not duplicate them. Spec file:
-`scripts/authored/page-11.mjs`.
+Stopped after **gallery page 11** (`border-right` → `bubble-chat-search`,
+indices 802–881). Next is **page 12**, starting at index **882**
+(`bubble-chat-secure`). Confirm its last icon in the gallery pager. Spec file:
+`scripts/authored/page-12.mjs`.
 
-Authored choreography exists **only** for pages 1–10 (plus those two
-`border-right-*` extras). Later icons are still generated recipes. Never
+Authored choreography exists **only** for pages 1–11. Later icons are still generated recipes. Never
 overwrite a file that has neither the authored nor the generated marker.
 
 ## One-page loop

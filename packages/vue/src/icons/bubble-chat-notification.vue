@@ -13,20 +13,29 @@ withDefaults(
   { size: 28 },
 )
 
-// after message-01: the bubble unfurls from its tail and settles
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the badge pops and the bubble rattles like a ping
+// authored from scripts/authored
+const badgeVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.92)', 'scale(1.08)', 'scale(1)'],
-    transition: {
-      duration: 0.53,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['scale(1)', 'scale(0.4)', 'scale(1.28)', 'scale(1)'],
+    transition: { duration: 0.5, times: [0, 0.2, 0.55, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
+
+const bubbleVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
+  animate: {
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-4deg) scale(0.97)',
+      'rotate(3.2deg) scale(1.03)',
+      'rotate(-1.2deg) scale(0.995)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.56, delay: 0.08, times: [0, 0.2, 0.46, 0.72, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +49,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M22 5C22 6.38071 20.8807 7.5 19.5 7.5C18.1193 7.5 17 6.38071 17 5C17 3.61929 18.1193 2.5 19.5 2.5C20.8807 2.5 22 3.61929 22 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
-            <motion.path d="M21.7896 10.0023C21.9274 10.6464 22 11.3147 22 12C22 17.2467 17.7467 21.5 12.5 21.5C10.8719 21.5 9.3394 21.0904 8 20.3687C6.13177 19.362 4.87462 20.2979 3.76592 20.4658C3.59774 20.4913 3.43024 20.4302 3.30997 20.31C3.12741 20.1274 3.09266 19.8451 3.1935 19.6074C3.62865 18.5818 4.0282 16.6382 3.48341 15C3.1698 14.057 3 13.0483 3 12C3 6.75329 7.25329 2.5 12.5 2.5C13.1853 2.5 13.8536 2.57256 14.4978 2.71042" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
-            <motion.path d="M12.6257 12H12.5007M8.625 12H8.5M16.625 12H16.5M12.7507 12C12.7507 12.1381 12.6388 12.25 12.5007 12.25C12.3627 12.25 12.2507 12.1381 12.2507 12C12.2507 11.8619 12.3627 11.75 12.5007 11.75C12.6388 11.75 12.7507 11.8619 12.7507 12ZM8.75 12C8.75 12.1381 8.63807 12.25 8.5 12.25C8.36193 12.25 8.25 12.1381 8.25 12C8.25 11.8619 8.36193 11.75 8.5 11.75C8.63807 11.75 8.75 11.8619 8.75 12ZM16.75 12C16.75 12.1381 16.6381 12.25 16.5 12.25C16.3619 12.25 16.25 12.1381 16.25 12C16.25 11.8619 16.3619 11.75 16.5 11.75C16.6381 11.75 16.75 11.8619 16.75 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
+            <motion.path d="M22 5C22 6.38071 20.8807 7.5 19.5 7.5C18.1193 7.5 17 6.38071 17 5C17 3.61929 18.1193 2.5 19.5 2.5C20.8807 2.5 22 3.61929 22 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="badgeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19.5px 5px' }" />
+            <motion.path d="M21.7896 10.0023C21.9274 10.6464 22 11.3147 22 12C22 17.2467 17.7467 21.5 12.5 21.5C10.8719 21.5 9.3394 21.0904 8 20.3687C6.13177 19.362 4.87462 20.2979 3.76592 20.4658C3.59774 20.4913 3.43024 20.4302 3.30997 20.31C3.12741 20.1274 3.09266 19.8451 3.1935 19.6074C3.62865 18.5818 4.0282 16.6382 3.48341 15C3.1698 14.057 3 13.0483 3 12C3 6.75329 7.25329 2.5 12.5 2.5C13.1853 2.5 13.8536 2.57256 14.4978 2.71042" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bubbleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
+            <motion.path d="M12.6257 12H12.5007M8.625 12H8.5M16.625 12H16.5M12.7507 12C12.7507 12.1381 12.6388 12.25 12.5007 12.25C12.3627 12.25 12.2507 12.1381 12.2507 12C12.2507 11.8619 12.3627 11.75 12.5007 11.75C12.6388 11.75 12.7507 11.8619 12.7507 12ZM8.75 12C8.75 12.1381 8.63807 12.25 8.5 12.25C8.36193 12.25 8.25 12.1381 8.25 12C8.25 11.8619 8.36193 11.75 8.5 11.75C8.63807 11.75 8.75 11.8619 8.75 12ZM16.75 12C16.75 12.1381 16.6381 12.25 16.5 12.25C16.3619 12.25 16.25 12.1381 16.25 12C16.25 11.8619 16.3619 11.75 16.5 11.75C16.6381 11.75 16.75 11.8619 16.75 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bubbleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
           </svg>
         </div>
 </template>
