@@ -13,6 +13,9 @@ updates:
     ignore:
       - dependency-name: typescript
         versions: [">=6"]
+      # Authored specs target 4.2.3 geometry; newer releases redraw icons.
+      # See AGENTS.md "Geometry version" before bumping this by hand.
+      - dependency-name: "@hugeicons/core-free-icons"
   - package-ecosystem: github-actions
     directory: /
     schedule:
