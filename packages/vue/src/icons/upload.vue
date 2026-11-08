@@ -13,37 +13,44 @@ withDefaults(
   { size: 28 },
 )
 
-// after upload-01: the arrow launches off the top
-// generated from @hugeicons/core-free-icons
+// the arrow pushes up with a squeeze and the tray stretches
+// authored from scripts/authored
 const trayVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
+  normal: { transform: 'scaleX(1)' },
   animate: {
-    transform: ['translateY(0px)', 'translateY(0.87px)', 'translateY(0px)'],
+    transform: ['scaleX(1)', 'scaleX(1.06)', 'scaleX(0.99)', 'scaleX(1)'],
     transition: {
-      duration: 0.29,
-      ease: 'easeOut',
-      delay: 0.08,
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-    visibility: 'visible',
-  },
+  normal: { transform: 'translateY(0px) scaleX(1)' },
   animate: {
-    transform: ['translateY(0px)', 'translateY(-4.99px)', 'translateY(4.99px)', 'translateY(0px)'],
-    visibility: ['visible', 'hidden', 'hidden', 'visible'],
+    transform: [
+      'translateY(0px) scaleX(1)',
+      'translateY(-2.6px) scaleX(0.94)',
+      'translateY(0.312px) scaleX(1.02)',
+      'translateY(0px) scaleX(1)',
+    ],
     transition: {
-      duration: 0.69,
-      times: [0, 0.42, 0.5, 1],
-      ease: ['easeIn', 'linear', 'easeOut'],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

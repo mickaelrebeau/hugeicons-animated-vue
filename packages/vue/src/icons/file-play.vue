@@ -13,20 +13,31 @@ withDefaults(
   { size: 28 },
 )
 
-// after play: the play head compresses, releases forward, and settles
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1) scaleY(1)',
-  },
+// the play button pops on the file
+// authored from scripts/authored
+const pageVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.79px) scaleX(0.9) scaleY(1.04)', 'translateX(1.98px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.3, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const playVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(1.3)', 'scale(0.92)', 'scale(1)'],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +51,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M13 2.5V3C13 5.82843 13 7.24264 13.8787 8.12132C14.7574 9 16.1716 9 19 9H19.5M20 10.6569V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V9.45584C4 6.21082 4 4.58831 4.88607 3.48933C5.06508 3.26731 5.26731 3.06508 5.48933 2.88607C6.58831 2 8.21082 2 11.4558 2C12.1614 2 12.5141 2 12.8372 2.11401C12.9044 2.13772 12.9702 2.165 13.0345 2.19575C13.3436 2.34355 13.593 2.593 14.0919 3.09188L18.8284 7.82843C19.4065 8.40649 19.6955 8.69552 19.8478 9.06306C20 9.4306 20 9.83935 20 10.6569Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 12px' }" />
-            <motion.path d="M14.957 15.3384C14.8182 15.8756 14.1619 16.2552 12.8494 17.0144C11.5806 17.7484 10.9462 18.1153 10.4349 17.9678C10.2236 17.9068 10.031 17.791 9.87567 17.6315C9.5 17.2456 9.5 16.497 9.5 15C9.5 13.503 9.5 12.7544 9.87567 12.3685C10.031 12.209 10.2236 12.0932 10.4349 12.0322C10.9462 11.8847 11.5806 12.2516 12.8494 12.9856C14.1619 13.7448 14.8182 14.1244 14.957 14.6616C15.0143 14.8834 15.0143 15.1166 14.957 15.3384Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 12px' }" />
+            <motion.path d="M13 2.5V3C13 5.82843 13 7.24264 13.8787 8.12132C14.7574 9 16.1716 9 19 9H19.5M20 10.6569V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V9.45584C4 6.21082 4 4.58831 4.88607 3.48933C5.06508 3.26731 5.26731 3.06508 5.48933 2.88607C6.58831 2 8.21082 2 11.4558 2C12.1614 2 12.5141 2 12.8372 2.11401C12.9044 2.13772 12.9702 2.165 13.0345 2.19575C13.3436 2.34355 13.593 2.593 14.0919 3.09188L18.8284 7.82843C19.4065 8.40649 19.6955 8.69552 19.8478 9.06306C20 9.4306 20 9.83935 20 10.6569Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pageVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M14.957 15.3384C14.8182 15.8756 14.1619 16.2552 12.8494 17.0144C11.5806 17.7484 10.9462 18.1153 10.4349 17.9678C10.2236 17.9068 10.031 17.791 9.87567 17.6315C9.5 17.2456 9.5 16.497 9.5 15C9.5 13.503 9.5 12.7544 9.87567 12.3685C10.031 12.209 10.2236 12.0932 10.4349 12.0322C10.9462 11.8847 11.5806 12.2516 12.8494 12.9856C14.1619 13.7448 14.8182 14.1244 14.957 14.6616C15.0143 14.8834 15.0143 15.1166 14.957 15.3384Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="playVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.3px 15px' }" />
           </svg>
         </div>
 </template>

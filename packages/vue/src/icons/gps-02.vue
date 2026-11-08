@@ -13,25 +13,126 @@ withDefaults(
   { size: 28 },
 )
 
-// after compass: the needle overshoots the bearing and settles on it
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg)',
-  },
+// the crosshair ring tightens and the ticks pulse
+// authored from scripts/authored
+const ringVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) scale(1)' },
   animate: {
-    transform: ['rotate(0deg)', 'rotate(202deg)', 'rotate(177.5deg)', 'rotate(180deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) scale(1)',
+      'translate(0.00px, 0.00px) scale(0.88)',
+      'translate(0.00px, 0.00px) scale(1.04)',
+      'translate(0.00px, 0.00px) scale(1)',
+      'translate(0.00px, 0.00px) scale(1)',
+    ],
     transition: {
-      duration: 0.94,
-      times: [0, 0.72, 0.9, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
       ease: [
         [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
         [0.23, 1, 0.32, 1],
         [0.23, 1, 0.32, 1],
       ],
     },
   },
-}
+};
+
+const tickVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1px, 0px)',
+      'translate(0.15px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const tick2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1px, 0px)',
+      'translate(-0.15px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const tick3Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 1px)',
+      'translate(0px, -0.15px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const tick4Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.15px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -45,11 +146,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M20.5137 12C20.5137 16.6944 16.7081 20.5 12.0137 20.5C7.31925 20.5 3.51367 16.6944 3.51367 12C3.51367 7.30558 7.31925 3.5 12.0137 3.5C16.7081 3.5 20.5137 7.30558 20.5137 12Z" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M22.5 12H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M3.5 12H1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12 1.5L12 3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12 20.5V22.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M20.5137 12C20.5137 16.6944 16.7081 20.5 12.0137 20.5C7.31925 20.5 3.51367 16.6944 3.51367 12C3.51367 7.30558 7.31925 3.5 12.0137 3.5C16.7081 3.5 20.5137 7.30558 20.5137 12Z" stroke="currentColor" stroke-width="1.5" :variants="ringVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M22.5 12H20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tickVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '21px 12px' }" />
+            <motion.path d="M3.5 12H1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tick2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 12px' }" />
+            <motion.path d="M12 1.5L12 3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tick3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 3px' }" />
+            <motion.path d="M12 20.5V22.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tick4Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
           </svg>
         </div>
 </template>

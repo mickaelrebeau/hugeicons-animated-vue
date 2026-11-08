@@ -13,20 +13,76 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-right-02: the mark commits forward along its indicated direction
-// generated from @hugeicons/core-free-icons
-const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleY(1)',
-  },
+// the arrow skips a long lap while the 60 rewrites
+// authored from scripts/authored
+const dialVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
   animate: {
-    transform: ['translateX(0px) scaleY(1)', 'translateX(2.51px) scaleY(0.94)', 'translateX(-0.29px) scaleY(1.02)', 'translateX(0.43px) scaleY(0.99)', 'translateX(0px) scaleY(1)'],
+    transform: [
+      'rotate(0deg)',
+      'rotate(72deg)',
+      'rotate(251.99999999999997deg)',
+      'rotate(370.8deg)',
+      'rotate(360deg)',
+    ],
     transition: {
-      duration: 0.48,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 1.1,
+      times: [0, 0.2, 0.6, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const digitVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 1, 0.12, 0, 0, 0.12, 1, 1],
+    pathOffset: [0, 0, 0.88, 1, 0, 0, 0, 0],
+    visibility: ['visible', 'visible', 'hidden', 'hidden', 'hidden', 'hidden', 'visible', 'visible'],
+    transition: {
+      duration: 0.82,
+      delay: 0.1,
+      times: [0, 0.06, 0.25, 0.28, 0.35, 0.39, 0.84, 1],
+      ease: [
+        'linear',
+        [0.77, 0, 0.175, 1],
+        'linear',
+        'linear',
+        'linear',
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
+    },
+  },
+};
+
+const digit2Variants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 1, 0.12, 0, 0, 0.12, 1, 1],
+    pathOffset: [0, 0, 0.88, 1, 0, 0, 0, 0],
+    visibility: ['visible', 'visible', 'hidden', 'hidden', 'hidden', 'hidden', 'visible', 'visible'],
+    transition: {
+      duration: 0.82,
+      delay: 0.2,
+      times: [0, 0.06, 0.25, 0.28, 0.35, 0.39, 0.84, 1],
+      ease: [
+        'linear',
+        [0.77, 0, 0.175, 1],
+        'linear',
+        'linear',
+        'linear',
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +96,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 5L13.1039 3.45459C13.5149 2.87911 13.7205 2.59137 13.5907 2.32411C13.4609 2.05684 13.1311 2.04153 12.4714 2.01092C12.3152 2.00367 12.158 2 12 2C6.4772 2 2 6.47715 2 12C2 17.5228 6.4772 22 12 22C17.5229 22 22 17.5228 22 12C22 8.72836 20.4289 5.82368 18 3.99927" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M16.5049 12.5939C16.5002 11.2197 16.568 10.845 16.3158 10.4018C16.0636 9.9586 15.4332 9.99693 14.8028 9.99693C14.1724 9.99693 13.7402 9.99693 13.446 10.306C13.1139 10.6988 13.2002 11.0997 13.1858 12.5819C13.2002 14.6397 13.0802 15.3597 13.4402 15.6597C13.8002 16.0797 14.2632 15.9838 14.9174 15.9957C15.5669 15.9875 15.9605 16.0197 16.2814 15.6364C16.6368 15.301 16.4648 13.9714 16.5049 12.5939Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.3" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M10.7639 10.992C10.7399 10.26 10.347 9.99597 9.19317 9.99597C7.94647 9.98122 7.51187 10.02 7.49987 11.4C7.49987 12.6 7.49987 12.96 7.49987 14.76C7.49987 16.26 8.63987 15.966 9.23987 16.002C9.71987 15.966 10.7476 16.2375 10.8179 14.7C10.7399 13.26 10.1999 13.26 9.23987 13.26C7.91987 13.26 7.85987 13.26 7.49987 14.069" stroke="currentColor" stroke-linecap="round" stroke-width="1.3" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M12 5L13.1039 3.45459C13.5149 2.87911 13.7205 2.59137 13.5907 2.32411C13.4609 2.05684 13.1311 2.04153 12.4714 2.01092C12.3152 2.00367 12.158 2 12 2C6.4772 2 2 6.47715 2 12C2 17.5228 6.4772 22 12 22C17.5229 22 22 17.5228 22 12C22 8.72836 20.4289 5.82368 18 3.99927" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dialVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M16.5049 12.5939C16.5002 11.2197 16.568 10.845 16.3158 10.4018C16.0636 9.9586 15.4332 9.99693 14.8028 9.99693C14.1724 9.99693 13.7402 9.99693 13.446 10.306C13.1139 10.6988 13.2002 11.0997 13.1858 12.5819C13.2002 14.6397 13.0802 15.3597 13.4402 15.6597C13.8002 16.0797 14.2632 15.9838 14.9174 15.9957C15.5669 15.9875 15.9605 16.0197 16.2814 15.6364C16.6368 15.301 16.4648 13.9714 16.5049 12.5939Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.3" :variants="digitVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M10.7639 10.992C10.7399 10.26 10.347 9.99597 9.19317 9.99597C7.94647 9.98122 7.51187 10.02 7.49987 11.4C7.49987 12.6 7.49987 12.96 7.49987 14.76C7.49987 16.26 8.63987 15.966 9.23987 16.002C9.71987 15.966 10.7476 16.2375 10.8179 14.7C10.7399 13.26 10.1999 13.26 9.23987 13.26C7.91987 13.26 7.85987 13.26 7.49987 14.069" stroke="currentColor" stroke-linecap="round" stroke-width="1.3" :variants="digit2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

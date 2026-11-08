@@ -13,20 +13,70 @@ withDefaults(
   { size: 28 },
 )
 
-// after save: the disk presses into place while its slots write in
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the coin hops off the hand and the euro pops
+// authored from scripts/authored
+const coinVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.86)', 'scale(1.04)', 'scale(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.2px)',
+      'translate(0px, 0.168px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.35,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const glyphVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(1.2)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.1,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const handVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -0.5px)',
+      'translate(0px, 0.075px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +90,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M19.7453 13C20.5362 11.8662 21 10.4872 21 9C21 5.13401 17.866 2 14 2C10.134 2 7 5.134 7 9C7 10.0736 7.24169 11.0907 7.67363 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 7.5px' }" />
-            <motion.path d="M16 11.1807C15.6014 11.9713 14.876 12.5 14.0473 12.5C12.7892 12.5 11.7692 11.2812 11.7692 9.77778V8.22222C11.7692 6.71878 12.7892 5.5 14.0473 5.5C14.876 5.5 15.6014 6.02873 16 6.81927M10.5 9H14.2692" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 7.5px' }" />
-            <motion.path d="M3 14H5.39482C5.68897 14 5.97908 14.0663 6.24217 14.1936L8.28415 15.1816C8.54724 15.3089 8.83735 15.3751 9.1315 15.3751H10.1741C11.1825 15.3751 12 16.1662 12 17.142C12 17.1814 11.973 17.2161 11.9338 17.2269L9.39287 17.9295C8.93707 18.0555 8.449 18.0116 8.025 17.8064L5.84211 16.7503M12 16.5L16.5928 15.0889C17.407 14.8352 18.2871 15.136 18.7971 15.8423C19.1659 16.3529 19.0157 17.0842 18.4785 17.3942L10.9629 21.7305C10.4849 22.0063 9.92094 22.0736 9.39516 21.9176L3 20.0199" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 7.5px' }" />
+            <motion.path d="M19.7453 13C20.5362 11.8662 21 10.4872 21 9C21 5.13401 17.866 2 14 2C10.134 2 7 5.134 7 9C7 10.0736 7.24169 11.0907 7.67363 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="coinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 7.5px' }" />
+            <motion.path d="M16 11.1807C15.6014 11.9713 14.876 12.5 14.0473 12.5C12.7892 12.5 11.7692 11.2812 11.7692 9.77778V8.22222C11.7692 6.71878 12.7892 5.5 14.0473 5.5C14.876 5.5 15.6014 6.02873 16 6.81927M10.5 9H14.2692" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="glyphVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.3px 9px' }" />
+            <motion.path d="M3 14H5.39482C5.68897 14 5.97908 14.0663 6.24217 14.1936L8.28415 15.1816C8.54724 15.3089 8.83735 15.3751 9.1315 15.3751H10.1741C11.1825 15.3751 12 16.1662 12 17.142C12 17.1814 11.973 17.2161 11.9338 17.2269L9.39287 17.9295C8.93707 18.0555 8.449 18.0116 8.025 17.8064L5.84211 16.7503M12 16.5L16.5928 15.0889C17.407 14.8352 18.2871 15.136 18.7971 15.8423C19.1659 16.3529 19.0157 17.0842 18.4785 17.3942L10.9629 21.7305C10.4849 22.0063 9.92094 22.0736 9.39516 21.9176L3 20.0199" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.1px 18px' }" />
           </svg>
         </div>
 </template>

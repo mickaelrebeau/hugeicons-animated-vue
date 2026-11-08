@@ -13,35 +13,38 @@ withDefaults(
   { size: 28 },
 )
 
-// after notification-off-01: the slash cuts through and the rest of the glyph recoils
-// generated from @hugeicons/core-free-icons
-const markVariants: Variants = {
-  normal: {
-    transform: 'scale(1) rotate(0deg)',
-  },
+// the slash cuts across and the mic shivers
+// authored from scripts/authored
+const slashVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scale(1) rotate(0deg)', 'scale(0.86) rotate(-1.96deg)', 'scale(1.08) rotate(0.79deg)', 'scale(1) rotate(0deg)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) translateY(0px)',
-    opacity: 1,
-  },
+const micVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
   animate: {
-    transform: ['rotate(0deg) translateY(0px)', 'rotate(-8.59deg) translateY(0.43px)', 'rotate(0deg) translateY(1.29px)', 'rotate(0deg) translateY(0px)'],
-    opacity: [1, 1, 0.55, 1],
-    transition: {
-      duration: 0.73,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-4deg) scale(0.97)',
+      'rotate(3.2deg) scale(1.03)',
+      'rotate(-1.2deg) scale(0.995)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.56, delay: 0.16, times: [0, 0.2, 0.46, 0.72, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -55,9 +58,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 2L22 22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M4 11C4 15.4183 7.58172 19 12 19M12 19C13.9545 19 15.7454 18.2991 17.1348 17.1348M12 19V22M12 22H15M12 22H9M20 11C20 12.6514 19.4996 14.1859 18.6422 15.4603" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16.5px' }" />
-            <motion.path d="M17.0078 6.99599C17.0078 4.23457 14.7692 2.01599 12.0078 2.01599C10.139 2.01599 8.5379 2.98126 7.67981 4.49999M17.0078 6.99599L13.9798 7.00799M17.0078 6.99599V11.004M7.00781 6.99599V11.016C7.00781 13.7774 9.24639 16.016 12.0078 16.016C13.1432 16.016 14.1725 15.6256 15.0118 14.988M16.4465 13.26C16.8051 12.5705 17.0078 11.8469 17.0078 11.016V11.004M14.1829 11.004H17.0078" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.01px 9.02px' }" />
+            <motion.path d="M2 2L22 22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="slashVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M4 11C4 15.4183 7.58172 19 12 19M12 19C13.9545 19 15.7454 18.2991 17.1348 17.1348M12 19V22M12 22H15M12 22H9M20 11C20 12.6514 19.4996 14.1859 18.6422 15.4603" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.path d="M17.0078 6.99599C17.0078 4.23457 14.7692 2.01599 12.0078 2.01599C10.139 2.01599 8.5379 2.98126 7.67981 4.49999M17.0078 6.99599L13.9798 7.00799M17.0078 6.99599V11.004M7.00781 6.99599V11.016C7.00781 13.7774 9.24639 16.016 12.0078 16.016C13.1432 16.016 14.1725 15.6256 15.0118 14.988M16.4465 13.26C16.8051 12.5705 17.0078 11.8469 17.0078 11.016V11.004M14.1829 11.004H17.0078" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="micVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 9px' }" />
           </svg>
         </div>
 </template>

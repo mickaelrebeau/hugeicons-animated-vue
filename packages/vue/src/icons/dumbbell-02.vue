@@ -13,21 +13,99 @@ withDefaults(
   { size: 28 },
 )
 
-// after thumbs-up: the load dips, drives up, and comes back under control
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleY(1)',
-  },
+// the dumbbell twists on its grip
+// authored from scripts/authored
+const barVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['translateY(0px) scaleY(1)', 'translateY(1.17px) scaleY(0.94)', 'translateY(-2.99px) scaleY(1.04)', 'translateY(-2.56px) scaleY(1)', 'translateY(0px) scaleY(1)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.00px, 0.00px) rotate(14deg)',
+      'translate(0.00px, 0.00px) rotate(-6deg)',
+      'translate(0.00px, 0.00px) rotate(2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.85,
-      times: [0, 0.18, 0.5, 0.68, 1],
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const bar2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(1.53px, 1.96px) rotate(14deg)',
+      'translate(-0.79px, -0.71px) rotate(-6deg)',
+      'translate(0.25px, 0.26px) rotate(2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const bar3Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(1.10px, 1.41px) rotate(14deg)',
+      'translate(-0.57px, -0.52px) rotate(-6deg)',
+      'translate(0.18px, 0.18px) rotate(2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const bar4Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-1.14px, -1.49px) rotate(14deg)',
+      'translate(0.59px, 0.55px) rotate(-6deg)',
+      'translate(-0.19px, -0.20px) rotate(2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,11 +119,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M16 8C15.7562 8.73137 15.2546 9.29277 14.5446 9.60753C12.2642 10.6185 10.6185 12.2642 9.60753 14.5446C9.29277 15.2546 8.73137 15.7562 8 16" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M3.2 20.8L2 22M20.8 3.2L22 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M17.7882 2.422L16.276 3.87515L20.1166 7.75162L21.5942 6.31689C22.0377 5.7945 22.1735 5.40098 21.6214 4.67621L20.5156 3.51329L19.3946 2.40749C18.678 1.76473 18.1136 2.11058 17.7882 2.422Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M14.0115 3.75761C15.1221 2.58379 15.8827 3.41921 16.2733 3.8844L20.081 7.70737C20.5549 8.08731 21.4219 8.81627 20.276 9.95135C20.0911 10.1345 19.9098 10.3263 19.7089 10.4916C18.967 11.1019 18.255 10.596 17.8777 10.1311L14.002 6.25543C13.5939 5.88887 12.8888 5.22472 13.4843 4.33694C13.6448 4.13206 13.8326 3.94666 14.0115 3.75761Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M4.58743 21.6202L3.44609 20.4922L2.36213 19.35C1.71891 18.7068 2.09 18.0635 2.40765 17.7442L3.88972 16.2603L7.74631 20.1336L6.22834 21.6247C5.69748 22.058 5.33348 22.1907 4.6195 21.6247M6.22333 13.9244C5.83272 13.4592 5.07209 12.6238 3.96149 13.7976C3.78262 13.9866 3.59481 14.172 3.43432 14.3769C2.83883 15.2647 3.54386 15.9289 3.95194 16.2954L7.82772 20.1711C8.20497 20.636 8.91698 21.1419 9.65885 20.5316C9.85984 20.3663 10.0411 20.1745 10.226 19.9913C11.3719 18.8563 10.5049 18.1273 10.031 17.7474L6.22333 13.9244Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
+            <motion.path d="M16 8C15.7562 8.73137 15.2546 9.29277 14.5446 9.60753C12.2642 10.6185 10.6185 12.2642 9.60753 14.5446C9.29277 15.2546 8.73137 15.7562 8 16" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M3.2 20.8L2 22M20.8 3.2L22 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M17.7882 2.422L16.276 3.87515L20.1166 7.75162L21.5942 6.31689C22.0377 5.7945 22.1735 5.40098 21.6214 4.67621L20.5156 3.51329L19.3946 2.40749C18.678 1.76473 18.1136 2.11058 17.7882 2.422Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bar2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '19.2px 4.8px' }" />
+            <motion.path d="M14.0115 3.75761C15.1221 2.58379 15.8827 3.41921 16.2733 3.8844L20.081 7.70737C20.5549 8.08731 21.4219 8.81627 20.276 9.95135C20.0911 10.1345 19.9098 10.3263 19.7089 10.4916C18.967 11.1019 18.255 10.596 17.8777 10.1311L14.002 6.25543C13.5939 5.88887 12.8888 5.22472 13.4843 4.33694C13.6448 4.13206 13.8326 3.94666 14.0115 3.75761Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bar3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.2px 6.8px' }" />
+            <motion.path d="M4.58743 21.6202L3.44609 20.4922L2.36213 19.35C1.71891 18.7068 2.09 18.0635 2.40765 17.7442L3.88972 16.2603L7.74631 20.1336L6.22834 21.6247C5.69748 22.058 5.33348 22.1907 4.6195 21.6247M6.22333 13.9244C5.83272 13.4592 5.07209 12.6238 3.96149 13.7976C3.78262 13.9866 3.59481 14.172 3.43432 14.3769C2.83883 15.2647 3.54386 15.9289 3.95194 16.2954L7.82772 20.1711C8.20497 20.636 8.91698 21.1419 9.65885 20.5316C9.85984 20.3663 10.0411 20.1745 10.226 19.9913C11.3719 18.8563 10.5049 18.1273 10.031 17.7474L6.22333 13.9244Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bar4Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '6.5px 17.4px' }" />
           </svg>
         </div>
 </template>

@@ -13,19 +13,47 @@ withDefaults(
   { size: 28 },
 )
 
-// after dashboard-square-01: the dashboard modules assemble in a diagonal reading ripple
-// generated from @hugeicons/core-free-icons
-const tileVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
+// the needle swings across the gauge and settles
+// authored from scripts/authored
+const hubVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(1.12)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(1.47px) scale(0.74)', 'translateY(-0.42px) scale(1.1)', 'translateY(0px) scale(1)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.49, ease: [0.23, 1, 0.32, 1], delay: i * 0.06 },
-  }),
-}
+};
+
+const needleVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-2.17px, 1.25px) rotate(-60deg)',
+      'translate(1.61px, 0.58px) rotate(40deg)',
+      'translate(-0.43px, 0.04px) rotate(-10deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.8,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -39,9 +67,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.circle cx="12" cy="18" r="3" stroke="currentColor" stroke-width="1.5" :variants="tileVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.path d="M12 15V10" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="tileVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.5px' }" />
-            <motion.path d="M22 13C22 7.47715 17.5228 3 12 3C6.47715 3 2 7.47715 2 13" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="tileVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
+            <motion.circle cx="12" cy="18" r="3" stroke="currentColor" stroke-width="1.5" :variants="hubVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
+            <motion.path d="M12 15V10" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="needleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.5px' }" />
+            <path d="M22 13C22 7.47715 17.5228 3 12 3C6.47715 3 2 7.47715 2 13" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

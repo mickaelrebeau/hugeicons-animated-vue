@@ -13,20 +13,54 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-open: it swings open from the hinge, then closes on the same arc
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateX(0deg) scaleY(1)',
-  },
+// the lintel rises and settles on the posts
+// authored from scripts/authored
+const beamVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['rotateX(0deg) scaleY(1)', 'rotateX(-55deg) scaleY(0.72)', 'rotateX(7.71deg) scaleY(1.04)', 'rotateX(0deg) scaleY(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -0.6px)',
+      'translate(0px, 0.09px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.61,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      delay: 0.06,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const roofVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.15px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +74,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M6 8V21M18 8V21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
-            <motion.path d="M3 8H21M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
-            <motion.path d="M10 8L10 12M14 8L14 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
-            <motion.path d="M20 3C18.5391 5.96343 15.5055 8 12 8C8.49452 8 5.46091 5.96343 4 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
+            <path d="M6 8V21M18 8V21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M3 8H21M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="beamVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.path d="M10 8L10 12M14 8L14 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="beamVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.path d="M20 3C18.5391 5.96343 15.5055 8 12 8C8.49452 8 5.46091 5.96343 4 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="roofVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 5.5px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,20 @@ withDefaults(
   { size: 28 },
 )
 
-// after edit-02: the open stroke of the multiplication sign writes along the direction of its path
-// generated from @hugeicons/core-free-icons
-const nibVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) translate(0px, 0px)',
-  },
+// the × spins and squeezes
+// authored from scripts/authored
+const xVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
   animate: {
-    transform: ['rotate(0deg) translate(0px, 0px)', 'rotate(-7.69deg) translate(-0.38px, 0.58px)', 'rotate(3.84deg) translate(0.29px, -0.29px)', 'rotate(0deg) translate(0px, 0px)'],
-    transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(45deg) scale(0.8)',
+      'rotate(90deg) scale(1.05)',
+      'rotate(90deg) scale(1)',
+    ],
+    transition: { duration: 0.66, times: [0, 0.4, 0.8, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,7 +40,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="nibVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="xVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,49 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the pyramid maslowo move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the tier lines write up the pyramid one level at a time
+// authored from scripts/authored
+const frameVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.77px) rotate(-2.08deg)', 'translateY(0.42px) rotate(0.73deg)', 'translateY(0px) rotate(0deg)'],
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.36, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const lineVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.14, 1],
+    pathOffset: [0, 0.5, 0],
     transition: {
-      duration: 0.57,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      delay: 0.12,
+      times: [0, 0.34, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const dividerVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
+    transition: {
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +69,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M7.75024 7.56659C9.66926 4.5222 10.6288 3 12 3C13.3712 3 14.3307 4.52219 16.2498 7.56658L18.4941 11.1271C21.2362 15.4772 22.6072 17.6522 21.7426 19.3261C20.878 21 18.3834 21 13.3944 21H10.6056C5.61655 21 3.12205 21 2.25742 19.3261C1.3928 17.6522 2.76382 15.4772 5.50587 11.1271L7.75024 7.56659Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
-            <motion.path d="M3.5 15H9M20.5 15H15M7 9H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
-            <motion.path d="M12 9L12 21" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+            <motion.path d="M7.75024 7.56659C9.66926 4.5222 10.6288 3 12 3C13.3712 3 14.3307 4.52219 16.2498 7.56658L18.4941 11.1271C21.2362 15.4772 22.6072 17.6522 21.7426 19.3261C20.878 21 18.3834 21 13.3944 21H10.6056C5.61655 21 3.12205 21 2.25742 19.3261C1.3928 17.6522 2.76382 15.4772 5.50587 11.1271L7.75024 7.56659Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M3.5 15H9M20.5 15H15M7 9H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="lineVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M12 9L12 21" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="dividerVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

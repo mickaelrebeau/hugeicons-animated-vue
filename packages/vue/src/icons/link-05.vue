@@ -13,20 +13,54 @@ withDefaults(
   { size: 28 },
 )
 
-// after link-01: the chain pulls taut along its existing overlap and relaxes
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px)',
-  },
+// the bar slides into the chain
+// authored from scripts/authored
+const linksVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
   animate: {
-    transform: ['translateX(0px)', 'translateX(1.37px)', 'translateX(-0.2px)', 'translateX(0px)'],
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1.06)',
+      'translate(0.00px, 0px) scaleX(0.97)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
     transition: {
-      duration: 0.47,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const barVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(0.3)',
+      'translate(0.00px, 0px) scaleX(1.1)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +74,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M13.5 17H17C19.7614 17 22 14.7614 22 12C22 9.23858 19.7614 7 17 7H13.5M10.5 17H7C4.23858 17 2 14.7614 2 12C2 9.23858 4.23858 7 7 7H10.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M9 12H15" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M13.5 17H17C19.7614 17 22 14.7614 22 12C22 9.23858 19.7614 7 17 7H13.5M10.5 17H7C4.23858 17 2 14.7614 2 12C2 9.23858 4.23858 7 7 7H10.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="linksVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M9 12H15" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="barVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,17 +13,86 @@ withDefaults(
   { size: 28 },
 )
 
-// after flower: the petals open outward one by one from the core
-// generated from @hugeicons/core-free-icons
+// the rose petals bloom outward from the center one after another
+// authored from scripts/authored
 const petalVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) scale(1)',
+  normal: { transform: 'translate(0px, 0px) scale(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px) scale(1)',
+      'translate(-0.8px, -0.8px) scale(1.1)',
+      'translate(0px, 0px) scale(1)',
+    ],
+    transition: {
+      duration: 0.56,
+      times: [0, 0.4, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['rotate(0deg) scale(0.82)', 'rotate(3.79deg) scale(1.1)', 'rotate(0deg) scale(1)'],
-    transition: { duration: 0.57, ease: [0.23, 1, 0.32, 1], delay: i * 0.08 },
-  }),
-}
+};
+
+const petal2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px) scale(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px) scale(1)',
+      'translate(-0.8px, 0.8px) scale(1.1)',
+      'translate(0px, 0px) scale(1)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.1,
+      times: [0, 0.4, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+      ],
+    },
+  },
+};
+
+const petal3Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px) scale(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px) scale(1)',
+      'translate(0.8px, 0.8px) scale(1.1)',
+      'translate(0px, 0px) scale(1)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.2,
+      times: [0, 0.4, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+      ],
+    },
+  },
+};
+
+const petal4Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px) scale(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px) scale(1)',
+      'translate(0.8px, -0.8px) scale(1.1)',
+      'translate(0px, 0px) scale(1)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.3,
+      times: [0, 0.4, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -37,10 +106,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M9.713 7.97461C6.60492 7.97461 4.08533 10.2303 4.08533 13.0129H9.713V7.97461Z" stroke="currentColor" stroke-width="1.5" :variants="petalVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '6.9px 13.01px' }" />
-            <motion.path d="M2.53453 15.926C3.77319 18.368 6.52105 20.0662 9.71196 20.0662L9.71196 13.0127H4.87217C3.40834 13.0127 2.67643 13.0127 2.23141 13.7319C1.78639 14.4511 2.03577 14.9427 2.53453 15.926Z" stroke="currentColor" stroke-width="1.5" :variants="petalVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '5.75px 20.07px' }" />
-            <path d="M12.7145 21.6766C16.8431 20.5311 19.8419 17.0854 19.8419 13.0127H9.7121V19.0586C9.7121 20.5322 9.7121 21.269 10.3127 21.7226C10.9134 22.1763 11.5137 22.0097 12.7145 21.6766Z" stroke="currentColor" stroke-width="1.5" />
-            <motion.path d="M21.6409 10.0343C20.4534 6.21439 17.0381 3.22528 12.7271 2.25958C11.4776 1.97968 10.8528 1.83973 10.2825 2.29354C9.7121 2.74735 9.7121 3.48208 9.7121 4.95155V13.0127H19.054C20.5339 13.0127 21.2738 13.0127 21.7293 12.3984C22.1848 11.784 22.0035 11.2008 21.6409 10.0343Z" stroke="currentColor" stroke-width="1.5" :variants="petalVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '15.95px 13.01px' }" />
+            <motion.path d="M9.713 7.97461C6.60492 7.97461 4.08533 10.2303 4.08533 13.0129H9.713V7.97461Z" stroke="currentColor" stroke-width="1.5" :variants="petalVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6.9px 10.5px' }" />
+            <motion.path d="M2.53453 15.926C3.77319 18.368 6.52105 20.0662 9.71196 20.0662L9.71196 13.0127H4.87217C3.40834 13.0127 2.67643 13.0127 2.23141 13.7319C1.78639 14.4511 2.03577 14.9427 2.53453 15.926Z" stroke="currentColor" stroke-width="1.5" :variants="petal2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '5.7px 16.5px' }" />
+            <motion.path d="M12.7145 21.6766C16.8431 20.5311 19.8419 17.0854 19.8419 13.0127H9.7121V19.0586C9.7121 20.5322 9.7121 21.269 10.3127 21.7226C10.9134 22.1763 11.5137 22.0097 12.7145 21.6766Z" stroke="currentColor" stroke-width="1.5" :variants="petal3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.8px 17.6px' }" />
+            <motion.path d="M21.6409 10.0343C20.4534 6.21439 17.0381 3.22528 12.7271 2.25958C11.4776 1.97968 10.8528 1.83973 10.2825 2.29354C9.7121 2.74735 9.7121 3.48208 9.7121 4.95155V13.0127H19.054C20.5339 13.0127 21.2738 13.0127 21.7293 12.3984C22.1848 11.784 22.0035 11.2008 21.6409 10.0343Z" stroke="currentColor" stroke-width="1.5" :variants="petal4Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.9px 7.4px' }" />
           </svg>
         </div>
 </template>

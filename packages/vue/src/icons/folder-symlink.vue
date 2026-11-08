@@ -13,20 +13,15 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the tab leads a compact lift and the folder lands on its base
-// generated from @hugeicons/core-free-icons
+// the folder with its link arrow skews forward and back
+// authored from scripts/authored
 const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+  normal: { transform: 'skewX(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.64px) rotate(-1.93deg)', 'translateY(0.39px) rotate(0.67deg)', 'translateY(0px) rotate(0deg)'],
-    transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['skewX(0deg)', 'skewX(-6deg)', 'skewX(3deg)', 'skewX(0deg)'],
+    transition: { duration: 0.62, times: [0, 0.3, 0.64, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

@@ -13,33 +13,32 @@ withDefaults(
   { size: 28 },
 )
 
-// after minus-sign-circle: the remove mark pinches short while the host shape recoils
-// generated from @hugeicons/core-free-icons
+// the minus wipes off and redraws in the ring
+// authored from scripts/authored
 const frameVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.96)', 'scale(1.025)', 'scale(1)'],
-    transition: {
-      duration: 0.47,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.3, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
 const minusVariants: Variants = {
-  normal: {
-    transform: 'scaleX(1)',
-  },
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scaleX(1)', 'scaleX(0.35)', 'scaleX(1.08)', 'scaleX(1)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.43,
-      ease: 'easeOut',
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

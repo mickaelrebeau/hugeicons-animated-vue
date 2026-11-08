@@ -13,20 +13,52 @@ withDefaults(
   { size: 28 },
 )
 
-// after message-01: the conversation bubbles answer in reading order
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the spark twinkles inside the bubble and a second glint flashes off the rim
+// authored from scripts/authored
+const bubbleVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.92)', 'scale(1.08)', 'scale(1)'],
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.3, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const sparkVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)', opacity: 1 },
+  animate: {
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-26deg) scale(0.5)',
+      'rotate(9deg) scale(1.2)',
+      'rotate(0deg) scale(1)',
+    ],
+    opacity: [1, 0.5, 1, 1],
+    transition: { duration: 0.62, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const glintVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(0.2)', opacity: 0 },
+  animate: {
+    transform: [
+      'rotate(0deg) scale(0.2)',
+      'rotate(0deg) scale(0.2)',
+      'rotate(45deg) scale(1.1)',
+      'rotate(90deg) scale(0.2)',
+    ],
+    opacity: [0, 0, 1, 0],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.8,
+      delay: 0.2,
+      times: [0, 0.3, 0.6, 1],
+      ease: [
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +72,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 10.5C2 9.72921 2.01346 8.97679 2.03909 8.2503C2.12282 5.87683 2.16469 4.69009 3.13007 3.71745C4.09545 2.74481 5.3157 2.6926 7.7562 2.58819C9.09517 2.5309 10.5209 2.5 12 2.5C13.4791 2.5 14.9048 2.5309 16.2438 2.58819C18.6843 2.6926 19.9046 2.74481 20.8699 3.71745C21.8353 4.69009 21.8772 5.87683 21.9609 8.2503C21.9865 8.97679 22 9.72921 22 10.5C22 11.2708 21.9865 12.0232 21.9609 12.7497C21.8772 15.1232 21.8353 16.3099 20.8699 17.2826C19.9046 18.2552 18.6843 18.3074 16.2437 18.4118C15.5098 18.4432 14.7498 18.4667 13.9693 18.4815C13.2282 18.4955 12.8576 18.5026 12.532 18.6266C12.2064 18.7506 11.9325 18.9855 11.3845 19.4553L9.20503 21.3242C9.07273 21.4376 8.90419 21.5 8.72991 21.5C8.32679 21.5 8 21.1732 8 20.7701V18.4219C7.91842 18.4186 7.83715 18.4153 7.75619 18.4118C5.31569 18.3074 4.09545 18.2552 3.13007 17.2825C2.16469 16.3099 2.12282 15.1232 2.03909 12.7497C2.01346 12.0232 2 11.2708 2 10.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M11.9649 6.52864C11.9727 6.49045 12.0273 6.49045 12.0351 6.52864C12.4402 8.51077 13.9892 10.0598 15.9714 10.4649C16.0095 10.4727 16.0095 10.5273 15.9714 10.5351C13.9892 10.9402 12.4402 12.4892 12.0351 14.4714C12.0273 14.5095 11.9727 14.5095 11.9649 14.4714C11.5598 12.4892 10.0108 10.9402 8.02864 10.5351C7.99045 10.5273 7.99045 10.4727 8.02864 10.4649C10.0108 10.0598 11.5598 8.51077 11.9649 6.52864Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M2 10.5C2 9.72921 2.01346 8.97679 2.03909 8.2503C2.12282 5.87683 2.16469 4.69009 3.13007 3.71745C4.09545 2.74481 5.3157 2.6926 7.7562 2.58819C9.09517 2.5309 10.5209 2.5 12 2.5C13.4791 2.5 14.9048 2.5309 16.2438 2.58819C18.6843 2.6926 19.9046 2.74481 20.8699 3.71745C21.8353 4.69009 21.8772 5.87683 21.9609 8.2503C21.9865 8.97679 22 9.72921 22 10.5C22 11.2708 21.9865 12.0232 21.9609 12.7497C21.8772 15.1232 21.8353 16.3099 20.8699 17.2826C19.9046 18.2552 18.6843 18.3074 16.2437 18.4118C15.5098 18.4432 14.7498 18.4667 13.9693 18.4815C13.2282 18.4955 12.8576 18.5026 12.532 18.6266C12.2064 18.7506 11.9325 18.9855 11.3845 19.4553L9.20503 21.3242C9.07273 21.4376 8.90419 21.5 8.72991 21.5C8.32679 21.5 8 21.1732 8 20.7701V18.4219C7.91842 18.4186 7.83715 18.4153 7.75619 18.4118C5.31569 18.3074 4.09545 18.2552 3.13007 17.2825C2.16469 16.3099 2.12282 15.1232 2.03909 12.7497C2.01346 12.0232 2 11.2708 2 10.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bubbleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M11.9649 6.52864C11.9727 6.49045 12.0273 6.49045 12.0351 6.52864C12.4402 8.51077 13.9892 10.0598 15.9714 10.4649C16.0095 10.4727 16.0095 10.5273 15.9714 10.5351C13.9892 10.9402 12.4402 12.4892 12.0351 14.4714C12.0273 14.5095 11.9727 14.5095 11.9649 14.4714C11.5598 12.4892 10.0108 10.9402 8.02864 10.5351C7.99045 10.5273 7.99045 10.4727 8.02864 10.4649C10.0108 10.0598 11.5598 8.51077 11.9649 6.52864Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="sparkVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10.5px' }" />
+            <motion.path d="M20.4 2.4V4.4M19.4 3.4H21.4" stroke-width="1.1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" :variants="glintVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

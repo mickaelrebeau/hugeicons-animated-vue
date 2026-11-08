@@ -13,20 +13,16 @@ withDefaults(
   { size: 28 },
 )
 
-// after dashboard-square-01: the square boundary absorbs the inner action without drifting
-// generated from @hugeicons/core-free-icons
+// the dashes march around the frame
+// authored from scripts/authored
 const frameVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scale(1)', 'scale(0.96)', 'scale(1.025)', 'scale(1)'],
-    transition: {
-      duration: 0.46,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    pathLength: [1, 0.3, 1],
+    pathOffset: [0, 1, 2],
+    transition: { duration: 1, times: [0, 0.5, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

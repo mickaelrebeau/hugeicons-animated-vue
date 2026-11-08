@@ -13,17 +13,82 @@ withDefaults(
   { size: 28 },
 )
 
-// after list-view: the bars step up one after another to their new highs
-// generated from @hugeicons/core-free-icons
-const barVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleY(1)',
+// the order coin drops onto the dotted price line
+// authored from scripts/authored
+const coinVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.6px)',
+      'translate(0px, 0.24px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(2.15px) scaleY(0.6)', 'translateY(-0.49px) scaleY(1.08)', 'translateY(0px) scaleY(1)'],
-    transition: { duration: 0.48, ease: [0.23, 1, 0.32, 1], delay: i * 0.07 },
-  }),
-}
+};
+
+const pathVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
+    transition: {
+      duration: 0.66,
+      delay: 0.1,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const dotVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(2)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.3,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const dot2Variants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(2)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -37,11 +102,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" :variants="barVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 13px' }" />
-            <motion.path d="M9.5 12.5L5 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '7.25px 17px' }" />
-            <motion.path d="M18 9.99976V10.0098M21 9.98999V9.99999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '19.5px 10.01px' }" />
-            <motion.path d="M3 10V10.01M6 10.01V10.02" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :custom="3" :animate="controls" initial="normal" :style="{ transformOrigin: '4.5px 10.02px' }" />
-            <motion.path d="M12 9.99V10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :custom="4" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" :variants="coinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.path d="M9.5 12.5L5 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pathVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M18 9.99976V10.0098M21 9.98999V9.99999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19.5px 10px' }" />
+            <motion.path d="M3 10V10.01M6 10.01V10.02" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dot2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '4.5px 10px' }" />
+            <path d="M12 9.99V10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

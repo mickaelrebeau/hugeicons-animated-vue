@@ -13,21 +13,51 @@ withDefaults(
   { size: 28 },
 )
 
-// after refresh: the glyph winds back and completes the named turn
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg)',
-  },
+// the open square rolls on a quarter turn and the head pushes right
+// authored from scripts/authored
+const squareVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
   animate: {
-    transform: ['rotate(0deg)', 'rotate(-25.25deg)', 'rotate(360deg)'],
+    transform: [
+      'rotate(0deg)',
+      'rotate(18deg)',
+      'rotate(62.99999999999999deg)',
+      'rotate(92.7deg)',
+      'rotate(90deg)',
+    ],
     transition: {
-      duration: 0.89,
-      times: [0, 0.2, 1],
-      ease: ['easeIn', 'easeOut'],
+      duration: 0.7,
+      times: [0, 0.2, 0.6, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const headVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1.2px, 0px)',
+      'translate(-0.144px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,8 +71,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12.5 5H7.5C6.57003 5 6.10504 5 5.72354 5.10222C4.68827 5.37962 3.87962 6.18827 3.60222 7.22354C3.5 7.60504 3.5 8.07003 3.5 9M3.5 13V16C3.5 18.8284 3.5 20.2426 4.37868 21.1213C5.25736 22 6.67157 22 9.5 22H14.5C17.3284 22 18.7426 22 19.6213 21.1213C20.5 20.2426 20.5 18.8284 20.5 16V9C20.5 8.07003 20.5 7.60504 20.3978 7.22354C20.1204 6.18827 19.3117 5.37962 18.2765 5.10222C17.895 5 17.43 5 16.5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M9.50002 2C9.50002 2 12.5 4.20947 12.5 5.00002C12.5 5.79058 9.5 8 9.5 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M12.5 5H7.5C6.57003 5 6.10504 5 5.72354 5.10222C4.68827 5.37962 3.87962 6.18827 3.60222 7.22354C3.5 7.60504 3.5 8.07003 3.5 9M3.5 13V16C3.5 18.8284 3.5 20.2426 4.37868 21.1213C5.25736 22 6.67157 22 9.5 22H14.5C17.3284 22 18.7426 22 19.6213 21.1213C20.5 20.2426 20.5 18.8284 20.5 16V9C20.5 8.07003 20.5 7.60504 20.3978 7.22354C20.1204 6.18827 19.3117 5.37962 18.2765 5.10222C17.895 5 17.43 5 16.5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="squareVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 13.5px' }" />
+            <motion.path d="M9.50002 2C9.50002 2 12.5 4.20947 12.5 5.00002C12.5 5.79058 9.5 8 9.5 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="headVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 5px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,53 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the card swipes through an implied reader and catches its inertia
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) rotate(0deg)',
-  },
+// the two circles overlap closer and part
+// authored from scripts/authored
+const circleVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) rotate(0deg)', 'translateX(2.51px) rotate(2.09deg)', 'translateX(-0.31px) rotate(-0.52deg)', 'translateX(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1px, 0px)',
+      'translate(-0.15px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.57,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const circle2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1px, 0px)',
+      'translate(0.15px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +73,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 12C2 8.46252 2 6.69377 3.0528 5.5129C3.22119 5.32403 3.40678 5.14935 3.60746 4.99087C4.86213 4 6.74142 4 10.5 4H13.5C17.2586 4 19.1379 4 20.3925 4.99087C20.5932 5.14935 20.7788 5.32403 20.9472 5.5129C22 6.69377 22 8.46252 22 12C22 15.5375 22 17.3062 20.9472 18.4871C20.7788 18.676 20.5932 18.8506 20.3925 19.0091C19.1379 20 17.2586 20 13.5 20H10.5C6.74142 20 4.86213 20 3.60746 19.0091C3.40678 18.8506 3.22119 18.676 3.0528 18.4871C2 17.3062 2 15.5375 2 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M13.0002 12C13.0002 13.6569 11.6571 15 10.0002 15C8.34339 15 7.00025 13.6569 7.00025 12C7.00025 10.3431 8.34339 9 10.0002 9C11.6571 9 13.0002 10.3431 13.0002 12Z" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12 9.76389C12.5308 9.28885 13.2316 9 14 9C15.6569 9 17 10.3431 17 12C17 13.6569 15.6569 15 14 15C13.2316 15 12.5308 14.7111 12 14.2361" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M2 12C2 8.46252 2 6.69377 3.0528 5.5129C3.22119 5.32403 3.40678 5.14935 3.60746 4.99087C4.86213 4 6.74142 4 10.5 4H13.5C17.2586 4 19.1379 4 20.3925 4.99087C20.5932 5.14935 20.7788 5.32403 20.9472 5.5129C22 6.69377 22 8.46252 22 12C22 15.5375 22 17.3062 20.9472 18.4871C20.7788 18.676 20.5932 18.8506 20.3925 19.0091C19.1379 20 17.2586 20 13.5 20H10.5C6.74142 20 4.86213 20 3.60746 19.0091C3.40678 18.8506 3.22119 18.676 3.0528 18.4871C2 17.3062 2 15.5375 2 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M13.0002 12C13.0002 13.6569 11.6571 15 10.0002 15C8.34339 15 7.00025 13.6569 7.00025 12C7.00025 10.3431 8.34339 9 10.0002 9C11.6571 9 13.0002 10.3431 13.0002 12Z" stroke="currentColor" stroke-width="1.5" :variants="circleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 12px' }" />
+            <motion.path d="M12 9.76389C12.5308 9.28885 13.2316 9 14 9C15.6569 9 17 10.3431 17 12C17 13.6569 15.6569 15 14 15C13.2316 15 12.5308 14.7111 12 14.2361" stroke="currentColor" stroke-width="1.5" :variants="circle2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 12px' }" />
           </svg>
         </div>
 </template>

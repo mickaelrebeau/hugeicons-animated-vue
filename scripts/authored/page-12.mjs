@@ -14,6 +14,7 @@
 
 import {
   OUT,
+  INOUT,
   HOLD_E,
   HOLD_T,
   around,
@@ -240,19 +241,12 @@ export default {
     ],
   },
   building: {
-    verb: 'the three window rows light in order',
-    parts: [
-      null,
-      null,
-      null,
-      { as: 'windows', origin: [9.5, 8.5], ...draw({ dur: 0.48 }) },
-      { as: 'windows', origin: [9.5, 12.5], ...draw({ dur: 0.48, delay: 0.1 }) },
-      { as: 'windows', origin: [9.5, 16.5], ...draw({ dur: 0.48, delay: 0.2 }) },
-    ],
+    verb: 'the window rows light in order, top to bottom',
+    parts: [null, { as: 'windows', origin: [16, 13], ...draw({ dur: 0.72 }) }, null],
   },
   'bulb-charging': {
     verb: 'the bolt writes itself inside the still glass',
-    parts: [null, { as: 'bolt', origin: [12, 10], ...draw({ dur: 0.58 }) }, null, null],
+    parts: [null, null, null, { as: 'bolt', origin: [12, 9], ...draw({ dur: 0.58 }) }],
   },
   bullet: {
     verb: 'the round travels toward its tip, then settles',
@@ -333,11 +327,12 @@ export default {
     verb: 'the headlights blink and the windshield line rewrites',
     parts: [
       null,
-      pop([8, 16.3], { as: 'lamp', delay: 0.04 }),
-      pop([16, 16.3], { as: 'lamp', delay: 0.12 }),
+      null,
       null,
       null,
       { as: 'glass', origin: [12, 13], ...retrace({ dur: 0.64 }) },
+      pop([7.5, 16], { as: 'lamp', delay: 0.04 }),
+      pop([16.5, 16], { as: 'lamp', delay: 0.12 }),
     ],
   },
   bus: {
@@ -456,13 +451,19 @@ export default {
     ],
   },
   cake: {
-    verb: 'the drip line rewrites and the cherry pops',
+    verb: 'the drip line rewrites and the candle flame flares and settles',
     parts: [
+      { as: 'icing', origin: [12, 14.8], ...retrace({ dur: 0.62 }) },
       null,
-      { as: 'icing', origin: [12, 14], ...retrace({ dur: 0.62 }) },
       null,
-      pop([12, 7.5], { as: 'cherry', delay: 0.16 }),
       null,
+      scaleFrom('Y', [12, 7.3], [12, 5], [1, 1.3, 0.86, 1], {
+        as: 'flame',
+        times: [0, 0.3, 0.62, 1],
+        ease: [INOUT, OUT, OUT],
+        dur: 0.6,
+        delay: 0.16,
+      }),
     ],
   },
   calculate: {
@@ -581,8 +582,13 @@ export default {
     parts: [null, null, null, { as: 'arrow', origin: [17.5, 19.5], ...draw({ dur: 0.6 }) }],
   },
   'calendar-check': {
-    verb: 'the binding rings lift and the header rule rewrites',
-    parts: [RINGS, { as: 'rule', origin: [12, 10], ...retrace({ dur: 0.6, delay: 0.08 }) }, null],
+    verb: 'the binding rings lift, the header rule rewrites and the check ticks in',
+    parts: [
+      RINGS,
+      { as: 'rule', origin: [12, 10], ...retrace({ dur: 0.6, delay: 0.08 }) },
+      null,
+      { as: 'check', origin: [12, 16], ...draw({ dur: 0.6, delay: 0.16 }) },
+    ],
   },
   'calendar-clock': {
     verb: 'the clock hands sweep on the still page',
@@ -591,7 +597,7 @@ export default {
       null,
       null,
       null,
-      around([16, 16], [17, 15], [0, 48, 48, 0], {
+      around([15.5, 16], [16.5, 15], [0, 48, 48, 0], {
         as: 'hands',
         times: HOLD_T,
         ease: HOLD_E,

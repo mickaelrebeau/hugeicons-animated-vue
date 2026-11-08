@@ -13,51 +13,42 @@ withDefaults(
   { size: 28 },
 )
 
-// after circle-check: the confirmation stroke writes from tail to tip and lands once
-// generated from @hugeicons/core-free-icons
-const frameVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg) scale(1)',
-  },
+// the check writes and a confirmation outline spreads out of the box
+// authored from scripts/authored
+const checkVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg) scale(1)', 'translateY(0px) rotate(0deg) scale(1)', 'translateY(-0.37px) rotate(0.85deg) scale(1.08)', 'translateY(0px) rotate(0deg) scale(1)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.84,
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
       ease: [
         'linear',
-        [0.23, 1, 0.32, 1],
+        'linear',
         [0.23, 1, 0.32, 1],
       ],
-      times: [0, 0.78, 0.9, 1],
     },
   },
-}
+};
 
-const markVariants: Variants = {
-  normal: {
-    pathLength: 1,
-    pathOffset: 0,
-    visibility: 'visible',
-  },
+const rippleVariants: Variants = {
+  normal: { transform: 'scale(1)', opacity: 0 },
   animate: {
-    pathLength: [1, 1, 0.12, 0, 0, 0.12, 1, 1],
-    pathOffset: [0, 0, 0.88, 1, 0, 0, 0, 0],
-    visibility: ['visible', 'visible', 'hidden', 'hidden', 'hidden', 'hidden', 'visible', 'visible'],
+    transform: ['scale(1)', 'scale(1)', 'scale(1.01)', 'scale(1.18)'],
+    opacity: [0, 0, 0.7, 0],
     transition: {
-      duration: 0.81,
+      duration: 0.8,
+      delay: 0.2,
+      times: [0, 0.3, 0.34, 1],
       ease: [
         'linear',
-        [0.77, 0, 0.175, 1],
         'linear',
-        'linear',
-        'linear',
-        [0.77, 0, 0.175, 1],
-        'linear',
+        [0.23, 1, 0.32, 1],
       ],
-      times: [0, 0.06, 0.25, 0.28, 0.35, 0.39, 0.84, 1],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -71,8 +62,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M8 13.75C8 13.75 9.6 14.6625 10.4 16C10.4 16 12.8 10.75 16 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.5px' }" />
+            <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" />
+            <motion.path d="M8 13.75C8 13.75 9.6 14.6625 10.4 16C10.4 16 12.8 10.75 16 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="checkVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke-width="1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" :variants="rippleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

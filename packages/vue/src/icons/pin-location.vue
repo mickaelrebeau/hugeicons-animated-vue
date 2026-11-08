@@ -13,20 +13,53 @@ withDefaults(
   { size: 28 },
 )
 
-// after location-01: the pin lifts, drops onto its point, and carries the landing ring
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scale(1)',
-  },
+// the pin pushes into the ground and the ground ring spreads
+// authored from scripts/authored
+const pinVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) scale(1)', 'translateY(-2.21px) scale(0.96)', 'translateY(0.4px) scale(1.04)', 'translateY(0px) scale(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 1.2px)',
+      'translate(0px, -0.18px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.55,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const groundVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) scale(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) scale(1)',
+      'translate(0.00px, 0.00px) scale(1.14)',
+      'translate(0.00px, 0.00px) scale(0.98)',
+      'translate(0.00px, 0.00px) scale(1)',
+      'translate(0.00px, 0.00px) scale(1)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +73,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 11px' }" />
-            <motion.path d="M12 11L12 18" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 11px' }" />
-            <motion.path d="M15.847 16C17.4943 18.113 18.3179 19.1695 17.8865 20.006C17.8466 20.0832 17.7999 20.1578 17.7469 20.229C17.1723 21 15.6875 21 12.7178 21H11.2822C8.31251 21 6.82765 21 6.25311 20.229C6.20005 20.1578 6.15339 20.0832 6.11355 20.006C5.68206 19.1695 6.50571 18.113 8.15301 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 11px' }" />
+            <motion.circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5" :variants="pinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 7px' }" />
+            <motion.path d="M12 11L12 18" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="pinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 14.5px' }" />
+            <motion.path d="M15.847 16C17.4943 18.113 18.3179 19.1695 17.8865 20.006C17.8466 20.0832 17.7999 20.1578 17.7469 20.229C17.1723 21 15.6875 21 12.7178 21H11.2822C8.31251 21 6.82765 21 6.25311 20.229C6.20005 20.1578 6.15339 20.0832 6.11355 20.006C5.68206 19.1695 6.50571 18.113 8.15301 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="groundVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.5px' }" />
           </svg>
         </div>
 </template>

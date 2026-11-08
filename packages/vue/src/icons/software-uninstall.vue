@@ -13,32 +13,54 @@ withDefaults(
   { size: 28 },
 )
 
-// after grid-view: the pieces of the software uninstall take turns from their own geometric centers
-// generated from @hugeicons/core-free-icons
-const cellVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
-  },
-  animate: (i: number) => ({
-    transform: ['scale(0.72) rotate(-4.61deg)', 'scale(1.1) rotate(1.84deg)', 'scale(1) rotate(0deg)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.49, ease: [0.23, 1, 0.32, 1], delay: i * 0.055 },
-  }),
-}
-
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the X twists and the disc lifts off the box
+// authored from scripts/authored
+const discVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.67px) rotate(-1.97deg)', 'translateY(0.39px) rotate(0.69deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.15px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const xVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
+  animate: {
+    transform: [
+      'rotate(0deg)',
+      'rotate(18deg)',
+      'rotate(62.99999999999999deg)',
+      'rotate(92.7deg)',
+      'rotate(90deg)',
+    ],
+    transition: {
+      duration: 0.6,
+      delay: 0.1,
+      times: [0, 0.2, 0.6, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -52,11 +74,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M9.5 10C9.5 11.1046 10.3954 12 11.5 12C12.6046 12 13.5 11.1046 13.5 10C13.5 8.89543 12.6046 8 11.5 8C10.3954 8 9.5 8.89543 9.5 10Z" stroke="currentColor" stroke-width="1.5" :variants="cellVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 10px' }" />
-            <motion.path d="M4.57026 14C3.88958 12.8233 3.5 11.4571 3.5 10C3.5 5.58172 7.08172 2 11.5 2C15.9183 2 19.5 5.58172 19.5 10C19.5 11.4571 19.1104 12.8233 18.4297 14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M13.35 22H5.65C4.38598 22 3.75398 22 3.29997 21.6148C3.10343 21.448 2.93468 21.2337 2.80335 20.9842C2.5 20.4076 2.5 19.6051 2.5 18C2.5 16.3949 2.5 15.5924 2.80335 15.0158C2.93468 14.7663 3.10343 14.552 3.29997 14.3852C3.75398 14 4.38598 14 5.65 14H19.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M15.3906 6.61055L17.4021 4.59912" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M16.5 17L19 19.5M19 19.5L21.5 22M19 19.5L16.5 22M19 19.5L21.5 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 19.5px' }" />
+            <motion.path d="M9.5 10C9.5 11.1046 10.3954 12 11.5 12C12.6046 12 13.5 11.1046 13.5 10C13.5 8.89543 12.6046 8 11.5 8C10.3954 8 9.5 8.89543 9.5 10Z" stroke="currentColor" stroke-width="1.5" :variants="discVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 10px' }" />
+            <motion.path d="M4.57026 14C3.88958 12.8233 3.5 11.4571 3.5 10C3.5 5.58172 7.08172 2 11.5 2C15.9183 2 19.5 5.58172 19.5 10C19.5 11.4571 19.1104 12.8233 18.4297 14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="discVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 8px' }" />
+            <path d="M13.35 22H5.65C4.38598 22 3.75398 22 3.29997 21.6148C3.10343 21.448 2.93468 21.2337 2.80335 20.9842C2.5 20.4076 2.5 19.6051 2.5 18C2.5 16.3949 2.5 15.5924 2.80335 15.0158C2.93468 14.7663 3.10343 14.552 3.29997 14.3852C3.75398 14 4.38598 14 5.65 14H19.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.path d="M15.3906 6.61055L17.4021 4.59912" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="discVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.4px 5.6px' }" />
+            <motion.path d="M16.5 17L19 19.5M19 19.5L21.5 22M19 19.5L16.5 22M19 19.5L21.5 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="xVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 19.5px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,78 @@ withDefaults(
   { size: 28 },
 )
 
-// after filter: the funnel narrows the data from its wide mouth to its result
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px)',
-  },
+// the filter lines narrow down to the last one
+// authored from scripts/authored
+const lineVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
   animate: {
-    transform: ['translateX(0px)', 'translateX(1.7px)', 'translateX(-0.21px)', 'translateX(0px)'],
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(0.7)',
+      'translate(0.00px, 0px) scaleX(1.04)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
     transition: {
-      duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const line2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(0.7)',
+      'translate(0.00px, 0px) scaleX(1.04)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
+    transition: {
+      duration: 0.7,
+      delay: 0.08,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const line3Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(0.7)',
+      'translate(0.00px, 0px) scaleX(1.04)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
+    transition: {
+      duration: 0.7,
+      delay: 0.16,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +98,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M3 6H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
-            <motion.path d="M6 12H18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
-            <motion.path d="M9 18H15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
+            <motion.path d="M3 6H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="lineVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
+            <motion.path d="M6 12H18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="line2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M9 18H15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="line3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
           </svg>
         </div>
 </template>

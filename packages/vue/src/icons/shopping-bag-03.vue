@@ -13,25 +13,58 @@ withDefaults(
   { size: 28 },
 )
 
-// after shopping-cart-01: the cart rolls on its wheels while its contents lag behind
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px)',
-  },
+// the back bag slides out from behind the front one
+// authored from scripts/authored
+const handleVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px)', 'translateX(2.37px)', 'translateX(-0.32px)', 'translateX(0px)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -0.8px)',
+      'translate(0px, 0.11200000000000002px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.52,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const backVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1px, 0px)',
+      'translate(-0.15px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -40,9 +73,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M7 6C7 7.65685 8.34315 9 10 9C11.6569 9 13 7.65685 13 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 21px' }" />
-            <motion.path d="M11.1117 3H8.88824C6.2172 3 4.88168 3 4.01968 3.82064C3.15769 4.64128 3.08361 5.98325 2.93545 8.66719L2.60424 14.6672C2.44025 17.6379 2.35826 19.1233 3.2403 20.0616C4.12235 21 5.60058 21 8.55703 21H11.443C14.3994 21 15.8777 21 16.7597 20.0616C17.6417 19.1233 17.5597 17.6379 17.3957 14.6672L17.0645 8.66717C16.9163 5.98324 16.8423 4.64127 15.9803 3.82064C15.1183 3 13.7828 3 11.1117 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 21px' }" />
-            <motion.path d="M12.8882 3H15.1117C17.7827 3 19.1182 3 19.9802 3.82064C20.8422 4.64127 20.9163 5.98324 21.0645 8.66717L21.3957 14.6672C21.5597 17.6379 21.6417 19.1233 20.7597 20.0616C19.8776 21 18.3994 21 15.4429 21H12.557" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 21px' }" />
+            <motion.path d="M7 6C7 7.65685 8.34315 9 10 9C11.6569 9 13 7.65685 13 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handleVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 7.5px' }" />
+            <path d="M11.1117 3H8.88824C6.2172 3 4.88168 3 4.01968 3.82064C3.15769 4.64128 3.08361 5.98325 2.93545 8.66719L2.60424 14.6672C2.44025 17.6379 2.35826 19.1233 3.2403 20.0616C4.12235 21 5.60058 21 8.55703 21H11.443C14.3994 21 15.8777 21 16.7597 20.0616C17.6417 19.1233 17.5597 17.6379 17.3957 14.6672L17.0645 8.66717C16.9163 5.98324 16.8423 4.64127 15.9803 3.82064C15.1183 3 13.7828 3 11.1117 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M12.8882 3H15.1117C17.7827 3 19.1182 3 19.9802 3.82064C20.8422 4.64127 20.9163 5.98324 21.0645 8.66717L21.3957 14.6672C21.5597 17.6379 21.6417 19.1233 20.7597 20.0616C19.8776 21 18.3994 21 15.4429 21H12.557" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="backVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.1px 12px' }" />
           </svg>
         </div>
 </template>

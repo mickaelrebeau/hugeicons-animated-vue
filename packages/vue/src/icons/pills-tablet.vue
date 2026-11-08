@@ -13,20 +13,40 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the capsule turns over to show its other half
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateY(0deg)',
-  },
+// the two tablets pop up out of the blister one after the other
+// authored from scripts/authored
+const tabletVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['rotateY(0deg)', 'rotateY(90deg)', 'rotateY(180deg)', 'rotateY(270deg)', 'rotateY(360deg)'],
+    transform: ['scale(1)', 'scale(1.22)', 'scale(0.92)', 'scale(1)'],
     transition: {
-      duration: 0.7,
-      ease: [0.77, 0, 0.175, 1],
+      duration: 0.5,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const tablet2Variants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(1.22)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.14,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,11 +60,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M20 16V8C20 5.17157 20 3.75736 19.1213 2.87868C18.2426 2 16.8284 2 14 2H10C7.17157 2 5.75736 2 4.87868 2.87868C4 3.75736 4 5.17157 4 8V16C4 18.8284 4 20.2426 4.87868 21.1213C5.75736 22 7.17157 22 10 22H14C16.8284 22 18.2426 22 19.1213 21.1213C20 20.2426 20 18.8284 20 16Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M10 6H14C15.1046 6 16 6.89543 16 8C16 9.10457 15.1046 10 14 10H10C8.89543 10 8 9.10457 8 8C8 6.89543 8.89543 6 10 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M10 14H14C15.1046 14 16 14.8954 16 16C16 17.1046 15.1046 18 14 18H10C8.89543 18 8 17.1046 8 16C8 14.8954 8.89543 14 10 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12 6V10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12 14V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M20 16V8C20 5.17157 20 3.75736 19.1213 2.87868C18.2426 2 16.8284 2 14 2H10C7.17157 2 5.75736 2 4.87868 2.87868C4 3.75736 4 5.17157 4 8V16C4 18.8284 4 20.2426 4.87868 21.1213C5.75736 22 7.17157 22 10 22H14C16.8284 22 18.2426 22 19.1213 21.1213C20 20.2426 20 18.8284 20 16Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M10 6H14C15.1046 6 16 6.89543 16 8C16 9.10457 15.1046 10 14 10H10C8.89543 10 8 9.10457 8 8C8 6.89543 8.89543 6 10 6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tabletVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
+            <motion.path d="M10 14H14C15.1046 14 16 14.8954 16 16C16 17.1046 15.1046 18 14 18H10C8.89543 18 8 17.1046 8 16C8 14.8954 8.89543 14 10 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tablet2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16px' }" />
+            <motion.path d="M12 6V10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tabletVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 8px' }" />
+            <motion.path d="M12 14V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tablet2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16px' }" />
           </svg>
         </div>
 </template>

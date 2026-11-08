@@ -13,21 +13,23 @@ withDefaults(
   { size: 28 },
 )
 
-// after home-01: the silhouette of the ellipse loads onto its base and settles with weight
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleY(1)',
-  },
+// the ellipse squashes round and back
+// authored from scripts/authored
+const ellipseVariants: Variants = {
+  normal: { transform: 'scale(1, 1)' },
   animate: {
-    transform: ['translateY(0px) scaleY(1)', 'translateY(1.52px) scaleY(0.82)', 'translateY(-3.69px) scaleY(1.08)', 'translateY(0.54px) scaleY(0.94)', 'translateY(0px) scaleY(1)'],
+    transform: ['scale(1, 1)', 'scale(0.8, 1.3)', 'scale(1.05, 0.95)', 'scale(1, 1)'],
     transition: {
-      duration: 0.71,
-      times: [0, 0.18, 0.48, 0.78, 1],
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.6,
+      times: [0, 0.4, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,7 +43,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.ellipse cx="12" cy="12.002" rx="10" ry="7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 19px' }" />
+            <motion.ellipse cx="12" cy="12.002" rx="10" ry="7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ellipseVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

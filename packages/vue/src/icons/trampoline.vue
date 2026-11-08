@@ -13,21 +13,23 @@ withDefaults(
   { size: 28 },
 )
 
-// after home-01: it loads, leaves the ground, and lands with weight
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleY(1)',
-  },
+// the trampoline mat dips and springs back
+// authored from scripts/authored
+const matVariants: Variants = {
+  normal: { transform: 'scale(1, 1)' },
   animate: {
-    transform: ['translateY(0px) scaleY(1)', 'translateY(1.31px) scaleY(0.82)', 'translateY(-3.18px) scaleY(1.08)', 'translateY(0.47px) scaleY(0.94)', 'translateY(0px) scaleY(1)'],
+    transform: ['scale(1, 1)', 'scale(1.02, 0.7)', 'scale(0.99, 1.08)', 'scale(1, 1)'],
     transition: {
-      duration: 0.73,
-      times: [0, 0.18, 0.48, 0.78, 1],
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.3, 0.6, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,10 +43,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 10V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16px' }" />
-            <motion.path d="M12 16L12 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16px' }" />
-            <motion.path d="M22 10V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16px' }" />
-            <motion.ellipse cx="12" cy="10" rx="10" ry="6" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 16px' }" />
+            <path d="M2 10V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M12 16L12 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M22 10V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.ellipse cx="12" cy="10" rx="10" ry="6" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="matVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,33 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the leaf move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the leaf flutters and the vein redraws
+// authored from scripts/authored
+const leafVariants: Variants = {
+  normal: { transform: 'skewX(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.66px) rotate(-1.95deg)', 'translateY(0.39px) rotate(0.68deg)', 'translateY(0px) rotate(0deg)'],
+    transform: ['skewX(0deg)', 'skewX(-8deg)', 'skewX(6deg)', 'skewX(-2deg)', 'skewX(0deg)'],
+    transition: { duration: 0.8, times: [0, 0.25, 0.5, 0.75, 1], ease: 'easeInOut' },
+  },
+};
+
+const veinVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      delay: 0.1,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +53,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M6.67504 17.325C3.77499 14.4249 3.77499 9.72297 6.67504 6.82291C10.6133 2.88465 20.459 3.54102 20.459 3.54102C20.459 3.54102 21.1154 13.3867 17.1771 17.325C15.2327 19.2694 12.4783 19.9101 10 19.2472" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.45px 19.91px' }" />
-            <motion.path d="M3.5 20.5L15.5 8.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.45px 19.91px' }" />
+            <motion.path d="M6.67504 17.325C3.77499 14.4249 3.77499 9.72297 6.67504 6.82291C10.6133 2.88465 20.459 3.54102 20.459 3.54102C20.459 3.54102 21.1154 13.3867 17.1771 17.325C15.2327 19.2694 12.4783 19.9101 10 19.2472" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="leafVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 18px' }" />
+            <motion.path d="M3.5 20.5L15.5 8.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="veinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

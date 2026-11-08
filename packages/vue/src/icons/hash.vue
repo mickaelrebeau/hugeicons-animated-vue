@@ -13,20 +13,39 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the hash move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the hash slants back and forth
+// authored from scripts/authored
+const slantVariants: Variants = {
+  normal: { transform: 'skewX(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.68px) rotate(-1.98deg)', 'translateY(0.4px) rotate(0.69deg)', 'translateY(0px) rotate(0deg)'],
+    transform: ['skewX(0deg)', 'skewX(12deg)', 'skewX(-6deg)', 'skewX(0deg)'],
+    transition: { duration: 0.6, times: [0, 0.32, 0.66, 1], ease: 'easeInOut' },
+  },
+};
+
+const barsVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(0.8)',
+      'translate(0.00px, 0px) scaleX(1.06)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
     transition: {
-      duration: 0.55,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      delay: 0.06,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +59,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M10 3L8 21M16 3L14 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
-            <motion.path d="M4 9H20M4 15H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 21px' }" />
+            <motion.path d="M10 3L8 21M16 3L14 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="slantVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M4 9H20M4 15H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

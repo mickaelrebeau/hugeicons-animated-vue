@@ -13,20 +13,30 @@ withDefaults(
   { size: 28 },
 )
 
-// after file-01: the sheet lifts from its stack while its details follow
-// generated from @hugeicons/core-free-icons
+// the corrupted file glitches side to side
+// authored from scripts/authored
 const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.78px) rotate(-0.98deg)', 'translateY(0.44px) rotate(0.49deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-0.8px, 0px)',
+      'translate(0.6px, 0px)',
+      'translate(-0.4px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.56,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.4,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

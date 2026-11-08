@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@hugeicons/core-free-icons':
-        specifier: ^4.3.0
-        version: 4.3.0
+        specifier: ^4.2.3
+        version: 4.2.3
 
   apps/web:
     dependencies:
@@ -254,8 +254,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hugeicons/core-free-icons@4.3.0':
-    resolution: {integrity: sha512-5DC5gq2psNDKBQThOjpuFCtMco8nl2FkrBzZgG15cFGM0kSwUoych/pw0DmjBygF9qRDITdBPtmzJqLsOeImMg==}
+  '@hugeicons/core-free-icons@4.2.3':
+    resolution: {integrity: sha512-fpiU0qFZkv4ABi23xJ2m4qNr0BBfuIaYjPboN8WDA6aj9D+OzXa7eykxKOpACZRuGbDz1U9S5DsNx1d5KNnsgA==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -1283,7 +1283,7 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@hugeicons/core-free-icons@4.3.0': {}
+  '@hugeicons/core-free-icons@4.2.3': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:

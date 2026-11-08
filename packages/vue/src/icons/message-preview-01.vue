@@ -13,20 +13,47 @@ withDefaults(
   { size: 28 },
 )
 
-// after message-01: the speech tail anchors the bubble as it answers
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the lines rewrite and the eye blinks
+// authored from scripts/authored
+const linesVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scale(1)', 'scale(0.92)', 'scale(1.08)', 'scale(1)'],
+    pathLength: [1, 0.14, 1],
+    pathOffset: [0, 0.5, 0],
     transition: {
-      duration: 0.49,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.6,
+      times: [0, 0.34, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const eyeVariants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 0.00px) scaleY(0.1)',
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +67,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M21.8812 10.0003C21.9643 10.6436 22 11.3129 22 12.0003C22 16.9709 19.1328 21.0003 12 21.0003C10.4991 21.0003 9.20689 20.8537 8.0984 20.5818C7.50688 20.4367 6.88252 20.6154 6.39239 20.9769C5.70211 21.4862 4.61547 22.0003 3 22.0003C3.99253 21.3337 4.63281 19.5003 3.37161 17.5003C2.37034 15.9794 2 14.0716 2 12.0003C2 7.48016 3.76381 3.73829 10 3.09729" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.55px' }" />
-            <motion.path d="M8 13.9996H16M8 9.99963H12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.55px' }" />
-            <motion.path d="M21.7948 4.59034C21.9316 4.77305 22 4.8644 22 4.99963C22 5.13486 21.9316 5.22622 21.7948 5.40893C21.1801 6.22987 19.6101 7.99963 17.5 7.99963C15.3899 7.99963 13.8199 6.22987 13.2052 5.40893C13.0684 5.22622 13 5.13486 13 4.99963C13 4.8644 13.0684 4.77305 13.2052 4.59034C13.8199 3.76939 15.3899 1.99963 17.5 1.99963C19.6101 1.99963 21.1801 3.76939 21.7948 4.59034Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.55px' }" />
-            <motion.path d="M17.625 4.99963H17.5M17.75 4.99963C17.75 5.13771 17.6381 5.24963 17.5 5.24963C17.3619 5.24963 17.25 5.13771 17.25 4.99963C17.25 4.86156 17.3619 4.74963 17.5 4.74963C17.6381 4.74963 17.75 4.86156 17.75 4.99963Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.55px' }" />
+            <path d="M21.8812 10.0003C21.9643 10.6436 22 11.3129 22 12.0003C22 16.9709 19.1328 21.0003 12 21.0003C10.4991 21.0003 9.20689 20.8537 8.0984 20.5818C7.50688 20.4367 6.88252 20.6154 6.39239 20.9769C5.70211 21.4862 4.61547 22.0003 3 22.0003C3.99253 21.3337 4.63281 19.5003 3.37161 17.5003C2.37034 15.9794 2 14.0716 2 12.0003C2 7.48016 3.76381 3.73829 10 3.09729" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M8 13.9996H16M8 9.99963H12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="linesVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M21.7948 4.59034C21.9316 4.77305 22 4.8644 22 4.99963C22 5.13486 21.9316 5.22622 21.7948 5.40893C21.1801 6.22987 19.6101 7.99963 17.5 7.99963C15.3899 7.99963 13.8199 6.22987 13.2052 5.40893C13.0684 5.22622 13 5.13486 13 4.99963C13 4.8644 13.0684 4.77305 13.2052 4.59034C13.8199 3.76939 15.3899 1.99963 17.5 1.99963C19.6101 1.99963 21.1801 3.76939 21.7948 4.59034Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="eyeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 5px' }" />
+            <path d="M17.625 4.99963H17.5M17.75 4.99963C17.75 5.13771 17.6381 5.24963 17.5 5.24963C17.3619 5.24963 17.25 5.13771 17.25 4.99963C17.25 4.86156 17.3619 4.74963 17.5 4.74963C17.6381 4.74963 17.75 4.86156 17.75 4.99963Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

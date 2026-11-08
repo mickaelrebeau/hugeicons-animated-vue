@@ -13,35 +13,32 @@ withDefaults(
   { size: 28 },
 )
 
-// after notification-off-01: the slash cuts through and the rest of the glyph recoils
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) translateY(0px)',
-    opacity: 1,
-  },
+// the slash cuts across and the circle answers
+// authored from scripts/authored
+const ringVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['rotate(0deg) translateY(0px)', 'rotate(-8.74deg) translateY(0.44px)', 'rotate(0deg) translateY(1.31px)', 'rotate(0deg) translateY(0px)'],
-    opacity: [1, 1, 0.55, 1],
-    transition: {
-      duration: 0.74,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.3, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
-const markVariants: Variants = {
-  normal: {
-    transform: 'scale(1) rotate(0deg)',
-  },
+const slashVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scale(1) rotate(0deg)', 'scale(0.86) rotate(-2deg)', 'scale(1.08) rotate(0.8deg)', 'scale(1) rotate(0deg)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -55,8 +52,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.circle cx="12" cy="12" r="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M21 3L3 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.circle cx="12" cy="12" r="9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ringVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M21 3L3 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="slashVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,37 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the transition top move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the arrow pushes up from the bottom panel to the top edge
+// authored from scripts/authored
+const arrowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.85px) rotate(-2.18deg)', 'translateY(0.44px) rotate(0.76deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.4px)',
+      'translate(0px, 0.16799999999999998px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.59,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const edgeVariants: Variants = {
+  normal: { transform: 'scale(1)', opacity: 1 },
+  animate: {
+    transform: ['scale(1)', 'scale(0.8)', 'scale(1.08)', 'scale(1)'],
+    opacity: [1, 0.15, 1, 1],
+    transition: { duration: 0.62, delay: 0.24, times: [0, 0.24, 0.56, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +57,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M17.9999 21.9999C19.4001 21.9999 20.1001 21.9999 20.6349 21.7275C21.1053 21.4878 21.4878 21.1053 21.7275 20.6349C21.9999 20.1001 21.9999 19.4001 21.9999 17.9999C21.9999 16.5998 21.9999 15.8997 21.7275 15.365C21.4878 14.8946 21.1053 14.5121 20.6349 14.2724C20.1001 13.9999 19.4001 13.9999 17.9999 13.9999L5.99994 13.9999C4.59981 13.9999 3.89974 13.9999 3.36496 14.2724C2.89456 14.5121 2.51211 14.8946 2.27242 15.365C1.99994 15.8997 1.99994 16.5998 1.99994 17.9999C1.99994 19.4001 1.99994 20.1001 2.27242 20.6349C2.51211 21.1053 2.89456 21.4878 3.36496 21.7275C3.89974 21.9999 4.59981 21.9999 5.99994 21.9999L17.9999 21.9999Z" stroke="currentColor" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M11.9999 5.99994L11.9999 13.9999M11.9999 5.99994C11.2997 5.99994 9.99147 7.99424 9.49994 8.49994M11.9999 5.99994C12.7002 5.99994 14.0084 7.99424 14.4999 8.49994" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M1.99994 7.99994C1.99994 5.66105 1.99994 4.49161 2.5364 3.63783C2.81615 3.19261 3.19261 2.81615 3.63783 2.5364C4.49161 1.99994 5.66105 1.99994 7.99994 1.99994L15.9999 1.99994C18.3388 1.99994 19.5083 1.99994 20.3621 2.5364C20.8073 2.81615 21.1837 3.19261 21.4635 3.63783C21.9999 4.49161 21.9999 5.66105 21.9999 7.99994" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
+            <path d="M17.9999 21.9999C19.4001 21.9999 20.1001 21.9999 20.6349 21.7275C21.1053 21.4878 21.4878 21.1053 21.7275 20.6349C21.9999 20.1001 21.9999 19.4001 21.9999 17.9999C21.9999 16.5998 21.9999 15.8997 21.7275 15.365C21.4878 14.8946 21.1053 14.5121 20.6349 14.2724C20.1001 13.9999 19.4001 13.9999 17.9999 13.9999L5.99994 13.9999C4.59981 13.9999 3.89974 13.9999 3.36496 14.2724C2.89456 14.5121 2.51211 14.8946 2.27242 15.365C1.99994 15.8997 1.99994 16.5998 1.99994 17.9999C1.99994 19.4001 1.99994 20.1001 2.27242 20.6349C2.51211 21.1053 2.89456 21.4878 3.36496 21.7275C3.89974 21.9999 4.59981 21.9999 5.99994 21.9999L17.9999 21.9999Z" stroke="currentColor" stroke-width="1.5" />
+            <motion.path d="M11.9999 5.99994L11.9999 13.9999M11.9999 5.99994C11.2997 5.99994 9.99147 7.99424 9.49994 8.49994M11.9999 5.99994C12.7002 5.99994 14.0084 7.99424 14.4999 8.49994" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.path d="M1.99994 7.99994C1.99994 5.66105 1.99994 4.49161 2.5364 3.63783C2.81615 3.19261 3.19261 2.81615 3.63783 2.5364C4.49161 1.99994 5.66105 1.99994 7.99994 1.99994L15.9999 1.99994C18.3388 1.99994 19.5083 1.99994 20.3621 2.5364C20.8073 2.81615 21.1837 3.19261 21.4635 3.63783C21.9999 4.49161 21.9999 5.66105 21.9999 7.99994" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="edgeVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 5px' }" />
           </svg>
         </div>
 </template>

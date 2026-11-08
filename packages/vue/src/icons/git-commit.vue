@@ -13,32 +13,30 @@ withDefaults(
   { size: 28 },
 )
 
-// after share-08: the branch signal travels from root to each commit node
-// generated from @hugeicons/core-free-icons
-const wireVariants: Variants = {
-  normal: {
-    pathLength: 1,
-    visibility: 'visible',
-  },
+// the commit node drops onto the line and settles
+// authored from scripts/authored
+const commitVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    pathLength: [0, 1],
-    visibility: 'visible',
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -2.4px)',
+      'translate(0px, 0.36px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.46,
-      ease: 'easeOut',
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
-
-const nodeVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
-  animate: (i: number) => ({
-    transform: ['scale(1)', 'scale(1.25)', 'scale(1)'],
-    transition: { duration: 0.46, ease: 'easeInOut', delay: i * 0.12 },
-  }),
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -52,8 +50,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 3L12 8.5M12 21L12 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="wireVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" :variants="nodeVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M12 3L12 8.5M12 21L12 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" :variants="commitVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

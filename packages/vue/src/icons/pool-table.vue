@@ -13,32 +13,99 @@ withDefaults(
   { size: 28 },
 )
 
-// after dashboard-square-01: rows and columns resolve in reading order
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the cue ball rolls into the pack and the balls scatter
+// authored from scripts/authored
+const cueVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.65px) rotate(-1.95deg)', 'translateY(0.39px) rotate(0.68deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(5px, 0px)',
+      'translate(4.6px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 1,
+      times: [0, 0.3, 0.45, 0.85, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
     },
   },
-}
+};
 
-const tileVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
+const ballVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+      'translate(1.6px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 1,
+      times: [0, 0.3, 0.5, 0.85, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(1.32px) scale(0.74)', 'translateY(-0.38px) scale(1.1)', 'translateY(0px) scale(1)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.45, ease: [0.23, 1, 0.32, 1], delay: i * 0.06 },
-  }),
-}
+};
+
+const ball2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0.8px, -0.6px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 1,
+      times: [0, 0.32, 0.52, 0.85, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
+    },
+  },
+};
+
+const ball3Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0.8px, 0.6px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 1,
+      times: [0, 0.32, 0.52, 0.85, 1],
+      ease: [
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -52,15 +119,15 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M16 5H8C5.17157 5 3.75736 5 2.87868 5.87868C2 6.75736 2 8.17157 2 11V13C2 15.8284 2 17.2426 2.87868 18.1213C3.75736 19 5.17157 19 8 19H16C18.8284 19 20.2426 19 21.1213 18.1213C22 17.2426 22 15.8284 22 13V11C22 8.17157 22 6.75736 21.1213 5.87868C20.2426 5 18.8284 5 16 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M22 9C19.7909 9 18 7.20914 18 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '20px 7px' }" />
-            <motion.path d="M22 15C19.7909 15 18 16.7909 18 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="3" :animate="controls" initial="normal" :style="{ transformOrigin: '20px 17px' }" />
-            <motion.path d="M2 9C4.20914 9 6 7.20914 6 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 7px' }" />
-            <motion.path d="M2 15C4.20914 15 6 16.7909 6 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 17px' }" />
-            <motion.path d="M6.125 12H6M6.25 12C6.25 12.1381 6.13807 12.25 6 12.25C5.86193 12.25 5.75 12.1381 5.75 12C5.75 11.8619 5.86193 11.75 6 11.75C6.13807 11.75 6.25 11.8619 6.25 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M13.125 12H13M13.25 12C13.25 12.1381 13.1381 12.25 13 12.25C12.8619 12.25 12.75 12.1381 12.75 12C12.75 11.8619 12.8619 11.75 13 11.75C13.1381 11.75 13.25 11.8619 13.25 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M16.125 10H16M16.25 10C16.25 10.1381 16.1381 10.25 16 10.25C15.8619 10.25 15.75 10.1381 15.75 10C15.75 9.86193 15.8619 9.75 16 9.75C16.1381 9.75 16.25 9.86193 16.25 10Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M16.125 14H16M16.25 14C16.25 14.1381 16.1381 14.25 16 14.25C15.8619 14.25 15.75 14.1381 15.75 14C15.75 13.8619 15.8619 13.75 16 13.75C16.1381 13.75 16.25 13.8619 16.25 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M16 5H8C5.17157 5 3.75736 5 2.87868 5.87868C2 6.75736 2 8.17157 2 11V13C2 15.8284 2 17.2426 2.87868 18.1213C3.75736 19 5.17157 19 8 19H16C18.8284 19 20.2426 19 21.1213 18.1213C22 17.2426 22 15.8284 22 13V11C22 8.17157 22 6.75736 21.1213 5.87868C20.2426 5 18.8284 5 16 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M22 9C19.7909 9 18 7.20914 18 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M22 15C19.7909 15 18 16.7909 18 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M2 9C4.20914 9 6 7.20914 6 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M2 15C4.20914 15 6 16.7909 6 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M6.125 12H6M6.25 12C6.25 12.1381 6.13807 12.25 6 12.25C5.86193 12.25 5.75 12.1381 5.75 12C5.75 11.8619 5.86193 11.75 6 11.75C6.13807 11.75 6.25 11.8619 6.25 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cueVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 12px' }" />
+            <motion.path d="M13.125 12H13M13.25 12C13.25 12.1381 13.1381 12.25 13 12.25C12.8619 12.25 12.75 12.1381 12.75 12C12.75 11.8619 12.8619 11.75 13 11.75C13.1381 11.75 13.25 11.8619 13.25 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ballVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 12px' }" />
+            <motion.path d="M16.125 10H16M16.25 10C16.25 10.1381 16.1381 10.25 16 10.25C15.8619 10.25 15.75 10.1381 15.75 10C15.75 9.86193 15.8619 9.75 16 9.75C16.1381 9.75 16.25 9.86193 16.25 10Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ball2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '16px 10px' }" />
+            <motion.path d="M16.125 14H16M16.25 14C16.25 14.1381 16.1381 14.25 16 14.25C15.8619 14.25 15.75 14.1381 15.75 14C15.75 13.8619 15.8619 13.75 16 13.75C16.1381 13.75 16.25 13.8619 16.25 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ball3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '16px 14px' }" />
           </svg>
         </div>
 </template>

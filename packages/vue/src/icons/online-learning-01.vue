@@ -13,22 +13,82 @@ withDefaults(
   { size: 28 },
 )
 
-// after wifi-01: the status signal expands from source to outer ring
-// generated from @hugeicons/core-free-icons
-const arcVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scale(1)',
+// the book pages flap and the cap hops
+// authored from scripts/authored
+const pageVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.97px, -0.47px) rotate(6deg)',
+      'translate(-0.46px, 0.27px) rotate(-3deg)',
+      'translate(0.16px, -0.09px) rotate(1deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(0.8px) scale(0.82)', 'translateY(0px) scale(1.06)', 'translateY(0px) scale(1)'],
-    transition: { duration: 0.93, ease: [0.23, 1, 0.32, 1], delay: i * 0.12 },
-  }),
-}
+};
+
+const page2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.97px, -0.47px) rotate(-6deg)',
+      'translate(0.46px, 0.27px) rotate(3deg)',
+      'translate(-0.16px, -0.09px) rotate(-1deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const capVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.14px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.14,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -37,9 +97,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 12V21C10.1685 19.3871 7.79379 18.4966 5.33333 18.5C3.77132 18.5 2.99032 18.5 2.64526 18.2792C2.4381 18.1466 2.35346 18.0619 2.22086 17.8547C2 17.5097 2 16.8941 2 15.6629V6.40322C2 4.97543 2 4.26154 2.54874 3.68286C3.09748 3.10418 3.65923 3.07432 4.78272 3.0146C4.965 3.00491 5.14858 3.00001 5.33333 3.00001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.path d="M12 12V21C13.8315 19.3871 16.2062 18.4966 18.6667 18.5C20.2287 18.5 21.0097 18.5 21.3547 18.2792C21.5619 18.1466 21.6465 18.0619 21.7791 17.8547C22 17.5097 22 16.8941 22 15.6629V6.40322C22 4.97543 22 4.26154 21.4513 3.68286C20.9025 3.10418 20.3408 3.07432 19.2173 3.0146C19.035 3.00491 18.8514 3.00001 18.6667 3.00001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.path d="M8 4.44561C8 4.44561 9.5 3.00004 12.0045 3C14.5091 2.99996 16 4.44561 16 4.44561M14.5 6.99996C14.5 6.99996 13.5091 5.99742 12.0045 5.99742C10.5 5.99742 9.5 6.99996 9.5 6.99996M12.05 8.9H12M12.1 8.9C12.1 8.95523 12.0552 9 12 9C11.9448 9 11.9 8.95523 11.9 8.9C11.9 8.84478 11.9448 8.8 12 8.8C12.0552 8.8 12.1 8.84478 12.1 8.9Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
+            <motion.path d="M12 12V21C10.1685 19.3871 7.79379 18.4966 5.33333 18.5C3.77132 18.5 2.99032 18.5 2.64526 18.2792C2.4381 18.1466 2.35346 18.0619 2.22086 17.8547C2 17.5097 2 16.8941 2 15.6629V6.40322C2 4.97543 2 4.26154 2.54874 3.68286C3.09748 3.10418 3.65923 3.07432 4.78272 3.0146C4.965 3.00491 5.14858 3.00001 5.33333 3.00001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="pageVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 12px' }" />
+            <motion.path d="M12 12V21C13.8315 19.3871 16.2062 18.4966 18.6667 18.5C20.2287 18.5 21.0097 18.5 21.3547 18.2792C21.5619 18.1466 21.6465 18.0619 21.7791 17.8547C22 17.5097 22 16.8941 22 15.6629V6.40322C22 4.97543 22 4.26154 21.4513 3.68286C20.9025 3.10418 20.3408 3.07432 19.2173 3.0146C19.035 3.00491 18.8514 3.00001 18.6667 3.00001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="page2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 12px' }" />
+            <motion.path d="M8 4.44561C8 4.44561 9.5 3.00004 12.0045 3C14.5091 2.99996 16 4.44561 16 4.44561M14.5 6.99996C14.5 6.99996 13.5091 5.99742 12.0045 5.99742C10.5 5.99742 9.5 6.99996 9.5 6.99996M12.05 8.9H12M12.1 8.9C12.1 8.95523 12.0552 9 12 9C11.9448 9 11.9 8.95523 11.9 8.9C11.9 8.84478 11.9448 8.8 12 8.8C12.0552 8.8 12.1 8.84478 12.1 8.9Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="capVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
           </svg>
         </div>
 </template>

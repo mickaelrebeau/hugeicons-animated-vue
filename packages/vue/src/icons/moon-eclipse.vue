@@ -13,20 +13,21 @@ withDefaults(
   { size: 28 },
 )
 
-// after moon-02: the crescent drifts slowly through its night field
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
+// the shadow slides across the moon
+// authored from scripts/authored
+const shadowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px)', 'translateY(-1.13px)', 'translateY(0.28px)', 'translateY(0px)'],
-    transition: {
-      duration: 0.66,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-3px, 0px)',
+      'translate(-3px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 1, times: [0, 0.18, 0.46, 0.74, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +41,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.circle cx="12" cy="12" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M10 2.2002C14.5645 3.12674 18 7.16224 18 12.0002C18 16.8381 14.5645 20.8736 10 21.8001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M10 2.2002C14.5645 3.12674 18 7.16224 18 12.0002C18 16.8381 14.5645 20.8736 10 21.8001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="shadowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 12px' }" />
           </svg>
         </div>
 </template>

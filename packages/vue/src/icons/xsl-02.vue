@@ -13,32 +13,78 @@ withDefaults(
   { size: 28 },
 )
 
-// after grid-view: the pieces of the xsl take turns from their own geometric centers
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the XSL letters hop in turn
+// authored from scripts/authored
+const hopVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.66px) rotate(-1.95deg)', 'translateY(0.39px) rotate(0.68deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.14px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      delay: 0.16,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const cellVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
+const hop2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.14px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.56,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['scale(0.72) rotate(-5.47deg)', 'scale(1.1) rotate(2.19deg)', 'scale(1) rotate(0deg)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.48, ease: [0.23, 1, 0.32, 1], delay: i * 0.055 },
-  }),
-}
+};
+
+const hop3Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.14px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.08,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -52,10 +98,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M19.5 11C19.5 10.1825 19.5 9.4306 19.3478 9.06306C19.1955 8.69552 18.9065 8.40649 18.3284 7.82843L13.5919 3.09188C13.093 2.593 12.8436 2.34355 12.5345 2.19575C12.4702 2.165 12.4044 2.13772 12.3372 2.11401C12.0141 2 11.6614 2 10.9558 2C7.71082 2 6.08831 2 4.98933 2.88607C4.76731 3.06508 4.56508 3.26731 4.38607 3.48933C3.5 4.58831 3.5 6.21082 3.5 9.45584V14C3.5 17.7712 3.5 19.6569 4.67157 20.8284C5.84315 22 7.72876 22 11.5 22H19.5M12.5 2.5V3C12.5 5.82843 12.5 7.24264 13.3787 8.12132C14.2574 9 15.6716 9 18.5 9H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M18.5 13.9998V16.9998C18.5 17.9426 18.5 18.414 18.7929 18.7069C19.0858 18.9998 19.5572 18.9998 20.5 18.9998" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '19.5px 16.5px' }" />
-            <motion.path d="M8 14L9.5 16.5M9.5 16.5L11 19M9.5 16.5L11 14M9.5 16.5L8 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '9.5px 16.5px' }" />
-            <motion.path d="M16 14H14.5C13.9477 14 13.5 14.4477 13.5 15V15.5C13.5 16.0523 13.9477 16.5 14.5 16.5H15C15.5523 16.5 16 16.9477 16 17.5V18C16 18.5523 15.5523 19 15 19H13.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '14.75px 16.5px' }" />
+            <path d="M19.5 11C19.5 10.1825 19.5 9.4306 19.3478 9.06306C19.1955 8.69552 18.9065 8.40649 18.3284 7.82843L13.5919 3.09188C13.093 2.593 12.8436 2.34355 12.5345 2.19575C12.4702 2.165 12.4044 2.13772 12.3372 2.11401C12.0141 2 11.6614 2 10.9558 2C7.71082 2 6.08831 2 4.98933 2.88607C4.76731 3.06508 4.56508 3.26731 4.38607 3.48933C3.5 4.58831 3.5 6.21082 3.5 9.45584V14C3.5 17.7712 3.5 19.6569 4.67157 20.8284C5.84315 22 7.72876 22 11.5 22H19.5M12.5 2.5V3C12.5 5.82843 12.5 7.24264 13.3787 8.12132C14.2574 9 15.6716 9 18.5 9H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M18.5 13.9998V16.9998C18.5 17.9426 18.5 18.414 18.7929 18.7069C19.0858 18.9998 19.5572 18.9998 20.5 18.9998" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="hopVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19.5px 16.5px' }" />
+            <motion.path d="M8 14L9.5 16.5M9.5 16.5L11 19M9.5 16.5L11 14M9.5 16.5L8 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="hop2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '9.5px 16.5px' }" />
+            <motion.path d="M16 14H14.5C13.9477 14 13.5 14.4477 13.5 15V15.5C13.5 16.0523 13.9477 16.5 14.5 16.5H15C15.5523 16.5 16 16.9477 16 17.5V18C16 18.5523 15.5523 19 15 19H13.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="hop3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.8px 16.5px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,25 @@ withDefaults(
   { size: 28 },
 )
 
-// after thumbs-up: the wrist leads one readable hand gesture
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the hand winds back and thrusts left
+// authored from scripts/authored
+const handVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.57px) rotate(-3.92deg)', 'translateY(0.29px) rotate(0.98deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0.8px, 0px)',
+      'translate(-2px, 0px)',
+      'translate(0.2px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.54,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.3, 0.5, 0.76, 1],
+      ease: ['easeOut', 'easeIn', 'easeOut', 'easeInOut'],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,7 +45,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8 11.5004L8 12.5004C8 13.605 8.89543 14.5004 10 14.5004M10 14.5004L11 14.5004M10 14.5004C9.44772 14.5004 9 14.9481 9 15.5004C9 16.605 9.89543 17.5004 11 17.5004M11 17.5004L12 17.5004M11 17.5004C10.4765 17.5004 10.0783 17.9705 10.1644 18.4868L10.2215 18.8292C10.3822 19.7936 11.2166 20.5004 12.1943 20.5004L13.6668 20.5C15.8402 20.5 16.9269 20.5 17.792 20.1689C18.2939 19.9769 18.9339 19.4703 19.3964 19.0652C19.7964 18.7148 20.3038 18.5 20.8356 18.5L22.0002 18.5M10 11.5002L3.5 11.5002C2.67157 11.5002 2 10.8286 2 10.0002C2 9.17178 2.67157 8.50021 3.5 8.50021L13.4624 8.5L11.837 6.8797C11.1239 6.16877 11.1889 4.99772 11.9765 4.36965C12.5791 3.88907 13.4315 3.8758 14.0489 4.33738L18.6471 7.93707C19.5269 8.62579 20.8829 9 22.0002 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 20.5px' }" />
+            <motion.path d="M8 11.5004L8 12.5004C8 13.605 8.89543 14.5004 10 14.5004M10 14.5004L11 14.5004M10 14.5004C9.44772 14.5004 9 14.9481 9 15.5004C9 16.605 9.89543 17.5004 11 17.5004M11 17.5004L12 17.5004M11 17.5004C10.4765 17.5004 10.0783 17.9705 10.1644 18.4868L10.2215 18.8292C10.3822 19.7936 11.2166 20.5004 12.1943 20.5004L13.6668 20.5C15.8402 20.5 16.9269 20.5 17.792 20.1689C18.2939 19.9769 18.9339 19.4703 19.3964 19.0652C19.7964 18.7148 20.3038 18.5 20.8356 18.5L22.0002 18.5M10 11.5002L3.5 11.5002C2.67157 11.5002 2 10.8286 2 10.0002C2 9.17178 2.67157 8.50021 3.5 8.50021L13.4624 8.5L11.837 6.8797C11.1239 6.16877 11.1889 4.99772 11.9765 4.36965C12.5791 3.88907 13.4315 3.8758 14.0489 4.33738L18.6471 7.93707C19.5269 8.62579 20.8829 9 22.0002 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12.2px' }" />
           </svg>
         </div>
 </template>

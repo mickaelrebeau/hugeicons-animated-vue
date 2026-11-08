@@ -13,20 +13,52 @@ withDefaults(
   { size: 28 },
 )
 
-// after mouse-left-click-01: the shell presses under the active button and releases
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1) scaleY(1)',
-  },
+// the divider flexes as the mouse clicks
+// authored from scripts/authored
+const mouseVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.79px) scaleX(0.9) scaleY(1.04)', 'translateX(1.98px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transform: ['scale(1)', 'scale(0.95)', 'scale(1.02)', 'scale(1)'],
+    transition: { duration: 0.42, times: [0, 0.22, 0.5, 1], ease: 'easeInOut' },
+  },
+};
+
+const wheelVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 0.6px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0.6px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 0.7, delay: 0.1, times: [0, 0.25, 0.5, 0.75, 1], ease: 'easeInOut' },
+  },
+};
+
+const dividerVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(0.9)',
+      'translate(0.00px, 0px) scaleX(1.04)',
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +72,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12.5 5.5V2M12.5 12V9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 12px' }" />
-            <motion.path d="M12.5 22C18.5 22 20 17.49 20 12C20 6.50998 18.5 2 12.5 2C6.49993 2 5 6.50996 5 12C5 17.49 6.49993 22 12.5 22Z" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 12px' }" />
-            <motion.path d="M14 7C14 6.53406 14 6.30109 13.9239 6.11732C13.8224 5.87229 13.6277 5.67761 13.3827 5.57612C13.1989 5.5 12.9659 5.5 12.5 5.5C12.0341 5.5 11.8011 5.5 11.6173 5.57612C11.3723 5.67761 11.1776 5.87229 11.0761 6.11732C11 6.30109 11 6.53406 11 7V7.5C11 7.96594 11 8.19891 11.0761 8.38268C11.1776 8.62771 11.3723 8.82239 11.6173 8.92388C11.8011 9 12.0341 9 12.5 9C12.9659 9 13.1989 9 13.3827 8.92388C13.6277 8.82239 13.8224 8.62771 13.9239 8.38268C14 8.19891 14 7.96594 14 7.5V7Z" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 12px' }" />
-            <motion.path d="M5.5 12H19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 12px' }" />
+            <path d="M12.5 5.5V2M12.5 12V9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M12.5 22C18.5 22 20 17.49 20 12C20 6.50998 18.5 2 12.5 2C6.49993 2 5 6.50996 5 12C5 17.49 6.49993 22 12.5 22Z" stroke="currentColor" stroke-width="1.5" :variants="mouseVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
+            <motion.path d="M14 7C14 6.53406 14 6.30109 13.9239 6.11732C13.8224 5.87229 13.6277 5.67761 13.3827 5.57612C13.1989 5.5 12.9659 5.5 12.5 5.5C12.0341 5.5 11.8011 5.5 11.6173 5.57612C11.3723 5.67761 11.1776 5.87229 11.0761 6.11732C11 6.30109 11 6.53406 11 7V7.5C11 7.96594 11 8.19891 11.0761 8.38268C11.1776 8.62771 11.3723 8.82239 11.6173 8.92388C11.8011 9 12.0341 9 12.5 9C12.9659 9 13.1989 9 13.3827 8.92388C13.6277 8.82239 13.8224 8.62771 13.9239 8.38268C14 8.19891 14 7.96594 14 7.5V7Z" stroke="currentColor" stroke-width="1.5" :variants="wheelVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 7.3px' }" />
+            <motion.path d="M5.5 12H19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dividerVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 12px' }" />
           </svg>
         </div>
 </template>

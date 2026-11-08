@@ -135,7 +135,7 @@ export default {
   },
   'calendar-heart': {
     verb: 'the corner heart squashes, and the page flinches',
-    parts: [null, null, flinch([12, 13], { delay: 0.12 }), heartbeat([18, 18.4])],
+    parts: [null, null, flinch([11.5, 13], { delay: 0.12 }), heartbeat([17.5, 18.4])],
   },
   'calendar-lock-01': {
     verb: 'the corner lock clicks shut and the page takes the knock',
@@ -266,12 +266,12 @@ export default {
     ],
   },
   'calendar-minus': {
-    verb: 'the minus grows through the middle of the page',
+    verb: 'the corner minus draws out from its left end and the page flinches',
     parts: [
-      scaleFrom('X', [9.5, 16], [12, 16], [1, 0.12, 1.14, 1], { as: 'minus', dur: 0.56 }),
-      null,
       null,
       flinch([12, 13], { delay: 0.2 }),
+      null,
+      scaleFrom('X', [14, 18.5], [17.5, 18.5], [1, 0.12, 1.14, 1], { as: 'minus', dur: 0.56 }),
     ],
   },
   'calendar-mortarboard': {
@@ -337,7 +337,7 @@ export default {
     parts: [
       {
         as: 'plus',
-        origin: [19, 19],
+        origin: [18.5, 19],
         transform: [
           'rotate(0deg) scale(1)',
           'rotate(-40deg) scale(0.4)',
@@ -412,7 +412,7 @@ export default {
     parts: [
       {
         as: 'loupe',
-        origin: [18.5, 18.5],
+        origin: [18, 18.5],
         transform: [
           'translate(0px, 0px) rotate(0deg)',
           'translate(-1.6px, -1.2px) rotate(-12deg)',

@@ -13,20 +13,52 @@ withDefaults(
   { size: 28 },
 )
 
-// after cursor-pointer-01: the pointer leans into its tip and clicks
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1) scaleY(1)',
-  },
+// the hand taps and the move arrows turn a quarter
+// authored from scripts/authored
+const arrowsVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
   animate: {
-    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.77px) scaleX(0.9) scaleY(1.04)', 'translateX(1.92px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transform: [
+      'rotate(0deg)',
+      'rotate(18deg)',
+      'rotate(62.99999999999999deg)',
+      'rotate(92.7deg)',
+      'rotate(90deg)',
+    ],
     transition: {
-      duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      delay: 0.1,
+      times: [0, 0.2, 0.6, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const handVariants: Variants = {
+  normal: { transform: 'translateY(0px) scale(1)' },
+  animate: {
+    transform: [
+      'translateY(0px) scale(1)',
+      'translateY(1px) scale(0.94)',
+      'translateY(-0.2px) scale(1.02)',
+      'translateY(0px) scale(1)',
+    ],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.3, 0.62, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +72,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M14.5007 2L14.5007 4.7M14.5007 2C14.05 2 12.9707 3.25255 12.9707 3.25255M14.5007 2C14.9514 2 16.0307 3.25255 16.0307 3.25255M14.5007 11L14.5007 8.3M14.5007 11C14.95 11 16.0307 9.74745 16.0307 9.74745M14.5007 11C14.05 11 12.9707 9.74745 12.9707 9.74745M10 6.50068L12.7 6.50069M10 6.50068C10 6.95 11.2526 8.03069 11.2526 8.03069M10 6.50068C10 6.05 11.2526 4.9707 11.2526 4.9707M19 6.50071L16.3 6.5007M19 6.50071C19 6.05 17.7474 4.9707 17.7474 4.9707M19 6.50071C19 6.95 17.7474 8.03069 17.7474 8.03069" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '4.91px 11.89px' }" />
-            <motion.path d="M9.81083 3.20037C8.65398 2.21724 7.8654 1.77718 7.04807 2.10979C5.94481 2.55876 5.85017 3.98379 5.67232 6.66186L5.10772 14.3857C4.9732 16.2065 4.90595 17.1169 5.26831 17.574C5.51701 17.8877 5.88085 18.0871 6.27746 18.1269C6.85532 18.1851 7.57763 17.6337 9.02224 16.5308C9.63074 16.0663 9.935 15.834 10.239 15.8187C10.4503 15.8081 10.6595 15.8662 10.8355 15.9844C11.0887 16.1545 11.2317 16.5111 11.5177 17.2241L13.0004 20.9204C13.1717 21.3475 13.2574 21.561 13.3939 21.7015C13.5778 21.8907 13.8292 21.9982 14.0921 22C14.2873 22.0013 14.4993 21.915 14.9232 21.7425C15.3471 21.57 15.5591 21.4837 15.6986 21.3462C15.8865 21.1609 15.9932 20.9078 15.995 20.6429C15.9963 20.4464 15.9107 20.2328 15.7394 19.8058L14.2567 16.1095C13.9707 15.3964 13.8277 15.0399 13.8925 14.7404C13.9376 14.5321 14.0479 14.344 14.2073 14.2038C14.4365 14.0021 14.8156 13.9563 15.5737 13.8647C17.3734 13.6473 18.2733 13.5385 18.6489 13.0924C18.9067 12.7862 19.0309 12.3882 18.9934 11.9885C18.9606 11.638 18.7025 11.2783 18.2073 10.7823" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '4.91px 11.89px' }" />
+            <motion.path d="M14.5007 2L14.5007 4.7M14.5007 2C14.05 2 12.9707 3.25255 12.9707 3.25255M14.5007 2C14.9514 2 16.0307 3.25255 16.0307 3.25255M14.5007 11L14.5007 8.3M14.5007 11C14.95 11 16.0307 9.74745 16.0307 9.74745M14.5007 11C14.05 11 12.9707 9.74745 12.9707 9.74745M10 6.50068L12.7 6.50069M10 6.50068C10 6.95 11.2526 8.03069 11.2526 8.03069M10 6.50068C10 6.05 11.2526 4.9707 11.2526 4.9707M19 6.50071L16.3 6.5007M19 6.50071C19 6.05 17.7474 4.9707 17.7474 4.9707M19 6.50071C19 6.95 17.7474 8.03069 17.7474 8.03069" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 6.5px' }" />
+            <motion.path d="M9.81083 3.20037C8.65398 2.21724 7.8654 1.77718 7.04807 2.10979C5.94481 2.55876 5.85017 3.98379 5.67232 6.66186L5.10772 14.3857C4.9732 16.2065 4.90595 17.1169 5.26831 17.574C5.51701 17.8877 5.88085 18.0871 6.27746 18.1269C6.85532 18.1851 7.57763 17.6337 9.02224 16.5308C9.63074 16.0663 9.935 15.834 10.239 15.8187C10.4503 15.8081 10.6595 15.8662 10.8355 15.9844C11.0887 16.1545 11.2317 16.5111 11.5177 17.2241L13.0004 20.9204C13.1717 21.3475 13.2574 21.561 13.3939 21.7015C13.5778 21.8907 13.8292 21.9982 14.0921 22C14.2873 22.0013 14.4993 21.915 14.9232 21.7425C15.3471 21.57 15.5591 21.4837 15.6986 21.3462C15.8865 21.1609 15.9932 20.9078 15.995 20.6429C15.9963 20.4464 15.9107 20.2328 15.7394 19.8058L14.2567 16.1095C13.9707 15.3964 13.8277 15.0399 13.8925 14.7404C13.9376 14.5321 14.0479 14.344 14.2073 14.2038C14.4365 14.0021 14.8156 13.9563 15.5737 13.8647C17.3734 13.6473 18.2733 13.5385 18.6489 13.0924C18.9067 12.7862 19.0309 12.3882 18.9934 11.9885C18.9606 11.638 18.7025 11.2783 18.2073 10.7823" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 11.9px' }" />
           </svg>
         </div>
 </template>

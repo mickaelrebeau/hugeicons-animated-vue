@@ -13,21 +13,76 @@ withDefaults(
   { size: 28 },
 )
 
-// after diamond-02: the gem turns into the light, flashes, and faces forward
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+// the percent sign turns a half and lands on itself
+// authored from scripts/authored
+const percentVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.96)', 'scale(1.16)', 'scale(0.98)', 'scale(1.09)', 'scale(1)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.00px, 0.00px) rotate(36deg)',
+      'translate(0.00px, 0.00px) rotate(126deg)',
+      'translate(0.00px, 0.00px) rotate(185.4deg)',
+      'translate(0.00px, 0.00px) rotate(180deg)',
+    ],
     transition: {
-      duration: 0.72,
-      ease: [0.22, 1, 0.36, 1],
-      times: [0, 0.12, 0.32, 0.48, 0.68, 1],
+      duration: 0.76,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const percent2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(2.10px, -1.07px) rotate(36deg)',
+      'translate(6.47px, 2.10px) rotate(126deg)',
+      'translate(5.13px, 5.64px) rotate(185.4deg)',
+      'translate(5.40px, 5.40px) rotate(180deg)',
+    ],
+    transition: {
+      duration: 0.76,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const percent3Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-2.18px, 1.11px) rotate(36deg)',
+      'translate(-6.71px, -2.18px) rotate(126deg)',
+      'translate(-5.32px, -5.85px) rotate(185.4deg)',
+      'translate(-5.60px, -5.60px) rotate(180deg)',
+    ],
+    transition: {
+      duration: 0.76,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,10 +96,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2.00406 12.1864C2.07656 13.8499 3.42215 15.1955 6.11333 17.8867C8.80451 20.5778 10.1501 21.9234 11.8136 21.9959C11.9378 22.0014 12.0622 22.0014 12.1864 21.9959C13.8499 21.9234 15.1955 20.5778 17.8867 17.8867C20.5778 15.1955 21.9234 13.8499 21.9959 12.1864C22.0014 12.0622 22.0014 11.9378 21.9959 11.8136C21.9234 10.1501 20.5778 8.80451 17.8867 6.11333C15.1955 3.42215 13.8499 2.07656 12.1864 2.00406C12.0622 1.99865 11.9378 1.99865 11.8136 2.00406C10.1501 2.07656 8.80451 3.42215 6.11333 6.11333C3.42215 8.80451 2.07656 10.1501 2.00406 11.8136C1.99865 11.9378 1.99865 12.0622 2.00406 12.1864Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M15 9L9 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M9.375 9.25H9.25M9.5 9.25C9.5 9.38807 9.38807 9.5 9.25 9.5C9.11193 9.5 9 9.38807 9 9.25C9 9.11193 9.11193 9 9.25 9C9.38807 9 9.5 9.11193 9.5 9.25Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M14.875 14.75H14.75M15 14.75C15 14.8881 14.8881 15 14.75 15C14.6119 15 14.5 14.8881 14.5 14.75C14.5 14.6119 14.6119 14.5 14.75 14.5C14.8881 14.5 15 14.6119 15 14.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M2.00406 12.1864C2.07656 13.8499 3.42215 15.1955 6.11333 17.8867C8.80451 20.5778 10.1501 21.9234 11.8136 21.9959C11.9378 22.0014 12.0622 22.0014 12.1864 21.9959C13.8499 21.9234 15.1955 20.5778 17.8867 17.8867C20.5778 15.1955 21.9234 13.8499 21.9959 12.1864C22.0014 12.0622 22.0014 11.9378 21.9959 11.8136C21.9234 10.1501 20.5778 8.80451 17.8867 6.11333C15.1955 3.42215 13.8499 2.07656 12.1864 2.00406C12.0622 1.99865 11.9378 1.99865 11.8136 2.00406C10.1501 2.07656 8.80451 3.42215 6.11333 6.11333C3.42215 8.80451 2.07656 10.1501 2.00406 11.8136C1.99865 11.9378 1.99865 12.0622 2.00406 12.1864Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M15 9L9 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="percentVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M9.375 9.25H9.25M9.5 9.25C9.5 9.38807 9.38807 9.5 9.25 9.5C9.11193 9.5 9 9.38807 9 9.25C9 9.11193 9.11193 9 9.25 9C9.38807 9 9.5 9.11193 9.5 9.25Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="percent2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '9.3px 9.3px' }" />
+            <motion.path d="M14.875 14.75H14.75M15 14.75C15 14.8881 14.8881 15 14.75 15C14.6119 15 14.5 14.8881 14.5 14.75C14.5 14.6119 14.6119 14.5 14.75 14.5C14.8881 14.5 15 14.6119 15 14.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="percent3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.8px 14.8px' }" />
           </svg>
         </div>
 </template>

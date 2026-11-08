@@ -13,20 +13,48 @@ withDefaults(
   { size: 28 },
 )
 
-// after cursor-pointer-01: the fingertip commits toward the direction it already points
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1) scaleY(1)',
-  },
+// the hand flicks and the arrow flies off right, re-entering from the left
+// authored from scripts/authored
+const arrowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)', opacity: 1 },
   animate: {
-    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.77px) scaleX(0.9) scaleY(1.04)', 'translateX(1.92px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transform: ['translate(0px, 0px)', 'translate(3px, 0px)', 'translate(-3px, 0px)', 'translate(0px, 0px)'],
+    opacity: [1, 0, 0, 1],
     transition: {
-      duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      delay: 0.1,
+      times: [0, 0.4, 0.42, 1],
+      ease: [
+        'easeIn',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const handVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0.8px, 0px)',
+      'translate(-0.12px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +68,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M22 4.5H16M22 4.5C22 3.79977 20.0057 2.49153 19.5 2M22 4.5C22 5.20023 20.0057 6.50847 19.5 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 13.92px' }" />
-            <motion.path d="M12.926 13.0051H16.0285M16.0285 13.0051H20.4965C21.3272 13.0051 22.0006 12.3328 22.0006 11.5034C22.0006 10.674 21.3272 10.0016 20.4965 10.0016L15.0337 10.0016M16.0285 13.0051L16.0016 14.0595C15.9835 14.7705 15.5954 15.3871 15.024 15.7274M15.0337 10.0016L10.4722 10.0016M15.0337 10.0016L12.2748 7.40816C10.4078 5.83569 9.04676 6.66202 8.29057 7.24227L4.31797 10.1227C3.97672 10.3701 3.56602 10.5033 3.14455 10.5033H2.0118M12.9954 16.0087H13.9992C14.3733 16.0087 14.7239 15.9062 15.024 15.7274M15.024 15.7274L14.9693 17.0631C14.9521 17.7373 14.6022 18.3266 14.0788 18.676M11.9631 19.0122H12.9668C13.3778 19.0122 13.7604 18.8885 14.0788 18.676M14.0788 18.676L13.8099 20.2668C13.675 21.2661 12.8161 22.0088 11.8063 21.9995H8.25808C7.65434 21.9995 7.04792 21.9509 6.47439 21.7623C5.99677 21.6051 5.47096 21.3849 5.12754 21.115C4.38667 20.5327 4.12414 20.1256 3.48911 20.0197C2.98108 19.935 2.34387 19.9232 2 19.9232" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 13.92px' }" />
+            <motion.path d="M22 4.5H16M22 4.5C22 3.79977 20.0057 2.49153 19.5 2M22 4.5C22 5.20023 20.0057 6.50847 19.5 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 4.5px' }" />
+            <motion.path d="M12.926 13.0051H16.0285M16.0285 13.0051H20.4965C21.3272 13.0051 22.0006 12.3328 22.0006 11.5034C22.0006 10.674 21.3272 10.0016 20.4965 10.0016L15.0337 10.0016M16.0285 13.0051L16.0016 14.0595C15.9835 14.7705 15.5954 15.3871 15.024 15.7274M15.0337 10.0016L10.4722 10.0016M15.0337 10.0016L12.2748 7.40816C10.4078 5.83569 9.04676 6.66202 8.29057 7.24227L4.31797 10.1227C3.97672 10.3701 3.56602 10.5033 3.14455 10.5033H2.0118M12.9954 16.0087H13.9992C14.3733 16.0087 14.7239 15.9062 15.024 15.7274M15.024 15.7274L14.9693 17.0631C14.9521 17.7373 14.6022 18.3266 14.0788 18.676M11.9631 19.0122H12.9668C13.3778 19.0122 13.7604 18.8885 14.0788 18.676M14.0788 18.676L13.8099 20.2668C13.675 21.2661 12.8161 22.0088 11.8063 21.9995H8.25808C7.65434 21.9995 7.04792 21.9509 6.47439 21.7623C5.99677 21.6051 5.47096 21.3849 5.12754 21.115C4.38667 20.5327 4.12414 20.1256 3.48911 20.0197C2.98108 19.935 2.34387 19.9232 2 19.9232" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 13.9px' }" />
           </svg>
         </div>
 </template>

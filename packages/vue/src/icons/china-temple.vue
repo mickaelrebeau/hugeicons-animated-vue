@@ -13,44 +13,98 @@ withDefaults(
   { size: 28 },
 )
 
-// after list-view: the parallel marks of the china temple resolve in reading order
-// generated from @hugeicons/core-free-icons
-const rowVariants: Variants = {
-  normal: {
-    transform: 'scaleX(1)',
-  },
-  animate: (i: number) => ({
-    transform: ['scaleX(1)', 'scaleX(0.68)', 'scaleX(1.04)', 'scaleX(0.98)', 'scaleX(1)'],
-    transition: { duration: 0.45, ease: [0.77, 0, 0.175, 1], times: [0, 0.28, 0.56, 0.76, 1], delay: i * 0.06 },
-  }),
-}
-
-const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the temple builds up: pillars rise, each roof lands on them
+// authored from scripts/authored
+const roofVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.86px) rotate(-1.08deg)', 'translateY(0.49px) rotate(0.54deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.6px)',
+      'translate(0px, 0.3px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.14,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const roof2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.6px)',
+      'translate(0px, 0.3px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.3,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const pillarVariants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 1.60px) scaleY(0.2)',
+      'translate(0px, -0.16px) scaleY(1.08)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
     transition: {
       duration: 0.6,
-      ease: [0.23, 1, 0.32, 1],
+      delay: 0.2,
+      times: [0, 0.16, 0.62, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const plusVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) scale(1)',
-  },
+const pillar2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
   animate: {
-    transform: ['rotate(0deg) scale(1)', 'rotate(-10.17deg) scale(0.82)', 'rotate(3.05deg) scale(1.08)', 'rotate(0deg) scale(1)'],
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 3.20px) scaleY(0.2)',
+      'translate(0px, -0.32px) scaleY(1.08)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
     transition: {
-      duration: 0.42,
-      delay: 0.04,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.6,
+      times: [0, 0.16, 0.62, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -64,14 +118,14 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M22 12C19.6 12 17.6667 10.6667 17 10H7C6.33333 10.6667 4.4 12 2 12L2.17082 12.3416C2.679 13.358 3.71779 14 4.8541 14H19.1459C20.2822 14 21.321 13.358 21.8292 12.3416L22 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="rowVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '22px 12px' }" />
-            <motion.path d="M19 4C17.547 4 16.265 3.51128 15.3316 2.97766C14.3479 2.41529 13.8561 2.13411 13.6037 2.06705C13.3513 2 13.0153 2 12.3431 2H11.6569C10.9847 2 10.6487 2 10.3963 2.06705C10.1439 2.13411 9.65207 2.41529 8.66839 2.97766C7.735 3.51128 6.45303 4 5 4L5.17082 4.34164C5.679 5.35799 6.71779 6 7.8541 6H16.1459C17.2822 6 18.321 5.35799 18.8292 4.34164L19 4Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="rowVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 4px' }" />
-            <motion.path d="M17 10V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 8px' }" />
-            <motion.path d="M7 10V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 8px' }" />
-            <motion.path d="M19 22V14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="plusVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 22px' }" />
-            <motion.path d="M5 22V14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 18px' }" />
-            <motion.path d="M3 22H21" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="plusVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 22px' }" />
-            <motion.path d="M10 22V19C10 17.8954 10.8954 17 12 17C13.1046 17 14 17.8954 14 19V22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 19.5px' }" />
+            <motion.path d="M22 12C19.6 12 17.6667 10.6667 17 10H7C6.33333 10.6667 4.4 12 2 12L2.17082 12.3416C2.679 13.358 3.71779 14 4.8541 14H19.1459C20.2822 14 21.321 13.358 21.8292 12.3416L22 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="roofVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M19 4C17.547 4 16.265 3.51128 15.3316 2.97766C14.3479 2.41529 13.8561 2.13411 13.6037 2.06705C13.3513 2 13.0153 2 12.3431 2H11.6569C10.9847 2 10.6487 2 10.3963 2.06705C10.1439 2.13411 9.65207 2.41529 8.66839 2.97766C7.735 3.51128 6.45303 4 5 4L5.17082 4.34164C5.679 5.35799 6.71779 6 7.8541 6H16.1459C17.2822 6 18.321 5.35799 18.8292 4.34164L19 4Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="roof2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 4px' }" />
+            <motion.path d="M17 10V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="pillarVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 8px' }" />
+            <motion.path d="M7 10V6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="pillarVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 8px' }" />
+            <motion.path d="M19 22V14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="pillar2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 18px' }" />
+            <motion.path d="M5 22V14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="pillar2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 18px' }" />
+            <path d="M3 22H21" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M10 22V19C10 17.8954 10.8954 17 12 17C13.1046 17 14 17.8954 14 19V22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

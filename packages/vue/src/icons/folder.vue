@@ -13,20 +13,15 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the tab leads a compact lift and the folder lands on its base
-// generated from @hugeicons/core-free-icons
+// the folder flap opens and closes
+// authored from scripts/authored
 const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+  normal: { transform: 'scaleY(1)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.58px) rotate(-1.86deg)', 'translateY(0.37px) rotate(0.65deg)', 'translateY(0px) rotate(0deg)'],
-    transition: {
-      duration: 0.6,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['scaleY(1)', 'scaleY(0.9)', 'scaleY(1.04)', 'scaleY(1)'],
+    transition: { duration: 0.56, times: [0, 0.3, 0.64, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

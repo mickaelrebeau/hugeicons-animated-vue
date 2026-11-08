@@ -228,6 +228,31 @@ function buildSfc(kebab, spec, elements) {
   })
 
   const ordered = paintOrder(kebab, spec, nodes.length).map((i) => nodes[i])
+
+  // Extras are props the gesture brings in (sparks, smoke, a flash): they rest
+  // invisible, so every extra must animate opacity starting at 0.
+  const below = []
+  const above = []
+  for (const [j, extra] of (spec.extras || []).entries()) {
+    if (!extra.tag || !extra.attrs) throw new Error(`${kebab}: extra ${j} needs tag and attrs`)
+    if (!extra.opacity || extra.opacity[0] !== 0) {
+      throw new Error(`${kebab}: extra ${j} must fade in from opacity 0 (rest is invisible)`)
+    }
+    const compiled = compilePart(extra)
+    const key = JSON.stringify(compiled)
+    let name = byKey.get(key)
+    if (!name) {
+      name = variantName(extra.as || 'extra', used)
+      used.add(name)
+      byKey.set(key, name)
+      blocks.push(emitVariants(name, compiled))
+    }
+    const [x, y] = extra.origin || [12, 12]
+    const node = `<motion.${extra.tag} ${formatAttrs(extra.attrs)} :variants="${name}" :animate="controls" initial="normal" :style="{ transformOrigin: '${x}px ${y}px' }" />`
+    ;(extra.under ? below : above).push(node)
+  }
+  ordered.unshift(...below)
+  ordered.push(...above)
   let inner = ordered.join('\n            ')
   if (wrapName) {
     const [x, y] = spec.wrap.origin || [12, 12]

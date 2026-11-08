@@ -13,34 +13,52 @@ withDefaults(
   { size: 28 },
 )
 
-// after login-01: the object lines up, enters its slot, and seats
-// generated from @hugeicons/core-free-icons
+// the arrow pushes a new row in from the bottom
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px)',
-  },
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(-2.79px)', 'translateX(0.93px)', 'translateX(-0.28px)', 'translateX(0px)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 1.4px)',
+      'translate(0px, -0.16799999999999998px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.6,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const frameVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1)',
-  },
+const rowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) scaleX(1)', 'translateX(0.75px) scaleX(0.96)', 'translateX(-0.22px) scaleX(1.01)', 'translateX(0px) scaleX(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -0.8px)',
+      'translate(0px, 0.12px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.58,
-      delay: 0.08,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -54,10 +72,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M18 21.1868C18.8888 20.9852 19.5638 20.6537 20.1088 20.1088C21.5 18.7175 21.5 16.4783 21.5 12C21.5 7.52166 21.5 5.28249 20.1088 3.89124C18.7175 2.5 16.4783 2.5 12 2.5C7.52166 2.5 5.28249 2.5 3.89124 3.89124C2.5 5.28249 2.5 7.52166 2.5 12C2.5 16.4783 2.5 18.7175 3.89124 20.1088C4.4362 20.6537 5.11125 20.9852 6.00001 21.1868" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 11.84px' }" />
-            <motion.path d="M12 13.5V20.5M9 18.5L12 21.5L15 18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '9px 17.5px' }" />
-            <motion.path d="M2.5 9L21.5 9" stroke="currentColor" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2.5px 9px' }" />
-            <motion.path d="M8.5 2.5L8.5 9M15.5 2.5L15.5 9" stroke="currentColor" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8.5px 5.75px' }" />
+            <path d="M18 21.1868C18.8888 20.9852 19.5638 20.6537 20.1088 20.1088C21.5 18.7175 21.5 16.4783 21.5 12C21.5 7.52166 21.5 5.28249 20.1088 3.89124C18.7175 2.5 16.4783 2.5 12 2.5C7.52166 2.5 5.28249 2.5 3.89124 3.89124C2.5 5.28249 2.5 7.52166 2.5 12C2.5 16.4783 2.5 18.7175 3.89124 20.1088C4.4362 20.6537 5.11125 20.9852 6.00001 21.1868" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M12 13.5V20.5M9 18.5L12 21.5L15 18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
+            <motion.path d="M2.5 9L21.5 9" stroke="currentColor" stroke-width="1.5" :variants="rowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 9px' }" />
+            <motion.path d="M8.5 2.5L8.5 9M15.5 2.5L15.5 9" stroke="currentColor" stroke-width="1.5" :variants="rowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 5.8px' }" />
           </svg>
         </div>
 </template>

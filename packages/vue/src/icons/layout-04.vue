@@ -13,19 +13,35 @@ withDefaults(
   { size: 28 },
 )
 
-// after dashboard-square-01: the layout regions snap into their intended grid positions
-// generated from @hugeicons/core-free-icons
-const tileVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
+// the sidebar narrows and the split lowers
+// authored from scripts/authored
+const dividerVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-2px, 0px)',
+      'translate(-2px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 0.9, times: [0, 0.3, 0.62, 0.9, 1], ease: 'easeInOut' },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(1.37px) scale(0.74)', 'translateY(-0.39px) scale(1.1)', 'translateY(0px) scale(1)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.46, ease: [0.23, 1, 0.32, 1], delay: i * 0.06 },
-  }),
-}
+};
+
+const divider2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 2px)',
+      'translate(0px, 2px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 0.9, delay: 0.1, times: [0, 0.3, 0.62, 0.9, 1], ease: 'easeInOut' },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -39,9 +55,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28248 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M9 21.5L9 2.5" stroke="currentColor" stroke-width="1.5" :variants="tileVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '9px 12px' }" />
-            <motion.path d="M21.5 12L9 12" stroke="currentColor" stroke-width="1.5" :variants="tileVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '15.25px 12px' }" />
+            <path d="M20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28248 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M9 21.5L9 2.5" stroke="currentColor" stroke-width="1.5" :variants="dividerVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '9px 12px' }" />
+            <motion.path d="M21.5 12L9 12" stroke="currentColor" stroke-width="1.5" :variants="divider2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.3px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,17 +13,54 @@ withDefaults(
   { size: 28 },
 )
 
-// after flower: the petals open outward one by one from the core
-// generated from @hugeicons/core-free-icons
-const petalVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) scale(1)',
+// the bloom nods on its stem and the leaf flutters
+// authored from scripts/authored
+const bloomVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.55px, -0.81px) rotate(-8deg)',
+      'translate(0.31px, 0.61px) rotate(5.6deg)',
+      'translate(-0.15px, -0.25px) rotate(-2.4deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['rotate(0deg) scale(0.82)', 'rotate(4.21deg) scale(1.1)', 'rotate(0deg) scale(1)'],
-    transition: { duration: 0.61, ease: [0.23, 1, 0.32, 1], delay: i * 0.08 },
-  }),
-}
+};
+
+const leafVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.39px, 0.15px) rotate(14deg)',
+      'translate(0.24px, -0.16px) rotate(-9.799999999999999deg)',
+      'translate(-0.11px, 0.05px) rotate(4.2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      delay: 0.08,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -37,8 +74,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M14.1242 2.61227C15.2112 1.52379 17.0229 1.88662 18.8346 3.70076C21.7332 6.60338 21.0086 9.50601 20.6462 10.5945L17.7476 13.4971C15.7464 15.501 12.502 15.501 10.5008 13.4971C8.49972 11.4933 8.49972 8.2444 10.5008 6.24055L14.1242 2.61227ZM20.6462 10.5945C18.8346 9.02224 14.1242 6.96621 9.77617 11.3201M14.1242 2.61227C13.5203 3.45887 12.9647 5.80516 15.5735 8.41752C17.7578 7.32389 18.2925 4.53425 18.1453 3.20329" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="petalVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '15.12px 15.5px' }" />
-            <motion.path d="M5.06728 18.166C4.90588 17.6386 5.24168 17.0884 5.78541 17.0317C7.33156 16.8703 8.29904 17.3323 8.99999 18.0055C9.65747 18.637 10.1273 19.64 10.4832 20.7716C10.648 21.2957 10.3279 21.8508 9.7895 21.933C8.72778 22.0951 7.86563 21.9733 7.09559 21.4257C6.31723 20.9118 5.5941 19.8873 5.06728 18.166Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="petalVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '7.78px 22.1px' }" />
+            <motion.path d="M14.1242 2.61227C15.2112 1.52379 17.0229 1.88662 18.8346 3.70076C21.7332 6.60338 21.0086 9.50601 20.6462 10.5945L17.7476 13.4971C15.7464 15.501 12.502 15.501 10.5008 13.4971C8.49972 11.4933 8.49972 8.2444 10.5008 6.24055L14.1242 2.61227ZM20.6462 10.5945C18.8346 9.02224 14.1242 6.96621 9.77617 11.3201M14.1242 2.61227C13.5203 3.45887 12.9647 5.80516 15.5735 8.41752C17.7578 7.32389 18.2925 4.53425 18.1453 3.20329" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="bloomVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.1px 8.5px' }" />
+            <motion.path d="M5.06728 18.166C4.90588 17.6386 5.24168 17.0884 5.78541 17.0317C7.33156 16.8703 8.29904 17.3323 8.99999 18.0055C9.65747 18.637 10.1273 19.64 10.4832 20.7716C10.648 21.2957 10.3279 21.8508 9.7895 21.933C8.72778 22.0951 7.86563 21.9733 7.09559 21.4257C6.31723 20.9118 5.5941 19.8873 5.06728 18.166Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="leafVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.8px 19.5px' }" />
             <path d="M9 12C4.5444 15 3 22 3 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>

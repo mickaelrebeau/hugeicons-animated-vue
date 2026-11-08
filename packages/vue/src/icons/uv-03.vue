@@ -13,20 +13,38 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-down-02: the uv follows the down direction already encoded by its geometry
-// generated from @hugeicons/core-free-icons
-const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleX(1)',
-  },
+// the sun rises and the ray dots flash
+// authored from scripts/authored
+const sunVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) scaleX(1)', 'translateY(2.71px) scaleX(0.94)', 'translateY(-0.31px) scaleX(1.02)', 'translateY(0.47px) scaleX(0.99)', 'translateY(0px) scaleX(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1px)',
+      'translate(0px, 0.15px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const ledVariants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.8, delay: 0.12, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +58,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M16.5039 13C16.5039 10.2386 14.2653 8 11.5039 8C8.74248 8 6.50391 10.2386 6.50391 13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M6.00391 16V19C6.00391 19.9428 6.00391 20.4142 6.2968 20.7071C6.58969 21 7.0611 21 8.00391 21C8.94672 21 9.41812 21 9.71101 20.7071C10.0039 20.4142 10.0039 19.9428 10.0039 19V16" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M13.0039 16L15.0039 21L17.0039 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M11.6286 4.25H11.5036M20.2539 13.125V13M2.75391 13.125V13M17.7791 6.90098L17.6907 6.81259M5.22819 6.9012L5.31658 6.81282M11.7536 4.25C11.7536 4.38807 11.6417 4.5 11.5036 4.5C11.3655 4.5 11.2536 4.38807 11.2536 4.25C11.2536 4.11193 11.3655 4 11.5036 4C11.6417 4 11.7536 4.11193 11.7536 4.25ZM20.2539 13.25C20.1158 13.25 20.0039 13.1381 20.0039 13C20.0039 12.8619 20.1158 12.75 20.2539 12.75C20.392 12.75 20.5039 12.8619 20.5039 13C20.5039 13.1381 20.392 13.25 20.2539 13.25ZM2.75391 13.25C2.61583 13.25 2.50391 13.1381 2.50391 13C2.50391 12.8619 2.61583 12.75 2.75391 12.75C2.89198 12.75 3.00391 12.8619 3.00391 13C3.00391 13.1381 2.89198 13.25 2.75391 13.25ZM17.8675 6.98937C17.7699 7.087 17.6116 7.087 17.514 6.98937C17.4163 6.89174 17.4163 6.73345 17.514 6.63582C17.6116 6.53819 17.7699 6.53819 17.8675 6.63582C17.9651 6.73345 17.9651 6.89174 17.8675 6.98937ZM5.1398 6.98959C5.04217 6.89196 5.04217 6.73367 5.1398 6.63604C5.23743 6.53841 5.39573 6.53841 5.49336 6.63604C5.59099 6.73367 5.59099 6.89196 5.49336 6.98959C5.39573 7.08722 5.23743 7.08722 5.1398 6.98959Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M16.5039 13C16.5039 10.2386 14.2653 8 11.5039 8C8.74248 8 6.50391 10.2386 6.50391 13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="sunVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11.5px 10.5px' }" />
+            <path d="M6.00391 16V19C6.00391 19.9428 6.00391 20.4142 6.2968 20.7071C6.58969 21 7.0611 21 8.00391 21C8.94672 21 9.41812 21 9.71101 20.7071C10.0039 20.4142 10.0039 19.9428 10.0039 19V16" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <path d="M13.0039 16L15.0039 21L17.0039 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M11.6286 4.25H11.5036M20.2539 13.125V13M2.75391 13.125V13M17.7791 6.90098L17.6907 6.81259M5.22819 6.9012L5.31658 6.81282M11.7536 4.25C11.7536 4.38807 11.6417 4.5 11.5036 4.5C11.3655 4.5 11.2536 4.38807 11.2536 4.25C11.2536 4.11193 11.3655 4 11.5036 4C11.6417 4 11.7536 4.11193 11.7536 4.25ZM20.2539 13.25C20.1158 13.25 20.0039 13.1381 20.0039 13C20.0039 12.8619 20.1158 12.75 20.2539 12.75C20.392 12.75 20.5039 12.8619 20.5039 13C20.5039 13.1381 20.392 13.25 20.2539 13.25ZM2.75391 13.25C2.61583 13.25 2.50391 13.1381 2.50391 13C2.50391 12.8619 2.61583 12.75 2.75391 12.75C2.89198 12.75 3.00391 12.8619 3.00391 13C3.00391 13.1381 2.89198 13.25 2.75391 13.25ZM17.8675 6.98937C17.7699 7.087 17.6116 7.087 17.514 6.98937C17.4163 6.89174 17.4163 6.73345 17.514 6.63582C17.6116 6.53819 17.7699 6.53819 17.8675 6.63582C17.9651 6.73345 17.9651 6.89174 17.8675 6.98937ZM5.1398 6.98959C5.04217 6.89196 5.04217 6.73367 5.1398 6.63604C5.23743 6.53841 5.39573 6.53841 5.49336 6.63604C5.59099 6.73367 5.59099 6.89196 5.49336 6.98959C5.39573 7.08722 5.23743 7.08722 5.1398 6.98959Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ledVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

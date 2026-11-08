@@ -13,20 +13,61 @@ withDefaults(
   { size: 28 },
 )
 
-// after panel-left: the presentation opens like a screen and its content settles
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateX(0deg) scaleY(1)',
-  },
+// the two lamp arms bend outward and the top board nods
+// authored from scripts/authored
+const frameVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['rotateX(0deg) scaleY(1)', 'rotateX(-55deg) scaleY(0.72)', 'rotateX(8.36deg) scaleY(1.04)', 'rotateX(0deg) scaleY(1)'],
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.2, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const armVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.45px, -0.27px) rotate(-12deg)',
+      'translate(0.14px, 0.11px) rotate(4deg)',
+      'translate(-0.04px, -0.03px) rotate(-1deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.65,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const arm2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.45px, -0.27px) rotate(12deg)',
+      'translate(-0.14px, 0.11px) rotate(-4deg)',
+      'translate(0.04px, -0.03px) rotate(1deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +81,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M9.29424 14C7.91955 14 7.23221 14 6.65717 13.7642C6.02495 13.5049 5.48333 13.0456 5.10588 12.4488C4.76258 11.9059 4.6117 11.1951 4.30994 9.77358C4.05199 8.55844 3.92302 7.95087 4.04847 7.4685C4.186 6.93967 4.52244 6.49392 4.97901 6.23561C5.39547 6 5.98301 6 7.15811 6H16.8419C18.017 6 18.6045 6 19.021 6.23561C19.4776 6.49392 19.814 6.93967 19.9515 7.4685C20.077 7.95087 19.948 8.55844 19.6901 9.77359C19.3883 11.1951 19.2374 11.9059 18.8941 12.4488C18.5167 13.0456 17.9751 13.5049 17.3428 13.7642C16.7678 14 16.0804 14 14.7058 14" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
-            <motion.path d="M6 6L6.51493 3.94029C6.80001 2.79997 7.82459 2 9 2" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
-            <motion.path d="M18 6L17.4851 3.94029C17.2 2.79997 16.1754 2 15 2" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
-            <motion.path d="M9.28421 12L10.0603 17.5726C10.1053 17.8955 10.1278 18.0569 10.0834 18.1822C9.87682 18.7653 9.08754 18.3874 8.66068 18.5626C8.53152 18.6156 8.41501 18.7004 8.32003 18.8107C8.20789 18.9409 8.13871 19.1192 8.00036 19.4758C7.73896 20.1496 7.15042 21.0988 7.78292 21.7379C8.04234 22 8.50275 22 9.42357 22H14.5764C15.4972 22 15.9577 22 16.2171 21.7379C16.8496 21.0988 16.261 20.1496 15.9996 19.4758C15.8613 19.1192 15.7921 18.9409 15.68 18.8107C15.585 18.7004 15.4685 18.6156 15.3393 18.5626C14.9125 18.3874 14.1232 18.7653 13.9166 18.1822C13.8722 18.0569 13.8947 17.8955 13.9397 17.5726L14.7158 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 6px' }" />
+            <motion.path d="M9.29424 14C7.91955 14 7.23221 14 6.65717 13.7642C6.02495 13.5049 5.48333 13.0456 5.10588 12.4488C4.76258 11.9059 4.6117 11.1951 4.30994 9.77358C4.05199 8.55844 3.92302 7.95087 4.04847 7.4685C4.186 6.93967 4.52244 6.49392 4.97901 6.23561C5.39547 6 5.98301 6 7.15811 6H16.8419C18.017 6 18.6045 6 19.021 6.23561C19.4776 6.49392 19.814 6.93967 19.9515 7.4685C20.077 7.95087 19.948 8.55844 19.6901 9.77359C19.3883 11.1951 19.2374 11.9059 18.8941 12.4488C18.5167 13.0456 17.9751 13.5049 17.3428 13.7642C16.7678 14 16.0804 14 14.7058 14" stroke="currentColor" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.path d="M6 6L6.51493 3.94029C6.80001 2.79997 7.82459 2 9 2" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="armVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.5px 4px' }" />
+            <motion.path d="M18 6L17.4851 3.94029C17.2 2.79997 16.1754 2 15 2" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="arm2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.5px 4px' }" />
+            <path d="M9.28421 12L10.0603 17.5726C10.1053 17.8955 10.1278 18.0569 10.0834 18.1822C9.87682 18.7653 9.08754 18.3874 8.66068 18.5626C8.53152 18.6156 8.41501 18.7004 8.32003 18.8107C8.20789 18.9409 8.13871 19.1192 8.00036 19.4758C7.73896 20.1496 7.15042 21.0988 7.78292 21.7379C8.04234 22 8.50275 22 9.42357 22H14.5764C15.4972 22 15.9577 22 16.2171 21.7379C16.8496 21.0988 16.261 20.1496 15.9996 19.4758C15.8613 19.1192 15.7921 18.9409 15.68 18.8107C15.585 18.7004 15.4685 18.6156 15.3393 18.5626C14.9125 18.3874 14.1232 18.7653 13.9166 18.1822C13.8722 18.0569 13.8947 17.8955 13.9397 17.5726L14.7158 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

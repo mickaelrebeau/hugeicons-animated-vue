@@ -13,37 +13,31 @@ withDefaults(
   { size: 28 },
 )
 
-// after home-01: the skyline rises from the ground and settles building by building
-// generated from @hugeicons/core-free-icons
-const markVariants: Variants = {
-  normal: {
-    pathLength: 1,
-    visibility: 'visible',
-  },
+// the antenna beacon blinks and the windows light up below it
+// authored from scripts/authored
+const towerVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    pathLength: [0, 1],
-    visibility: ['hidden', 'visible'],
-    transition: {
-      duration: 0.43,
-      ease: 'easeOut',
-      delay: 0.2,
-    },
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.34, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
+const beaconVariants: Variants = {
+  normal: { opacity: 1 },
   animate: {
-    transform: ['translateY(0px)', 'translateY(-2.11px)', 'translateY(0px)'],
-    transition: {
-      duration: 0.51,
-      ease: 'easeInOut',
-      times: [0, 0.35, 1],
-    },
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.6, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
   },
-}
+};
+
+const windowsVariants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.6, delay: 0.16, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -57,13 +51,13 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 22H22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="markVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 22px' }" />
-            <motion.path d="M14 4H10C8.34533 4 8 4.34533 8 6V22H16V6C16 4.34533 15.6547 4 14 4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M8 13H6C4.34533 13 4 13.3453 4 15V22H8V13Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M18 13H16V22H20V15C20 13.3453 19.6547 13 18 13Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M12 4L12 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M12 22L12 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M11 15H13M11 11.5H13M11 8L13 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
+            <path d="M2 22H22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M14 4H10C8.34533 4 8 4.34533 8 6V22H16V6C16 4.34533 15.6547 4 14 4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" :variants="towerVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 13px' }" />
+            <path d="M8 13H6C4.34533 13 4 13.3453 4 15V22H8V13Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+            <path d="M18 13H16V22H20V15C20 13.3453 19.6547 13 18 13Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M12 4L12 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="beaconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M12 22L12 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M11 15H13M11 11.5H13M11 8L13 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="windowsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

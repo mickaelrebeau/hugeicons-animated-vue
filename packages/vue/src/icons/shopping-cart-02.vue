@@ -13,25 +13,26 @@ withDefaults(
   { size: 28 },
 )
 
-// after shopping-cart-01: the cart rolls on its wheels while its contents lag behind
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px)',
-  },
+// the cart rolls forward and back on its wheels
+// authored from scripts/authored
+const cartVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px)', 'translateX(2.11px)', 'translateX(-0.29px)', 'translateX(0px)'],
-    transition: {
-      duration: 0.48,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1.2px, 0px)',
+      'translate(-0.5px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 0.8, times: [0, 0.18, 0.46, 0.74, 1], ease: [0.77, 0, 0.175, 1] },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -40,12 +41,14 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8 16L16.7201 15.2733C19.4486 15.046 20.0611 14.45 20.3635 11.7289L21 6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 16px' }" />
-            <motion.path d="M6 6H22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 16px' }" />
-            <motion.circle cx="6" cy="20" r="2" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 16px' }" />
-            <motion.circle cx="17" cy="20" r="2" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 16px' }" />
-            <motion.path d="M8 20L15 20" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 16px' }" />
-            <motion.path d="M2 2H2.966C3.91068 2 4.73414 2.62459 4.96326 3.51493L7.93852 15.0765C8.08887 15.6608 7.9602 16.2797 7.58824 16.7616L6.63213 18" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14.5px 16px' }" />
+            <motion.g :variants="cartVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px', transformBox: 'view-box' }">
+              <path d="M8 16L16.7201 15.2733C19.4486 15.046 20.0611 14.45 20.3635 11.7289L21 6" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+              <path d="M6 6H22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+              <circle cx="6" cy="20" r="2" stroke="currentColor" stroke-width="1.5" />
+              <circle cx="17" cy="20" r="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M8 20L15 20" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+              <path d="M2 2H2.966C3.91068 2 4.73414 2.62459 4.96326 3.51493L7.93852 15.0765C8.08887 15.6608 7.9602 16.2797 7.58824 16.7616L6.63213 18" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            </motion.g>
           </svg>
         </div>
 </template>

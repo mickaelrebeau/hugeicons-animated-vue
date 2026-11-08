@@ -14,15 +14,16 @@ handcrafted originals. Do not invent a shared pulse or spin recipe.
 When the task is authoring, converting, or reviewing icon motion, follow this
 file end to end and load the project skill `.cursor/skills/author-icon-motion`.
 
-## Current coverage — stopped after gallery page 13
+## Current coverage — complete (all 76 gallery pages)
 
 The gallery paginates **80 icons** (`apps/web/src/components/IconGallery.vue`).
 `scripts/dump-geometry.mjs` uses the same alphabetical order as the icon files
 (`a.vue` vs `b.vue` string sort), so index `80` here is gallery page 2.
 
-**Authored (unique choreography) exists only for gallery pages 1–13.**
-Icons from page 14 onward still carry the generated marker and a name/shape recipe
-from `scripts/icon-motion.mjs`. Do not claim the whole library is hand-authored.
+**Every gallery page (1–76) is authored.** No icon file carries the generated
+marker any more: each one is either a handcrafted original or an authored spec.
+`scripts/icon-motion.mjs` recipes only come back if `pnpm icons:generate-missing`
+runs against a newly added icon.
 
 | Gallery page | Indices | Range | Specs | File |
 | --- | --- | --- | --- | --- |
@@ -39,16 +40,80 @@ from `scripts/icon-motion.mjs`. Do not claim the whole library is hand-authored.
 | 11 | 802–881 | `border-right` → `bubble-chat-search` | 80 | `scripts/authored/page-11.mjs` |
 | 12 | 882–963 | `bubble-chat-secure` → `calendar-favorite` | 78 | `scripts/authored/page-12.mjs` |
 | 13 | 964–1045 | `calendar-fold` → `calling` | 79 | `scripts/authored/page-13.mjs` |
-| **14 (next)** | **1046–** | **`camel` → …** | | **`scripts/authored/page-14.mjs`** |
+| 14 | 1046–1126 | `camel` → `cards-02` | 79 | `scripts/authored/page-14.mjs` |
+| 15 | 1127–1206 | `cards` → `chart-gantt` | 80 | `scripts/authored/page-15.mjs` |
+| 16 | 1207–1286 | `chart-high-low` → `check-unread-02` | 80 | `scripts/authored/page-16.mjs` |
+| 17 | 1287–1366 | `check-unread-03` → `circle-arrow-down-right` | 76 | `scripts/authored/page-17.mjs` |
+| 18 | 1367–1446 | `circle-arrow-down` → `circle-power` | 79 | `scripts/authored/page-18.mjs` |
+| 19 | 1447–1527 | `circle-question-mark` → `cloud-slow-wind` | 74 | `scripts/authored/page-19.mjs` |
+| 20 | 1528–1608 | `cloud-snow` → `computer-check` | 75 | `scripts/authored/page-20.mjs` |
+| 21 | 1609–1688 | `computer-cloud` → `cos` | 79 | `scripts/authored/page-21.mjs` |
+| 22 | 1689–1770 | `cosine-01` → `cursor-info-01` | 80 | `scripts/authored/page-22.mjs` |
+| 23 | 1771–1850 | `cursor-info-02` → `database-locked` | 78 | `scripts/authored/page-23.mjs` |
+| 24 | 1851–1931 | `database-restore` → `dice-faces-04` | 78 | `scripts/authored/page-24.mjs` |
+| 25 | 1932–2011 | `dice-faces-05` → `dollar-sign` | 79 | `scripts/authored/page-25.mjs` |
+| 26 | 2012–2092 | `dollar-square` → `dumbbell` | 80 | `scripts/authored/page-26.mjs` |
+| 27 | 2093–2174 | `duplex` → `ethereum-ellipse` | 80 | `scripts/authored/page-27.mjs` |
+| 28 | 2175–2255 | `ethereum-rectangle` → `file-corrupt` | 75 | `scripts/authored/page-28.mjs` |
+| 29 | 2256–2337 | `file-database` → `filter-remove` | 80 | `scripts/authored/page-29.mjs` |
+| 30 | 2338–2423 | `filter-reset` → `folder-check` | 80 | `scripts/authored/page-30.mjs` |
+| 31 | 2424–2504 | `folder-clock` → `fuel-station` | 80 | `scripts/authored/page-31.mjs` |
+| 32 | 2505–2586 | `fuel` → `globe` | 78 | `scripts/authored/page-32.mjs` |
+| 33 | 2587–2667 | `glove` → `gymnastic-rings` | 80 | `scripts/authored/page-33.mjs` |
+| 34 | 2668–2748 | `gymnastic` → `health` | 79 | `scripts/authored/page-34.mjs` |
+| 35 | 2749–2830 | `heart-add` → `hospital-bed-01` | 79 | `scripts/authored/page-35.mjs` |
+| 36 | 2831–2911 | `hospital-bed-02` → `image-remove-02` | 80 | `scripts/authored/page-36.mjs` |
+| 37 | 2912–2992 | `image-remove` → `join-straight` | 79 | `scripts/authored/page-37.mjs` |
+| 38 | 2993–3073 | `joker` → `lamp-03` | 80 | `scripts/authored/page-38.mjs` |
+| 39 | 3074–3153 | `lamp-04` → `layout-two-row` | 80 | `scripts/authored/page-39.mjs` |
+| 40 | 3154–3237 | `layout` → `loading-01` | 80 | `scripts/authored/page-40.mjs` |
+| 41 | 3238–3320 | `loading-02` → `look-bottom` | 77 | `scripts/authored/page-41.mjs` |
+| 42 | 3321–3400 | `look-left` → `mail-setting` | 77 | `scripts/authored/page-42.mjs` |
+| 43 | 3401–3481 | `mail-unlock-01` → `medal-06` | 80 | `scripts/authored/page-43.mjs` |
+| 44 | 3482–3564 | `medal-07` → `message-outgoing-02` | 80 | `scripts/authored/page-44.mjs` |
+| 45 | 3565–3645 | `message-outgoing` → `modern-tv-four-k` | 77 | `scripts/authored/page-45.mjs` |
+| 46 | 3646–3726 | `modern-tv-issue` → `more-horizontal-circle-02` | 80 | `scripts/authored/page-46.mjs` |
+| 47 | 3727–3807 | `more-horizontal-circle` → `move-right` | 78 | `scripts/authored/page-47.mjs` |
+| 48 | 3808–3888 | `move-to` → `not-equal-sign-square` | 80 | `scripts/authored/page-48.mjs` |
+| 49 | 3889–3968 | `not-equal-sign` → `package-add` | 78 | `scripts/authored/page-49.mjs` |
+| 50 | 3969–4050 | `package-delivered-01` → `pavilon` | 78 | `scripts/authored/page-50.mjs` |
+| 51 | 4051–4130 | `pay-by-check` → `pie-chart` | 80 | `scripts/authored/page-51.mjs` |
+| 52 | 4131–4211 | `pie` → `pointing-left-07` | 78 | `scripts/authored/page-52.mjs` |
+| 53 | 4212–4291 | `pointing-left-08` → `profile-02` | 79 | `scripts/authored/page-53.mjs` |
+| 54 | 4292–4372 | `profile` → `radio-button` | 79 | `scripts/authored/page-54.mjs` |
+| 55 | 4373–4452 | `radio` → `repair` | 78 | `scripts/authored/page-55.mjs` |
+| 56 | 4453–4533 | `repeat-off` → `rotate-cw-square` | 79 | `scripts/authored/page-56.mjs` |
+| 57 | 4534–4613 | `rotate-left-01` → `save-energy-01` | 80 | `scripts/authored/page-57.mjs` |
+| 58 | 4614–4695 | `save-energy-02` → `self-transfer` | 79 | `scripts/authored/page-58.mjs` |
+| 59 | 4696–4776 | `semi-truck` → `shield-key` | 77 | `scripts/authored/page-59.mjs` |
+| 60 | 4777–4857 | `shield-minus` → `shower-head` | 79 | `scripts/authored/page-60.mjs` |
+| 61 | 4858–4940 | `shrink-dot` → `snail` | 80 | `scripts/authored/page-61.mjs` |
+| 62 | 4941–5024 | `snapchat` → `spray-can` | 80 | `scripts/authored/page-62.mjs` |
+| 63 | 5025–5105 | `sql` → `square-round-corner` | 80 | `scripts/authored/page-63.mjs` |
+| 64 | 5106–5186 | `square-square` → `structure-01` | 80 | `scripts/authored/page-64.mjs` |
+| 65 | 5187–5266 | `structure-02` → `surfboard` | 79 | `scripts/authored/page-65.mjs` |
+| 66 | 5267–5346 | `surprise` → `tablet` | 80 | `scripts/authored/page-66.mjs` |
+| 67 | 5347–5427 | `tablets` → `test-tubes` | 80 | `scripts/authored/page-67.mjs` |
+| 68 | 5428–5508 | `tetris` → `tick-03` | 79 | `scripts/authored/page-68.mjs` |
+| 69 | 5509–5588 | `tick-04` → `touch-interaction-04` | 80 | `scripts/authored/page-69.mjs` |
+| 70 | 5589–5668 | `touch-interaction` → `tsunami` | 80 | `scripts/authored/page-70.mjs` |
+| 71 | 5669–5750 | `tulip` → `usb-bugs` | 79 | `scripts/authored/page-71.mjs` |
+| 72 | 5751–5832 | `usb-connected-01` → `user-warning-01` | 77 | `scripts/authored/page-72.mjs` |
+| 73 | 5833–5916 | `user-warning-02` → `wallet-03` | 79 | `scripts/authored/page-73.mjs` |
+| 74 | 5917–5997 | `wallet-04` → `wifi-02` | 80 | `scripts/authored/page-74.mjs` |
+| 75 | 5998–6077 | `wifi-circle` → `wudu` | 80 | `scripts/authored/page-75.mjs` |
+| 76 | 6078–6121 | `x-ray` → `zzz` | 42 | `scripts/authored/page-76.mjs` |
 
 The gallery hides a few names, so dump indices drift from gallery slots. Confirm
 the last icon of the next page in the gallery pager before writing its specs.
 
-Totals after page 13: **1021 authored specs**, **6,122 icons**, **1187** files
-without the generated marker (165 originals + `accident` + 1021 authored).
+Totals after page 76: **5956 authored specs**, **6,122 icons**, **6122** files
+without the generated marker (165 originals + `accident` + 5956 authored).
 
-Resume at page 14 (`camel`). After each page, stop and ask whether to continue or let
-the user hover-review — do not silently walk the rest of the library.
+The walk is finished. Further work is review and rework: when the user flags an
+icon, edit its spec in the matching page file and re-run `pnpm icons:author`.
+When new Hugeicons names appear, author them in a new page file and stop after
+each page to let the user hover-review.
 
 ## Three tiers of icon motion
 
@@ -84,9 +149,85 @@ Page 10: `bookmark-01`.
 Page 11: none.
 Page 12: `bug-01`, `calendar-add-01`. Hidden handcrafted in the same span: `bulb`, `calendar-03`.
 Page 13: `call-02` (loops: the handset rattles, rests, rattles).
+Page 14: `cancel-01` (the X writes itself). Hidden handcrafted: `camera-01`.
+Page 15: none.
+Page 16: none.
+Page 17: `chevron-down`, `chevron-left`, `chevron-right`, `chevron-up`.
+Page 18: `circle-check`.
+Page 19: `circle-x`, `clipboard-paste`, `clipboard`, `clock-01`,
+`cloud-download`, `cloud-rain`. Hidden handcrafted: `cloud-lightning`.
+Page 20: `cloud-upload`, `cloud`, `coffee-02`, `command`, `compass`.
+Hidden handcrafted: `code-xml`.
+Page 21: `copy-01`.
+Page 22: none visible. Hidden handcrafted: `credit-card`, `crown`.
+Page 23: `cursor-pointer-01`, `dashboard-square-01`.
+Page 24: `delete-02`, `diamond-02`. Hidden handcrafted: `database`.
+Page 25: `document-attachment`.
+Page 26: none visible. Hidden handcrafted: `download-01`.
+Page 27: none visible. Hidden handcrafted: `earth`, `edit-02`.
+Page 28: `external-link`, `eye-off`, `eye`, `favourite`, `file-01`. Hidden handcrafted: `file-add`.
+Page 29: none visible. Hidden handcrafted: `file-download`, `file-upload`.
+Page 30: none visible. Hidden handcrafted: `filter`, `fire`, `flash`, `flower`, `folder-01`, `folder-add`.
+Page 31: none visible. Hidden handcrafted: `folder-open`.
+Page 32: `full-screen`, `github`. Hidden handcrafted: `ghost`, `gift`.
+Page 33: none visible. Hidden handcrafted: `grid-view`.
+Page 34: `headphone-off`. Hidden handcrafted: `headphones`.
+Page 35: `help-circle`, `history`. Hidden handcrafted: `home-01`.
+Page 36: none visible. Hidden handcrafted: `image-01`.
+Page 37: `information-circle`. Hidden handcrafted: `inbox`.
+Page 38: none visible. Hidden handcrafted: `key-01`.
+Page 39: none.
+Page 40: none visible. Hidden handcrafted: `leaf-01`, `link-01`, `link-square-02`, `list-view`.
+Page 41: `location-add-01`, `login-01`, `logout-01`. Hidden handcrafted: `loading-03`, `location-01`, `lock`.
+Page 42: `magic-wand-01`, `mail-01`, `mail-open`.
+Page 43: none visible. Hidden handcrafted: `maximize-screen`.
+Page 44: none visible. Hidden handcrafted: `menu-01`, `message-01`, `message-add-01`.
+Page 45: `minimize-screen`, `minus-sign-circle`, `minus-sign`. Hidden handcrafted: `mic-01`.
+Page 46: none visible. Hidden handcrafted: `moon-02`.
+Page 47: `more-horizontal`, `more-vertical`. Hidden handcrafted: `mouse-left-click-01`.
+Page 48: none visible. Hidden handcrafted: `music-note-01`.
+Page 49: `notification-03`, `notification-off-01`.
+Page 50: `paint-brush-02`, `party`, `pause`. Hidden handcrafted: `panel-left`.
+Page 51: none.
+Page 52: `play`, `plus-sign`. Hidden handcrafted: `pin`.
+Page 53: none visible. Hidden handcrafted: `printer`.
+Page 54: `qr-code-01`. Hidden handcrafted: `puzzle`.
+Page 55: `redo`, `refresh`.
+Page 56: `robot-01`. Hidden handcrafted: `rocket-01`.
+Page 57: none.
+Page 58: `save`, `search-01`. Hidden handcrafted: `scissor-01`.
+Page 59: `sent`, `settings-01`, `share-08`. Hidden handcrafted: `shield-02`.
+Page 60: `shopping-cart-01`. Hidden handcrafted: `shopping-cart-add-01`.
+Page 61: none visible. Hidden handcrafted: `sleeping`, `sliders-horizontal`, `smile`.
+Page 62: none visible. Hidden handcrafted: `snow`, `sort-by-down-01`, `sort-by-up-01`, `sparkles`.
+Page 63: none visible. Hidden handcrafted: `square-lock-01`.
+Page 64: none visible. Hidden handcrafted: `star`.
+Page 65: `sun-03`.
+Page 66: none.
+Page 67: none visible. Hidden handcrafted: `target-01`.
+Page 68: `tick-02`. Hidden handcrafted: `thumbs-up`.
+Page 69: none.
+Page 70: none.
+Page 71: `undo`. Hidden handcrafted: `umbrella`, `upload-01`.
+Page 72: `user-add-01`, `user-check-01`, `user-remove-01`. Hidden handcrafted: `user-group`, `user-multiple-02`.
+Page 73: `user`, `video-01`, `volume-high`, `volume-mute-01`, `wallet-01`.
+Page 74: `wifi-01`.
+Page 75: none.
+Page 76: none visible. Hidden handcrafted: `zoom-in-area`, `zoom-out-area`.
 
 Handcrafted arrows often animate a wrapping `<g>`. Sampling only `<path>` in
 DevTools can show `moved: 0` even when the gesture plays.
+
+## Geometry version (critical)
+
+Author against `@hugeicons/core-free-icons@4.2.3` (pinned in `package.json`).
+4.3.0 (a Dependabot bump) redraws many icons and shifts dump indices by ~40;
+emitting under it rewrites ~110 authored files from pages 1–11 with the wrong
+geometry. Do not accept that bump without re-authoring every page. Pages 12–13
+had ten icons emitted under 4.3.0 (`building`, `bus-front`, `calendar-check`,
+`bulb-charging`, `cake`, `calendar-clock`, `calendar-heart`, `calendar-minus`,
+`calendar-plus`, `calendar-search`); their specs were retargeted to 4.2.3, so
+`pnpm icons:author` now runs clean.
 
 ## Authoring one gallery page
 
@@ -116,9 +257,8 @@ DevTools can show `moved: 0` even when the gesture plays.
    pnpm icons:author
    ```
 
-   Expect `✓ authored N/N` with N = all specs across every page file. After
-   page 14, add the new specs to the current **1021/1021** and **1187**
-   handcrafted, unless a skip list changed.
+   Expect `✓ authored N/N` with N = all specs across every page file. The current run expects **5956/5956** and **6122**
+   handcrafted; add any new specs to both.
 
 6. Spot-check in the gallery (`pnpm dev`, usually `http://localhost:5173`).
    Hover uses `.hia-icon` + `mouseenter`. The gallery cell also fires
@@ -157,6 +297,16 @@ DevTools can show `moved: 0` even when the gesture plays.
 - `loops: true` wires `useIconAnimation({ loops: true })` so leave stops the
   gesture. Infinite playback also needs `repeat: Infinity` on the part.
 - `clip: true` sets SVG `overflow="hidden"`.
+- `extras: [{ tag, attrs, as, opacity, transform, ... }]` adds props the
+  gesture brings in (flash burst, sound waves, wipers, sparks, speed lines).
+  They render after the primitives (`under: true` renders them first). The
+  emitter **requires** `opacity[0] === 0`; end them at 0 too, because a finite
+  gesture holds its last keyframe until the next hover. Kit props: `burst`,
+  `rays`, `glint`, `trail`, `puff`; page 14 also has `waves` and `wiper`.
+- Origins are effectively the part's own fill-box center; to pivot elsewhere
+  use `around` / `scaleFrom`, or `wrap` (view-box origin) for whole-icon moves.
+- Every `times` array should end at `1`; wrap the page export in
+  `settleSpecs(specs)` from the kit to pad early endings.
 - Component `name` is `toPascal(kebab)` (already ends in `Icon`).
 
 ### Rest pose is the first keyframe (critical)
@@ -188,6 +338,17 @@ on hover. Page 3 hit this; `arrive` / `grow` in `_kit.mjs` already start at rest
 | `hold` / `scaleHold` | Travel or scale, hold, return — no overshoot (`HOLD_T` / `HOLD_E`) |
 | `retrace` | Retract a stroke toward its end and rewrite it, no visibility pop |
 | `T5` / `E5` | Five-key damped timing shared by `around` |
+| `ride` / `swing` | Parts that travel together (translate keys) / rotate around one shared pivot |
+| `blink` / `glow` | Indicator light blinking / a small light popping bigger |
+| `burst` / `rays` / `glint` / `trail` / `puff` | Extras: flash, glow ticks, sparkle, speed lines, smoke |
+| `settleSpecs` | Export wrapper: pads `times` that end before 1 |
+| `rise` / `flex` | Grow from a pivot (dip, overshoot) / five-key scale from a pivot |
+| `pop` / `flip` / `lap` | Mark pops in place / coin flips on its axis / full turn landing at rest |
+| `wave` / `dim` | Signal arc lights up in turn / fade out and back |
+| `hop` | Hop up and land (promoted from page 16) |
+| `tap` / `point` | Hand pointer taps down / arrow pointer clicks toward its tip (promoted from page 22) |
+| `swell` / `fall` | Uniform scale from a planted pivot / weather leaving through the bottom and re-entering from above |
+| `hand` / `DIR` | Pointing-hand family: `poke`, `nudge`, `wag`, `thrust`, `hold` along a `DIR` unit vector (promoted from page 34 for pages 52–53) |
 
 Durations at icon size are short: most beats **0.46–0.82 s**. Prefer
 `transform` and `opacity`. Do not morph `d` unless command types match.

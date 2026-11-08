@@ -13,20 +13,15 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the object turns edge-on and reveals its opposite face
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateY(0deg)',
-  },
+// the panel flips left across the dashed edge
+// authored from scripts/authored
+const panelVariants: Variants = {
+  normal: { transform: 'scaleX(1)' },
   animate: {
-    transform: ['rotateY(0deg)', 'rotateY(90deg)', 'rotateY(180deg)', 'rotateY(270deg)', 'rotateY(360deg)'],
-    transition: {
-      duration: 0.69,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: ['scaleX(1)', 'scaleX(-1)', 'scaleX(-1)', 'scaleX(1)'],
+    transition: { duration: 0.8, times: [0, 0.35, 0.65, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +35,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2 9.66676V14.3334M7.5 3.01509C7.99962 2.99793 8.49991 2.99705 9 2.99855M7.5 20.9849C7.99962 21.0021 8.49991 21.003 9 21.0015M4.74533 3.53709C3.78698 4.02122 3.00864 4.80249 2.52818 5.76305M2.5 18.1797C2.9779 19.1665 3.76801 19.9692 4.74533 20.4629" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M12 5.5049C12 3.54683 12.6378 3.00683 14.5 3.00683C17.0317 3.00683 19.9537 2.7569 21.3971 5.25509C22 6.29851 22 7.69935 22 10.501V13.4987C22 16.3004 22 17.7012 21.3971 18.7447C19.9537 21.2429 17.0317 20.9929 14.5 20.9929C12.6378 20.9929 12 20.4529 12 18.4949V5.5049Z" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M2 9.66676V14.3334M7.5 3.01509C7.99962 2.99793 8.49991 2.99705 9 2.99855M7.5 20.9849C7.99962 21.0021 8.49991 21.003 9 21.0015M4.74533 3.53709C3.78698 4.02122 3.00864 4.80249 2.52818 5.76305M2.5 18.1797C2.9779 19.1665 3.76801 19.9692 4.74533 20.4629" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.path d="M12 5.5049C12 3.54683 12.6378 3.00683 14.5 3.00683C17.0317 3.00683 19.9537 2.7569 21.3971 5.25509C22 6.29851 22 7.69935 22 10.501V13.4987C22 16.3004 22 17.7012 21.3971 18.7447C19.9537 21.2429 17.0317 20.9929 14.5 20.9929C12.6378 20.9929 12 20.4529 12 18.4949V5.5049Z" stroke="currentColor" stroke-width="1.5" :variants="panelVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17px 12px' }" />
           </svg>
         </div>
 </template>

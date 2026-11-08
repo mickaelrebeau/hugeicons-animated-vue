@@ -13,19 +13,39 @@ withDefaults(
   { size: 28 },
 )
 
-// after grid-view: the pieces of the dashed line take turns from their own geometric centers
-// generated from @hugeicons/core-free-icons
-const cellVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
+// the dashes blink on from left to right
+// authored from scripts/authored
+const dashVariants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.5, delay: 0.3, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
   },
-  animate: (i: number) => ({
-    transform: ['scale(0.72) rotate(-4.78deg)', 'scale(1.1) rotate(1.91deg)', 'scale(1) rotate(0deg)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.44, ease: [0.23, 1, 0.32, 1], delay: i * 0.055 },
-  }),
-}
+};
+
+const dash2Variants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.5, delay: 0.2, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
+  },
+};
+
+const dash3Variants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.5, delay: 0.1, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
+  },
+};
+
+const dash4Variants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.5, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -39,10 +59,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M19 12L21.5 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="3" :animate="controls" initial="normal" :style="{ transformOrigin: '20.25px 12px' }" />
-            <motion.path d="M13.5 12L16 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '14.75px 12px' }" />
-            <motion.path d="M8 12L10.5 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '9.25px 12px' }" />
-            <motion.path d="M2.5 12H5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cellVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '3.75px 12px' }" />
+            <motion.path d="M19 12L21.5 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dashVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M13.5 12L16 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dash2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M8 12L10.5 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dash3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M2.5 12H5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dash4Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,47 @@ withDefaults(
   { size: 28 },
 )
 
-// after cursor-pointer-01: the fingertip commits toward the direction it already points
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1) scaleY(1)',
-  },
+// the hand winds back and thrusts left, kicking the arrow
+// authored from scripts/authored
+const handVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.87px) scaleX(0.9) scaleY(1.04)', 'translateX(2.18px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0.8px, 0px)',
+      'translate(-2px, 0px)',
+      'translate(0.2px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.55,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.3, 0.5, 0.76, 1],
+      ease: ['easeOut', 'easeIn', 'easeOut', 'easeInOut'],
     },
   },
-}
+};
+
+const arrowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1.2px, 0px)',
+      'translate(0.144px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.5,
+      delay: 0.3,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +67,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M14.5 9.91601L11 9.91601M11 9.91601L4.75 9.91601C3.7835 9.91601 3 10.6995 3 11.666C3 12.6325 3.7835 13.416 4.75 13.416H10L10.4776 16.493C10.7669 18.4216 10.9115 19.386 11.3184 20.0652C11.9906 21.1872 13 22 14.4736 22C15.5 22 16.1886 21.7463 18.0387 21.1296C19.2127 20.7383 19.7996 20.5426 20.2643 20.2236C21.0293 19.6983 21.5878 18.9233 21.8442 18.0315C22 17.4898 22 16.8711 22 15.6336V14.2287C22 12.4442 22 11.552 21.6651 10.7858C21.5137 10.4397 21.3141 10.1167 21.0722 9.82659C20.5367 9.18438 19.7387 8.78536 18.1426 7.98731C16.8483 7.34015 16.2011 7.01657 15.5302 7.00083C15.2276 6.99373 14.9256 7.03246 14.6346 7.11571C13.9894 7.30031 13.4448 7.77678 12.3558 8.7297L11 9.91601Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 14.5px' }" />
-            <motion.path d="M2 4.5L8 4.5M2 4.5C2 3.79977 3.9943 2.49153 4.5 2M2 4.5C2 5.20023 3.9943 6.50847 4.5 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 14.5px' }" />
+            <motion.path d="M14.5 9.91601L11 9.91601M11 9.91601L4.75 9.91601C3.7835 9.91601 3 10.6995 3 11.666C3 12.6325 3.7835 13.416 4.75 13.416H10L10.4776 16.493C10.7669 18.4216 10.9115 19.386 11.3184 20.0652C11.9906 21.1872 13 22 14.4736 22C15.5 22 16.1886 21.7463 18.0387 21.1296C19.2127 20.7383 19.7996 20.5426 20.2643 20.2236C21.0293 19.6983 21.5878 18.9233 21.8442 18.0315C22 17.4898 22 16.8711 22 15.6336V14.2287C22 12.4442 22 11.552 21.6651 10.7858C21.5137 10.4397 21.3141 10.1167 21.0722 9.82659C20.5367 9.18438 19.7387 8.78536 18.1426 7.98731C16.8483 7.34015 16.2011 7.01657 15.5302 7.00083C15.2276 6.99373 14.9256 7.03246 14.6346 7.11571C13.9894 7.30031 13.4448 7.77678 12.3558 8.7297L11 9.91601Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 14.5px' }" />
+            <motion.path d="M2 4.5L8 4.5M2 4.5C2 3.79977 3.9943 2.49153 4.5 2M2 4.5C2 5.20023 3.9943 6.50847 4.5 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5px 4.5px' }" />
           </svg>
         </div>
 </template>

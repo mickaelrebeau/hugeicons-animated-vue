@@ -13,37 +13,30 @@ withDefaults(
   { size: 28 },
 )
 
-// after upload-01: the arrow launches off the top
-// generated from @hugeicons/core-free-icons
-const trayVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
-  animate: {
-    transform: ['translateY(0px)', 'translateY(0.9px)', 'translateY(0px)'],
-    transition: {
-      duration: 0.29,
-      ease: 'easeOut',
-      delay: 0.08,
-    },
-  },
-}
-
+// the upload arrow rises out of the corner
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-    visibility: 'visible',
-  },
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px)', 'translateY(-5.13px)', 'translateY(5.13px)', 'translateY(0px)'],
-    visibility: ['visible', 'hidden', 'hidden', 'visible'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.4px)',
+      'translate(0px, 0.21px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.7,
-      times: [0, 0.42, 0.5, 1],
-      ease: ['easeIn', 'linear', 'easeOut'],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -57,8 +50,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M22 16C21.4102 15.3932 19.8403 13 19 13C18.1597 13 16.5898 15.3932 16 16M19 14L19 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="trayVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 17px' }" />
-            <motion.path d="M15.0035 21H12.0027C7.28739 21 4.92973 21 3.46487 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38042 4.53806C2.6516 4.05227 3.05255 3.65142 3.53848 3.38032C4.22017 3 5.12865 3 6.94562 3C8.10968 3 8.69172 3 9.20122 3.19101C10.3645 3.62712 10.8442 4.68358 11.3691 5.73313L12.0027 7M8.00163 7H16.754C18.8613 7 19.9149 7 20.6718 7.50559C20.9995 7.72447 21.2808 8.00572 21.4997 8.33329C21.8937 8.92282 21.9808 9.69244 22 11" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M22 16C21.4102 15.3932 19.8403 13 19 13C18.1597 13 16.5898 15.3932 16 16M19 14L19 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 17px' }" />
+            <path d="M15.0035 21H12.0027C7.28739 21 4.92973 21 3.46487 19.5355C2 18.0711 2 15.714 2 11V7.94427C2 6.1278 2 5.21956 2.38042 4.53806C2.6516 4.05227 3.05255 3.65142 3.53848 3.38032C4.22017 3 5.12865 3 6.94562 3C8.10968 3 8.69172 3 9.20122 3.19101C10.3645 3.62712 10.8442 4.68358 11.3691 5.73313L12.0027 7M8.00163 7H16.754C18.8613 7 19.9149 7 20.6718 7.50559C20.9995 7.72447 21.2808 8.00572 21.4997 8.33329C21.8937 8.92282 21.9808 9.69244 22 11" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,30 @@ withDefaults(
   { size: 28 },
 )
 
-// after credit-card: the coin turns over on its own axis and lands flat
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotateY(0deg)',
-  },
+// the ether diamond hops and lands
+// authored from scripts/authored
+const diamondVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['rotateY(0deg)', 'rotateY(90deg)', 'rotateY(180deg)', 'rotateY(270deg)', 'rotateY(360deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.4px)',
+      'translate(0px, 0.196px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.73,
-      ease: [0.77, 0, 0.175, 1],
+      duration: 0.56,
+      times: [0, 0.32, 0.62, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,7 +50,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M18.9999 11.9999L13.2403 14.5784C12.6288 14.8594 12.3231 14.9999 11.9999 14.9999C11.6768 14.9999 11.371 14.8594 10.7595 14.5784L4.99992 11.9999M18.9999 11.9999C18.9999 11.4677 18.6944 10.9997 18.0833 10.0635L14.5796 4.69604C13.4063 2.89864 12.8197 1.99994 11.9999 1.99994C11.1802 1.99994 10.5935 2.89864 9.42025 4.69605L5.91655 10.0635C5.30547 10.9997 4.99992 11.4677 4.99992 11.9999M18.9999 11.9999C18.9999 12.5322 18.6944 13.0002 18.0833 13.9364L14.5796 19.3038C13.4063 21.1012 12.8197 21.9999 11.9999 21.9999C11.1802 21.9999 10.5935 21.1012 9.42025 19.3038L5.91655 13.9364C5.30547 13.0002 4.99992 12.5322 4.99992 11.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M18.9999 11.9999L13.2403 14.5784C12.6288 14.8594 12.3231 14.9999 11.9999 14.9999C11.6768 14.9999 11.371 14.8594 10.7595 14.5784L4.99992 11.9999M18.9999 11.9999C18.9999 11.4677 18.6944 10.9997 18.0833 10.0635L14.5796 4.69604C13.4063 2.89864 12.8197 1.99994 11.9999 1.99994C11.1802 1.99994 10.5935 2.89864 9.42025 4.69605L5.91655 10.0635C5.30547 10.9997 4.99992 11.4677 4.99992 11.9999M18.9999 11.9999C18.9999 12.5322 18.6944 13.0002 18.0833 13.9364L14.5796 19.3038C13.4063 21.1012 12.8197 21.9999 11.9999 21.9999C11.1802 21.9999 10.5935 21.1012 9.42025 19.3038L5.91655 13.9364C5.30547 13.0002 4.99992 12.5322 4.99992 11.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="diamondVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

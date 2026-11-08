@@ -13,20 +13,47 @@ withDefaults(
   { size: 28 },
 )
 
-// after folder-01: the parts of the waste restore move from their own mass and settle together
-// generated from @hugeicons/core-free-icons
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the lid lifts and the restore arrow sweeps round
+// authored from scripts/authored
+const lidVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.59px) rotate(-1.88deg)', 'translateY(0.38px) rotate(0.66deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.2px)',
+      'translate(0px, 0.18px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.6,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.62,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const arrowVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.14, 1],
+    pathOffset: [0, 0.5, 0],
+    transition: {
+      duration: 0.68,
+      delay: 0.1,
+      times: [0, 0.34, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +67,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M3 5H8.42963C9.09834 5 9.7228 4.6658 10.0937 4.1094L10.9063 2.8906C11.2772 2.3342 11.9017 2 12.5704 2H17.0585C17.9193 2 18.6836 2.55086 18.9558 3.36754L19.5 5M21 5H8" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M19.5 5L19 11.5M4.5 5L5.10461 15.5362C5.25945 18.1069 5.33688 19.3923 5.97868 20.3166C6.296 20.7736 6.7048 21.1593 7.17905 21.4492C7.76127 21.8051 8.46343 21.945 9.5 22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
-            <motion.path d="M11 15.498L12.1363 16.9638C12.708 14.8299 14.9014 13.5636 17.0352 14.1353C18.1275 14.428 18.9925 15.1456 19.5 16.0626M21 20.498L19.8637 19.0343C19.2919 21.1682 17.0986 22.4345 14.9647 21.8627C13.8978 21.5769 13.0477 20.8856 12.5359 19.999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
+            <motion.path d="M3 5H8.42963C9.09834 5 9.7228 4.6658 10.0937 4.1094L10.9063 2.8906C11.2772 2.3342 11.9017 2 12.5704 2H17.0585C17.9193 2 18.6836 2.55086 18.9558 3.36754L19.5 5M21 5H8" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="lidVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 3.5px' }" />
+            <path d="M19.5 5L19 11.5M4.5 5L5.10461 15.5362C5.25945 18.1069 5.33688 19.3923 5.97868 20.3166C6.296 20.7736 6.7048 21.1593 7.17905 21.4492C7.76127 21.8051 8.46343 21.945 9.5 22" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            <motion.path d="M11 15.498L12.1363 16.9638C12.708 14.8299 14.9014 13.5636 17.0352 14.1353C18.1275 14.428 18.9925 15.1456 19.5 16.0626M21 20.498L19.8637 19.0343C19.2919 21.1682 17.0986 22.4345 14.9647 21.8627C13.8978 21.5769 13.0477 20.8856 12.5359 19.999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

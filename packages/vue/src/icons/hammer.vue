@@ -13,21 +13,53 @@ withDefaults(
   { size: 28 },
 )
 
-// after scissor-01: the head lifts and comes down on the work
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg)',
-  },
+// the hammer lifts and strikes
+// authored from scripts/authored
+const hammerVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['rotate(0deg)', 'rotate(-21.75deg)', 'rotate(7.91deg)', 'rotate(-1.98deg)', 'rotate(0deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-3.90px, -3.60px) rotate(-18deg)',
+      'translate(1.02px, 1.45px) rotate(6deg)',
+      'translate(-0.19px, -0.23px) rotate(-1deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.51,
-      times: [0, 0.32, 0.55, 0.8, 1],
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.4, 0.56, 0.78, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const hammer2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-1.65px, -1.42px) rotate(-18deg)',
+      'translate(0.44px, 0.58px) rotate(6deg)',
+      'translate(-0.08px, -0.09px) rotate(-1deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.4, 0.56, 0.78, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,8 +73,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M17.0794 6.53297L15.4953 4.94738C14.2496 3.70049 12.5601 3 10.7985 3C9.95308 3 9.52971 4.02309 10.1275 4.62145L10.5245 5.01883C11.9169 6.41256 11.9169 8.67222 10.5245 10.0659L13.0456 12.5895L14.5583 11.0754L16.0709 12.5895C15.514 13.147 15.514 14.0508 16.0709 14.6083L16.5752 15.113C16.9876 15.5258 17.1938 15.7322 17.4162 15.8426C17.8394 16.0525 18.3363 16.0525 18.7595 15.8426C18.9819 15.7322 19.1881 15.5258 19.6005 15.113L21.1132 13.5989C21.5256 13.1861 21.7318 12.9797 21.842 12.7571C22.0517 12.3335 22.0517 11.8361 21.842 11.4125C21.7318 11.1898 21.5256 10.9834 21.1132 10.5706L20.6089 10.0659C20.052 9.50845 19.149 9.50845 18.592 10.0659L17.0794 8.55181C17.6363 7.99432 17.6363 7.09046 17.0794 6.53297Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.79px 16.05px' }" />
-            <motion.path d="M10.6074 10L2.52431 17.9822C2.1886 18.3138 2 18.7634 2 19.2322C2 20.2085 2.80146 21 3.7901 21C4.26487 21 4.72019 20.8138 5.0559 20.4822L13.6453 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.79px 16.05px' }" />
+            <motion.path d="M17.0794 6.53297L15.4953 4.94738C14.2496 3.70049 12.5601 3 10.7985 3C9.95308 3 9.52971 4.02309 10.1275 4.62145L10.5245 5.01883C11.9169 6.41256 11.9169 8.67222 10.5245 10.0659L13.0456 12.5895L14.5583 11.0754L16.0709 12.5895C15.514 13.147 15.514 14.0508 16.0709 14.6083L16.5752 15.113C16.9876 15.5258 17.1938 15.7322 17.4162 15.8426C17.8394 16.0525 18.3363 16.0525 18.7595 15.8426C18.9819 15.7322 19.1881 15.5258 19.6005 15.113L21.1132 13.5989C21.5256 13.1861 21.7318 12.9797 21.842 12.7571C22.0517 12.3335 22.0517 11.8361 21.842 11.4125C21.7318 11.1898 21.5256 10.9834 21.1132 10.5706L20.6089 10.0659C20.052 9.50845 19.149 9.50845 18.592 10.0659L17.0794 8.55181C17.6363 7.99432 17.6363 7.09046 17.0794 6.53297Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="hammerVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '15.8px 9.5px' }" />
+            <motion.path d="M10.6074 10L2.52431 17.9822C2.1886 18.3138 2 18.7634 2 19.2322C2 20.2085 2.80146 21 3.7901 21C4.26487 21 4.72019 20.8138 5.0559 20.4822L13.6453 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="hammer2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.8px 15.5px' }" />
           </svg>
         </div>
 </template>

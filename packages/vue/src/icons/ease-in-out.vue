@@ -13,19 +13,29 @@ withDefaults(
   { size: 28 },
 )
 
-// after dashboard-square-01: the easing curve draws from its first keyframe to its last
-// generated from @hugeicons/core-free-icons
-const tileVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
+// the ease-in-out curve writes itself
+// authored from scripts/authored
+const curveVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 1, 0.12, 0, 0, 0.12, 1, 1],
+    pathOffset: [0, 0, 0.88, 1, 0, 0, 0, 0],
+    visibility: ['visible', 'visible', 'hidden', 'hidden', 'hidden', 'hidden', 'visible', 'visible'],
+    transition: {
+      duration: 0.82,
+      times: [0, 0.06, 0.25, 0.28, 0.35, 0.39, 0.84, 1],
+      ease: [
+        'linear',
+        [0.77, 0, 0.175, 1],
+        'linear',
+        'linear',
+        'linear',
+        [0.77, 0, 0.175, 1],
+        'linear',
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['translateY(1.54px) scale(0.74)', 'translateY(-0.44px) scale(1.1)', 'translateY(0px) scale(1)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.51, ease: [0.23, 1, 0.32, 1], delay: i * 0.06 },
-  }),
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -39,7 +49,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M21 4C11.0535 4 12.9465 20 3 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M21 4C11.0535 4 12.9465 20 3 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="curveVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

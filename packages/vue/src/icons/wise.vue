@@ -13,20 +13,28 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-up-02: the wise follows the up direction already encoded by its geometry
-// generated from @hugeicons/core-free-icons
-const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleX(1)',
-  },
+// the arrow mark nudges up
+// authored from scripts/authored
+const logoVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) scaleX(1)', 'translateY(-2.43px) scaleX(0.94)', 'translateY(0.28px) scaleX(1.02)', 'translateY(-0.42px) scaleX(0.99)', 'translateY(0px) scaleX(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.6px)',
+      'translate(0px, 0.192px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.53,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,7 +48,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M10.9999 22L19 2H7.00002L9.49994 6.5L4.99994 11H11.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M10.9999 22L19 2H7.00002L9.49994 6.5L4.99994 11H11.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="logoVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

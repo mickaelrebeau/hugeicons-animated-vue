@@ -13,20 +13,56 @@ withDefaults(
   { size: 28 },
 )
 
-// after wallet-01: the value rises from the wallet and settles back into place
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px)',
-  },
+// the slash cuts across and the wavy note sags
+// authored from scripts/authored
+const slashVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['translateX(0px)', 'translateX(1.85px)', 'translateX(-0.26px)', 'translateX(0px)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const coinVariants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.2, 0.2, 1],
+    transition: { duration: 0.8, delay: 0.1, times: [0, 0.24, 0.7, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const waveVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 0.8px)',
+      'translate(0px, -0.12px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.62,
+      delay: 0.1,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,10 +76,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M3 3L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 12px' }" />
-            <motion.path d="M10.2321 10.2322C9.77966 10.6846 9.49982 11.3096 9.49982 12C9.49982 13.3807 10.6191 14.5 11.9998 14.5C12.6902 14.5 13.3152 14.2202 13.7676 13.7677" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 12px' }" />
-            <motion.path d="M21.6567 17.6567C21.8699 17.3788 22 17.0452 22 16.6823V6.92705C22 6.35889 21.6756 5.84452 21.1329 5.67632C20.1903 5.38421 18.4794 5 16 5C13.3535 5 11.8276 5.56032 9.79122 5.79122M18.2194 18.2194C17.5647 18.1519 16.8248 18.1094 16 18.1094C11.2491 18.1094 10.1096 19.9151 3.1448 18.3792C2.47265 18.231 2 17.6265 2 16.9382V6.92116C2 5.94531 2.92079 5.23366 3.87798 5.42361C4.54928 5.55682 5.16308 5.65694 5.72951 5.72951" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 12px' }" />
-            <motion.path d="M2.00049 14.4961C4.20963 14.4961 6.00049 16.287 6.00049 18.4961M22 9.46899C20.2655 9.46899 18.5005 7.53964 18.5005 5.5M2 9C3.89206 9 5.59814 7.50048 5.90439 5.90439M19.6804 15.6804C20.3523 15.2499 21.1706 15 22 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '3px 12px' }" />
+            <motion.path d="M3 3L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="slashVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M10.2321 10.2322C9.77966 10.6846 9.49982 11.3096 9.49982 12C9.49982 13.3807 10.6191 14.5 11.9998 14.5C12.6902 14.5 13.3152 14.2202 13.7676 13.7677" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="coinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M21.6567 17.6567C21.8699 17.3788 22 17.0452 22 16.6823V6.92705C22 6.35889 21.6756 5.84452 21.1329 5.67632C20.1903 5.38421 18.4794 5 16 5C13.3535 5 11.8276 5.56032 9.79122 5.79122M18.2194 18.2194C17.5647 18.1519 16.8248 18.1094 16 18.1094C11.2491 18.1094 10.1096 19.9151 3.1448 18.3792C2.47265 18.231 2 17.6265 2 16.9382V6.92116C2 5.94531 2.92079 5.23366 3.87798 5.42361C4.54928 5.55682 5.16308 5.65694 5.72951 5.72951" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M2.00049 14.4961C4.20963 14.4961 6.00049 16.287 6.00049 18.4961M22 9.46899C20.2655 9.46899 18.5005 7.53964 18.5005 5.5M2 9C3.89206 9 5.59814 7.50048 5.90439 5.90439M19.6804 15.6804C20.3523 15.2499 21.1706 15 22 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="waveVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

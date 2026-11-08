@@ -13,31 +13,62 @@ withDefaults(
   { size: 28 },
 )
 
-// after list-view: the heading establishes its weight before the supporting lines
-// generated from @hugeicons/core-free-icons
-const plusVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) scale(1)',
-  },
+// the two posts step apart and the crossbar stretches with them
+// authored from scripts/authored
+const postVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['rotate(0deg) scale(1)', 'rotate(-9.9deg) scale(0.82)', 'rotate(2.97deg) scale(1.08)', 'rotate(0deg) scale(1)'],
+    transform: ['translate(0px, 0px)', 'translate(-1px, 0px)', 'translate(0.12px, 0px)', 'translate(0px, 0px)'],
     transition: {
-      duration: 0.41,
-      delay: 0.04,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const rowVariants: Variants = {
-  normal: {
-    transform: 'scaleX(1)',
+const post2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: ['translate(0px, 0px)', 'translate(1px, 0px)', 'translate(-0.12px, 0px)', 'translate(0px, 0px)'],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['scaleX(1)', 'scaleX(0.68)', 'scaleX(1.04)', 'scaleX(0.98)', 'scaleX(1)'],
-    transition: { duration: 0.44, ease: [0.77, 0, 0.175, 1], times: [0, 0.28, 0.56, 0.76, 1], delay: i * 0.06 },
-  }),
-}
+};
+
+const barVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0px) scaleX(1)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0px) scaleX(1)',
+      'translate(0.00px, 0px) scaleX(1.2)',
+      'translate(0.00px, 0px) scaleX(0.96)',
+      'translate(0.00px, 0px) scaleX(1.01)',
+      'translate(0.00px, 0px) scaleX(1)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -51,9 +82,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M6 4V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="plusVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 12px' }" />
-            <motion.path d="M18 4V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="rowVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '18px 12px' }" />
-            <motion.path d="M6 12H18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="plusVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 12px' }" />
+            <motion.path d="M6 4V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="postVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6px 12px' }" />
+            <motion.path d="M18 4V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="post2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '18px 12px' }" />
+            <motion.path d="M6 12H18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

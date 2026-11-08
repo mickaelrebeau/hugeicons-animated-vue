@@ -13,35 +13,44 @@ withDefaults(
   { size: 28 },
 )
 
-// after wifi-01: the signal expands physically from its source to its outer arc
-// generated from @hugeicons/core-free-icons
+// the arcs blink on from the dot outward
+// authored from scripts/authored
 const arcVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scale(1)',
-  },
-  animate: (i: number) => ({
-    transform: ['translateY(0.74px) scale(0.82)', 'translateY(0px) scale(1.06)', 'translateY(0px) scale(1)'],
-    transition: { duration: 1.01, ease: [0.23, 1, 0.32, 1], delay: i * 0.12 },
-  }),
-}
-
-const sourceVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+  normal: { opacity: 1 },
   animate: {
-    transform: ['scale(1)', 'scale(0.86)', 'scale(1.18)', 'scale(1)'],
-    transition: {
-      duration: 0.95,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    opacity: [1, 0.15, 1, 1],
+    transition: { duration: 0.6, delay: 0.06, times: [0, 0.2, 0.5, 1], ease: 'easeInOut' },
   },
-}
+};
+
+const arc2Variants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.15, 1, 1],
+    transition: { duration: 0.6, delay: 0.14, times: [0, 0.2, 0.5, 1], ease: 'easeInOut' },
+  },
+};
+
+const arc3Variants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.15, 1, 1],
+    transition: { duration: 0.6, delay: 0.22, times: [0, 0.2, 0.5, 1], ease: 'easeInOut' },
+  },
+};
+
+const dotVariants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.12, 1, 0.12, 1, 1],
+    transition: { duration: 0.6, times: [0, 0.15, 0.3, 0.45, 0.6, 1], ease: 'linear' },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -50,10 +59,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8.25 14.5C10.25 12.5 13.75 12.5 15.75 14.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.path d="M18.5 11.5C14.7324 8.16667 9.5 8.16667 5.5 11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.path d="M2 8.5C8.31579 3.16669 15.6842 3.16668 22 8.49989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.circle cx="12" cy="18" r="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="sourceVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
+            <motion.path d="M8.25 14.5C10.25 12.5 13.75 12.5 15.75 14.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arcVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M18.5 11.5C14.7324 8.16667 9.5 8.16667 5.5 11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arc2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M2 8.5C8.31579 3.16669 15.6842 3.16668 22 8.49989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arc3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.circle cx="12" cy="18" r="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,41 +13,80 @@ withDefaults(
   { size: 28 },
 )
 
-// after cloud-rain: drops fall through the glyph while the cloud holds
-// generated from @hugeicons/core-free-icons
+// the moon rocks behind the cloud while two drops fall
+// authored from scripts/authored
 const dropVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-    opacity: 1,
-  },
+  normal: { transform: 'translate(0px, 0px)', opacity: 1 },
   animate: {
-    transform: ['translateY(0px)', 'translateY(3.48px)', 'translateY(-2.48px)', 'translateY(0px)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 1.4px)',
+      'translate(0px, -1.4px)',
+      'translate(0px, 0px)',
+    ],
     opacity: [1, 0, 0, 1],
     transition: {
-      duration: 0.69,
-      times: [0, 0.42, 0.5, 1],
-      ease: ['easeIn', 'linear', 'easeOut'],
+      duration: 0.7,
+      delay: 0.14,
+      times: [0, 0.4, 0.42, 1],
+      ease: [
+        'easeIn',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
+const moonVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['translateY(0px)', 'translateY(-1.23px)', 'translateY(0.31px)', 'translateY(0px)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.00px, 0.00px) rotate(-12deg)',
+      'translate(0.00px, 0.00px) rotate(7deg)',
+      'translate(0.00px, 0.00px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
       duration: 0.7,
-      ease: [0.77, 0, 0.175, 1],
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const drop2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0px)', opacity: 1 },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, 1.4px)',
+      'translate(0px, -1.4px)',
+      'translate(0px, 0px)',
+    ],
+    opacity: [1, 0, 0, 1],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.4, 0.42, 1],
+      ease: [
+        'easeIn',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -57,9 +96,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
             <motion.path d="M11 19V21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dropVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 20px' }" />
-            <motion.path d="M19.0394 13C19.7703 12.674 20.4173 12.1759 20.9289 11.5455C21.4404 10.9151 21.8023 10.1698 21.9856 9.36918C22.1116 8.81932 21.4246 8.5158 20.9232 8.74102C20.2968 9.02108 19.6034 9.1001 18.933 8.96783C18.2625 8.83557 17.646 8.49813 17.1635 7.99929C16.6809 7.50046 16.3545 6.86324 16.2267 6.17033C16.0988 5.47742 16.1754 4.76079 16.4465 4.11343C16.6636 3.59524 16.3699 2.88614 15.837 3.01547C14.7866 3.27341 13.8423 3.86874 13.1397 4.71597C12.8171 5.10495 12.5531 5.53786 12.3535 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dropVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.23px 7.94px' }" />
-            <motion.path d="M14 18.7938C15.1709 18.3563 16 17.2703 16 16C16 14.3431 14.5897 13 12.85 13C12.8448 13 12.8395 13 12.8343 13C12.8447 12.8902 12.85 12.779 12.85 12.6667C12.85 10.6416 11.1263 9 9 9C6.98627 9 5.33363 10.4724 5.1643 12.3485C3.38879 12.5094 2 13.9336 2 15.6667C2 16.9964 2.81753 18.1442 4 18.6792" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '9px 13.9px' }" />
-            <motion.path d="M7 18V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dropVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 19px' }" />
+            <motion.path d="M19.0394 13C19.7703 12.674 20.4173 12.1759 20.9289 11.5455C21.4404 10.9151 21.8023 10.1698 21.9856 9.36918C22.1116 8.81932 21.4246 8.5158 20.9232 8.74102C20.2968 9.02108 19.6034 9.1001 18.933 8.96783C18.2625 8.83557 17.646 8.49813 17.1635 7.99929C16.6809 7.50046 16.3545 6.86324 16.2267 6.17033C16.0988 5.47742 16.1754 4.76079 16.4465 4.11343C16.6636 3.59524 16.3699 2.88614 15.837 3.01547C14.7866 3.27341 13.8423 3.86874 13.1397 4.71597C12.8171 5.10495 12.5531 5.53786 12.3535 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="moonVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.2px 7.9px' }" />
+            <path d="M14 18.7938C15.1709 18.3563 16 17.2703 16 16C16 14.3431 14.5897 13 12.85 13C12.8448 13 12.8395 13 12.8343 13C12.8447 12.8902 12.85 12.779 12.85 12.6667C12.85 10.6416 11.1263 9 9 9C6.98627 9 5.33363 10.4724 5.1643 12.3485C3.38879 12.5094 2 13.9336 2 15.6667C2 16.9964 2.81753 18.1442 4 18.6792" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M7 18V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="drop2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 19px' }" />
           </svg>
         </div>
 </template>

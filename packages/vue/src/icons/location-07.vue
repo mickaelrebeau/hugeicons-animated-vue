@@ -13,20 +13,21 @@ withDefaults(
   { size: 28 },
 )
 
-// after location-01: the pin lifts, drops onto its point, and carries the landing ring
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scale(1)',
-  },
+// the pin squashes on landing
+// authored from scripts/authored
+const pinVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px) scale(1, 1)' },
   animate: {
-    transform: ['translateY(0px) scale(1)', 'translateY(-2.36px) scale(0.96)', 'translateY(0.43px) scale(1.04)', 'translateY(0px) scale(1)'],
-    transition: {
-      duration: 0.58,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: [
+      'translate(0px, 0px) scale(1, 1)',
+      'translate(0px, -1.6px) scale(0.96, 1.04)',
+      'translate(0px, 0.5px) scale(1.08, 0.92)',
+      'translate(0px, 0px) scale(1, 1)',
+      'translate(0px, 0px) scale(1, 1)',
+    ],
+    transition: { duration: 0.66, times: [0, 0.3, 0.52, 0.76, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,7 +41,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 2C16.8706 2 21 6.03298 21 10.9258C21 15.8965 16.8033 19.3847 12.927 21.7567C12.6445 21.9162 12.325 22 12 22C11.675 22 11.3555 21.9162 11.073 21.7567C7.2039 19.3616 3 15.9137 3 10.9258C3 6.03298 7.12944 2 12 2Z" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
+            <motion.path d="M12 2C16.8706 2 21 6.03298 21 10.9258C21 15.8965 16.8033 19.3847 12.927 21.7567C12.6445 21.9162 12.325 22 12 22C11.675 22 11.3555 21.9162 11.073 21.7567C7.2039 19.3616 3 15.9137 3 10.9258C3 6.03298 7.12944 2 12 2Z" stroke="currentColor" stroke-width="1.5" :variants="pinVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
           </svg>
         </div>
 </template>

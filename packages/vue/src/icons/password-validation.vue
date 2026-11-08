@@ -13,33 +13,46 @@ withDefaults(
   { size: 28 },
 )
 
-// after copy-01: the nested parts of the password validation separate in depth and stack again
-// generated from @hugeicons/core-free-icons
-const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the dots type and the check seal stamps
+// authored from scripts/authored
+const sealVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.79px) rotate(-0.98deg)', 'translateY(0.44px) rotate(0.49deg)', 'translateY(0px) rotate(0deg)'],
-    transition: {
-      duration: 0.56,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-12deg) scale(0.56)',
+      'rotate(4deg) scale(1.14)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.5, delay: 0.2, times: [0, 0.32, 0.68, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
-const frontVariants: Variants = {
-  normal: {
-    transform: 'translate(0px, 0px)',
-  },
+const dotsVariants: Variants = {
+  normal: { opacity: 1 },
   animate: {
-    transform: ['translate(0px, 0px)', 'translate(1.38px, -1.18px)', 'translate(0.2px, -0.2px)', 'translate(0px, 0px)'],
+    opacity: [1, 0.2, 1, 0.2, 1, 1],
+    transition: { duration: 0.8, times: [0, 0.16, 0.32, 0.48, 0.64, 1], ease: 'linear' },
+  },
+};
+
+const checkVariants: Variants = {
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
+  animate: {
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      delay: 0.3,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -53,10 +66,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M9.93552 12.9995H7C5.13077 12.9995 4.19615 12.9995 3.5 12.5976C3.04394 12.3343 2.66523 11.9556 2.40192 11.4995C2 10.8034 2 9.86874 2 7.99951C2 6.13028 2 5.19566 2.40192 4.49951C2.66523 4.04345 3.04394 3.66474 3.5 3.40144C4.19615 2.99951 5.13077 2.99951 7 2.99951H14C16.8284 2.99951 18.2426 2.99951 19.1213 3.87819C20 4.75687 20 6.17108 20 8.99951" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 8px' }" />
-            <motion.path d="M17.5 20.9995C19.9853 20.9995 22 18.9848 22 16.4995C22 14.0142 19.9853 11.9995 17.5 11.9995C15.0147 11.9995 13 14.0142 13 16.4995C13 18.9848 15.0147 20.9995 17.5 20.9995Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 16.5px' }" />
-            <motion.path d="M11.1279 7.99951H11.0029M7.12717 7.99951H7.00217M15.1272 7.99951H15.0022M11.2529 7.99951C11.2529 8.13758 11.141 8.24951 11.0029 8.24951C10.8648 8.24951 10.7529 8.13758 10.7529 7.99951C10.7529 7.86144 10.8648 7.74951 11.0029 7.74951C11.141 7.74951 11.2529 7.86144 11.2529 7.99951ZM7.25217 7.99951C7.25217 8.13758 7.14024 8.24951 7.00217 8.24951C6.8641 8.24951 6.75217 8.13758 6.75217 7.99951C6.75217 7.86144 6.8641 7.74951 7.00217 7.74951C7.14024 7.74951 7.25217 7.86144 7.25217 7.99951ZM15.2522 7.99951C15.2522 8.13758 15.1402 8.24951 15.0022 8.24951C14.8641 8.24951 14.7522 8.13758 14.7522 7.99951C14.7522 7.86144 14.8641 7.74951 15.0022 7.74951C15.1402 7.74951 15.2522 7.86144 15.2522 7.99951Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '11px 8px' }" />
-            <motion.path d="M15.75 16.9995C15.75 16.9995 16.25 16.9995 16.75 17.9995C16.75 17.9995 17.8382 15.9995 19.25 15.4995" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 16.75px' }" />
+            <path d="M9.93552 12.9995H7C5.13077 12.9995 4.19615 12.9995 3.5 12.5976C3.04394 12.3343 2.66523 11.9556 2.40192 11.4995C2 10.8034 2 9.86874 2 7.99951C2 6.13028 2 5.19566 2.40192 4.49951C2.66523 4.04345 3.04394 3.66474 3.5 3.40144C4.19615 2.99951 5.13077 2.99951 7 2.99951H14C16.8284 2.99951 18.2426 2.99951 19.1213 3.87819C20 4.75687 20 6.17108 20 8.99951" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M17.5 20.9995C19.9853 20.9995 22 18.9848 22 16.4995C22 14.0142 19.9853 11.9995 17.5 11.9995C15.0147 11.9995 13 14.0142 13 16.4995C13 18.9848 15.0147 20.9995 17.5 20.9995Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="sealVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.5px 16.5px' }" />
+            <motion.path d="M11.1279 7.99951H11.0029M7.12717 7.99951H7.00217M15.1272 7.99951H15.0022M11.2529 7.99951C11.2529 8.13758 11.141 8.24951 11.0029 8.24951C10.8648 8.24951 10.7529 8.13758 10.7529 7.99951C10.7529 7.86144 10.8648 7.74951 11.0029 7.74951C11.141 7.74951 11.2529 7.86144 11.2529 7.99951ZM7.25217 7.99951C7.25217 8.13758 7.14024 8.24951 7.00217 8.24951C6.8641 8.24951 6.75217 8.13758 6.75217 7.99951C6.75217 7.86144 6.8641 7.74951 7.00217 7.74951C7.14024 7.74951 7.25217 7.86144 7.25217 7.99951ZM15.2522 7.99951C15.2522 8.13758 15.1402 8.24951 15.0022 8.24951C14.8641 8.24951 14.7522 8.13758 14.7522 7.99951C14.7522 7.86144 14.8641 7.74951 15.0022 7.74951C15.1402 7.74951 15.2522 7.86144 15.2522 7.99951Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M15.75 16.9995C15.75 16.9995 16.25 16.9995 16.75 17.9995C16.75 17.9995 17.8382 15.9995 19.25 15.4995" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="checkVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,32 +13,72 @@ withDefaults(
   { size: 28 },
 )
 
-// after dashboard-square-01: the data marks rise in reading order so the chart appears to calculate itself
-// generated from @hugeicons/core-free-icons
-const tileVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-    visibility: 'visible',
-  },
-  animate: (i: number) => ({
-    transform: ['translateY(1.5px) scale(0.74)', 'translateY(-0.43px) scale(1.1)', 'translateY(0px) scale(1)'],
-    visibility: ['visible', 'visible', 'visible'],
-    transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1], delay: i * 0.06 },
-  }),
-}
-
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// each column stretches past its height in a rising stair, then settles
+// authored from scripts/authored
+const columnVariants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.82px) rotate(-2.14deg)', 'translateY(0.43px) rotate(0.75deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, -0.75px) scaleY(1.5)',
+      'translate(0px, 0.08px) scaleY(0.95)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
     transition: {
-      duration: 0.58,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.36, 0.68, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const column2Variants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, -1.00px) scaleY(1.25)',
+      'translate(0px, 0.12px) scaleY(0.97)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.1,
+      times: [0, 0.36, 0.68, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const column3Variants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
+  animate: {
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, -0.84px) scaleY(1.14)',
+      'translate(0px, 0.12px) scaleY(0.98)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
+    transition: {
+      duration: 0.56,
+      delay: 0.2,
+      times: [0, 0.36, 0.68, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -52,10 +92,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8 14V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="2" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 15.5px' }" />
-            <motion.path d="M13 9V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 13px' }" />
-            <motion.path d="M18 5V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="tileVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '18px 11px' }" />
-            <motion.path d="M21 21H10C6.70017 21 5.05025 21 4.02513 19.9749C3 18.9497 3 17.2998 3 14V3" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M8 14V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="columnVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '8px 15.5px' }" />
+            <motion.path d="M13 9V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="column2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '13px 13px' }" />
+            <motion.path d="M18 5V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="column3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '18px 11px' }" />
+            <path d="M21 21H10C6.70017 21 5.05025 21 4.02513 19.9749C3 18.9497 3 17.2998 3 14V3" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

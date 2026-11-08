@@ -13,17 +13,53 @@ withDefaults(
   { size: 28 },
 )
 
-// after flower: the petals open outward one by one from the core
-// generated from @hugeicons/core-free-icons
-const petalVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) scale(1)',
+// the two leaves open out from the stem
+// authored from scripts/authored
+const leafVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(-0.83px, -0.86px) rotate(-12deg)',
+      'translate(0.34px, 0.49px) rotate(6deg)',
+      'translate(-0.15px, -0.19px) rotate(-2.4000000000000004deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
   },
-  animate: (i: number) => ({
-    transform: ['rotate(0deg) scale(0.82)', 'rotate(4.21deg) scale(1.1)', 'rotate(0deg) scale(1)'],
-    transition: { duration: 0.61, ease: [0.23, 1, 0.32, 1], delay: i * 0.08 },
-  }),
-}
+};
+
+const leaf2Variants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
+  animate: {
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.83px, -0.86px) rotate(12deg)',
+      'translate(-0.34px, 0.49px) rotate(-6deg)',
+      'translate(0.15px, -0.19px) rotate(2.4000000000000004deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -38,8 +74,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
             <path d="M12 12V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-            <motion.path d="M12 12V13H15C18.3137 13 21 10.3137 21 7V6H18C14.6863 6 12 8.68629 12 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="petalVariants" :custom="0" :animate="controls" initial="normal" :style="{ transformOrigin: '16.5px 13px' }" />
-            <motion.path d="M12 10V11H9C5.68629 11 3 8.31371 3 5V4H6C9.31371 4 12 6.68629 12 10Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="petalVariants" :custom="1" :animate="controls" initial="normal" :style="{ transformOrigin: '7.5px 11px' }" />
+            <motion.path d="M12 12V13H15C18.3137 13 21 10.3137 21 7V6H18C14.6863 6 12 8.68629 12 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="leafVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.5px 9.5px' }" />
+            <motion.path d="M12 10V11H9C5.68629 11 3 8.31371 3 5V4H6C9.31371 4 12 6.68629 12 10Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="leaf2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.5px 7.5px' }" />
           </svg>
         </div>
 </template>

@@ -13,41 +13,37 @@ withDefaults(
   { size: 28 },
 )
 
-// after cloud-rain: drops fall through the glyph while the cloud holds
-// generated from @hugeicons/core-free-icons
-const dropVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-    opacity: 1,
-  },
+// the slanted rain falls out of the cloud and starts again
+// authored from scripts/authored
+const rainVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)', opacity: 1 },
   animate: {
-    transform: ['translateY(0px)', 'translateY(3.7px)', 'translateY(-2.64px)', 'translateY(0px)'],
+    transform: ['translate(0px, 0px)', 'translate(-1px, 2px)', 'translate(1px, -2px)', 'translate(0px, 0px)'],
     opacity: [1, 0, 0, 1],
     transition: {
-      duration: 0.72,
-      times: [0, 0.42, 0.5, 1],
-      ease: ['easeIn', 'linear', 'easeOut'],
+      duration: 0.7,
+      times: [0, 0.4, 0.42, 1],
+      ease: [
+        'easeIn',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px)',
-  },
+const cloudVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translateY(0px)', 'translateY(-1.31px)', 'translateY(0.33px)', 'translateY(0px)'],
-    transition: {
-      duration: 0.74,
-      ease: [0.77, 0, 0.175, 1],
-    },
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.3, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -56,8 +52,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12.5 15L11.5 17M17 15L16 17M13.5 19L12.5 21M8 15L7 17M9 19L8 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dropVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
-            <motion.path d="M17.4776 8.89801L17.5 8.89795C19.9853 8.89795 22 10.8784 22 13.3214C22 14.8551 21.206 16.2065 20 17M17.4776 8.89801C17.4924 8.73611 17.5 8.57216 17.5 8.40646C17.5 5.42055 15.0376 3 12 3C9.12324 3 6.76233 5.17106 6.52042 7.93728M17.4776 8.89801C17.3753 10.0132 16.9286 11.0307 16.2428 11.8469M6.52042 7.93728C3.98398 8.17454 2 10.2745 2 12.8299C2 14.4378 2.78565 15.8652 4 16.7619M6.52042 7.93728C6.67826 7.92251 6.83823 7.91496 7 7.91496C8.12582 7.91496 9.16474 8.28072 10.0005 8.89795" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10px' }" />
+            <motion.path d="M12.5 15L11.5 17M17 15L16 17M13.5 19L12.5 21M8 15L7 17M9 19L8 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="rainVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18px' }" />
+            <motion.path d="M17.4776 8.89801L17.5 8.89795C19.9853 8.89795 22 10.8784 22 13.3214C22 14.8551 21.206 16.2065 20 17M17.4776 8.89801C17.4924 8.73611 17.5 8.57216 17.5 8.40646C17.5 5.42055 15.0376 3 12 3C9.12324 3 6.76233 5.17106 6.52042 7.93728M17.4776 8.89801C17.3753 10.0132 16.9286 11.0307 16.2428 11.8469M6.52042 7.93728C3.98398 8.17454 2 10.2745 2 12.8299C2 14.4378 2.78565 15.8652 4 16.7619M6.52042 7.93728C6.67826 7.92251 6.83823 7.91496 7 7.91496C8.12582 7.91496 9.16474 8.28072 10.0005 8.89795" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="cloudVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 10.5px' }" />
           </svg>
         </div>
 </template>

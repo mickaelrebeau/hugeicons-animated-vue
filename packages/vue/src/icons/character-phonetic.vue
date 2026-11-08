@@ -13,33 +13,52 @@ withDefaults(
   { size: 28 },
 )
 
-// after copy-01: the nested parts of the character phonetic separate in depth and stack again
-// generated from @hugeicons/core-free-icons
-const frontVariants: Variants = {
-  normal: {
-    transform: 'translate(0px, 0px)',
-  },
+// the schwa spins a full turn while the a squashes on the baseline
+// authored from scripts/authored
+const schwaVariants: Variants = {
+  normal: { transform: 'rotate(0deg)' },
   animate: {
-    transform: ['translate(0px, 0px)', 'translate(1.4px, -1.2px)', 'translate(0.2px, -0.2px)', 'translate(0px, 0px)'],
+    transform: [
+      'rotate(0deg)',
+      'rotate(72deg)',
+      'rotate(251.99999999999997deg)',
+      'rotate(370.8deg)',
+      'rotate(360deg)',
+    ],
     transition: {
-      duration: 0.51,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.8,
+      times: [0, 0.2, 0.6, 0.86, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+const aVariants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.8px) rotate(-1deg)', 'translateY(0.45px) rotate(0.5deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 1.54px) scaleY(0.8)',
+      'translate(0px, -0.62px) scaleY(1.08)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
     transition: {
-      duration: 0.57,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.58,
+      delay: 0.1,
+      times: [0, 0.36, 0.68, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -53,8 +72,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M21.8265 15.914C21.547 17.6702 20.1625 19.0475 18.3974 19.3257C18.0767 19.3762 17.6935 19.3762 16.9269 19.3762C16.1605 19.3762 15.7772 19.3762 15.4566 19.3257C13.6913 19.0475 12.307 17.6702 12.0274 15.914C11.9766 15.595 11.9766 15.2137 11.9766 14.4511V11.1678M11.9766 11.1678V9.52611C11.9766 8.76355 11.9766 8.38226 12.0274 8.06324C12.307 6.30708 13.6913 4.92975 15.4566 4.65161C15.7772 4.60107 16.1605 4.60107 16.9269 4.60107C17.6935 4.60107 18.0767 4.60107 18.3974 4.65161C20.1625 4.92975 21.547 6.30708 21.8265 8.06324C22.0246 9.30724 22.1236 9.92925 21.735 10.474C21.6818 10.5485 21.604 10.6387 21.538 10.7024C21.0558 11.1678 20.2841 11.1678 18.7406 11.1678H11.9766Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.05px 11.99px' }" />
-            <motion.path d="M2.31275 7.01759C2.73674 6.26621 3.90352 4.92483 5.39093 4.66213C6.87834 4.39943 9.43964 4.26817 10.7078 5.8272C11.976 7.38622 11.976 9.04262 11.976 11.1966M11.976 11.1966C11.976 12.4377 11.9409 12.8351 11.8271 13.6534C11.6924 14.6227 11.6174 16.3942 10.4447 17.6687C9.99537 18.157 9.44783 18.5588 8.85947 18.8657C8.12881 19.2469 7.07561 19.5866 5.96573 19.4788C3.87969 19.2761 2.31274 18.0786 2.03291 15.9582C1.85039 14.5752 2.50517 13.1483 3.20313 12.4377C3.90109 11.727 4.76599 11.1179 6.25587 11.1966C7.63844 11.2697 10.6459 11.2135 11.976 11.1966Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6.91px 11.93px' }" />
+            <motion.path d="M21.8265 15.914C21.547 17.6702 20.1625 19.0475 18.3974 19.3257C18.0767 19.3762 17.6935 19.3762 16.9269 19.3762C16.1605 19.3762 15.7772 19.3762 15.4566 19.3257C13.6913 19.0475 12.307 17.6702 12.0274 15.914C11.9766 15.595 11.9766 15.2137 11.9766 14.4511V11.1678M11.9766 11.1678V9.52611C11.9766 8.76355 11.9766 8.38226 12.0274 8.06324C12.307 6.30708 13.6913 4.92975 15.4566 4.65161C15.7772 4.60107 16.1605 4.60107 16.9269 4.60107C17.6935 4.60107 18.0767 4.60107 18.3974 4.65161C20.1625 4.92975 21.547 6.30708 21.8265 8.06324C22.0246 9.30724 22.1236 9.92925 21.735 10.474C21.6818 10.5485 21.604 10.6387 21.538 10.7024C21.0558 11.1678 20.2841 11.1678 18.7406 11.1678H11.9766Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="schwaVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '17.1px 12px' }" />
+            <motion.path d="M2.31275 7.01759C2.73674 6.26621 3.90352 4.92483 5.39093 4.66213C6.87834 4.39943 9.43964 4.26817 10.7078 5.8272C11.976 7.38622 11.976 9.04262 11.976 11.1966M11.976 11.1966C11.976 12.4377 11.9409 12.8351 11.8271 13.6534C11.6924 14.6227 11.6174 16.3942 10.4447 17.6687C9.99537 18.157 9.44783 18.5588 8.85947 18.8657C8.12881 19.2469 7.07561 19.5866 5.96573 19.4788C3.87969 19.2761 2.31274 18.0786 2.03291 15.9582C1.85039 14.5752 2.50517 13.1483 3.20313 12.4377C3.90109 11.727 4.76599 11.1179 6.25587 11.1966C7.63844 11.2697 10.6459 11.2135 11.976 11.1966Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="aVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '6.9px 11.9px' }" />
           </svg>
         </div>
 </template>

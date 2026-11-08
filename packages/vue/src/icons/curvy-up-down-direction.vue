@@ -13,20 +13,30 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-up-02: the mark commits upward along its own axis
-// generated from @hugeicons/core-free-icons
+// the curvy two-way arrow shuttles up and down
+// authored from scripts/authored
 const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleX(1)',
-  },
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateY(0px) scaleX(1)', 'translateY(-2.4px) scaleX(0.94)', 'translateY(0.28px) scaleX(1.02)', 'translateY(-0.42px) scaleX(0.99)', 'translateY(0px) scaleX(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(0px, -1.2px)',
+      'translate(0px, 1.2px)',
+      'translate(0px, -0.3px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.53,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

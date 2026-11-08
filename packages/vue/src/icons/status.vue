@@ -13,21 +13,16 @@ withDefaults(
   { size: 28 },
 )
 
-// after home-01: the silhouette of the status loads onto its base and settles with weight
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleY(1)',
-  },
+// the status ring pulses
+// authored from scripts/authored
+const ringVariants: Variants = {
+  normal: { transform: 'scale(1)', opacity: 1 },
   animate: {
-    transform: ['translateY(0px) scaleY(1)', 'translateY(1.4px) scaleY(0.82)', 'translateY(-3.39px) scaleY(1.08)', 'translateY(0.5px) scaleY(0.94)', 'translateY(0px) scaleY(1)'],
-    transition: {
-      duration: 0.67,
-      times: [0, 0.18, 0.48, 0.78, 1],
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['scale(1)', 'scale(0.88)', 'scale(1.06)', 'scale(0.98)', 'scale(1)'],
+    opacity: [1, 0.6, 1, 1, 1],
+    transition: { duration: 0.8, times: [0, 0.24, 0.5, 0.76, 1], ease: 'easeInOut' },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -41,7 +36,7 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 22px' }" />
+            <motion.path d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ringVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

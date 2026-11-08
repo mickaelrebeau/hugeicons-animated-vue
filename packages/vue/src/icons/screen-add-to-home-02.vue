@@ -13,47 +13,36 @@ withDefaults(
   { size: 28 },
 )
 
-// after add-circle: the existing shape makes room and the new mark stamps into place
-// generated from @hugeicons/core-free-icons
+// the arrow flicks onto the phone and the phone nods
+// authored from scripts/authored
 const frameVariants: Variants = {
-  normal: {
-    transform: 'scale(1)',
-  },
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['scale(1)', 'scale(0.96)', 'scale(1.025)', 'scale(1)'],
-    transition: {
-      duration: 0.47,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.26, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
   },
-}
+};
 
-const plusVariants: Variants = {
-  normal: {
-    transform: 'rotate(0deg) scale(1)',
-  },
+const arrowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['rotate(0deg) scale(1)', 'rotate(-9.59deg) scale(0.82)', 'rotate(2.88deg) scale(1.08)', 'rotate(0deg) scale(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1px, -1px)',
+      'translate(-0.12px, 0.12px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.4,
-      delay: 0.04,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
-
-const folderVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
-  animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-1.79px) rotate(-2.1deg)', 'translateY(0.42px) rotate(0.74deg)', 'translateY(0px) rotate(0deg)'],
-    transition: {
-      duration: 0.57,
-      ease: [0.23, 1, 0.32, 1],
-    },
-  },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -68,8 +57,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
             <motion.path d="M7 17C7 19.357 7 20.5355 7.73223 21.2678C8.46447 22 9.64298 22 12 22H15C17.357 22 18.5355 22 19.2678 21.2678C20 20.5355 20 19.357 20 17V7C20 4.64298 20 3.46447 19.2678 2.73223C18.5355 2 17.357 2 15 2H12C9.64298 2 8.46447 2 7.73223 2.73223C7.11182 3.35264 7.01708 4.29344 7.00261 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frameVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.5px 12px' }" />
-            <motion.path d="M15.5 2H11.5L12 3H15L15.5 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="plusVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.5px 2.5px' }" />
-            <motion.path d="M6 9H11V14M10.5 9.5L4 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="folderVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M15.5 2H11.5L12 3H15L15.5 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M6 9H11V14M10.5 9.5L4 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.5px 12.5px' }" />
           </svg>
         </div>
 </template>

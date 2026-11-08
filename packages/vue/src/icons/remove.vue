@@ -13,20 +13,24 @@ withDefaults(
   { size: 28 },
 )
 
-// after minus-sign-circle: the remove mark pinches short while the host shape recoils
-// generated from @hugeicons/core-free-icons
+// the minus wipes off and redraws
+// authored from scripts/authored
 const minusVariants: Variants = {
-  normal: {
-    transform: 'scaleX(1)',
-  },
+  normal: { pathLength: 1, pathOffset: 0, visibility: 'visible' },
   animate: {
-    transform: ['scaleX(1)', 'scaleX(0.35)', 'scaleX(1.08)', 'scaleX(1)'],
+    pathLength: [1, 0.001, 0.001, 1],
+    visibility: ['visible', 'hidden', 'hidden', 'visible'],
     transition: {
-      duration: 0.43,
-      ease: 'easeOut',
+      duration: 0.66,
+      times: [0, 0.16, 0.24, 1],
+      ease: [
+        'linear',
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({

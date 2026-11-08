@@ -13,20 +13,65 @@ withDefaults(
   { size: 28 },
 )
 
-// after puzzle: the piece lifts, advances one square, and seats on the board
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scale(1)',
-  },
+// the queen’s crown jewels light up left, top, right
+// authored from scripts/authored
+const jewelVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translateY(0px) scale(1)', 'translateY(-2.34px) scale(0.96)', 'translateY(0.43px) scale(1.04)', 'translateY(0px) scale(1)'],
+    transform: ['scale(1)', 'scale(1.35)', 'scale(0.92)', 'scale(1)'],
     transition: {
-      duration: 0.58,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      delay: 0.1,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const jewel2Variants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(1.35)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const jewel3Variants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(1.35)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const crownVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(0.972)', 'scale(1.022)', 'scale(1)'],
+    transition: { duration: 0.48, delay: 0.12, times: [0, 0.3, 0.66, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,11 +85,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M12 6.5C13.1046 6.5 14 5.60457 14 4.5C14 3.39543 13.1046 2.5 12 2.5C10.8954 2.5 10 3.39543 10 4.5C10 5.60457 10.8954 6.5 12 6.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
-            <motion.path d="M4 9.5C5.10457 9.5 6 8.60457 6 7.5C6 6.39543 5.10457 5.5 4 5.5C2.89543 5.5 2 6.39543 2 7.5C2 8.60457 2.89543 9.5 4 9.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
-            <motion.path d="M20 9.5C21.1046 9.5 22 8.60457 22 7.5C22 6.39543 21.1046 5.5 20 5.5C18.8954 5.5 18 6.39543 18 7.5C18 8.60457 18.8954 9.5 20 9.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
-            <motion.path d="M7 17.5L4 9.5M11 6.5L10.333 8.94551C9.95885 10.3176 9.77175 11.0036 9.24541 11.1652C8.71907 11.3268 8.17864 10.8636 7.09778 9.93705C6.56747 9.48247 6.12502 9.10419 6 9M17 17.5L20 9.5M13 6.5L13.662 8.92741C14.0377 10.3048 14.2255 10.9934 14.7511 11.1554C15.2768 11.3173 15.8219 10.8516 16.9123 9.92032C17.3113 9.57956 17.6939 9.25507 18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
-            <motion.path d="M16.3333 17.5H7.66667C7.04669 17.5 6.73669 17.5 6.48236 17.5681C5.79218 17.7531 5.25308 18.2922 5.06815 18.9824C5 19.2367 5 19.5467 5 20.1667C5 20.4767 5 20.6317 5.03407 20.7588C5.12654 21.1039 5.39609 21.3735 5.74118 21.4659C5.86835 21.5 6.02334 21.5 6.33333 21.5H17.6667C17.9767 21.5 18.1317 21.5 18.2588 21.4659C18.6039 21.3735 18.8735 21.1039 18.9659 20.7588C19 20.6317 19 20.4767 19 20.1667C19 19.5467 19 19.2367 18.9319 18.9824C18.7469 18.2922 18.2078 17.7531 17.5176 17.5681C17.2633 17.5 16.9533 17.5 16.3333 17.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 17.5px' }" />
+            <motion.path d="M12 6.5C13.1046 6.5 14 5.60457 14 4.5C14 3.39543 13.1046 2.5 12 2.5C10.8954 2.5 10 3.39543 10 4.5C10 5.60457 10.8954 6.5 12 6.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="jewelVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 4.5px' }" />
+            <motion.path d="M4 9.5C5.10457 9.5 6 8.60457 6 7.5C6 6.39543 5.10457 5.5 4 5.5C2.89543 5.5 2 6.39543 2 7.5C2 8.60457 2.89543 9.5 4 9.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="jewel2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '4px 7.5px' }" />
+            <motion.path d="M20 9.5C21.1046 9.5 22 8.60457 22 7.5C22 6.39543 21.1046 5.5 20 5.5C18.8954 5.5 18 6.39543 18 7.5C18 8.60457 18.8954 9.5 20 9.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="jewel3Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '20px 7.5px' }" />
+            <motion.path d="M7 17.5L4 9.5M11 6.5L10.333 8.94551C9.95885 10.3176 9.77175 11.0036 9.24541 11.1652C8.71907 11.3268 8.17864 10.8636 7.09778 9.93705C6.56747 9.48247 6.12502 9.10419 6 9M17 17.5L20 9.5M13 6.5L13.662 8.92741C14.0377 10.3048 14.2255 10.9934 14.7511 11.1554C15.2768 11.3173 15.8219 10.8516 16.9123 9.92032C17.3113 9.57956 17.6939 9.25507 18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="crownVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M16.3333 17.5H7.66667C7.04669 17.5 6.73669 17.5 6.48236 17.5681C5.79218 17.7531 5.25308 18.2922 5.06815 18.9824C5 19.2367 5 19.5467 5 20.1667C5 20.4767 5 20.6317 5.03407 20.7588C5.12654 21.1039 5.39609 21.3735 5.74118 21.4659C5.86835 21.5 6.02334 21.5 6.33333 21.5H17.6667C17.9767 21.5 18.1317 21.5 18.2588 21.4659C18.6039 21.3735 18.8735 21.1039 18.9659 20.7588C19 20.6317 19 20.4767 19 20.1667C19 19.5467 19 19.2367 18.9319 18.9824C18.7469 18.2922 18.2078 17.7531 17.5176 17.5681C17.2633 17.5 16.9533 17.5 16.3333 17.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

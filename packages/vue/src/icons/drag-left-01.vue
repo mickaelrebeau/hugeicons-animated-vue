@@ -13,20 +13,50 @@ withDefaults(
   { size: 28 },
 )
 
-// after cursor-pointer-01: the grabbed object pulls away, carries momentum, and returns
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) rotate(0deg)',
-  },
+// the hand drags left behind the little arrow
+// authored from scripts/authored
+const ringVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) rotate(0deg)', 'translateX(3.27px) rotate(4.08deg)', 'translateX(-0.41px) rotate(-1.02deg)', 'translateX(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1.2px, 0px)',
+      'translate(0.144px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.62,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      delay: 0.04,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const arrowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1.6px, 0px)',
+      'translate(0.192px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,9 +70,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M10.6821 8.48926C9.6671 7.87782 8.98828 6.76527 8.98828 5.49422C8.98828 3.56441 10.553 2 12.4833 2C14.4135 2 15.9783 3.56441 15.9783 5.49422C15.9783 6.76527 15.2994 7.87782 14.2845 8.48926" stroke="currentColor" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.89px 22px' }" />
-            <motion.path d="M10.553 21.9348L10.5784 21.3044C10.6032 20.6883 10.4414 20.0752 10.0986 19.56C8.75005 17.533 7.71953 16.3786 6.30717 14.4014C6.19531 14.2448 6.09068 14.0789 6.0466 13.8919C5.70602 12.4471 7.46581 10.5666 9.09583 12.7323L10.6871 14.3646L10.6871 6.32391C10.8981 4.6763 13.4908 4.34948 13.928 6.32389L13.928 10.0659C15.5452 9.91869 22.0819 11.044 20.8482 15.5308C20.7904 15.7411 20.7351 15.9558 20.678 16.1663C20.4702 16.933 19.962 18.0523 19.4727 19.0064C18.9286 20.0673 19.0718 21.566 18.9796 22.001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.89px 22px' }" />
-            <motion.path d="M8.71865 4.98853H2.99805M2.99805 4.98853C3.1371 5.4239 3.5156 5.68779 3.83946 5.98427L5.02718 6.98996M2.99805 4.98853C3.11123 4.54575 3.52373 4.25931 3.83946 3.95999L5.02718 2.94141" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.89px 22px' }" />
+            <motion.path d="M10.6821 8.48926C9.6671 7.87782 8.98828 6.76527 8.98828 5.49422C8.98828 3.56441 10.553 2 12.4833 2C14.4135 2 15.9783 3.56441 15.9783 5.49422C15.9783 6.76527 15.2994 7.87782 14.2845 8.48926" stroke="currentColor" stroke-width="1.5" :variants="ringVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.5px 5.2px' }" />
+            <motion.path d="M10.553 21.9348L10.5784 21.3044C10.6032 20.6883 10.4414 20.0752 10.0986 19.56C8.75005 17.533 7.71953 16.3786 6.30717 14.4014C6.19531 14.2448 6.09068 14.0789 6.0466 13.8919C5.70602 12.4471 7.46581 10.5666 9.09583 12.7323L10.6871 14.3646L10.6871 6.32391C10.8981 4.6763 13.4908 4.34948 13.928 6.32389L13.928 10.0659C15.5452 9.91869 22.0819 11.044 20.8482 15.5308C20.7904 15.7411 20.7351 15.9558 20.678 16.1663C20.4702 16.933 19.962 18.0523 19.4727 19.0064C18.9286 20.0673 19.0718 21.566 18.9796 22.001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ringVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '13.9px 13.2px' }" />
+            <motion.path d="M8.71865 4.98853H2.99805M2.99805 4.98853C3.1371 5.4239 3.5156 5.68779 3.83946 5.98427L5.02718 6.98996M2.99805 4.98853C3.11123 4.54575 3.52373 4.25931 3.83946 3.95999L5.02718 2.94141" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '5.9px 5px' }" />
           </svg>
         </div>
 </template>

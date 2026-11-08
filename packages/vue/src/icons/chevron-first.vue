@@ -13,20 +13,51 @@ withDefaults(
   { size: 28 },
 )
 
-// after chevron-right: the mark commits right along its own axis
-// generated from @hugeicons/core-free-icons
-const chevronVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleY(1)',
-  },
+// the chevron rushes back to the first bar, which flinches on impact
+// authored from scripts/authored
+const barVariants: Variants = {
+  normal: { transform: 'translate(0px, 0.00px) scaleY(1)' },
   animate: {
-    transform: ['translateX(0px) scaleY(1)', 'translateX(2.62px) scaleY(0.9)', 'translateX(-0.49px) scaleY(1.04)', 'translateX(0.87px) scaleY(0.97)', 'translateX(0px) scaleY(1)'],
+    transform: [
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 0.00px) scaleY(1)',
+      'translate(0px, 0.00px) scaleY(0.86)',
+      'translate(0px, 0.00px) scaleY(1.04)',
+      'translate(0px, 0.00px) scaleY(1)',
+    ],
     transition: {
-      duration: 0.59,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.56,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const chevronVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-2.2px, 0px)',
+      'translate(0.264px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +71,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M7 6V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="chevronVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M17 18C17 18 11 13.5811 11 12C11 10.4188 17 6 17 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="chevronVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <motion.path d="M7 6V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="barVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7px 12px' }" />
+            <motion.path d="M17 18C17 18 11 13.5811 11 12C11 10.4188 17 6 17 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="chevronVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 12px' }" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,50 @@ withDefaults(
   { size: 28 },
 )
 
-// after cursor-pointer-01: the grabbed object pulls away, carries momentum, and returns
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) rotate(0deg)',
-  },
+// the hand drags the file toward the upper-left
+// authored from scripts/authored
+const handVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) rotate(0deg)', 'translateX(2.99px) rotate(3.74deg)', 'translateX(-0.37px) rotate(-0.94deg)', 'translateX(0px) rotate(0deg)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1px, -1px)',
+      'translate(0.12px, 0.12px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.66,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      delay: 0.06,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const fileVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1.4px, -1.4px)',
+      'translate(0.16799999999999998px, 0.16799999999999998px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +70,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M8.492 16.7708L8.7397 16.528C9.30111 15.9779 9.62089 15.2262 9.62853 14.4387L9.67839 9.29499C9.68515 8.5976 9.9101 7.86083 10.5428 7.57149C11.4996 7.13391 12.6822 7.38098 12.8952 9.42674L13.2233 11.1555L18.8027 4.45497C19.9702 3.35338 22.0426 4.74594 21.1388 6.47149L17.8575 10.4213C19.1379 11.2814 23.8618 16.1719 20.0362 18.6611C19.4845 19.1418 18.1777 19.839 17.0378 20.2016C15.951 20.5474 15.2689 21.7309 14.9345 22.0003" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.18px 22px' }" />
-            <motion.path d="M9.48367 3.51398C9.48367 4.35006 10.1351 5.02784 10.9386 5.02784C11.7422 5.02784 12.3936 4.35006 12.3936 3.51398C12.3936 2.6779 11.7422 2.00012 10.9386 2.00012C10.1351 2.00012 9.48367 2.6779 9.48367 3.51398ZM9.48367 3.51398H8.8398L8.0692 3.58624M3.98952 8.94285C4.82649 8.9291 5.4637 9.58457 5.47696 10.3961C5.49021 11.2077 4.86737 11.9061 4.0304 11.9198C3.19343 11.9336 2.51131 11.2487 2.49806 10.4372C2.4848 9.62562 3.15255 8.95659 3.98952 8.94285ZM3.98952 8.94285L4.07917 7.60966M5.77439 4.65096L5.44659 4.9579L5.15694 5.27066" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.18px 22px' }" />
+            <motion.path d="M8.492 16.7708L8.7397 16.528C9.30111 15.9779 9.62089 15.2262 9.62853 14.4387L9.67839 9.29499C9.68515 8.5976 9.9101 7.86083 10.5428 7.57149C11.4996 7.13391 12.6822 7.38098 12.8952 9.42674L13.2233 11.1555L18.8027 4.45497C19.9702 3.35338 22.0426 4.74594 21.1388 6.47149L17.8575 10.4213C19.1379 11.2814 23.8618 16.1719 20.0362 18.6611C19.4845 19.1418 18.1777 19.839 17.0378 20.2016C15.951 20.5474 15.2689 21.7309 14.9345 22.0003" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '16.2px 12.7px' }" />
+            <motion.path d="M9.48367 3.51398C9.48367 4.35006 10.1351 5.02784 10.9386 5.02784C11.7422 5.02784 12.3936 4.35006 12.3936 3.51398C12.3936 2.6779 11.7422 2.00012 10.9386 2.00012C10.1351 2.00012 9.48367 2.6779 9.48367 3.51398ZM9.48367 3.51398H8.8398L8.0692 3.58624M3.98952 8.94285C4.82649 8.9291 5.4637 9.58457 5.47696 10.3961C5.49021 11.2077 4.86737 11.9061 4.0304 11.9198C3.19343 11.9336 2.51131 11.2487 2.49806 10.4372C2.4848 9.62562 3.15255 8.95659 3.98952 8.94285ZM3.98952 8.94285L4.07917 7.60966M5.77439 4.65096L5.44659 4.9579L5.15694 5.27066" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '7.4px 7px' }" />
           </svg>
         </div>
 </template>

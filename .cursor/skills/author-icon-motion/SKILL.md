@@ -16,13 +16,14 @@ source of truth for coverage, protected originals, spec shape, and the kit.
 
 ## Resume point
 
-Stopped after **gallery page 13** (`calendar-fold` → `calling`,
-file indices 964–1045, 79 specs). Next is **page 14**, starting at `camel`
-(file index 1046). Confirm its last icon in the gallery pager. Spec file:
-`scripts/authored/page-14.mjs`.
+The walk is **complete**: all 76 gallery pages are authored (last page 76,
+`x-ray` → `zzz`, file indices 6078–6121, 42 specs, `scripts/authored/page-76.mjs`).
+Remaining work is review and rework of individual specs, or new pages for names
+added upstream. Geometry must come from `@hugeicons/core-free-icons@4.2.3` — see
+AGENTS.md "Geometry version".
 
-Authored choreography exists **only** for pages 1–13. Later icons are still generated recipes. Never
-overwrite a file that has neither the authored nor the generated marker.
+No icon carries the generated marker any more. Never overwrite a file that has
+neither the authored nor the generated marker.
 
 ## One-page loop
 

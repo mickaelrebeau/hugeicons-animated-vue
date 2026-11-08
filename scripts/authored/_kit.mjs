@@ -233,3 +233,273 @@ export const compute = (origin, o = {}) => ({
   dur: 0.56,
   ...o,
 })
+
+// ---------------------------------------------------------------------------
+// Props and rigs promoted from page 14. Extras (`burst`, `glint`, `trail`,
+// `puff`) rest at opacity 0 and end at 0.
+
+export const r2 = (n) => Math.round(n * 100) / 100
+
+/** Radial tick marks around a point — the d string for a flash or a glow. */
+export const rays = (cx, cy, r0, r1, n = 8, start = 0) => {
+  let d = ''
+  for (let i = 0; i < n; i += 1) {
+    const a = ((start + (360 / n) * i) * Math.PI) / 180
+    const c = Math.cos(a)
+    const s = Math.sin(a)
+    d += `M${r2(cx + c * r0)} ${r2(cy + s * r0)}L${r2(cx + c * r1)} ${r2(cy + s * r1)}`
+  }
+  return d
+}
+
+/** A burst that blooms out of a point and fades. Symmetric, so it scales from its own center. */
+export const burst = (d, o = {}) => ({
+  as: 'burst',
+  tag: 'path',
+  attrs: { d, strokeWidth: '1.2' },
+  transform: ['scale(0.4)', 'scale(0.4)', 'scale(1)', 'scale(1.22)'],
+  opacity: [0, 0, 1, 0],
+  times: [0, 0.3, 0.46, 1],
+  ease: ['linear', OUT, OUT],
+  dur: 0.7,
+  ...o,
+})
+
+/** A small four-point glint that twinkles in and out. */
+export const glint = (cx, cy, r = 1.1, o = {}) => ({
+  as: 'glint',
+  tag: 'path',
+  attrs: { d: `M${cx} ${r2(cy - r)}V${r2(cy + r)}M${r2(cx - r)} ${cy}H${r2(cx + r)}`, strokeWidth: '1.1' },
+  transform: ['rotate(0deg) scale(0.2)', 'rotate(0deg) scale(0.2)', 'rotate(45deg) scale(1.1)', 'rotate(90deg) scale(0.2)'],
+  opacity: [0, 0, 1, 0],
+  times: [0, 0.3, 0.6, 1],
+  ease: ['linear', OUT, INOUT],
+  dur: 0.8,
+  ...o,
+})
+
+/** Short strokes trailing behind something that moves. */
+export const trail = (d, dx, o = {}) => ({
+  as: 'trail',
+  tag: 'path',
+  attrs: { d, strokeWidth: '1.2' },
+  transform: ['translateX(0px)', 'translateX(0px)', `translateX(${dx * 0.4}px)`, `translateX(${dx}px)`],
+  opacity: [0, 0, 1, 0],
+  times: [0, 0.2, 0.46, 0.86],
+  ease: ['linear', OUT, OUT],
+  dur: 0.7,
+  ...o,
+})
+
+/** A puff that drifts away and dissolves. */
+export const puff = (cx, cy, r, dx, dy, o = {}) => ({
+  as: 'puff',
+  tag: 'circle',
+  attrs: { cx: String(cx), cy: String(cy), r: String(r), strokeWidth: '1.1' },
+  transform: ['translate(0px, 0px) scale(0.4)', 'translate(0px, 0px) scale(0.4)', `translate(${dx * 0.5}px, ${dy * 0.5}px) scale(1)`, `translate(${dx}px, ${dy}px) scale(1.5)`],
+  opacity: [0, 0, 0.9, 0],
+  times: [0, 0.16, 0.42, 1],
+  ease: ['linear', OUT, OUT],
+  dur: 0.8,
+  ...o,
+})
+
+/** An indicator light that blinks. */
+export const blink = (o = {}) => ({
+  as: 'led',
+  opacity: [1, 0.12, 1, 0.12, 1],
+  times: [0, 0.2, 0.4, 0.6, 0.8],
+  ease: 'linear',
+  dur: 0.8,
+  ...o,
+})
+
+/** A small light that pops bigger and back. */
+export const glow = (origin, s = 2.4, o = {}) => ({
+  as: 'light',
+  origin,
+  transform: ['scale(1)', `scale(${s})`, 'scale(1)'],
+  times: [0, 0.36, 1],
+  ease: [OUT, INOUT],
+  dur: 0.5,
+  ...o,
+})
+
+/** Uniform translate keyframes for parts that ride together. */
+export const ride = (origin, keys, o = {}) => ({
+  as: 'ride',
+  origin,
+  transform: keys.map(([x, y]) => `translate(${x}px, ${y}px)`),
+  times: T5,
+  ease: E5,
+  dur: 0.62,
+  ...o,
+})
+
+/** A parts list where one rig of parts swings around a shared pivot. */
+export const swing = (pivot, center, degrees, o = {}) => ({ ...around(pivot, center, degrees), as: 'swing', ...o })
+
+/** Some tracks finish early; hold their last value so every `times` ends at 1. */
+const TRACKS = ['transform', 'opacity', 'pathLength', 'pathOffset', 'visibility']
+const settle = (part) => {
+  if (!part?.times || part.times.at(-1) === 1) return part
+  const out = { ...part, times: [...part.times, 1] }
+  for (const k of TRACKS) if (out[k]) out[k] = [...out[k], out[k].at(-1)]
+  if (Array.isArray(out.ease) && !(typeof out.ease[0] === 'number')) out.ease = [...out.ease, 'linear']
+  return out
+}
+
+/** Pads every part, extra and wrap so its `times` ends at 1. */
+export const settleSpecs = (specs) =>
+  Object.fromEntries(
+    Object.entries(specs).map(([name, spec]) => [
+      name,
+      { ...spec, parts: spec.parts.map(settle), extras: spec.extras?.map(settle), wrap: settle(spec.wrap) },
+    ]),
+  )
+
+// ---------------------------------------------------------------------------
+// Promoted from page 15.
+
+/** Grow along one axis from a planted pivot: dip, overshoot, settle. */
+export const rise = (axis, pivot, center, o = {}) => ({
+  ...scaleFrom(axis, pivot, center, [1, 0.2, 1.08, 1], { times: [0, 0.16, 0.62, 1], ease: [INOUT, OUT, OUT], dur: 0.6 }),
+  as: 'bar',
+  ...o,
+})
+
+/** Scale on one axis from a pivot through a custom set of five keys. */
+export const flex = (axis, pivot, center, scales, o = {}) => ({
+  ...scaleFrom(axis, pivot, center, scales, { times: T5, ease: E5, dur: 0.7 }),
+  as: 'flex',
+  ...o,
+})
+
+/** Pop a small mark in place. */
+export const pop = (origin, s = 1.5, o = {}) => ({
+  as: 'pop',
+  origin,
+  transform: ['scale(1)', `scale(${s})`, 'scale(0.92)', 'scale(1)'],
+  times: [0, 0.34, 0.66, 1],
+  ease: [INOUT, OUT, OUT],
+  dur: 0.5,
+  ...o,
+})
+
+/** A coin or medal flipping on its vertical axis. */
+export const flip = (origin, turns = 1, o = {}) => {
+  const keys = ['scaleX(1)']
+  for (let i = 0; i < turns; i += 1) keys.push('scaleX(0.06)', 'scaleX(1)')
+  const n = keys.length
+  return {
+    as: 'coin',
+    origin,
+    transform: keys,
+    times: keys.map((_, i) => Math.round((i / (n - 1)) * 100) / 100),
+    ease: INOUT,
+    dur: 0.36 * turns + 0.2,
+    ...o,
+  }
+}
+
+/** A full turn that lands on the rest pose. */
+export const lap = (origin, deg = 360, o = {}) => ({
+  as: 'lap',
+  origin,
+  transform: ['rotate(0deg)', `rotate(${deg * 0.2}deg)`, `rotate(${deg * 0.7}deg)`, `rotate(${deg * 1.03}deg)`, `rotate(${deg}deg)`],
+  times: [0, 0.2, 0.6, 0.86, 1],
+  ease: [INOUT, 'linear', OUT, OUT],
+  dur: 0.86,
+  ...o,
+})
+
+/** A signal arc lighting up in its turn. */
+export const wave = (origin, o = {}) => ({
+  as: 'wave',
+  origin,
+  transform: ['scale(1)', 'scale(0.8)', 'scale(1.08)', 'scale(1)'],
+  opacity: [1, 0.15, 1, 1],
+  times: [0, 0.24, 0.56, 1],
+  ease: OUT,
+  dur: 0.62,
+  ...o,
+})
+
+/** Fade out and back, without moving. */
+export const dim = (o = {}) => ({ as: 'dim', opacity: [1, 0.2, 0.2, 1], times: [0, 0.24, 0.7, 1], ease: OUT, dur: 0.8, ...o })
+
+// ---------------------------------------------------------------------------
+// Promoted from page 16.
+
+/** Hop up and land. */
+export const hop = (origin, h = 1.4, o = {}) =>
+  ride(origin, [[0, 0], [0, -h], [0, h * 0.14], [0, 0], [0, 0]], { as: 'hop', times: [0, 0.32, 0.62, 0.86, 1], dur: 0.56, ...o })
+
+// ---------------------------------------------------------------------------
+// Promoted from pages 17 and 19.
+
+/** Uniform scale that keeps `pivot` planted (fill-box compensated). */
+export const swell = (pivot, center, scales, o = {}) => {
+  const [px, py] = pivot
+  const [cx, cy] = center
+  return {
+    as: 'swell',
+    origin: center,
+    transform: scales.map((s) => `translate(${((px - cx) * (1 - s)).toFixed(2)}px, ${((py - cy) * (1 - s)).toFixed(2)}px) scale(${s})`),
+    times: T5,
+    ease: E5,
+    dur: 0.7,
+    ...o,
+  }
+}
+
+/** Weather leaving through the bottom and coming back from above. */
+export const fall = (origin, dx, dy, o = {}) => ({
+  as: 'fall',
+  origin,
+  transform: ['translate(0px, 0px)', `translate(${dx}px, ${dy}px)`, `translate(${-dx}px, ${-dy}px)`, 'translate(0px, 0px)'],
+  opacity: [1, 0, 0, 1],
+  times: [0, 0.4, 0.42, 1],
+  ease: ['easeIn', 'linear', OUT],
+  dur: 0.7,
+  ...o,
+})
+
+// ---------------------------------------------------------------------------
+// Promoted from page 22.
+
+/** The hand pointer taps down. */
+export const tap = (origin, o = {}) => ({
+  as: 'hand',
+  origin,
+  transform: ['translateY(0px) scale(1)', 'translateY(1px) scale(0.94)', 'translateY(-0.2px) scale(1.02)', 'translateY(0px) scale(1)'],
+  times: [0, 0.3, 0.62, 1],
+  ease: [INOUT, OUT, OUT],
+  dur: 0.5,
+  ...o,
+})
+
+/** The arrow pointer clicks toward its tip (upper-left). */
+export const point = (origin, o = {}) => ({
+  as: 'pointer',
+  origin,
+  transform: ['translate(0px, 0px) scale(1)', 'translate(-0.7px, -0.7px) scale(0.92)', 'translate(0.1px, 0.1px) scale(1.02)', 'translate(0px, 0px) scale(1)'],
+  times: [0, 0.3, 0.62, 1],
+  ease: [INOUT, OUT, OUT],
+  dur: 0.5,
+  ...o,
+})
+
+// ---------------------------------------------------------------------------
+// Promoted from page 34 (pointing hands) for pages 52–53.
+
+export const DIR = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }
+
+/** The pointing-hand family: c is the hand centre, d a DIR unit vector. */
+export const hand = {
+  poke: (c, [x, y], o = {}) => ride(c, [[0, 0], [x * 1.6, y * 1.6], [0, 0], [x * 1.1, y * 1.1], [0, 0]], { as: 'hand', times: [0, 0.22, 0.44, 0.66, 1], ease: 'easeInOut', dur: 0.66, ...o }),
+  nudge: (c, [x, y], o = {}) => nudge(c, x * 2, y * 2, { as: 'hand', ...o }),
+  wag: (c, [x, y], o = {}) => around([c[0] - x * 8, c[1] - y * 8], c, [0, 8, -6, 3, 0], { as: 'hand', dur: 0.66, ...o }),
+  thrust: (c, [x, y], o = {}) => ride(c, [[0, 0], [-x * 0.8, -y * 0.8], [x * 2, y * 2], [x * -0.2, y * -0.2], [0, 0]], { as: 'hand', times: [0, 0.3, 0.5, 0.76, 1], ease: ['easeOut', 'easeIn', 'easeOut', 'easeInOut'], dur: 0.66, ...o }),
+  hold: (c, [x, y], o = {}) => hold(c, x * 1.8, y * 1.8, { as: 'hand', ...o }),
+}

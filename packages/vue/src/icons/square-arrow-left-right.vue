@@ -13,20 +13,21 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-left-02: the mark commits left along its own axis
-// generated from @hugeicons/core-free-icons
-const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleY(1)',
-  },
+// the two arrows push apart left and right
+// authored from scripts/authored
+const arrowsVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) scaleY(1)', 'translateX(-2.65px) scaleY(0.94)', 'translateX(0.31px) scaleY(1.02)', 'translateX(-0.46px) scaleY(0.99)', 'translateX(0px) scaleY(1)'],
-    transition: {
-      duration: 0.5,
-      ease: [0.23, 1, 0.32, 1],
-    },
+    transform: [
+      'translate(0px, 0px)',
+      'translate(-1px, 0px)',
+      'translate(1px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: { duration: 0.7, times: [0, 0.18, 0.46, 0.74, 1], ease: [0.77, 0, 0.175, 1] },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +41,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M8 9L16 9M8 9C8 8.21775 10 7 10 7M8 9C8 9.78225 10 11 10 11M16 15H8M16 15C16 14.2178 14 13 14 13M16 15C16 15.7822 14 17 14 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.55" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="1.5" />
+            <motion.path d="M8 9L16 9M8 9C8 8.21775 10 7 10 7M8 9C8 9.78225 10 11 10 11M16 15H8M16 15C16 14.2178 14 13 14 13M16 15C16 15.7822 14 17 14 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.55" :variants="arrowsVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

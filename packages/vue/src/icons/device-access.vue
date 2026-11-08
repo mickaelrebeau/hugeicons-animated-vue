@@ -13,33 +13,47 @@ withDefaults(
   { size: 28 },
 )
 
-// after copy-01: the nested parts of the device access separate in depth and stack again
-// generated from @hugeicons/core-free-icons
-const fileVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) rotate(0deg)',
-  },
+// the key turns beside the phone and the screen dot answers
+// authored from scripts/authored
+const keyVariants: Variants = {
+  normal: { transform: 'translate(0.00px, 0.00px) rotate(0deg)' },
   animate: {
-    transform: ['translateY(0px) rotate(0deg)', 'translateY(-0.75px) rotate(-0.94deg)', 'translateY(0.42px) rotate(0.47deg)', 'translateY(0px) rotate(0deg)'],
+    transform: [
+      'translate(0.00px, 0.00px) rotate(0deg)',
+      'translate(0.20px, 1.24px) rotate(-18deg)',
+      'translate(0.02px, -0.42px) rotate(6deg)',
+      'translate(0.00px, 0.14px) rotate(-2deg)',
+      'translate(0.00px, 0.00px) rotate(0deg)',
+    ],
     transition: {
-      duration: 0.62,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.7,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
-const frontVariants: Variants = {
-  normal: {
-    transform: 'translate(0px, 0px)',
-  },
+const dotVariants: Variants = {
+  normal: { transform: 'scale(1)' },
   animate: {
-    transform: ['translate(0px, 0px)', 'translate(1.31px, -1.12px)', 'translate(0.19px, -0.19px)', 'translate(0px, 0px)'],
+    transform: ['scale(1)', 'scale(2)', 'scale(0.92)', 'scale(1)'],
     transition: {
-      duration: 0.56,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      delay: 0.24,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -53,10 +67,10 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M16.8606 5C16.7255 4.13105 16.4698 3.5086 15.9859 3.02513C14.9599 2 13.3086 2 10.006 2C6.70332 2 5.052 2 4.026 3.02513C3 4.05025 3 5.70017 3 9V15C3 18.2998 3 19.9497 4.026 20.9749C5.052 22 6.70332 22 10.006 22C13.3086 22 14.9599 22 15.9859 20.9749C16.7796 20.1819 16.9593 19.0151 17 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="fileVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 12px' }" />
-            <motion.path d="M18 14C19.6569 14 21 12.6569 21 11C21 9.34315 19.6569 8 18 8C16.8896 8 15.9201 8.6033 15.4013 9.5H8L7 11L9 13.5L10.5 12.5L12 13.5L13.5 12.5H15.4013C15.9201 13.3967 16.8896 14 18 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 11px' }" />
-            <motion.path d="M10.125 19H10M10.25 19C10.25 19.1381 10.1381 19.25 10 19.25C9.86193 19.25 9.75 19.1381 9.75 19C9.75 18.8619 9.86193 18.75 10 18.75C10.1381 18.75 10.25 18.8619 10.25 19Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 19px' }" />
-            <motion.path d="M18.125 11H18M18.25 11C18.25 11.1381 18.1381 11.25 18 11.25C17.8619 11.25 17.75 11.1381 17.75 11C17.75 10.8619 17.8619 10.75 18 10.75C18.1381 10.75 18.25 10.8619 18.25 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="frontVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '18px 11px' }" />
+            <path d="M16.8606 5C16.7255 4.13105 16.4698 3.5086 15.9859 3.02513C14.9599 2 13.3086 2 10.006 2C6.70332 2 5.052 2 4.026 3.02513C3 4.05025 3 5.70017 3 9V15C3 18.2998 3 19.9497 4.026 20.9749C5.052 22 6.70332 22 10.006 22C13.3086 22 14.9599 22 15.9859 20.9749C16.7796 20.1819 16.9593 19.0151 17 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M18 14C19.6569 14 21 12.6569 21 11C21 9.34315 19.6569 8 18 8C16.8896 8 15.9201 8.6033 15.4013 9.5H8L7 11L9 13.5L10.5 12.5L12 13.5L13.5 12.5H15.4013C15.9201 13.3967 16.8896 14 18 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="keyVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '14px 11px' }" />
+            <motion.path d="M10.125 19H10M10.25 19C10.25 19.1381 10.1381 19.25 10 19.25C9.86193 19.25 9.75 19.1381 9.75 19C9.75 18.8619 9.86193 18.75 10 18.75C10.1381 18.75 10.25 18.8619 10.25 19Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dotVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '10px 19px' }" />
+            <path d="M18.125 11H18M18.25 11C18.25 11.1381 18.1381 11.25 18 11.25C17.8619 11.25 17.75 11.1381 17.75 11C17.75 10.8619 17.8619 10.75 18 10.75C18.1381 10.75 18.25 10.8619 18.25 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
           </svg>
         </div>
 </template>

@@ -13,20 +13,24 @@ withDefaults(
   { size: 28 },
 )
 
-// after arrow-down-02: the mark commits downward along its own axis
-// generated from @hugeicons/core-free-icons
-const arrowVariants: Variants = {
-  normal: {
-    transform: 'translateY(0px) scaleX(1)',
-  },
+// the chevron drops out of the circle and comes back in from the top
+// authored from scripts/authored
+const chevronVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)', opacity: 1 },
   animate: {
-    transform: ['translateY(0px) scaleX(1)', 'translateY(2.8px) scaleX(0.94)', 'translateY(-0.32px) scaleX(1.02)', 'translateY(0.49px) scaleX(0.99)', 'translateY(0px) scaleX(1)'],
+    transform: ['translate(0px, 0px)', 'translate(0px, 4px)', 'translate(0px, -4px)', 'translate(0px, 0px)'],
+    opacity: [1, 0, 0, 1],
     transition: {
-      duration: 0.52,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.66,
+      times: [0, 0.36, 0.38, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        'linear',
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +44,8 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
-            <motion.path d="M16 10.5C16 10.5 13.054 13.5 12 13.5C10.9459 13.5 8 10.5 8 10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
+            <motion.path d="M16 10.5C16 10.5 13.054 13.5 12 13.5C10.9459 13.5 8 10.5 8 10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="chevronVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

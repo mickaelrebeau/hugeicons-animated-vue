@@ -13,20 +13,76 @@ withDefaults(
   { size: 28 },
 )
 
-// after cursor-pointer-01: the fingertip commits toward the direction it already points
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'translateX(0px) scaleX(1) scaleY(1)',
-  },
+// the hand slides right trailing speed lines and the arrow leads
+// authored from scripts/authored
+const arrowVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
   animate: {
-    transform: ['translateX(0px) scaleX(1) scaleY(1)', 'translateX(-0.83px) scaleX(0.9) scaleY(1.04)', 'translateX(2.07px) scaleX(1.1) scaleY(0.97)', 'translateX(0px) scaleX(1) scaleY(1)'],
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1.2px, 0px)',
+      'translate(-0.144px, 0px)',
+      'translate(0px, 0px)',
+    ],
     transition: {
-      duration: 0.53,
-      ease: [0.23, 1, 0.32, 1],
+      duration: 0.5,
+      delay: 0.08,
+      times: [0, 0.44, 0.72, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const handVariants: Variants = {
+  normal: { transform: 'translate(0px, 0px)' },
+  animate: {
+    transform: [
+      'translate(0px, 0px)',
+      'translate(1.6px, 0px)',
+      'translate(-0.24px, 0px)',
+      'translate(0px, 0px)',
+      'translate(0px, 0px)',
+    ],
+    transition: {
+      duration: 0.6,
+      times: [0, 0.18, 0.46, 0.74, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
+
+const trailVariants: Variants = {
+  normal: { transform: 'translateX(0px)', opacity: 0 },
+  animate: {
+    transform: [
+      'translateX(0px)',
+      'translateX(0px)',
+      'translateX(-0.5599999999999999px)',
+      'translateX(-1.4px)',
+      'translateX(-1.4px)',
+    ],
+    opacity: [0, 0, 1, 0, 0],
+    transition: {
+      duration: 0.7,
+      times: [0, 0.2, 0.46, 0.86, 1],
+      ease: [
+        'linear',
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+        'linear',
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
@@ -40,8 +96,9 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M22.0022 4.5H16.0059M22.0022 4.5C22.0022 3.79977 20.0091 2.49153 19.5037 2M22.0022 4.5C22.0022 5.20023 20.0091 6.50847 19.5037 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 14.36px' }" />
-            <motion.path d="M1.99767 10.8264L2.94576 10.8264C3.59087 10.8264 4.21881 10.6175 4.73653 10.2308L9.63637 6.57074C10.2015 6.14861 10.9026 5.81146 11.5499 6.09015C12.5976 6.5413 13.2783 7.81411 11.7074 9.37203L9.99906 10.9703L20.4157 10.9703C22.4576 11.0266 22.5589 14.3169 20.4157 14.4576L14.4794 14.4576C14.6704 15.9386 13.6276 22.9153 9.21009 21.8984C9.00021 21.8501 8.78723 21.8019 8.57708 21.7548C7.65888 21.549 6.02245 20.9407 5.06576 20.27C4.06983 19.5717 3.07783 19.8181 1.99767 19.8181" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '2px 14.36px' }" />
+            <motion.path d="M22.0022 4.5H16.0059M22.0022 4.5C22.0022 3.79977 20.0091 2.49153 19.5037 2M22.0022 4.5C22.0022 5.20023 20.0091 6.50847 19.5037 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="arrowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 4.5px' }" />
+            <motion.path d="M1.99767 10.8264L2.94576 10.8264C3.59087 10.8264 4.21881 10.6175 4.73653 10.2308L9.63637 6.57074C10.2015 6.14861 10.9026 5.81146 11.5499 6.09015C12.5976 6.5413 13.2783 7.81411 11.7074 9.37203L9.99906 10.9703L20.4157 10.9703C22.4576 11.0266 22.5589 14.3169 20.4157 14.4576L14.4794 14.4576C14.6704 15.9386 13.6276 22.9153 9.21009 21.8984C9.00021 21.8501 8.78723 21.8019 8.57708 21.7548C7.65888 21.549 6.02245 20.9407 5.06576 20.27C4.06983 19.5717 3.07783 19.8181 1.99767 19.8181" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="handVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12.3px 14.4px' }" />
+            <motion.path d="M2 12H3.5M2 15H3" stroke-width="1.2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" :variants="trailVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
           </svg>
         </div>
 </template>

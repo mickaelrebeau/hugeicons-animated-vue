@@ -13,25 +13,67 @@ withDefaults(
   { size: 28 },
 )
 
-// after fire: heat builds inside the cavity and shimmers out
-// generated from @hugeicons/core-free-icons
-const iconVariants: Variants = {
-  normal: {
-    transform: 'scale(1) rotate(0deg)',
-  },
+// the window glows and the dials click
+// authored from scripts/authored
+const ovenVariants: Variants = {
+  normal: { transform: 'rotate(0deg) scale(1)' },
   animate: {
-    transform: ['scale(1) rotate(0deg)', 'scale(1.08) rotate(-3.06deg)', 'scale(0.96) rotate(2.04deg)', 'scale(1.04) rotate(-1.02deg)', 'scale(1) rotate(0deg)'],
+    transform: [
+      'rotate(0deg) scale(1)',
+      'rotate(-4deg) scale(0.97)',
+      'rotate(3.2deg) scale(1.03)',
+      'rotate(-1.2deg) scale(0.995)',
+      'rotate(0deg) scale(1)',
+    ],
+    transition: { duration: 0.5, times: [0, 0.2, 0.46, 0.72, 1], ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+const windowVariants: Variants = {
+  normal: { opacity: 1 },
+  animate: {
+    opacity: [1, 0.3, 1, 0.3, 1, 1],
+    transition: { duration: 0.8, times: [0, 0.2, 0.4, 0.6, 0.8, 1], ease: 'linear' },
+  },
+};
+
+const dialVariants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(3)', 'scale(0.92)', 'scale(1)'],
     transition: {
-      duration: 0.56,
-      ease: [0.77, 0, 0.175, 1],
+      duration: 0.5,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
     },
   },
-}
+};
+
+const dial2Variants: Variants = {
+  normal: { transform: 'scale(1)' },
+  animate: {
+    transform: ['scale(1)', 'scale(3)', 'scale(0.92)', 'scale(1)'],
+    transition: {
+      duration: 0.5,
+      delay: 0.12,
+      times: [0, 0.34, 0.66, 1],
+      ease: [
+        [0.77, 0, 0.175, 1],
+        [0.23, 1, 0.32, 1],
+        [0.23, 1, 0.32, 1],
+      ],
+    },
+  },
+};
 
 const controls = useAnimationControls()
 const { onMouseEnter, onMouseLeave, startAnimation, stopAnimation } = useIconAnimation({
   controls,
-  loops: true,
+  loops: false,
 })
 
 defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
@@ -40,11 +82,11 @@ defineExpose<AnimatedIconHandle>({ startAnimation, stopAnimation })
 <template>
   <div class="hia-icon" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" v-bind="$attrs">
           <svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24" fill="none" overflow="visible">
-            <motion.path d="M16 3.5H8C5.17157 3.5 3.75736 3.5 2.87868 4.37868C2 5.25736 2 6.67157 2 9.5V12.5C2 15.3284 2 16.7426 2.87868 17.6213C3.75736 18.5 5.17157 18.5 8 18.5H16C18.8284 18.5 20.2426 18.5 21.1213 17.6213C22 16.7426 22 15.3284 22 12.5V9.5C22 6.67157 22 5.25736 21.1213 4.37868C20.2426 3.5 18.8284 3.5 16 3.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.5px' }" />
-            <motion.path d="M13 6.5H8C6.58579 6.5 5.87868 6.5 5.43934 6.93934C5 7.37868 5 8.08579 5 9.5V12.5C5 13.9142 5 14.6213 5.43934 15.0607C5.87868 15.5 6.58579 15.5 8 15.5H13C14.4142 15.5 15.1213 15.5 15.5607 15.0607C16 14.6213 16 13.9142 16 12.5V9.5C16 8.08579 16 7.37868 15.5607 6.93934C15.1213 6.5 14.4142 6.5 13 6.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.5px' }" />
-            <motion.path d="M5 18.5V20.5M19 18.5V20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.5px' }" />
-            <motion.path d="M19.0504 7.50234H19.0004M19.1004 7.50234C19.1004 7.55757 19.0556 7.60234 19.0004 7.60234C18.9452 7.60234 18.9004 7.55757 18.9004 7.50234C18.9004 7.44712 18.9452 7.40234 19.0004 7.40234C19.0556 7.40234 19.1004 7.44712 19.1004 7.50234Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.5px' }" />
-            <motion.path d="M19.0504 11.5023H19.0004M19.1004 11.5023C19.1004 11.5576 19.0556 11.6023 19.0004 11.6023C18.9452 11.6023 18.9004 11.5576 18.9004 11.5023C18.9004 11.4471 18.9452 11.4023 19.0004 11.4023C19.0556 11.4023 19.1004 11.4471 19.1004 11.5023Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="iconVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 18.5px' }" />
+            <motion.path d="M16 3.5H8C5.17157 3.5 3.75736 3.5 2.87868 4.37868C2 5.25736 2 6.67157 2 9.5V12.5C2 15.3284 2 16.7426 2.87868 17.6213C3.75736 18.5 5.17157 18.5 8 18.5H16C18.8284 18.5 20.2426 18.5 21.1213 17.6213C22 16.7426 22 15.3284 22 12.5V9.5C22 6.67157 22 5.25736 21.1213 4.37868C20.2426 3.5 18.8284 3.5 16 3.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="ovenVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 11px' }" />
+            <motion.path d="M13 6.5H8C6.58579 6.5 5.87868 6.5 5.43934 6.93934C5 7.37868 5 8.08579 5 9.5V12.5C5 13.9142 5 14.6213 5.43934 15.0607C5.87868 15.5 6.58579 15.5 8 15.5H13C14.4142 15.5 15.1213 15.5 15.5607 15.0607C16 14.6213 16 13.9142 16 12.5V9.5C16 8.08579 16 7.37868 15.5607 6.93934C15.1213 6.5 14.4142 6.5 13 6.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="windowVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '12px 12px' }" />
+            <path d="M5 18.5V20.5M19 18.5V20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            <motion.path d="M19.0504 7.50234H19.0004M19.1004 7.50234C19.1004 7.55757 19.0556 7.60234 19.0004 7.60234C18.9452 7.60234 18.9004 7.55757 18.9004 7.50234C18.9004 7.44712 18.9452 7.40234 19.0004 7.40234C19.0556 7.40234 19.1004 7.44712 19.1004 7.50234Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dialVariants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 7.5px' }" />
+            <motion.path d="M19.0504 11.5023H19.0004M19.1004 11.5023C19.1004 11.5576 19.0556 11.6023 19.0004 11.6023C18.9452 11.6023 18.9004 11.5576 18.9004 11.5023C18.9004 11.4471 18.9452 11.4023 19.0004 11.4023C19.0556 11.4023 19.1004 11.4471 19.1004 11.5023Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" :variants="dial2Variants" :animate="controls" initial="normal" :style="{ transformOrigin: '19px 11.5px' }" />
           </svg>
         </div>
 </template>
