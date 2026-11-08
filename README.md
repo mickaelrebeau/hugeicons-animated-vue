@@ -7,11 +7,9 @@
 A collection of 6,122 animated [Hugeicons](https://hugeicons.com) for **Vue 3**.
 Install from npm, or copy-paste each icon as source you own.
 
-**Authored motion covers gallery pages 1–13** (`a-arrow-down` through
-`calling`). Those icons have a unique hover gesture written from the
-pictogram's name, geometry, and direction. The 165 original hand-crafted icons
-are unchanged. Every icon after page 13 still uses a generated recipe from
-its name and shape.
+**Every icon has authored motion.** All 76 gallery pages (`a-arrow-down`
+through `zzz`) carry a unique hover gesture written from the pictogram's name,
+geometry, and direction. The 165 original hand-crafted icons are unchanged.
 
 Inspired by [enesgules/hugeicons-animated](https://github.com/enesgules/hugeicons-animated).
 
@@ -72,7 +70,7 @@ Or add this to `components.json`:
 ## Animation coverage
 
 The site gallery shows 80 icons per page. Unique, per-icon choreography has
-been authored for **pages 1–13**:
+been authored for **every page (1–76)**:
 
 | Page | Icons | Authored file |
 | --- | --- | --- |
@@ -89,13 +87,75 @@ been authored for **pages 1–13**:
 | 11 | `border-right` → `bubble-chat-search` | `scripts/authored/page-11.mjs` |
 | 12 | `bubble-chat-secure` → `calendar-favorite` | `scripts/authored/page-12.mjs` |
 | 13 | `calendar-fold` → `calling` | `scripts/authored/page-13.mjs` |
+| 14 | `camel` → `cards-02` | `scripts/authored/page-14.mjs` |
+| 15 | `cards` → `chart-gantt` | `scripts/authored/page-15.mjs` |
+| 16 | `chart-high-low` → `check-unread-02` | `scripts/authored/page-16.mjs` |
+| 17 | `check-unread-03` → `circle-arrow-down-right` | `scripts/authored/page-17.mjs` |
+| 18 | `circle-arrow-down` → `circle-power` | `scripts/authored/page-18.mjs` |
+| 19 | `circle-question-mark` → `cloud-slow-wind` | `scripts/authored/page-19.mjs` |
+| 20 | `cloud-snow` → `computer-check` | `scripts/authored/page-20.mjs` |
+| 21 | `computer-cloud` → `cos` | `scripts/authored/page-21.mjs` |
+| 22 | `cosine-01` → `cursor-info-01` | `scripts/authored/page-22.mjs` |
+| 23 | `cursor-info-02` → `database-locked` | `scripts/authored/page-23.mjs` |
+| 24 | `database-restore` → `dice-faces-04` | `scripts/authored/page-24.mjs` |
+| 25 | `dice-faces-05` → `dollar-sign` | `scripts/authored/page-25.mjs` |
+| 26 | `dollar-square` → `dumbbell` | `scripts/authored/page-26.mjs` |
+| 27 | `duplex` → `ethereum-ellipse` | `scripts/authored/page-27.mjs` |
+| 28 | `ethereum-rectangle` → `file-corrupt` | `scripts/authored/page-28.mjs` |
+| 29 | `file-database` → `filter-remove` | `scripts/authored/page-29.mjs` |
+| 30 | `filter-reset` → `folder-check` | `scripts/authored/page-30.mjs` |
+| 31 | `folder-clock` → `fuel-station` | `scripts/authored/page-31.mjs` |
+| 32 | `fuel` → `globe` | `scripts/authored/page-32.mjs` |
+| 33 | `glove` → `gymnastic-rings` | `scripts/authored/page-33.mjs` |
+| 34 | `gymnastic` → `health` | `scripts/authored/page-34.mjs` |
+| 35 | `heart-add` → `hospital-bed-01` | `scripts/authored/page-35.mjs` |
+| 36 | `hospital-bed-02` → `image-remove-02` | `scripts/authored/page-36.mjs` |
+| 37 | `image-remove` → `join-straight` | `scripts/authored/page-37.mjs` |
+| 38 | `joker` → `lamp-03` | `scripts/authored/page-38.mjs` |
+| 39 | `lamp-04` → `layout-two-row` | `scripts/authored/page-39.mjs` |
+| 40 | `layout` → `loading-01` | `scripts/authored/page-40.mjs` |
+| 41 | `loading-02` → `look-bottom` | `scripts/authored/page-41.mjs` |
+| 42 | `look-left` → `mail-setting` | `scripts/authored/page-42.mjs` |
+| 43 | `mail-unlock-01` → `medal-06` | `scripts/authored/page-43.mjs` |
+| 44 | `medal-07` → `message-outgoing-02` | `scripts/authored/page-44.mjs` |
+| 45 | `message-outgoing` → `modern-tv-four-k` | `scripts/authored/page-45.mjs` |
+| 46 | `modern-tv-issue` → `more-horizontal-circle-02` | `scripts/authored/page-46.mjs` |
+| 47 | `more-horizontal-circle` → `move-right` | `scripts/authored/page-47.mjs` |
+| 48 | `move-to` → `not-equal-sign-square` | `scripts/authored/page-48.mjs` |
+| 49 | `not-equal-sign` → `package-add` | `scripts/authored/page-49.mjs` |
+| 50 | `package-delivered-01` → `pavilon` | `scripts/authored/page-50.mjs` |
+| 51 | `pay-by-check` → `pie-chart` | `scripts/authored/page-51.mjs` |
+| 52 | `pie` → `pointing-left-07` | `scripts/authored/page-52.mjs` |
+| 53 | `pointing-left-08` → `profile-02` | `scripts/authored/page-53.mjs` |
+| 54 | `profile` → `radio-button` | `scripts/authored/page-54.mjs` |
+| 55 | `radio` → `repair` | `scripts/authored/page-55.mjs` |
+| 56 | `repeat-off` → `rotate-cw-square` | `scripts/authored/page-56.mjs` |
+| 57 | `rotate-left-01` → `save-energy-01` | `scripts/authored/page-57.mjs` |
+| 58 | `save-energy-02` → `self-transfer` | `scripts/authored/page-58.mjs` |
+| 59 | `semi-truck` → `shield-key` | `scripts/authored/page-59.mjs` |
+| 60 | `shield-minus` → `shower-head` | `scripts/authored/page-60.mjs` |
+| 61 | `shrink-dot` → `snail` | `scripts/authored/page-61.mjs` |
+| 62 | `snapchat` → `spray-can` | `scripts/authored/page-62.mjs` |
+| 63 | `sql` → `square-round-corner` | `scripts/authored/page-63.mjs` |
+| 64 | `square-square` → `structure-01` | `scripts/authored/page-64.mjs` |
+| 65 | `structure-02` → `surfboard` | `scripts/authored/page-65.mjs` |
+| 66 | `surprise` → `tablet` | `scripts/authored/page-66.mjs` |
+| 67 | `tablets` → `test-tubes` | `scripts/authored/page-67.mjs` |
+| 68 | `tetris` → `tick-03` | `scripts/authored/page-68.mjs` |
+| 69 | `tick-04` → `touch-interaction-04` | `scripts/authored/page-69.mjs` |
+| 70 | `touch-interaction` → `tsunami` | `scripts/authored/page-70.mjs` |
+| 71 | `tulip` → `usb-bugs` | `scripts/authored/page-71.mjs` |
+| 72 | `usb-connected-01` → `user-warning-01` | `scripts/authored/page-72.mjs` |
+| 73 | `user-warning-02` → `wallet-03` | `scripts/authored/page-73.mjs` |
+| 74 | `wallet-04` → `wifi-02` | `scripts/authored/page-74.mjs` |
+| 75 | `wifi-circle` → `wudu` | `scripts/authored/page-75.mjs` |
+| 76 | `x-ray` → `zzz` | `scripts/authored/page-76.mjs` |
 
-Hand-crafted originals that fall in that range were left untouched (for
-example `add-circle`, `alert-circle`, `arrow-down-02`, `bookmark-01`,
-`bug-01`, `calendar-add-01`, `call-02`).
-Page 14 onward (`camel` and after) is still generated.
+Hand-crafted originals in every range were left untouched (for example
+`add-circle`, `alert-circle`, `arrow-down-02`, `bookmark-01`, `call-02`,
+`search-01`, `undo`, `wifi-01`). No icon uses a generated recipe any more.
 
-To continue the walk, see [AGENTS.md](AGENTS.md).
+To review or rework a gesture, see [AGENTS.md](AGENTS.md).
 
 ## Animation rules
 
@@ -118,7 +178,7 @@ Landing: Vite + Vue 3, Lenis, GSAP ScrollTrigger. Icons live in `packages/vue`.
 
 ```bash
 pnpm --filter hugeicons-animated-vue build
-pnpm icons:author     # emit pages in scripts/authored/ (pages 1–11 so far)
+pnpm icons:author     # emit every page in scripts/authored/ (pages 1–76)
 pnpm icons:convert    # re-port from a local React clone
 pnpm registry:build   # manifest + shadcn registry
 ```

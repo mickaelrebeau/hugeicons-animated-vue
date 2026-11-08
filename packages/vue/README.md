@@ -2,9 +2,9 @@
 
 Animated [Hugeicons](https://hugeicons.com) for **Vue 3** — 6,122 icons.
 
-Unique, per-icon choreography is authored for **gallery pages 1–13**
-(`a-arrow-down` through `calling`), plus the original 165 hand-crafted
-gestures. Icons after that page still use a generated name-and-shape recipe.
+Every icon has unique, per-icon choreography: 5,956 authored gestures across
+all 76 gallery pages (`a-arrow-down` through `zzz`), plus the original 165
+hand-crafted gestures.
 Hover plays the motion; you can also drive playback yourself. Finite motions
 finish their beat. Looping motions return to rest. `prefers-reduced-motion`
 is respected.

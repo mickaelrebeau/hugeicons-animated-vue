@@ -5,6 +5,26 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] — 2026-11-08
+
+### Added
+
+- Unique hover choreography for gallery pages 14–76 (`camel` through `zzz`):
+  4,935 new authored gestures. Every icon in the library now has authored or
+  hand-crafted motion (5,956 authored specs, 166 hand-crafted files); no icon
+  uses a generated recipe any more.
+- Families share one rule per variant (for example the bare icon moves only
+  its badge, `-01` and `-02` add their own lead-in), and icons with identical
+  geometry always get different gestures, including twins of hand-crafted
+  originals.
+- Authored specs can add props the gesture brings in (`extras`: sparks,
+  smoke, flashes, speed lines), which rest invisible.
+
+### Fixed
+
+- Geometry is pinned back to `@hugeicons/core-free-icons@4.2.3`; 4.3.0 redraws
+  icons that authored specs target.
+
 ## [0.6.1] — 2026-09-25
 
 ### Fixed
@@ -129,6 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Copy-paste shadcn-vue registry under `apps/web/public/r`.
 - Landing with gallery and Lab (Lenis + GSAP).
 
+[0.7.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.7.0
 [0.6.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.6.1
 [0.6.0]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.6.0
 [0.5.1]: https://github.com/mickaelrebeau/hugeicons-animated-vue/releases/tag/v0.5.1
